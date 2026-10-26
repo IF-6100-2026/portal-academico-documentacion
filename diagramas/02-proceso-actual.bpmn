@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+  id="Definitions_PortalAcademico_ASIS"
+  targetNamespace="https://example.invalid/portal-academico/pc1/asis"
+  exporter="Codex"
+  exporterVersion="1.0">
+
+  <bpmn:message id="Message_HojaCalificaciones" name="Hoja física de calificaciones" />
+  <bpmn:message id="Message_ConsultaQueja" name="Consulta o queja del encargado [canal por validar]" />
+  <bpmn:message id="Message_Respuesta" name="Respuesta o aclaración [canal por validar]" />
+
+  <bpmn:collaboration id="Collaboration_ProcesoActual">
+    <bpmn:participant id="Participant_Escuela" name="Escuela" processRef="Process_Escuela" />
+    <bpmn:participant id="Participant_Estudiante" name="Estudiante" processRef="Process_Estudiante" />
+    <bpmn:participant id="Participant_Encargado" name="Encargado legal" processRef="Process_Encargado" />
+    <bpmn:messageFlow id="MF-01" name="Hoja física" sourceRef="Task_AC02" targetRef="Start_Estudiante" />
+    <bpmn:messageFlow id="MF-02" name="Hoja entregada" sourceRef="Task_AC04" targetRef="Task_AC09" />
+    <bpmn:messageFlow id="MF-03a" name="Queja por no recepción" sourceRef="Task_AC11" targetRef="Start_ContactoEscuela" />
+    <bpmn:messageFlow id="MF-03b" name="Solicitud de aclaración [PV]" sourceRef="Task_AC12" targetRef="Start_ContactoEscuela" />
+    <bpmn:messageFlow id="MF-04" name="Respuesta [PV]" sourceRef="Task_AC07" targetRef="Catch_AC13" />
+  </bpmn:collaboration>
+
+  <bpmn:process id="Process_Escuela" name="Proceso actual en la escuela" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_Escuela">
+      <bpmn:lane id="Lane_Docente" name="Docente">
+        <bpmn:flowNodeRef>Start_Calificacion</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AC01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AC02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_HojaEntregada</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Start_ContactoEscuela</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AC06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_EscalaDireccion</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_AC07</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_RespuestaEscuela</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Direccion" name="Dirección">
+        <bpmn:flowNodeRef>Task_AC08</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+
+    <bpmn:startEvent id="Start_Calificacion" name="Se dispone de una calificación">
+      <bpmn:outgoing>Flow_S01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Task_AC01" name="AC-01 Preparar hoja física de calificaciones">
+      <bpmn:incoming>Flow_S01</bpmn:incoming>
+      <bpmn:outgoing>Flow_S02</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sendTask id="Task_AC02" name="AC-02 Entregar hoja al estudiante" messageRef="Message_HojaCalificaciones">
+      <bpmn:incoming>Flow_S02</bpmn:incoming>
+      <bpmn:outgoing>Flow_S03</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="End_HojaEntregada" name="Hoja bajo custodia del estudiante">
+      <bpmn:incoming>Flow_S03</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:startEvent id="Start_ContactoEscuela" name="Recibir consulta o queja [PV]">
+      <bpmn:outgoing>Flow_S04</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEvent_StartContacto" messageRef="Message_ConsultaQueja" />
+    </bpmn:startEvent>
+    <bpmn:task id="Task_AC06" name="AC-06 Atender por el canal actual [PV]">
+      <bpmn:incoming>Flow_S04</bpmn:incoming>
+      <bpmn:outgoing>Flow_S05</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_EscalaDireccion" name="¿Escala a Dirección? [PV]">
+      <bpmn:incoming>Flow_S05</bpmn:incoming>
+      <bpmn:outgoing>Flow_S06_No</bpmn:outgoing>
+      <bpmn:outgoing>Flow_S06_Si</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_AC08" name="AC-08 Intervenir en el caso [PV]">
+      <bpmn:incoming>Flow_S06_Si</bpmn:incoming>
+      <bpmn:outgoing>Flow_S07</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sendTask id="Task_AC07" name="AC-07 Comunicar respuesta [PV]" messageRef="Message_Respuesta">
+      <bpmn:incoming>Flow_S06_No</bpmn:incoming>
+      <bpmn:incoming>Flow_S07</bpmn:incoming>
+      <bpmn:outgoing>Flow_S08</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:endEvent id="End_RespuestaEscuela" name="Atención finalizada [PV]">
+      <bpmn:incoming>Flow_S08</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_S01" sourceRef="Start_Calificacion" targetRef="Task_AC01" />
+    <bpmn:sequenceFlow id="Flow_S02" sourceRef="Task_AC01" targetRef="Task_AC02" />
+    <bpmn:sequenceFlow id="Flow_S03" sourceRef="Task_AC02" targetRef="End_HojaEntregada" />
+    <bpmn:sequenceFlow id="Flow_S04" sourceRef="Start_ContactoEscuela" targetRef="Task_AC06" />
+    <bpmn:sequenceFlow id="Flow_S05" sourceRef="Task_AC06" targetRef="Gateway_EscalaDireccion" />
+    <bpmn:sequenceFlow id="Flow_S06_No" name="No [PV]" sourceRef="Gateway_EscalaDireccion" targetRef="Task_AC07">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">no se escala [por validar]</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_S06_Si" name="Sí [PV]" sourceRef="Gateway_EscalaDireccion" targetRef="Task_AC08">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">se escala [por validar]</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_S07" sourceRef="Task_AC08" targetRef="Task_AC07" />
+    <bpmn:sequenceFlow id="Flow_S08" sourceRef="Task_AC07" targetRef="End_RespuestaEscuela" />
+
+    <bpmn:textAnnotation id="Annotation_PV_Escuela">
+      <bpmn:text>PV-04/PV-05: canal, pasos, responsable, plazos y escalamiento deben validarse con la Dirección. No se afirma que exista mediación formal.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_PV_Escuela" sourceRef="Task_AC06" targetRef="Annotation_PV_Escuela" />
+  </bpmn:process>
+
+  <bpmn:process id="Process_Estudiante" name="Traslado de la hoja por el estudiante" isExecutable="false">
+    <bpmn:startEvent id="Start_Estudiante" name="Recibir hoja de la escuela">
+      <bpmn:outgoing>Flow_E01</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEvent_StartEstudiante" messageRef="Message_HojaCalificaciones" />
+    </bpmn:startEvent>
+    <bpmn:task id="Task_AC03" name="AC-03 Transportar hoja hacia el hogar">
+      <bpmn:incoming>Flow_E01</bpmn:incoming>
+      <bpmn:outgoing>Flow_E02</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_EntregaOportuna" name="¿La entrega oportunamente?">
+      <bpmn:incoming>Flow_E02</bpmn:incoming>
+      <bpmn:outgoing>Flow_E03_Si</bpmn:outgoing>
+      <bpmn:outgoing>Flow_E03_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sendTask id="Task_AC04" name="AC-04 Entregar hoja al encargado" messageRef="Message_HojaCalificaciones">
+      <bpmn:incoming>Flow_E03_Si</bpmn:incoming>
+      <bpmn:outgoing>Flow_E04</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:task id="Task_AC05" name="AC-05 Retrasar, ocultar o no entregar">
+      <bpmn:incoming>Flow_E03_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_E05</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Entrega" name="Hoja entregada">
+      <bpmn:incoming>Flow_E04</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="End_NoEntrega" name="Encargado no recibe por este canal">
+      <bpmn:incoming>Flow_E05</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_E01" sourceRef="Start_Estudiante" targetRef="Task_AC03" />
+    <bpmn:sequenceFlow id="Flow_E02" sourceRef="Task_AC03" targetRef="Gateway_EntregaOportuna" />
+    <bpmn:sequenceFlow id="Flow_E03_Si" name="Sí" sourceRef="Gateway_EntregaOportuna" targetRef="Task_AC04">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">entrega oportuna</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_E03_No" name="No" sourceRef="Gateway_EntregaOportuna" targetRef="Task_AC05">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">entrega tardía u omitida</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_E04" sourceRef="Task_AC04" targetRef="End_Entrega" />
+    <bpmn:sequenceFlow id="Flow_E05" sourceRef="Task_AC05" targetRef="End_NoEntrega" />
+
+    <bpmn:textAnnotation id="Annotation_PV_Frecuencia">
+      <bpmn:text>Hecho observado: existen retrasos/ocultamientos. PV-02: frecuencia, plazo esperado y volumen no están cuantificados.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_PV_Frecuencia" sourceRef="Task_AC05" targetRef="Annotation_PV_Frecuencia" />
+  </bpmn:process>
+
+  <bpmn:process id="Process_Encargado" name="Recepción y eventual consulta del encargado" isExecutable="false">
+    <bpmn:startEvent id="Start_Encargado" name="Esperar comunicación de calificaciones">
+      <bpmn:outgoing>Flow_G01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:receiveTask id="Task_AC09" name="AC-09 Esperar/recibir la hoja del estudiante" messageRef="Message_HojaCalificaciones">
+      <bpmn:incoming>Flow_G01</bpmn:incoming>
+      <bpmn:outgoing>Flow_G02</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:exclusiveGateway id="Gateway_RecibeHoja" name="¿Recibe la hoja?">
+      <bpmn:incoming>Flow_G02</bpmn:incoming>
+      <bpmn:outgoing>Flow_G03_Si</bpmn:outgoing>
+      <bpmn:outgoing>Flow_G03_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_AC10" name="AC-10 Revisar calificaciones">
+      <bpmn:incoming>Flow_G03_Si</bpmn:incoming>
+      <bpmn:outgoing>Flow_G04</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="Gateway_RequiereAclaracion" name="¿Requiere aclaración? [PV]">
+      <bpmn:incoming>Flow_G04</bpmn:incoming>
+      <bpmn:outgoing>Flow_G05_No</bpmn:outgoing>
+      <bpmn:outgoing>Flow_G05_Si</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sendTask id="Task_AC12" name="AC-12 Solicitar aclaración [PV]" messageRef="Message_ConsultaQueja">
+      <bpmn:incoming>Flow_G05_Si</bpmn:incoming>
+      <bpmn:outgoing>Flow_G06</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sendTask id="Task_AC11" name="AC-11 Contactar escuela / presentar queja" messageRef="Message_ConsultaQueja">
+      <bpmn:incoming>Flow_G03_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_G07</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:intermediateCatchEvent id="Catch_AC13" name="AC-13 Recibir respuesta [PV]">
+      <bpmn:incoming>Flow_G06</bpmn:incoming>
+      <bpmn:incoming>Flow_G07</bpmn:incoming>
+      <bpmn:outgoing>Flow_G08</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEvent_Respuesta" messageRef="Message_Respuesta" />
+    </bpmn:intermediateCatchEvent>
+    <bpmn:endEvent id="End_SinAclaracion" name="Revisión finalizada">
+      <bpmn:incoming>Flow_G05_No</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="End_ConRespuesta" name="Atención recibida [PV]">
+      <bpmn:incoming>Flow_G08</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:sequenceFlow id="Flow_G01" sourceRef="Start_Encargado" targetRef="Task_AC09" />
+    <bpmn:sequenceFlow id="Flow_G02" sourceRef="Task_AC09" targetRef="Gateway_RecibeHoja" />
+    <bpmn:sequenceFlow id="Flow_G03_Si" name="Sí" sourceRef="Gateway_RecibeHoja" targetRef="Task_AC10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">hoja recibida</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_G03_No" name="No / no a tiempo" sourceRef="Gateway_RecibeHoja" targetRef="Task_AC11">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">hoja no recibida oportunamente</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_G04" sourceRef="Task_AC10" targetRef="Gateway_RequiereAclaracion" />
+    <bpmn:sequenceFlow id="Flow_G05_No" name="No" sourceRef="Gateway_RequiereAclaracion" targetRef="End_SinAclaracion">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">no requiere aclaración [por validar]</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_G05_Si" name="Sí [PV]" sourceRef="Gateway_RequiereAclaracion" targetRef="Task_AC12">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">requiere aclaración [por validar]</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_G06" sourceRef="Task_AC12" targetRef="Catch_AC13" />
+    <bpmn:sequenceFlow id="Flow_G07" sourceRef="Task_AC11" targetRef="Catch_AC13" />
+    <bpmn:sequenceFlow id="Flow_G08" sourceRef="Catch_AC13" targetRef="End_ConRespuesta" />
+
+    <bpmn:textAnnotation id="Annotation_PV_Encargado">
+      <bpmn:text>PV-04/PV-06: canal, plazo, acuse, reiteración y forma de respuesta actuales no están confirmados.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_PV_Encargado" sourceRef="Task_AC11" targetRef="Annotation_PV_Encargado" />
+  </bpmn:process>
+
+  <bpmndi:BPMNDiagram id="BPMNDiagram_ProcesoActual">
+    <bpmndi:BPMNPlane id="BPMNPlane_ProcesoActual" bpmnElement="Collaboration_ProcesoActual">
+      <bpmndi:BPMNShape id="Shape_Participant_Escuela" bpmnElement="Participant_Escuela" isHorizontal="true">
+        <dc:Bounds x="50" y="70" width="1500" height="270" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Docente" bpmnElement="Lane_Docente" isHorizontal="true">
+        <dc:Bounds x="80" y="70" width="1470" height="165" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Direccion" bpmnElement="Lane_Direccion" isHorizontal="true">
+        <dc:Bounds x="80" y="235" width="1470" height="105" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_Calificacion" bpmnElement="Start_Calificacion">
+        <dc:Bounds x="115" y="130" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="92" y="170" width="85" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC01" bpmnElement="Task_AC01">
+        <dc:Bounds x="190" y="113" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC02" bpmnElement="Task_AC02">
+        <dc:Bounds x="400" y="113" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_HojaEntregada" bpmnElement="End_HojaEntregada">
+        <dc:Bounds x="610" y="130" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="575" y="170" width="108" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_ContactoEscuela" bpmnElement="Start_ContactoEscuela">
+        <dc:Bounds x="720" y="130" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="695" y="170" width="90" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC06" bpmnElement="Task_AC06">
+        <dc:Bounds x="790" y="113" width="170" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_EscalaDireccion" bpmnElement="Gateway_EscalaDireccion" isMarkerVisible="true">
+        <dc:Bounds x="1005" y="123" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="970" y="178" width="120" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC07" bpmnElement="Task_AC07">
+        <dc:Bounds x="1180" y="113" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC08" bpmnElement="Task_AC08">
+        <dc:Bounds x="1060" y="252" width="175" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_RespuestaEscuela" bpmnElement="End_RespuestaEscuela">
+        <dc:Bounds x="1390" y="130" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1365" y="170" width="90" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Annotation_PV_Escuela" bpmnElement="Annotation_PV_Escuela">
+        <dc:Bounds x="780" y="192" width="250" height="38" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Shape_Participant_Estudiante" bpmnElement="Participant_Estudiante" isHorizontal="true">
+        <dc:Bounds x="50" y="380" width="1500" height="160" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_Estudiante" bpmnElement="Start_Estudiante">
+        <dc:Bounds x="120" y="442" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="95" y="482" width="90" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC03" bpmnElement="Task_AC03">
+        <dc:Bounds x="200" y="425" width="165" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_EntregaOportuna" bpmnElement="Gateway_EntregaOportuna" isMarkerVisible="true">
+        <dc:Bounds x="410" y="435" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="385" y="490" width="105" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC04" bpmnElement="Task_AC04">
+        <dc:Bounds x="520" y="392" width="170" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC05" bpmnElement="Task_AC05">
+        <dc:Bounds x="520" y="470" width="180" height="62" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Entrega" bpmnElement="End_Entrega">
+        <dc:Bounds x="750" y="405" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="725" y="445" width="88" height="20" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_NoEntrega" bpmnElement="End_NoEntrega">
+        <dc:Bounds x="750" y="483" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="718" y="520" width="110" height="20" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Annotation_PV_Frecuencia" bpmnElement="Annotation_PV_Frecuencia">
+        <dc:Bounds x="835" y="472" width="300" height="52" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNShape id="Shape_Participant_Encargado" bpmnElement="Participant_Encargado" isHorizontal="true">
+        <dc:Bounds x="50" y="580" width="1500" height="230" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_Encargado" bpmnElement="Start_Encargado">
+        <dc:Bounds x="115" y="665" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="90" y="705" width="90" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC09" bpmnElement="Task_AC09">
+        <dc:Bounds x="190" y="648" width="170" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_RecibeHoja" bpmnElement="Gateway_RecibeHoja" isMarkerVisible="true">
+        <dc:Bounds x="405" y="658" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="385" y="713" width="90" height="20" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC10" bpmnElement="Task_AC10">
+        <dc:Bounds x="505" y="605" width="165" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_RequiereAclaracion" bpmnElement="Gateway_RequiereAclaracion" isMarkerVisible="true">
+        <dc:Bounds x="710" y="612" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="680" y="667" width="110" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC12" bpmnElement="Task_AC12">
+        <dc:Bounds x="805" y="598" width="175" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_SinAclaracion" bpmnElement="End_SinAclaracion">
+        <dc:Bounds x="830" y="690" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="800" y="730" width="95" height="20" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_AC11" bpmnElement="Task_AC11">
+        <dc:Bounds x="505" y="725" width="185" height="65" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Catch_AC13" bpmnElement="Catch_AC13">
+        <dc:Bounds x="1050" y="674" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1015" y="714" width="105" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_ConRespuesta" bpmnElement="End_ConRespuesta">
+        <dc:Bounds x="1210" y="674" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1180" y="714" width="96" height="20" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Annotation_PV_Encargado" bpmnElement="Annotation_PV_Encargado">
+        <dc:Bounds x="760" y="748" width="300" height="48" />
+      </bpmndi:BPMNShape>
+
+      <bpmndi:BPMNEdge id="Edge_Flow_S01" bpmnElement="Flow_S01"><di:waypoint x="151" y="148" /><di:waypoint x="190" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S02" bpmnElement="Flow_S02"><di:waypoint x="355" y="148" /><di:waypoint x="400" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S03" bpmnElement="Flow_S03"><di:waypoint x="565" y="148" /><di:waypoint x="610" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S04" bpmnElement="Flow_S04"><di:waypoint x="756" y="148" /><di:waypoint x="790" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S05" bpmnElement="Flow_S05"><di:waypoint x="960" y="148" /><di:waypoint x="1005" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S06_No" bpmnElement="Flow_S06_No"><di:waypoint x="1055" y="148" /><di:waypoint x="1180" y="148" /><bpmndi:BPMNLabel><dc:Bounds x="1100" y="128" width="52" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S06_Si" bpmnElement="Flow_S06_Si"><di:waypoint x="1030" y="173" /><di:waypoint x="1030" y="287" /><di:waypoint x="1060" y="287" /><bpmndi:BPMNLabel><dc:Bounds x="1035" y="220" width="50" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S07" bpmnElement="Flow_S07"><di:waypoint x="1235" y="287" /><di:waypoint x="1262" y="287" /><di:waypoint x="1262" y="183" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S08" bpmnElement="Flow_S08"><di:waypoint x="1345" y="148" /><di:waypoint x="1390" y="148" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Association_PV_Escuela" bpmnElement="Association_PV_Escuela"><di:waypoint x="875" y="183" /><di:waypoint x="875" y="192" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Edge_Flow_E01" bpmnElement="Flow_E01"><di:waypoint x="156" y="460" /><di:waypoint x="200" y="460" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_E02" bpmnElement="Flow_E02"><di:waypoint x="365" y="460" /><di:waypoint x="410" y="460" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_E03_Si" bpmnElement="Flow_E03_Si"><di:waypoint x="435" y="435" /><di:waypoint x="435" y="423" /><di:waypoint x="520" y="423" /><bpmndi:BPMNLabel><dc:Bounds x="470" y="401" width="25" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_E03_No" bpmnElement="Flow_E03_No"><di:waypoint x="435" y="485" /><di:waypoint x="435" y="501" /><di:waypoint x="520" y="501" /><bpmndi:BPMNLabel><dc:Bounds x="470" y="503" width="25" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_E04" bpmnElement="Flow_E04"><di:waypoint x="690" y="423" /><di:waypoint x="750" y="423" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_E05" bpmnElement="Flow_E05"><di:waypoint x="700" y="501" /><di:waypoint x="750" y="501" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Association_PV_Frecuencia" bpmnElement="Association_PV_Frecuencia"><di:waypoint x="700" y="501" /><di:waypoint x="835" y="498" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Edge_Flow_G01" bpmnElement="Flow_G01"><di:waypoint x="151" y="683" /><di:waypoint x="190" y="683" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G02" bpmnElement="Flow_G02"><di:waypoint x="360" y="683" /><di:waypoint x="405" y="683" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G03_Si" bpmnElement="Flow_G03_Si"><di:waypoint x="430" y="658" /><di:waypoint x="430" y="638" /><di:waypoint x="505" y="638" /><bpmndi:BPMNLabel><dc:Bounds x="462" y="616" width="25" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G03_No" bpmnElement="Flow_G03_No"><di:waypoint x="430" y="708" /><di:waypoint x="430" y="758" /><di:waypoint x="505" y="758" /><bpmndi:BPMNLabel><dc:Bounds x="438" y="733" width="65" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G04" bpmnElement="Flow_G04"><di:waypoint x="670" y="638" /><di:waypoint x="710" y="637" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G05_No" bpmnElement="Flow_G05_No"><di:waypoint x="735" y="662" /><di:waypoint x="735" y="708" /><di:waypoint x="830" y="708" /><bpmndi:BPMNLabel><dc:Bounds x="760" y="688" width="25" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G05_Si" bpmnElement="Flow_G05_Si"><di:waypoint x="760" y="637" /><di:waypoint x="805" y="631" /><bpmndi:BPMNLabel><dc:Bounds x="772" y="610" width="45" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G06" bpmnElement="Flow_G06"><di:waypoint x="980" y="631" /><di:waypoint x="1015" y="631" /><di:waypoint x="1015" y="692" /><di:waypoint x="1050" y="692" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G07" bpmnElement="Flow_G07"><di:waypoint x="690" y="758" /><di:waypoint x="1015" y="758" /><di:waypoint x="1015" y="692" /><di:waypoint x="1050" y="692" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_G08" bpmnElement="Flow_G08"><di:waypoint x="1086" y="692" /><di:waypoint x="1210" y="692" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Association_PV_Encargado" bpmnElement="Association_PV_Encargado"><di:waypoint x="690" y="775" /><di:waypoint x="760" y="772" /></bpmndi:BPMNEdge>
+
+      <bpmndi:BPMNEdge id="Edge_MF01" bpmnElement="MF-01"><di:waypoint x="482" y="183" /><di:waypoint x="482" y="360" /><di:waypoint x="138" y="360" /><di:waypoint x="138" y="442" /><bpmndi:BPMNLabel><dc:Bounds x="275" y="343" width="85" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_MF02" bpmnElement="MF-02"><di:waypoint x="605" y="454" /><di:waypoint x="605" y="560" /><di:waypoint x="275" y="560" /><di:waypoint x="275" y="648" /><bpmndi:BPMNLabel><dc:Bounds x="405" y="543" width="95" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_MF03a" bpmnElement="MF-03a"><di:waypoint x="598" y="725" /><di:waypoint x="598" y="350" /><di:waypoint x="738" y="350" /><di:waypoint x="738" y="166" /><bpmndi:BPMNLabel><dc:Bounds x="605" y="548" width="110" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_MF03b" bpmnElement="MF-03b"><di:waypoint x="892" y="598" /><di:waypoint x="892" y="360" /><di:waypoint x="738" y="360" /><di:waypoint x="738" y="166" /><bpmndi:BPMNLabel><dc:Bounds x="780" y="344" width="120" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_MF04" bpmnElement="MF-04"><di:waypoint x="1262" y="183" /><di:waypoint x="1262" y="550" /><di:waypoint x="1068" y="550" /><di:waypoint x="1068" y="674" /><bpmndi:BPMNLabel><dc:Bounds x="1140" y="534" width="88" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
+

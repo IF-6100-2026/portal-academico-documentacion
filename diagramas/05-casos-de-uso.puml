@@ -1,0 +1,82 @@
+@startuml
+title Portal Académico — Casos de uso propuestos (TO-BE conceptual)
+left to right direction
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam handwritten false
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam usecase {
+  BackgroundColor #F8FBFF
+  BorderColor #275D85
+  ArrowColor #4D6475
+  FontColor #17324D
+}
+skinparam actor {
+  BorderColor #263746
+  FontColor #263746
+}
+
+actor "Encargado legal" as Enc
+actor "Docente" as Doc
+actor "Administrador\ninstitucional" as Adm
+actor "Dirección / mediador" as Dir
+actor "Tiempo / servicio\nde notificaciones" as Tim
+actor "Estudiante\n(indirecto)" as Est
+actor "Auditor institucional\nautorizado" as Aud
+
+rectangle "Portal Académico\n(propuesta por validar)" {
+  usecase "UC-01\nConsultar progreso\nacadémico" as UC01
+  usecase "UC-02\nVincular encargado\ncon estudiante" as UC02
+  usecase "UC-03\nPublicar evaluación\nasignada" as UC03
+  usecase "UC-04\nPublicar resultado\nde evaluación" as UC04
+  usecase "UC-05\nGestionar avisos\nno consultados" as UC05
+  usecase "UC-06\nComunicarse sobre el\nseguimiento académico" as UC06
+  usecase "UC-07\nGestionar discrepancia\nacadémica" as UC07
+  usecase "UC-08\nConsultar reportes\ninstitucionales" as UC08
+  usecase "UC-09\nCorregir publicación\nacadémica" as UC09
+  usecase "UC-10\nAdministrar configuración\ny accesos" as UC10
+  usecase "UC-11\nConsultar bitácora\nde auditoría" as UC11
+}
+
+Enc -- UC01
+Enc -- UC05
+Enc -- UC06
+Enc -- UC07
+
+Doc -- UC03
+Doc -- UC04
+Doc -- UC05
+Doc -- UC06
+Doc -- UC07
+Doc -- UC09
+
+Adm -- UC02
+Adm -- UC10
+
+Dir -- UC05
+Dir -- UC07
+Dir -- UC08
+Dir -- UC10
+Dir -- UC11
+
+Tim -- UC05
+Aud -- UC11
+
+Est .. UC03 : referencia indirecta
+Est .. UC04 : referencia indirecta
+
+note bottom of Est
+  El estudiante no se presume usuario del portal.
+  Su vínculo es indirecto: la evaluación y el
+  resultado corresponden a su proceso académico.
+end note
+
+legend bottom
+  |= Convención |= Significado |
+  | Asociación sólida | actor que inicia, participa o recibe el resultado |
+  | Asociación punteada | participación indirecta; no implica cuenta de usuario |
+  | UC-03, UC-04 y UC-09 | generan avisos que posteriormente puede tratar UC-05 |
+  Todas las capacidades son propuestas sujetas a validación con la organización.
+endlegend
+@enduml
