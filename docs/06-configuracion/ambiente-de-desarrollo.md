@@ -36,8 +36,10 @@ npm run dev
 
 Abrir `http://localhost:5173`. La pantalla debe indicar “Backend conectado”. Comprobar también `http://localhost:8080/api/v1/health`; debe devolver `status`, `service` y `timestamp`. Al iniciar el backend, Liquibase aplica la migración inicial.
 
+Si el puerto 8080 ya está ocupado, exportar `SERVER_PORT=18080` en la terminal del backend y configurar `VITE_API_URL=http://localhost:18080` en `portal-academico-frontend/.env`. La pantalla y el endpoint deben usar el mismo puerto.
+
 ## Cierre y diagnóstico
 
 Detener frontend y backend con Ctrl+C. Detener la base con `docker compose --env-file .env -f docker-compose.yml down` desde backend. Para ver su estado: `docker compose ... ps` y `docker compose ... logs db`. Si el frontend indica que no conecta, confirme primero el endpoint en navegador; revise `VITE_API_URL`, puerto 8080 y que CORS permita Vite. Si falla PostgreSQL, confirme el puerto 5432 disponible y credenciales de `.env`.
 
-No borrar el volumen `postgres_data` si se desea conservar datos locales. La base inicial está vacía y no contiene información de estudiantes. Si el endpoint de salud funciona pero la aplicación no inicia, confirme que el motor PostgreSQL acepte la URL y las credenciales definidas en las variables; el arranque de la API aplica Liquibase y requiere conexión a la base.
+No borrar el volumen `postgres_data` si se desea conservar datos locales. La base inicial está vacía y no contiene información de estudiantes. La API y el changeset inicial se verificaron contra una instancia PostgreSQL 18 limpia; la guía levanta PostgreSQL 17 mediante Compose.

@@ -36,8 +36,8 @@ Los tres repositorios pertenecen a la organización [IF-6100-2026](https://githu
 | Repositorio | Contenido de esta carga |
 |---|---|
 | [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion) | Los 48 originales del PC1, el tag histórico `pc1` y este índice de coordinación. |
-| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; falta validar arranque con PostgreSQL limpio. |
-| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; consulta el endpoint de salud y muestra su estado. |
+| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; compilación e integración con PostgreSQL verificadas. |
+| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; build de producción e integración de pantalla con API verificados. |
 
 ## Diseño y ambiente del PC2
 
