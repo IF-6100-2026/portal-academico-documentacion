@@ -36,8 +36,16 @@ Los tres repositorios pertenecen a la organización [IF-6100-2026](https://githu
 | Repositorio | Contenido de esta carga |
 |---|---|
 | [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion) | Los 48 originales del PC1, el tag histórico `pc1` y este índice de coordinación. |
-| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | README y exclusiones iniciales; la aplicación del PC2 está pendiente. |
-| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | README y exclusiones iniciales; la aplicación del PC2 está pendiente. |
+| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; falta validar arranque con PostgreSQL limpio. |
+| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; consulta el endpoint de salud y muestra su estado. |
+
+## Diseño y ambiente del PC2
+
+- [Arquitectura propuesta](docs/05-diseno/arquitectura.md)
+- [Lineamientos de backend](docs/05-diseno/lineamientos-backend.md)
+- [Lineamientos de frontend](docs/05-diseno/lineamientos-frontend.md)
+- [Lineamientos de base de datos](docs/05-diseno/lineamientos-base-de-datos.md)
+- [Guía de ambiente e integración](docs/06-configuracion/ambiente-de-desarrollo.md)
 
 La rama `main` integra el historial local del PC1 y el commit inicial que ya existía en GitHub. El tag `pc1` mantiene el commit original `763fd64280f83d5c5c84fc4762de44938c30d94f`.
 
