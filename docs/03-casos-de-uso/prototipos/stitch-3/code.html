@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Académico - Presentar Discrepancia Académica</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#e6e8ea",
+            "tertiary-fixed": "#85f8c4",
+            "tertiary": "#000000",
+            "on-tertiary-fixed": "#002114",
+            "on-tertiary-fixed-variant": "#005137",
+            "primary-fixed": "#dae2fd",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-tertiary": "#ffffff",
+            "error": "#ba1a1a",
+            "on-secondary-fixed-variant": "#264191",
+            "surface-container-low": "#f2f4f6",
+            "surface": "#f7f9fb",
+            "on-primary-fixed": "#131b2e",
+            "on-secondary-container": "#1d3989",
+            "primary-container": "#131b2e",
+            "background": "#f7f9fb",
+            "surface-bright": "#f7f9fb",
+            "surface-container-highest": "#e0e3e5",
+            "surface-variant": "#e0e3e5",
+            "secondary-container": "#8fa7fe",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#bec6e0",
+            "on-secondary-fixed": "#00164e",
+            "primary": "#000000",
+            "secondary": "#4059aa",
+            "secondary-fixed": "#dce1ff",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-surface": "#191c1e",
+            "tertiary-fixed-dim": "#68dba9",
+            "on-error": "#ffffff",
+            "surface-dim": "#d8dadc",
+            "inverse-surface": "#2d3133",
+            "on-secondary": "#ffffff",
+            "tertiary-container": "#002114",
+            "on-surface-variant": "#45464d",
+            "inverse-on-surface": "#eff1f3",
+            "primary-fixed-dim": "#bec6e0",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-background": "#191c1e",
+            "on-error-container": "#93000a",
+            "surface-tint": "#565e74",
+            "on-primary-container": "#7c839b",
+            "on-tertiary-container": "#069669",
+            "outline-variant": "#c6c6cd",
+            "outline": "#76777d",
+            "surface-container": "#eceef0"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "gutter-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-tablet": "1.5rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin-tablet": "2rem"
+          },
+          "fontFamily": {
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-xl-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-28">
+<!-- Top App Bar institucional -->
+<header class="sticky top-0 z-40 w-full flex items-center justify-between px-margin md:px-margin-tablet lg:px-margin-desktop py-space-sm bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Volver al portal" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-wider">UC-07</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant font-medium">Solicitud Formal</span>
+</div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight leading-tight">Presentar Discrepancia</h1>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<button aria-label="Notificaciones" class="flex items-center justify-center w-10 h-10 rounded-lg hover:bg-surface-container active:scale-95 transition-transform duration-150 text-on-surface-variant relative" type="button">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-label-md font-label-md ring-2 ring-surface-container-high ml-1" title="Fotografía de perfil de Encargado Legal: Carlos Mendoza">
+        CM
+      </div>
+</div>
+</header>
+<!-- Contenedor Principal Flujo Móvil -->
+<main class="max-w-2xl mx-auto px-margin pt-space-md space-y-space-md">
+<!-- 1. Identificación del Estudiante & Contexto de Tutoría -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center text-headline-sm font-headline-sm font-bold ring-1 ring-secondary-container">
+            SM
+          </div>
+<div>
+<div class="flex items-center gap-space-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant font-medium">Estudiante regular</span>
+<span class="inline-flex items-center gap-1 text-[10px] font-bold text-tertiary-container bg-tertiary-fixed px-1.5 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Tutela Verificada
+              </span>
+</div>
+<h2 class="text-headline-sm font-headline-sm text-on-surface font-bold">Sofía Mendoza Morales</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">3° Año Secundaria • Grupo B</p>
+</div>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs border-t border-surface-container-high flex items-center justify-between text-label-md font-label-md">
+<span class="text-on-surface-variant">Matrícula: <strong class="text-on-surface font-semibold">2024-SEC-089</strong></span>
+<span class="text-on-surface-variant">Tutor Legal: <strong class="text-on-surface font-semibold">Carlos Mendoza</strong></span>
+</div>
+</section>
+<!-- 2. Materia y Evaluación Relacionada (RF-25) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm">
+<div class="flex items-center justify-between pb-space-xs border-b border-surface-container-high">
+<span class="text-label-sm font-label-sm uppercase text-secondary font-bold tracking-wider">Materia &amp; Evaluación en Disputa</span>
+<span class="inline-flex items-center gap-1 text-label-sm font-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[14px]" data-icon="book">book</span> MAT-301
+        </span>
+</div>
+<div class="mt-space-sm">
+<h3 class="text-headline-md font-headline-md font-bold text-on-surface">Matemáticas Avanzadas</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="person">person</span>
+          Titular: Prof. Roberto Vargas
+        </p>
+</div>
+<!-- Bloque de Calificación y Fecha -->
+<div class="mt-space-sm grid grid-cols-2 gap-space-sm bg-surface-container-low p-space-sm rounded-lg border border-surface-container-highest">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Evaluación</span>
+<span class="text-body-md font-body-md font-semibold text-on-surface">Examen Parcial I</span>
+<span class="text-[11px] text-on-surface-variant block mt-0.5">Publicación: 21 Mar 2025</span>
+</div>
+<div class="text-right flex flex-col justify-center items-end border-l border-surface-container-highest pl-space-sm">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Nota registrada</span>
+<div class="flex items-baseline gap-1">
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-error">9.5</span>
+<span class="text-label-md font-label-md text-on-surface-variant">/ 10</span>
+</div>
+<span class="inline-flex items-center text-[10px] text-error font-medium">Sujeta a aclaración</span>
+</div>
+</div>
+</section>
+<!-- 3. Advertencia Institucional Obligatoria -->
+<aside class="bg-surface-container-lowest rounded-xl p-space-md border-l-4 border-l-secondary border border-surface-container-highest shadow-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[22px] flex-shrink-0 mt-0.5" data-icon="gavel">gavel</span>
+<div>
+<h4 class="text-label-lg font-label-lg text-on-surface font-bold">Aviso legal y académico vinculante</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1 leading-relaxed">
+            La presentación de esta solicitud no modifica automáticamente la calificación ni altera el promedio hasta la resolución definitiva de las instancias competentes.
+          </p>
+</div>
+</div>
+</aside>
+<!-- 4. Información de Tiempos y Plazos (RF-26) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase text-on-surface-variant font-bold">Cómputo de Plazos Oficiales</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-bold text-on-tertiary-container bg-surface-container-high px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[13px]" data-icon="timer">timer</span> RF-26 Vigente
+        </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm bg-surface-container-low px-space-md py-2.5 rounded-lg border border-surface-container-highest">
+<span class="text-on-surface-variant">Fecha de presentación:</span>
+<span class="font-semibold text-on-surface">24 Mar 2025 (Hoy)</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low border border-surface-container-highest">
+<p class="text-body-sm font-body-sm text-on-surface leading-snug">
+<strong>Plazo hábil de apelación:</strong> 5 días hábiles posteriores a la publicación (Vence: <strong>29 Mar 2025 - 23:59 hrs</strong>).
+        </p>
+<div class="mt-2 flex items-center justify-between">
+<div class="w-2/3 bg-surface-container-highest h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full w-3/5"></div>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-secondary">3 días hábiles restantes</span>
+</div>
+</div>
+</section>
+<!-- 5. Formulario de Apelación (RF-27) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm space-y-space-md">
+<div class="border-b border-surface-container-high pb-space-xs">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">Fundamentación de la Solicitud</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Especifique con objetividad los motivos del requerimiento.</p>
+</div>
+<!-- Selector de Motivo -->
+<div class="space-y-1.5">
+<label class="block text-label-lg font-label-lg text-on-surface font-semibold" for="motivo-select">
+          Motivo de la discrepancia <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 pl-3 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all" id="motivo-select">
+<option selected="" value="revision_criterio">Revisión de criterio de corrección / rúbrica</option>
+<option value="omision_reactivo">Omisión de puntaje en reactivo evaluado</option>
+<option value="error_computo">Error en sumatoria aritmética / cómputo total</option>
+<option value="otro">Otro fundamento académico debidamente acreditado</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline pointer-events-none text-xl" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Campo Amplio de Texto -->
+<div class="space-y-1.5">
+<div class="flex justify-between items-baseline">
+<label class="block text-label-lg font-label-lg text-on-surface font-semibold" for="explicacion-text">
+            Explicación detallada y fundamentos <span class="text-error">*</span>
+</label>
+<span class="text-[11px] text-on-surface-variant font-mono" id="char-counter">312 / 1000</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant italic">
+          Indique reactivos específicos (ej. Pregunta 4-B) manteniendo un tono de redacción institucional, respetuoso y fundamentado en el temario oficial.
+        </p>
+<textarea class="w-full p-3 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md font-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 leading-relaxed resize-y" id="explicacion-text" maxlength="1000" placeholder="Describa puntualmente las inconsistencias observadas en la evaluación..." rows="5">Se solicita la revisión del reactivo 4 (Inciso C: Cálculo de matrices multivariables). En la hoja de examen entregada físicamente a Sofía se aprecia el procedimiento analítico completo y el resultado algebraico coincide con la solución canónica. El puntaje asignado fue de 0.5/1.0 puntos sin señalamiento explícito de fallo conceptual en la rúbrica.</textarea>
+</div>
+<!-- 6. Carga de Evidencia o Respaldo (RF-28) -->
+<div class="space-y-space-sm pt-space-xs border-t border-surface-container-high">
+<div>
+<label class="block text-label-lg font-label-lg text-on-surface font-semibold">
+            Evidencia documental de respaldo (RF-28)
+          </label>
+<span class="text-body-sm font-body-sm text-on-surface-variant block">
+            Adjunte examen escaneado, fotografías nítidas o rúbrica física (PDF, JPG, PNG hasta 15 MB).
+          </span>
+</div>
+<!-- Zona de Carga -->
+<div class="border-2 border-dashed border-outline-variant hover:border-secondary rounded-xl p-space-md text-center bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex flex-col items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[24px]" data-icon="cloud_upload">cloud_upload</span>
+</div>
+<p class="text-label-lg font-label-lg text-on-surface font-semibold mt-2">
+              Arrastre aquí su documento o <span class="text-secondary underline">seleccionar archivo</span>
+</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant mt-0.5">Soporte oficial para PDF, JPG, PNG (Máximo 15 MB)</p>
+</div>
+</div>
+<!-- Elemento de Archivo Adjunto -->
+<div class="flex items-center justify-between p- space-sm bg-surface-container-lowest border border-surface-container-highest rounded-lg shadow-sm">
+<div class="flex items-center gap-space-sm overflow-hidden">
+<div class="w-9 h-9 rounded-lg bg-surface-container-high text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+</div>
+<div class="truncate">
+<span class="text-body-sm font-body-sm font-semibold text-on-surface truncate block">examen_parcial_hoja_respuestas.pdf</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">1.8 MB • Listo para envío formal</span>
+</div>
+</div>
+<div class="flex items-center gap-1 flex-shrink-0">
+<button aria-label="Reemplazar archivo" class="p-1.5 text-on-surface-variant hover:text-secondary rounded hover:bg-surface-container transition-colors" title="Reemplazar" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+</button>
+<button aria-label="Eliminar archivo" class="p-1.5 text-error hover:bg-error-container/20 rounded transition-colors" title="Eliminar archivo" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Confirmación Posterior y Folio Formal (RF-29) Preview -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm space-y-space-sm">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm uppercase text-secondary font-bold tracking-wider">Expediente Oficial Asignado (RF-29)</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-bold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+<span class="material-symbols-outlined text-[13px]" data-icon="fingerprint">fingerprint</span> Pre-radicación
+        </span>
+</div>
+<div class="bg-surface-container-low border border-surface-container-highest rounded-lg p-space-md flex items-center justify-between gap-space-md">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Número de Folio / Caso:</span>
+<span class="text-headline-sm font-headline-sm font-mono font-bold text-on-surface tracking-tight">REC-2025-0842</span>
+<p class="text-[11px] text-on-surface-variant mt-1">Sello institucional SHA-256 verificado por Secretaría Escolar.</p>
+</div>
+<div class="w-16 h-16 bg-surface-container-lowest p-1 rounded-lg border border-surface-container-highest flex items-center justify-center flex-shrink-0 shadow-sm" title="Código QR de verificación oficial institucional">
+<div class="grid grid-cols-4 gap-0.5 w-full h-full p-0.5">
+<div class="bg-primary rounded-[1px]"></div><div class="bg-primary rounded-[1px]"></div><div class="bg-surface-container-lowest"></div><div class="bg-primary rounded-[1px]"></div>
+<div class="bg-primary rounded-[1px]"></div><div class="bg-surface-container-lowest"></div><div class="bg-primary rounded-[1px]"></div><div class="bg-primary rounded-[1px]"></div>
+<div class="bg-surface-container-lowest"></div><div class="bg-primary rounded-[1px]"></div><div class="bg-primary rounded-[1px]"></div><div class="bg-surface-container-lowest"></div>
+<div class="bg-primary rounded-[1px]"></div><div class="bg-surface-container-lowest"></div><div class="bg-primary rounded-[1px]"></div><div class="bg-primary rounded-[1px]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Línea de Tiempo de Estados del Proceso (Tracking Workflow de 5 fases) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md border border-surface-container-highest shadow-sm">
+<div class="flex items-center justify-between pb-space-sm border-b border-surface-container-high mb-space-md">
+<div>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">Flujo del Procedimiento</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">5 etapas reglamentarias con plazos máximos estipulados.</p>
+</div>
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="account_tree">account_tree</span>
+</div>
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-[11px] before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container-highest">
+<!-- Fase 1: Presentada -->
+<div class="relative">
+<span class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-[12px] font-bold ring-4 ring-surface-container-lowest">
+            1
+          </span>
+<div class="bg-surface-container-low p-space-sm rounded-lg border border-surface-container-highest">
+<div class="flex items-center justify-between">
+<h4 class="text-label-lg font-label-lg font-bold text-on-surface">1. Presentada</h4>
+<span class="inline-block text-[11px] font-bold text-on-primary bg-primary px-2 py-0.5 rounded-full">Activa al enviar</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Ingreso formal del reclamo por parte del Tutor Legal con emisión de comprobante.</p>
+<span class="text-[11px] text-on-surface-variant block mt-1 font-medium">Plazo de registro: Inmediato (24 Mar)</span>
+</div>
+</div>
+<!-- Fase 2: Revisión docente -->
+<div class="relative">
+<span class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-[12px] font-bold ring-4 ring-surface-container-lowest">
+            2
+          </span>
+<div class="p-space-sm rounded-lg border border-surface-container-high bg-surface-container-lowest">
+<div class="flex items-center justify-between">
+<h4 class="text-label-lg font-label-lg font-semibold text-on-surface">2. Revisión docente</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Hasta 48 hrs</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Análisis de reactivos por el Prof. Roberto Vargas con emisión de minuta técnica.</p>
+</div>
+</div>
+<!-- Fase 3: Comité de Evaluación -->
+<div class="relative">
+<span class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-[12px] font-bold ring-4 ring-surface-container-lowest">
+            3
+          </span>
+<div class="p-space-sm rounded-lg border border-surface-container-high bg-surface-container-lowest">
+<div class="flex items-center justify-between">
+<h4 class="text-label-lg font-label-lg font-semibold text-on-surface">3. Comité de Evaluación</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Hasta 72 hrs</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Colegiado académico valida correspondencia con el temario y criterios pedagógicos.</p>
+</div>
+</div>
+<!-- Fase 4: Dirección Académica -->
+<div class="relative">
+<span class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-[12px] font-bold ring-4 ring-surface-container-lowest">
+            4
+          </span>
+<div class="p-space-sm rounded-lg border border-surface-container-high bg-surface-container-lowest">
+<div class="flex items-center justify-between">
+<h4 class="text-label-lg font-label-lg font-semibold text-on-surface">4. Dirección Académica</h4>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Hasta 24 hrs</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Ratificación institucional del dictamen y emisión de la resolución administrativa.</p>
+</div>
+</div>
+<!-- Fase 5: Resuelta y notificada -->
+<div class="relative">
+<span class="absolute -left-6 top-0 w-6 h-6 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-[12px] font-bold ring-4 ring-surface-container-lowest">
+            5
+          </span>
+<div class="p-space-sm rounded-lg border border-surface-container-high bg-surface-container-lowest">
+<div class="flex items-center justify-between">
+<h4 class="text-label-lg font-label-lg font-semibold text-on-surface">5. Resuelta y notificada</h4>
+<span class="text-label-sm font-label-sm text-tertiary-container font-semibold">Cierre formal</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Notificación fehaciente al tutor legal y actualización en boleta si procede cambio.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 9. Botón de Acción Principal a Ancho Completo -->
+<section class="pt-space-xs pb-space-sm">
+<button class="w-full h-12 bg-primary hover:bg-inverse-surface text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-space-sm shadow-md active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+<span>Presentar solicitud</span>
+</button>
+<p class="text-center text-[11px] text-on-surface-variant mt-2">
+        Al hacer clic, acepta la firma electrónica simple del Encargado Legal Carlos Mendoza.
+      </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar: Mapeo de Shared Components JSON con 'Trámites' activo -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin py-space-xs md:hidden bg-surface-container-lowest shadow-md">
+<!-- Item 0: Resumen -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="dashboard">dashboard</span>
+<span class="text-label-sm font-label-sm">Resumen</span>
+</a>
+<!-- Item 1: Materias -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="school">school</span>
+<span class="text-label-sm font-label-sm">Materias</span>
+</a>
+<!-- Item 2: Historial -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="history_edu">history_edu</span>
+<span class="text-label-sm font-label-sm">Historial</span>
+</a>
+<!-- Item 3: Trámites (ACTIVO para el flujo UC-07 de Solicitud/Discrepancia) -->
+<a class="flex flex-col items-center justify-center text-on-primary bg-primary rounded-xl px-space-md py-space-xs" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="description" data-weight="fill" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="text-label-sm font-label-sm">Trámites</span>
+</a>
+</nav>
+<script>
+    // Micro-interacción: contador reactivo para la fundamentación del reclamo
+    const textarea = document.getElementById('explicacion-text');
+    const counter = document.getElementById('char-counter');
+    if (textarea && counter) {
+      textarea.addEventListener('input', () => {
+        counter.textContent = `${textarea.value.length} / 1000`;
+      });
+    }
+  </script>
+</body></html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-background text-on-surface antialiased" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Académico - Perfil y Progreso Académico</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "surface-bright": "#f7f9fb",
+            "on-secondary-fixed": "#00164e",
+            "outline-variant": "#c6c6cd",
+            "on-surface": "#191c1e",
+            "inverse-primary": "#bec6e0",
+            "surface-container-low": "#f2f4f6",
+            "secondary-container": "#8fa7fe",
+            "on-primary-container": "#7c839b",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-background": "#191c1e",
+            "primary-fixed-dim": "#bec6e0",
+            "surface-container-high": "#e6e8ea",
+            "on-error-container": "#93000a",
+            "surface-container": "#eceef0",
+            "on-primary": "#ffffff",
+            "primary-container": "#131b2e",
+            "tertiary": "#000000",
+            "primary": "#000000",
+            "error": "#ba1a1a",
+            "primary-fixed": "#dae2fd",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-secondary-fixed-variant": "#264191",
+            "on-primary-fixed": "#131b2e",
+            "secondary-fixed": "#dce1ff",
+            "surface-variant": "#e0e3e5",
+            "tertiary-fixed": "#85f8c4",
+            "tertiary-fixed-dim": "#68dba9",
+            "outline": "#76777d",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#d8dadc",
+            "inverse-surface": "#2d3133",
+            "on-tertiary-fixed-variant": "#005137",
+            "surface-tint": "#565e74",
+            "surface-container-lowest": "#ffffff",
+            "error-container": "#ffdad6",
+            "background": "#f7f9fb",
+            "surface": "#f7f9fb",
+            "on-surface-variant": "#45464d",
+            "surface-container-highest": "#e0e3e5",
+            "on-secondary-container": "#1d3989",
+            "on-tertiary-container": "#069669",
+            "on-tertiary-fixed": "#002114",
+            "on-error": "#ffffff",
+            "tertiary-container": "#002114",
+            "secondary": "#4059aa",
+            "inverse-on-surface": "#eff1f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "gutter-desktop": "2rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin-tablet": "2rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-xl-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-full flex flex-col antialiased">
+<!-- TopAppBar Component (from Shared Components JSON & Specifications) -->
+<header class="bg-surface-container-lowest dark:bg-surface-container-low shadow-sm sticky top-0 z-40 w-full flex items-center justify-between px-margin md:px-margin-tablet lg:px-margin-desktop py-space-sm">
+<div class="flex items-center gap-3">
+<!-- Leading Avatar: Fotografía de perfil de Encargado Legal -->
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-headline-sm ring-2 ring-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot portrait of Carlos Mendoza, an institutional legal tutor in his early forties, wearing a tailored navy blue blazer against a bright architectural background in soft corporate lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD53BCzNvX9OlK-VLzfO2UANsHPZL7RxOI-OY09gDirjKJ1PHPKURkKvczj5l-A27O6BykW4rFiwD4v7VRc7d1N1GsPXJgvAxNoreA6lWssh5FfYnyg9PxIiJmAdcGsQlOyWc0-B-eF6OPDcoFZel7MfaZ_rfXfM5hqmocfjPJDN2LxdpeBmT2KF9bVQHgBcgmDO0ixMeb92-HsU9DY5T0PimXNuRYPbaDNnzFzMJBjLavWXs-QZ7oOWA"/>
+</div>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-secondary rounded-full border-2 border-surface-container-lowest flex items-center justify-center">
+<span class="w-1.5 h-1.5 bg-on-secondary rounded-full"></span>
+</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm tracking-tight text-on-surface">Portal Académico</span>
+<span class="inline-flex items-center text-secondary" title="Encargado legal verificado">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant line-clamp-1">Carlos Mendoza (Tutor / Encargado Legal)</p>
+</div>
+</div>
+<!-- Actions / Trailing -->
+<div class="flex items-center gap-2">
+<button aria-label="Notificaciones" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+<!-- Notification indicator badge -->
+<span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-error rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 w-full max-w-[768px] mx-auto px-margin pt-space-md pb-28 flex flex-col gap-y- space-md">
+<!-- UC-01 & RF-04: Selector de Estudiante Autorizado (Con Estricta Restricción de Negocio) -->
+<section class="w-full bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Estudiante Autorizado</span>
+</div>
+<div class="flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+<span>Tutela Legal Activa</span>
+</div>
+</div>
+<!-- Active Student Selector Card -->
+<div class="relative">
+<div class="flex items-center justify-between p- space-sm rounded-lg bg-surface-container-low border border-outline-variant">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-secondary-fixed border border-secondary-fixed-dim shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of Sofia Mendoza Morales, a Mexican high school female student wearing a clean navy school uniform shirt with confident natural smile in soft educational morning light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuArftbAUWzbU0lmSWrZDyq1r6uF0E_LMPer70zrY7aAkbOfZplvFMqu5qQ33hyK1LqPhAc4YiqOpFNUzZvScO8bbJ3ByLAr1_vhYPZjeeo06cqvfYSCrnj_rstRplzJiVuxMBP-TH--MjDT-wNof0QIiK5YWe_O0FSpaLOebHaP9lZszUHi0p-bUrWckGr865tQLdlCQNmbcDGxHkG6saP4X_sVqBMfcgPzmiX9JGEmMVwmoC3xheGHpg"/>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Sofía Mendoza Morales</h2>
+<div class="flex flex-wrap items-center gap-x-2 gap-y-0.5 mt-0.5">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">3° Año Secundaria - Grupo B</span>
+<span class="text-outline-variant">•</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mat: 2024-SEC-089</span>
+</div>
+</div>
+</div>
+<!-- Trigger dropdown button -->
+<button aria-label="Cambiar de estudiante autorizado" class="p-2 rounded-lg hover:bg-surface-container active:scale-95 transition-transform flex items-center justify-center text-on-surface-variant" id="studentDropdownBtn" onclick="toggleStudentModal()">
+<span class="material-symbols-outlined text-[24px]">unfold_more</span>
+</button>
+</div>
+<!-- Student Dropdown/Switcher Modal Content (Conditional Display) -->
+<div class="hidden mt-2 p-2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-md flex-col gap-1.5 animate-fadeIn" id="studentDropdownMenu">
+<div class="px-2 py-1 flex items-center justify-between border-b border-surface-container-high pb-1.5">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Estudiantes bajo tutela verificada (2)</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Solo autorizados</span>
+</div>
+<!-- Option 1: Selected Student -->
+<button class="w-full text-left p-2 rounded-lg bg-surface-container-low flex items-center justify-between border border-secondary">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-label-md text-label-md font-bold">SM</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Sofía Mendoza Morales</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">3° Secundaria • Grupo B</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</button>
+<!-- Option 2: Alternate Authorized Student -->
+<button class="w-full text-left p-2 rounded-lg hover:bg-surface-container transition-colors flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-label-md text-label-md font-bold">MM</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Mateo Mendoza Morales</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">1° Primaria • Grupo A</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Cambiar</span>
+</button>
+</div>
+</div>
+<!-- Legal Guardrail Micro-notice -->
+<div class="mt-space-sm pt-space-xs flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-outline">info</span>
+<p class="font-body-sm text-body-sm text-[12px] leading-tight text-on-surface-variant">Solo se muestran estudiantes debidamente autorizados bajo su tutela legal activa.</p>
+</div>
+</section>
+<!-- Academic Period Selector & Data Freshness Banner -->
+<section class="flex flex-col gap-2">
+<!-- Period Selector -->
+<div class="flex items-center justify-between bg-surface-container-lowest p-2.5 rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Periodo Lectivo:</span>
+</div>
+<div class="relative inline-block">
+<button class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-lg text-on-surface font-label-md text-label-md active:scale-95 transition-all">
+<span>I Trimestre 2025</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- RF-06: Data Freshness & Official Synchronization Banner -->
+<div class="flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-xl border border-outline-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Última actualización: <strong class="text-on-surface font-semibold">Hoy, 14:32 hrs</strong></span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-lowest px-2 py-0.5 rounded-full border border-secondary-fixed">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-secondary-container">Datos oficiales consolidados</span>
+</div>
+</div>
+</section>
+<!-- RF-04 & RF-07: Resumen por Materia y Progreso Académico -->
+<section class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold tracking-tight">Progreso por Asignatura</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Evaluaciones publicadas correspondientes al periodo en curso</p>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-1 bg-surface-container rounded-lg text-on-surface-variant font-semibold">Promedio: 8.6</span>
+</div>
+<!-- Materia 1: Matemáticas Avanzadas -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden transition-all duration-200 hover:border-secondary">
+<!-- Subject Header -->
+<div class="p-space-md border-b border-surface-container-high flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Matemáticas Avanzadas</h4>
+<!-- Badge: Publicado (Green / Emerald) -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#ECFDF5] text-[#065F46] border border-[#A7F3D0]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#065F46]"></span>
+                Publicado
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Prof. Roberto Vargas • 4 horas semanales</p>
+</div>
+<div class="text-right">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">9.4<span class="text-[13px] text-on-surface-variant font-normal"> / 10</span></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Promedio ponderado</span>
+</div>
+</div>
+<!-- Breakdown List Items -->
+<div class="p-space-md flex flex-col gap-3 bg-surface-bright">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Evaluaciones desglosadas</span>
+<!-- Sub-eval 1: Examen Parcial I -->
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-surface-container-highest flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Examen Parcial I</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-[#ECFDF5] text-[#065F46]">Publicado</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">9.5</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant bg-surface-container-low p-2 rounded border border-surface-container-high">
+<span class="font-semibold text-on-surface">Comentario docente:</span> "Excelente desarrollo en álgebra lineal y resolución metódica."
+            </p>
+<!-- In-row RF-07 Discrepancy Action -->
+<div class="flex justify-end pt-1">
+<button class="inline-flex items-center gap-1 text-[12px] font-label-md text-[#92400E] hover:text-on-surface hover:underline" onclick="openDiscrepancyModal('Examen Parcial I', 'Matemáticas Avanzadas')">
+<span class="material-symbols-outlined text-[15px]">report_problem</span>
+                Presentar discrepancia
+              </button>
+</div>
+</div>
+<!-- Sub-eval 2: Proyecto de Geometría -->
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-surface-container-highest flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Proyecto de Geometría</span>
+<span class="px-1.5 py-0.5 text-[10px] font-bold rounded bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE]">Consultado</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">9.2</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<span class="font-semibold text-on-surface">Observación:</span> Entregado a tiempo con informe gráfico completo.
+            </p>
+<div class="flex justify-end pt-1">
+<button class="inline-flex items-center gap-1 text-[12px] font-label-md text-[#92400E] hover:underline" onclick="openDiscrepancyModal('Proyecto de Geometría', 'Matemáticas Avanzadas')">
+<span class="material-symbols-outlined text-[15px]">report_problem</span>
+                Presentar discrepancia
+              </button>
+</div>
+</div>
+</div>
+<!-- Card Footer Actions -->
+<div class="p-3 bg-surface-container-lowest border-t border-surface-container-highest flex items-center justify-between gap-2">
+<!-- Outline Secondary Detail Button -->
+<button class="flex-1 py-2.5 px-3 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+            Ver detalle
+          </button>
+<!-- Contextual Discrepancy Request Button (RF-07) -->
+<button class="flex-1 py-2.5 px-3 rounded-lg bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A] font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-[#FEF3C7] active:scale-95 transition-all" onclick="openDiscrepancyModal('Materia Completa', 'Matemáticas Avanzadas')">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+            Solicitar revisión formal
+          </button>
+</div>
+</article>
+<!-- Materia 2: Lengua y Literatura -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden transition-all duration-200 hover:border-secondary">
+<div class="p-space-md border-b border-surface-container-high flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Lengua y Literatura</h4>
+<!-- Badge: Consultado (Blue) -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#EFF6FF] text-[#1E40AF] border border-[#BFDBFE]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1E40AF]"></span>
+                Consultado
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Prof. Claudia Solano • 5 horas semanales</p>
+</div>
+<div class="text-right">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">8.8<span class="text-[13px] text-on-surface-variant font-normal"> / 10</span></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Promedio ponderado</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-3 bg-surface-bright">
+<div class="grid grid-cols-2 gap-2">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-surface-container-highest">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ensayo Crítico</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">8.5</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-[#ECFDF5] text-[#065F46] font-bold">Publicado</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-surface-container-highest">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Taller Redacción</span>
+<div class="flex items-baseline justify-between mt-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">9.0</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-[#EFF6FF] text-[#1E40AF] font-bold">Consultado</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-2.5 rounded-lg border border-surface-container-high flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px] shrink-0 mt-0.5">forum</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+<strong class="text-on-surface">Observación docente:</strong> Participación activa y notable rigor en debates de expresión oral grupal.
+            </p>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-surface-container-highest flex items-center justify-between gap-2">
+<button class="flex-1 py-2.5 px-3 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+            Ver detalle
+          </button>
+<button class="flex-1 py-2.5 px-3 rounded-lg bg-surface-bright text-[#92400E] border border-outline-variant font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-95 transition-all" onclick="openDiscrepancyModal('Ensayo Crítico', 'Lengua y Literatura')">
+<span class="material-symbols-outlined text-[18px]">report_problem</span>
+            Presentar discrepancia
+          </button>
+</div>
+</article>
+<!-- Materia 3: Ciencias Naturales y Física -->
+<article class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden transition-all duration-200 hover:border-secondary">
+<div class="p-space-md border-b border-surface-container-high flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Ciencias Naturales y Física</h4>
+<!-- Badge: Pendiente (Amber) -->
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#FFFBEB] text-[#92400E] border border-[#FDE68A]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#92400E]"></span>
+                Pendiente
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Prof. Javier Méndez • 4 horas semanales</p>
+</div>
+<div class="text-right">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-on-surface">7.6<span class="text-[13px] text-on-surface-variant font-normal"> / 10</span></div>
+<span class="font-label-sm text-label-sm text-[#92400E]">En revisión docente</span>
+</div>
+</div>
+<div class="p-space-md flex flex-col gap-2.5 bg-surface-bright">
+<div class="bg-surface-container-lowest p-3 rounded-lg border border-surface-container-highest">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Laboratorio de Termodinámica</span>
+<span class="font-label-sm text-label-sm text-[#92400E] font-semibold">Pendiente validación final</span>
+</div>
+<div class="mt-2 flex items-start gap-2 bg-[#FFFBEB] p-2 rounded border border-[#FDE68A]">
+<span class="material-symbols-outlined text-[#92400E] text-[16px] shrink-0 mt-0.5">pending_actions</span>
+<p class="font-body-sm text-body-sm text-[#92400E]">
+<strong class="font-semibold">Nota institucional:</strong> Pendiente entrega de reporte gráfico complementario por el alumno antes del cierre oficial.
+              </p>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-lowest border-t border-surface-container-highest">
+<button class="w-full py-2.5 px-3 rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 hover:bg-surface-container active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+            Ver desglose de laboratorio
+          </button>
+</div>
+</article>
+</section>
+<!-- RF-06: Historial de Actividad Reciente (Auditoría & Trazabilidad para el Encargado) -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant p-space-md shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">history</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Historial de Auditoría</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Registro verificable</span>
+</div>
+<div class="mt-3 flex flex-col divide-y divide-surface-container-high">
+<!-- Item 1 -->
+<div class="py-2.5 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-[#065F46] mt-2 shrink-0"></span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Calificación publicada: Matemáticas - Parcial I (9.5)</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Emitido por Roberto Vargas • Registro final consolidado</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Hace 2 horas</span>
+<span class="block text-[10px] font-bold text-[#065F46]">Publicado</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="py-2.5 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-[#1E40AF] mt-2 shrink-0"></span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Informe de observaciones consultado por el tutor</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Acceso registrado desde dispositivo móvil tutor</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Ayer, 18:45</span>
+<span class="block text-[10px] font-bold text-[#1E40AF]">Consultado</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="py-2.5 flex items-start justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="w-2 h-2 rounded-full bg-secondary mt-2 shrink-0"></span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Solicitud de revisión preliminar aprobada</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Secretaría Académica • Folio REV-2025-042</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant">12 Mar 2025</span>
+<span class="block text-[10px] font-bold text-secondary">Finalizado</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Modal Interactivo: RF-07 Presentar Discrepancia Formal -->
+<div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden items-center justify-center p-4" id="discrepancyModal">
+<div class="bg-surface-container-lowest w-full max-w-md rounded-2xl p-space-lg shadow-xl border border-outline-variant flex flex-col gap-4 animate-scaleUp">
+<div class="flex items-center justify-between pb-2 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[#92400E]">gavel</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Presentar Discrepancia (RF-07)</h4>
+</div>
+<button class="p-1 text-on-surface-variant hover:bg-surface-container rounded-lg" onclick="closeDiscrepancyModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Como Encargado Legal debidamente acreditado de <strong class="text-on-surface">Sofía Mendoza Morales</strong>, puede formular una solicitud formal de aclaración para:
+        </p>
+<div class="mt-2 p-2.5 bg-surface-container-low rounded-lg border border-surface-container-highest">
+<p class="font-label-md text-label-md text-on-surface font-semibold" id="discrepancyItemTarget">Examen Parcial I</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="discrepancySubjectTarget">Matemáticas Avanzadas</p>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="discrepancyReason">Motivo formal de la discrepancia</label>
+<select class="rounded-lg border-outline-variant text-body-md text-on-surface text-sm focus:border-secondary focus:ring-secondary" id="discrepancyReason">
+<option>Error en captura de puntaje ponderado</option>
+<option>Inconsistencia en criterio de rúbrica publicada</option>
+<option>Evidencia complementaria no considerada</option>
+<option>Otro requerimiento formal</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface" for="discrepancyNotes">Fundamentación del tutor legal</label>
+<textarea class="rounded-lg border-outline-variant text-body-md text-sm focus:border-secondary focus:ring-secondary" id="discrepancyNotes" placeholder="Explique brevemente las razones que motivan esta revisión formal..." rows="3"></textarea>
+</div>
+<div class="flex items-center gap-2 pt-2">
+<button class="flex-1 py-2.5 rounded-lg border border-outline-variant font-label-md text-label-md text-on-surface hover:bg-surface-container" onclick="closeDiscrepancyModal()">
+          Cancelar
+        </button>
+<button class="flex-1 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container active:scale-95 transition-all" onclick="submitDiscrepancy()">
+          Radicar Solicitud
+        </button>
+</div>
+</div>
+</div>
+<!-- BottomNavBar Component (Executed strictly from Shared Components JSON) -->
+<!-- Contextual State: Page represents primary 'Materias' / academic progress view -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-low fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-margin py-space-xs md:hidden shadow-md">
+<!-- Tab 1: Resumen (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-space-xs hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 duration-150" href="#resumen">
+<span class="material-symbols-outlined text-[22px]">dashboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">Resumen</span>
+</a>
+<!-- Tab 2: Materias (ACTIVE - matches current page topic 'Perfil y progreso académico por asignatura') -->
+<a class="flex flex-col items-center justify-center text-on-primary bg-primary dark:bg-primary-fixed dark:text-on-primary-fixed rounded-xl px-space-md py-space-xs active:scale-95 transition-transform duration-150" href="#materias">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="text-label-sm font-label-sm mt-0.5">Materias</span>
+</a>
+<!-- Tab 3: Historial (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-space-xs hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 duration-150" href="#historial">
+<span class="material-symbols-outlined text-[22px]">history_edu</span>
+<span class="text-label-sm font-label-sm mt-0.5">Historial</span>
+</a>
+<!-- Tab 4: Trámites (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant py-space-xs hover:text-primary dark:hover:text-primary-fixed transition-colors active:scale-95 duration-150" href="#tramites">
+<span class="material-symbols-outlined text-[22px]">description</span>
+<span class="text-label-sm font-label-sm mt-0.5">Trámites</span>
+</a>
+</nav>
+<!-- Interactive Logic Scripts -->
+<script>
+    function toggleStudentModal() {
+      const menu = document.getElementById('studentDropdownMenu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    }
+
+    function openDiscrepancyModal(item, subject) {
+      document.getElementById('discrepancyItemTarget').innerText = item;
+      document.getElementById('discrepancySubjectTarget').innerText = subject;
+      const modal = document.getElementById('discrepancyModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDiscrepancyModal() {
+      const modal = document.getElementById('discrepancyModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function submitDiscrepancy() {
+      alert('Solicitud formal de discrepancia radicada con éxito según RF-07. Se ha remitido al profesor titular y a la coordinación académica con notificación en su bandeja.');
+      closeDiscrepancyModal();
+    }
+  </script>
+</body></html>

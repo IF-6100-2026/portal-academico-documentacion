@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Portal Académico - Publicar Evaluación</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed": "#85f8c4",
+            "on-primary-container": "#7c839b",
+            "secondary-fixed-dim": "#b6c4ff",
+            "on-surface-variant": "#45464d",
+            "on-secondary": "#ffffff",
+            "tertiary-container": "#002114",
+            "surface-container-high": "#e6e8ea",
+            "on-tertiary-fixed": "#002114",
+            "on-secondary-fixed-variant": "#264191",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "surface-bright": "#f7f9fb",
+            "outline-variant": "#c6c6cd",
+            "secondary-container": "#8fa7fe",
+            "inverse-on-surface": "#eff1f3",
+            "surface-dim": "#d8dadc",
+            "error-container": "#ffdad6",
+            "surface-tint": "#565e74",
+            "on-background": "#191c1e",
+            "surface-container-highest": "#e0e3e5",
+            "on-tertiary-container": "#069669",
+            "on-tertiary-fixed-variant": "#005137",
+            "tertiary": "#000000",
+            "on-secondary-container": "#1d3989",
+            "tertiary-fixed-dim": "#68dba9",
+            "surface-container-low": "#f2f4f6",
+            "inverse-primary": "#bec6e0",
+            "error": "#ba1a1a",
+            "primary-container": "#131b2e",
+            "primary-fixed-dim": "#bec6e0",
+            "on-primary-fixed": "#131b2e",
+            "on-error-container": "#93000a",
+            "inverse-surface": "#2d3133",
+            "surface-variant": "#e0e3e5",
+            "background": "#f7f9fb",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#00164e",
+            "surface-container": "#eceef0",
+            "on-surface": "#191c1e",
+            "on-primary-fixed-variant": "#3f465c",
+            "surface": "#f7f9fb",
+            "secondary": "#4059aa",
+            "outline": "#76777d",
+            "primary": "#000000",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#dae2fd",
+            "secondary-fixed": "#dce1ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-tablet": "1.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "margin-tablet": "2rem",
+            "gutter-desktop": "2rem",
+            "space-xl": "2rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin": "1rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-xl-mobile": ["28px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["22px", {"lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+            "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen antialiased flex justify-center selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Mobile Screen Canvas wrapper -->
+<div class="w-full max-w-[440px] bg-background min-h-screen flex flex-col shadow-2xl relative pb-28">
+<!-- 1. TopAppBar Institucional -->
+<header class="sticky top-0 z-40 w-full flex items-center justify-between px-margin py-space-sm bg-surface-container-lowest border-b border-surface-container-highest shadow-sm">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Volver" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-headline-sm ring-2 ring-secondary/20">
+            RV
+          </div>
+<span class="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-tertiary-fixed-dim rounded-full flex items-center justify-center text-on-tertiary-fixed ring-2 ring-surface-container-lowest" title="Docente Titular Verificado">
+<span class="material-symbols-outlined text-[11px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<h1 class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Prof. Roberto Vargas</h1>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-none">Docente Titular · MAT &amp; Cien</p>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Notificaciones" class="relative w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</button>
+</div>
+</header>
+<!-- Main Content Flow -->
+<main class="flex-1 px-margin py-space-md space-y-space-md">
+<!-- 2. Encabezado de la Acción & Contexto Caso de Uso (UC-03) -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[14px]">assignment_add</span>
+            UC-03 · Asignación Docente
+          </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Paso 1 de 2</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface pt-1">
+          Nueva Publicación de Evaluación
+        </h2>
+<!-- Banner explicativo de fase (Aclaración Metodológica RF-08) -->
+<div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container-highest space-y-1">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<span class="font-label-md text-label-md font-semibold">Fase de Programación y Asignación</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+            Esta pantalla programa y asigna la evaluación para su realización por parte de los estudiantes. El registro de calificaciones y ponderaciones se realiza en la fase posterior de asentar notas.
+          </p>
+</div>
+</section>
+<!-- 3. Filtros y selectores contextuales (RF-08) -->
+<section class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-container-highest shadow-sm space-y-space-md">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-2">
+<span class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">tune</span>
+            Contexto Curricular
+          </span>
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-tertiary-fixed/30 px-2 py-0.5 rounded-full font-bold">
+            RF-08 Activo
+          </span>
+</div>
+<!-- Selector Materia -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="materia-select">
+            Materia / Cátedra <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 pl-3 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 appearance-none" id="materia-select">
+<option selected="">Matemáticas Avanzadas (MAT-301)</option>
+<option>Física Cuántica Básica (FIS-302)</option>
+<option>Cálculo Diferencial (MAT-304)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Grupo y Periodo en Grid de 2 columnas -->
+<div class="grid grid-cols-1 gap-space-sm">
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="grupo-select">
+              Grupo Asignado <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 pl-3 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 appearance-none" id="grupo-select">
+<option selected="">3° Año Secundaria - Grupo B (Matutino)</option>
+<option>3° Año Secundaria - Grupo A (Matutino)</option>
+<option>2° Año Secundaria - Grupo C (Vespertino)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none text-[20px]">groups</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="periodo-select">
+              Periodo Lectivo <span class="text-error">*</span>
+</label>
+<div class="relative">
+<select class="w-full h-12 pl-3 pr-10 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 appearance-none" id="periodo-select">
+<option selected="">I Trimestre 2025</option>
+<option>II Trimestre 2025</option>
+<option>III Trimestre 2025</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none text-[20px]">calendar_month</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Formulario de especificación de la evaluación (RF-08, RF-09) -->
+<section class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-container-highest shadow-sm space-y-space-md">
+<div class="flex items-center justify-between border-b border-surface-container-high pb-2">
+<span class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary">edit_note</span>
+            Detalles de la Evaluación
+          </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">RF-09</span>
+</div>
+<!-- Nombre de la evaluación -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="nombre-evaluacion">
+            Nombre de la evaluación <span class="text-error">*</span>
+</label>
+<input class="w-full h-12 px-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15" id="nombre-evaluacion" placeholder="Ej. Examen Parcial I" type="text" value="Proyecto Bimestral de Álgebra Lineal y Geometría"/>
+</div>
+<!-- Tipo de evaluación en Chips interactivos -->
+<div class="space-y-2">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold">
+            Tipo de instrumento <span class="text-error">*</span>
+</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary font-bold flex items-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">check</span>
+              Proyecto Práctico
+            </button>
+<button class="px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+              Examen Parcial
+            </button>
+<button class="px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+              Taller Grupal
+            </button>
+<button class="px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+              Laboratorio
+            </button>
+<button class="px-3 py-1.5 rounded-full font-label-md text-label-md bg-surface-container-low text-on-surface border border-outline-variant hover:bg-surface-container transition-colors" type="button">
+              Ensayo
+            </button>
+</div>
+</div>
+<!-- Bloque de Fechas -->
+<div class="space-y-3 pt-1">
+<!-- Fecha Entrega / Asignación -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="fecha-inicio">
+              Fecha de inicio / asignación en aula <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-12 pl-10 pr-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15" id="fecha-inicio" type="text" value="24 Mar 2025 - 08:00 hrs"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-secondary text-[20px]">calendar_today</span>
+</div>
+</div>
+<!-- Fecha Límite Entrega -->
+<div class="space-y-1">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="fecha-cierre">
+              Fecha límite de entrega / cierre <span class="text-error">*</span>
+</label>
+<div class="relative">
+<input class="w-full h-12 pl-10 pr-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15" id="fecha-cierre" type="text" value="31 Mar 2025 - 23:59 hrs"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-error text-[20px]">event_busy</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 pt-0.5">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">schedule</span>
+              Plazo de resolución: 7 días hábiles consecutivos
+            </p>
+</div>
+</div>
+<!-- Instrucciones generales y rúbrica -->
+<div class="space-y-1 pt-1">
+<div class="flex items-center justify-between">
+<label class="block font-label-md text-label-md text-on-surface-variant font-semibold" for="instrucciones-evaluacion">
+              Instrucciones generales y rúbrica básica <span class="text-error">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline">Formato Markdown</span>
+</div>
+<textarea class="w-full p-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 leading-relaxed" id="instrucciones-evaluacion" placeholder="Describa los criterios de evaluación, entregables y formato físico/digital..." rows="4">Desarrollo grupal (máx 3 integrantes): Resolución del set de 15 problemas aplicados de vectores ortogonales y transformaciones matriciales bidimensionales. Entregar reporte impreso con portada institucional y memoria de cálculo detallada. Rúbrica: 40% Rigor procedimental, 30% Conclusiones aplicadas, 30% Orden y puntualidad.</textarea>
+</div>
+</section>
+<!-- 5. Convocatoria de Estudiantes Activos (RF-10) -->
+<section class="p-space-md rounded-xl bg-surface-container-lowest border border-surface-container-highest shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-snug">Estudiantes Convocados</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">28 alumnos activos con matrícula regular</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">how_to_reg</span>
+            100% Grupo B
+          </span>
+</div>
+<!-- Lista compacta de estudiantes destacados -->
+<div class="divide-y divide-surface-container-high rounded-lg border border-surface-container-high overflow-hidden">
+<!-- Estudiante 1 -->
+<div class="p-2.5 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center font-bold">
+                SM
+              </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Sofía Mendoza Morales</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mat: 2024-SEC-089</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-fixed/30 text-on-tertiary-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+              Activo / Convocado
+            </span>
+</div>
+<!-- Estudiante 2 -->
+<div class="p-2.5 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center font-bold">
+                DA
+              </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Diego Altamirano Vargas</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mat: 2024-SEC-092</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-fixed/30 text-on-tertiary-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+              Activo / Convocado
+            </span>
+</div>
+<!-- Estudiante 3 -->
+<div class="p-2.5 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center font-bold">
+                MF
+              </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Mateo Fernández Silva</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mat: 2024-SEC-104</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-fixed/30 text-on-tertiary-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+              Activo / Convocado
+            </span>
+</div>
+<!-- Estudiante 4 -->
+<div class="p-2.5 flex items-center justify-between bg-surface-container-lowest hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md flex items-center justify-center font-bold">
+                CR
+              </div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface font-semibold leading-tight">Camila Rivas Guerrero</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Mat: 2024-SEC-110</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded font-label-sm text-label-sm bg-tertiary-fixed/30 text-on-tertiary-container font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+              Activo / Convocado
+            </span>
+</div>
+</div>
+<button class="w-full py-2 bg-surface-container-low hover:bg-surface-container text-on-surface-variant rounded-lg font-label-md text-label-md flex items-center justify-center gap-1 transition-colors" type="button">
+<span>Ver los 24 estudiantes restantes del grupo</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</section>
+<!-- 6. Doble Check Institucional Obligatorio (RF-11) -->
+<section class="p-space-md rounded-xl bg-surface-bright border-2 border-secondary/20 shadow-sm space-y-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">policy</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Validación y Doble Check Institucional</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Requisito de conformidad docente (RF-11)</p>
+</div>
+</div>
+<div class="space-y-space-sm pt-2">
+<!-- Check 1 -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-lowest border border-surface-container-highest cursor-pointer hover:bg-surface-bright transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded border-outline-variant text-primary-container focus:ring-secondary/20" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Conformidad académica en aula:</strong> Confirmo que el temario y rúbrica coinciden fielmente con lo explicado e impartido de manera presencial en el grupo escolar.
+            </span>
+</label>
+<!-- Check 2 -->
+<label class="flex items-start gap-3 p-2.5 rounded-lg bg-surface-container-lowest border border-surface-container-highest cursor-pointer hover:bg-surface-bright transition-colors">
+<input checked="" class="mt-0.5 w-5 h-5 rounded border-outline-variant text-primary-container focus:ring-secondary/20" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface leading-snug">
+<strong class="font-semibold text-on-surface">Respaldo físico / documental:</strong> La información coincide con el medio físico, cuaderno oficial o guía de trabajo autorizada por la coordinación del colegio.
+            </span>
+</label>
+</div>
+</section>
+<!-- 7. Aviso de Notificación a Tutores / Encargados Legales -->
+<section class="p-space-md rounded-xl bg-secondary-fixed/20 border border-secondary-fixed-dim/40 space-y-1">
+<div class="flex items-center gap-2 text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+<span class="font-label-md text-label-md font-bold">Aviso de Notificación a Tutores Legales</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          Aviso importante: La confirmación y publicación generará automáticamente una notificación formal e inmediata en el portal móvil de los Encargados Legales y tutores autorizados.
+        </p>
+</section>
+<!-- 8. Botones de Acción Principales (RF-11) -->
+<section class="pt-2 space-y-space-sm">
+<!-- Botón Primario Institucional -->
+<button class="w-full h-12 rounded-xl bg-primary-container hover:bg-on-surface text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">send</span>
+<span>Confirmar y publicar</span>
+</button>
+<!-- Botón Secundario Guardar Borrador -->
+<button class="w-full h-11 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-outline-variant text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-2 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">save_as</span>
+<span>Guardar borrador</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-outline-variant">
+          Los borradores son privados y no notifican a tutores ni alumnos.
+        </p>
+</section>
+</main>
+<!-- 9. Barra de Navegación Inferior Móvil Docente -->
+<nav class="fixed bottom-0 max-w-[440px] w-full z-50 flex justify-around items-center px-margin py-space-xs bg-surface-container-lowest border-t border-surface-container-highest shadow-md md:hidden">
+<!-- Destino 1: Clases -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#clases">
+<span class="material-symbols-outlined text-[22px]">meeting_room</span>
+<span class="font-label-sm text-label-sm mt-0.5">Clases</span>
+</a>
+<!-- Destino 2: Evaluaciones (ACTIVO) -->
+<a class="flex flex-col items-center justify-center text-on-primary bg-primary rounded-xl px-space-md py-space-xs" href="#evaluaciones">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="font-label-sm text-label-sm mt-0.5">Evaluaciones</span>
+</a>
+<!-- Destino 3: Calificaciones -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#calificaciones">
+<span class="material-symbols-outlined text-[22px]">grade</span>
+<span class="font-label-sm text-label-sm mt-0.5">Notas</span>
+</a>
+<!-- Destino 4: Mensajes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-space-xs hover:text-primary transition-colors" href="#mensajes">
+<span class="material-symbols-outlined text-[22px]">chat</span>
+<span class="font-label-sm text-label-sm mt-0.5">Mensajes</span>
+</a>
+</nav>
+</div>
+</body></html>
