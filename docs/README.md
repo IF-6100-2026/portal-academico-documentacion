@@ -12,7 +12,7 @@
 ## 01 — Inicio
 
 - [Problema y visión](01-inicio/problema-y-vision.md): evidencia, problemas, épicas, alcance y supuestos.
-- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): fuente Mermaid, imagen y tabla de flujos.
+- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): fuente `.bpmn`, imagen y tabla de flujos.
 - [Proceso actual (BPMN) y trazabilidad hacia los RF](01-inicio/bpmn/trazabilidad-bpmn-rf.md)
   - [seguimiento-academico-actual.bpmn](01-inicio/bpmn/seguimiento-academico-actual.bpmn) · [PNG](01-inicio/bpmn/seguimiento-academico-actual.png)
   - [resolver-apelacion-actual.bpmn](01-inicio/bpmn/resolver-apelacion-actual.bpmn) · [PNG](01-inicio/bpmn/resolver-apelacion-actual.png)
@@ -44,7 +44,7 @@
 ## 03 — Casos de uso
 
 - [Actores](03-casos-de-uso/actores.md)
-- [Diagrama de casos de uso (fuente)](03-casos-de-uso/diagrama-casos-de-uso.puml) · [imagen](03-casos-de-uso/diagrama-casos-de-uso.png)
+- [Diagrama de casos de uso (fuente)](03-casos-de-uso/diagrama-casos-de-uso.bpmn) · [imagen](03-casos-de-uso/diagrama-casos-de-uso.png)
 - [Prototipos](03-casos-de-uso/prototipos/README.md)
 
 | CU | Prueba |
