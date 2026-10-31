@@ -19,7 +19,7 @@ La revisión del análisis está en [docs/README.md](docs/README.md): **25 RF, 3
 - [Equivalencias PC1 → PC2](docs/cambios-pc1-pc2.md).
 - [Flujo entre fork y repositorios de la organización](docs/06-configuracion/flujo-colaboracion.md).
 
-El PC2 está en revisión: esta organización de archivos no implica aprobación del profesor ni funcionalidades implementadas.
+Los PR #1 (análisis de Josué) y #2 (correcciones de integración) ya se fusionaron en `main` de este fork por solicitud de Sebastián. La integración oficial está pendiente por permisos de la conexión. Esta organización de archivos no implica aprobación del profesor ni funcionalidades implementadas.
 
 ## Primer entregable — archivo histórico
 

@@ -13,6 +13,8 @@ Unificar significa mantener una especificación y un contrato coherentes entre l
 
 ## Documentación
 
+**Estado:** los pasos 1–3 ya se completaron: PR #2 fusionado en la rama de Josué y PR #1 fusionado en `main` del fork. El paso 4 sigue pendiente: la conexión rechazó crear el PR oficial con 403.
+
 1. Revisar las correcciones en el PR de análisis de Josué (`pc2-correcciones-analisis` → `main` del fork).
 2. Revisar también las correcciones de integración (`codex/unificar-pc2` → `pc2-correcciones-analisis`). Fusionar primero este PR de ajustes, para que queden incluidos en el PR de análisis.
 3. Integrar el análisis revisado en `main` del fork.

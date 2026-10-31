@@ -42,7 +42,7 @@ No se ejecutó Docker/PostgreSQL ni una prueba real React → Spring → Postgre
 
 | Prioridad | Pendiente | Criterio para cerrarlo |
 |---|---|---|
-| Alta | Revisar e integrar el PR #1 de análisis con estos ajustes | PC2 en main del fork y PR hacia la organización, sin perder aportes. |
+| Parcial | Integrar con la organización | PR #1 y #2 fusionados en main del fork. La creación del PR oficial devolvió 403; falta abrirlo con una sesión autorizada. |
 | Alta | Confirmar formato de entrega: uno o tres repositorios | Decisión del profesor registrada; el README anterior señala diferencia con el enunciado. No se consultó el enunciado externo en esta revisión. |
 | Alta | Activar issues del fork y crear los 11 CU | URLs reales en cada ficha y matriz. Actualmente dicen `por crear`; no se inventaron números. |
 | Alta | Completar diseño académico | Modelo de dominio/relacional, contratos API, realización de CU y reglas alineadas con los 25 RF. La pantalla de salud no satisface un CU. |
@@ -54,8 +54,15 @@ No se ejecutó Docker/PostgreSQL ni una prueba real React → Spring → Postgre
 | Media | Automatizar verificaciones | CI para build frontend, tests backend y validador documental; ejecutor Gherkin cuando exista código académico. |
 | Entrega | Revisar supuestos y artefactos del curso | Validación con profesor/escuela, declaración de IA actualizada por el equipo y tag `pc2` después de revisión final. |
 
-Los cambios documentales quedan en un PR hacia la rama de análisis. La integración rechazó crear un árbol Git en Frontend con HTTP 403; los cambios de código quedan como [parches aplicables](../integracion/README.md) en el fork, no como ramas publicadas de la organización. No implican aprobación académica ni que `main` ya esté actualizado.
+Los cambios documentales de los PR #1 y #2 ya están fusionados en `main` del fork. La integración rechazó crear un árbol Git en Frontend con HTTP 403; los cambios de código quedan como [parches aplicables](../integracion/README.md) en el fork, no como ramas publicadas de la organización. El `main` del fork está actualizado; el `main` oficial no. No implica aprobación académica.
 
 ## Integración solicitada tras recibir la evaluación del profesor
 
 La evaluación del PC1 fue aportada por Sebastián en una captura. La respuesta por observación está en [revision-profesor-pc1.md](revision-profesor-pc1.md). Los 69 escenarios de la revisión inicial se conservan y se agregan dos negativos de seguridad: **71 escenarios especificados en total**. No se consideran ejecutados.
+
+### Resultado confirmado de las fusiones
+
+- PR #2 fusionado en `pc2-correcciones-analisis`: `6650a7a30a08c18b8887cb90b711b2bbd8a1fe51`.
+- PR #1 fusionado en `main` del fork: `0a3ea1957528e43050513bc9f513923dc267f977`.
+- Intento de crear PR hacia Documentación oficial: rechazado con `403 Resource not accessible by integration`.
+- Frontend y Backend oficiales no fueron modificados; las correcciones siguen disponibles como parches en `integracion/`.
