@@ -37,5 +37,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-21](../02-requerimientos/funcionales/RF-21-controlar-estado-y-plazo-de-apelacion.md), [RF-23](../02-requerimientos/funcionales/RF-23-alertar-avisos-sin-consulta.md), [RF-24](../02-requerimientos/funcionales/RF-24-consultar-estado-del-seguimiento.md), [RF-25](../02-requerimientos/funcionales/RF-25-consultar-registro-de-consultas.md)
 - **Pruebas:** [CU-08-supervisar-seguimiento-academico.feature](../04-pruebas/CU-08-supervisar-seguimiento-academico.feature)
-- **Issue:** _por crear_ <!-- issue:CU-08 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10) <!-- issue:CU-08 -->
 - **Equivale en el PC1 a:** UC-08 («Consultar reportes de seguimiento»); absorbe la consulta de bitácora de UC-11

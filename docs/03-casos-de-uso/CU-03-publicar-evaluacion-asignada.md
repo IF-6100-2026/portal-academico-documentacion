@@ -43,5 +43,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-04](../02-requerimientos/funcionales/RF-04-registrar-evaluacion-asignada.md), [RF-05](../02-requerimientos/funcionales/RF-05-confirmar-congruencia-con-el-cuaderno.md), [RF-06](../02-requerimientos/funcionales/RF-06-publicar-evaluacion-asignada.md), [RF-10](../02-requerimientos/funcionales/RF-10-avisar-publicacion-de-evaluacion.md)
 - **Pruebas:** [CU-03-publicar-evaluacion-asignada.feature](../04-pruebas/CU-03-publicar-evaluacion-asignada.feature)
-- **Issue:** _por crear_ <!-- issue:CU-03 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5) <!-- issue:CU-03 -->
 - **Equivale en el PC1 a:** UC-03

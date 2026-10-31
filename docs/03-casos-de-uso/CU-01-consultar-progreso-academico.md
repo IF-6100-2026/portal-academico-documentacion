@@ -41,5 +41,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-02](../02-requerimientos/funcionales/RF-02-consultar-perfil-del-estudiante.md), [RF-03](../02-requerimientos/funcionales/RF-03-consultar-evaluaciones-y-calificaciones.md)
 - **Pruebas:** [CU-01-consultar-progreso-academico.feature](../04-pruebas/CU-01-consultar-progreso-academico.feature)
-- **Issue:** _por crear_ <!-- issue:CU-01 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3) <!-- issue:CU-01 -->
 - **Equivale en el PC1 a:** UC-01

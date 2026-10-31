@@ -35,5 +35,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-22](../02-requerimientos/funcionales/RF-22-configurar-plazos-y-recordatorios.md)
 - **Pruebas:** [CU-10-configurar-plazos-y-recordatorios.feature](../04-pruebas/CU-10-configurar-plazos-y-recordatorios.feature)
-- **Issue:** _por crear_ <!-- issue:CU-10 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12) <!-- issue:CU-10 -->
 - **Equivale en el PC1 a:** UC-10 («Administrar configuración y accesos»), reducido a plazos y recordatorios

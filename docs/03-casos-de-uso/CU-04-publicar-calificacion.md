@@ -43,5 +43,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-05](../02-requerimientos/funcionales/RF-05-confirmar-congruencia-con-el-cuaderno.md), [RF-07](../02-requerimientos/funcionales/RF-07-registrar-calificaciones-del-grupo.md), [RF-08](../02-requerimientos/funcionales/RF-08-publicar-calificacion.md), [RF-11](../02-requerimientos/funcionales/RF-11-avisar-publicacion-de-calificacion.md)
 - **Pruebas:** [CU-04-publicar-calificacion.feature](../04-pruebas/CU-04-publicar-calificacion.feature)
-- **Issue:** _por crear_ <!-- issue:CU-04 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6) <!-- issue:CU-04 -->
 - **Equivale en el PC1 a:** UC-04 («Publicar resultado académico»)

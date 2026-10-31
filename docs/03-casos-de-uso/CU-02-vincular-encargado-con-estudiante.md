@@ -40,5 +40,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-01](../02-requerimientos/funcionales/RF-01-vincular-encargado-con-estudiante.md)
 - **Pruebas:** [CU-02-vincular-encargado-con-estudiante.feature](../04-pruebas/CU-02-vincular-encargado-con-estudiante.feature)
-- **Issue:** _por crear_ <!-- issue:CU-02 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4) <!-- issue:CU-02 -->
 - **Equivale en el PC1 a:** UC-02 (el actor principal era el Administrador institucional)

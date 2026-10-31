@@ -44,5 +44,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-09](../02-requerimientos/funcionales/RF-09-corregir-calificacion-con-historial.md) (en la extensión), [RF-17](../02-requerimientos/funcionales/RF-17-presentar-apelacion.md), [RF-18](../02-requerimientos/funcionales/RF-18-asignar-apelacion-al-comite.md), [RF-19](../02-requerimientos/funcionales/RF-19-registrar-aportes-de-docente-y-direccion.md), [RF-20](../02-requerimientos/funcionales/RF-20-registrar-resolucion-de-apelacion.md), [RF-21](../02-requerimientos/funcionales/RF-21-controlar-estado-y-plazo-de-apelacion.md)
 - **Pruebas:** [CU-07-gestionar-apelacion-de-calificacion.feature](../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
-- **Issue:** _por crear_ <!-- issue:CU-07 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9) <!-- issue:CU-07 -->
 - **Equivale en el PC1 a:** UC-07 («Gestionar discrepancia académica»)

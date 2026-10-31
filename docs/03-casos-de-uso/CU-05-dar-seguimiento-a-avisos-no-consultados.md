@@ -43,5 +43,5 @@
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-12](../02-requerimientos/funcionales/RF-12-registrar-acuse-de-consulta.md), [RF-13](../02-requerimientos/funcionales/RF-13-recordar-avisos-no-consultados.md), [RF-23](../02-requerimientos/funcionales/RF-23-alertar-avisos-sin-consulta.md)
 - **Pruebas:** [CU-05-dar-seguimiento-a-avisos-no-consultados.feature](../04-pruebas/CU-05-dar-seguimiento-a-avisos-no-consultados.feature)
-- **Issue:** _por crear_ <!-- issue:CU-05 -->
+- **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7) <!-- issue:CU-05 -->
 - **Equivale en el PC1 a:** UC-05 («Gestionar avisos no consultados»); sin el actor Docente ni el proveedor externo
