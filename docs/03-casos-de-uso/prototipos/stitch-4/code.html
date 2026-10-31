@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SIAE - Dirección Académica &amp; Supervisión Colegiada</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-bright": "#f7f9fb",
+            "secondary": "#4059aa",
+            "on-tertiary-container": "#069669",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-error": "#ffffff",
+            "surface-container": "#eceef0",
+            "surface-container-low": "#f2f4f6",
+            "surface-dim": "#d8dadc",
+            "on-error-container": "#93000a",
+            "error-container": "#ffdad6",
+            "background": "#f7f9fb",
+            "outline-variant": "#c6c6cd",
+            "on-background": "#191c1e",
+            "tertiary-fixed": "#85f8c4",
+            "on-secondary-fixed": "#00164e",
+            "on-surface": "#191c1e",
+            "on-primary-fixed": "#131b2e",
+            "on-primary-container": "#7c839b",
+            "primary-container": "#131b2e",
+            "on-secondary-fixed-variant": "#264191",
+            "primary-fixed-dim": "#bec6e0",
+            "on-primary": "#ffffff",
+            "inverse-surface": "#2d3133",
+            "surface": "#f7f9fb",
+            "on-surface-variant": "#45464d",
+            "primary-fixed": "#dae2fd",
+            "outline": "#76777d",
+            "tertiary-container": "#002114",
+            "primary": "#000000",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#e6e8ea",
+            "inverse-primary": "#bec6e0",
+            "secondary-fixed-dim": "#b6c4ff",
+            "secondary-container": "#8fa7fe",
+            "surface-container-highest": "#e0e3e5",
+            "surface-tint": "#565e74",
+            "on-tertiary-fixed-variant": "#005137",
+            "inverse-on-surface": "#eff1f3",
+            "surface-variant": "#e0e3e5",
+            "on-tertiary-fixed": "#002114",
+            "on-secondary-container": "#1d3989",
+            "tertiary-fixed-dim": "#68dba9",
+            "secondary-fixed": "#dce1ff",
+            "surface-container-lowest": "#ffffff",
+            "tertiary": "#000000"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "margin-tablet": "2rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "2rem",
+            "margin": "1rem",
+            "space-xl": "2rem",
+            "gutter-tablet": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "headline-xl-mobile": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full font-body-md text-on-surface bg-background flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopNavBar (Shared Component JSON Source of Truth) -->
+<header class="bg-surface-container-lowest border-b border-surface-container-high shadow-sm sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-7xl mx-auto h-16">
+<!-- Brand Anchor & Institutional Badge -->
+<div class="flex items-center gap-space-lg">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold tracking-wider text-label-lg shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm text-primary tracking-tight">SIAE - Dirección Académica</div>
+<div class="text-label-sm font-label-sm text-outline">Dirección Académica &amp; Supervisión Colegiada</div>
+</div>
+</div>
+<div class="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-fixed/50 text-on-secondary-fixed border border-secondary-fixed-dim/60 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Comité de Evaluación Activo · Ciclo 2025</span>
+</div>
+</div>
+<!-- Navigation Links from JSON -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md pb-1 transition-colors" href="#">Tablero</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md pb-1 transition-colors" href="#">Expedientes</a>
+<a class="border-b-2 border-primary text-primary font-label-lg text-label-lg pb-1" href="#">Discrepancias</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md pb-1 transition-colors" href="#">Comité</a>
+<a class="text-on-surface-variant hover:text-on-surface font-label-md text-label-md pb-1 transition-colors" href="#">Auditoría</a>
+</nav>
+<!-- Trailing Elements & Actions from JSON -->
+<div class="flex items-center gap-space-md">
+<!-- Global Search on Right -->
+<div class="relative hidden sm:block w-56 lg:w-64">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[18px] text-outline" data-icon="search">search</span>
+<input class="w-full pl-9 pr-3 py-1.5 text-label-md font-body-md rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" placeholder="Buscar caso (ej. REC-2025)..." type="text" value="REC-2025-0842"/>
+</div>
+<!-- Trailing Primary Action -->
+<button class="h-9 px-3.5 bg-primary hover:bg-surface-variant text-on-primary rounded-lg text-label-md font-label-md flex items-center gap-1.5 shadow-sm transition-all" onclick="document.getElementById('resolution-panel').scrollIntoView({behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[16px]" data-icon="gavel">gavel</span>
+<span>Registrar resolución</span>
+</button>
+<!-- Trailing Icon Actions from JSON -->
+<div class="flex items-center gap-1 text-on-surface-variant">
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface transition-colors relative" title="Notificaciones reglamentarias">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<button class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-surface-container text-on-surface transition-colors" title="Manual y reglamentos">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+</button>
+<div class="flex items-center pl-1 border-l border-surface-container-high">
+<button class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-primary-container font-label-md" title="Avatar institucional de Dirección Académica">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Shell Wrapper -->
+<div class="flex-1 max-w-7xl w-full mx-auto px-margin-desktop py-space-lg flex gap-space-lg">
+<!-- Secondary SideNav (Shared Component: SideNavBar) -->
+<aside class="w-64 shrink-0 hidden xl:flex flex-col justify-between bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md h-[calc(100vh-6.5rem)] sticky top-20 shadow-sm">
+<div class="space-y-4">
+<div class="flex items-center gap-3 pb-3 border-b border-surface-container">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" data-icon="school">school</span>
+</div>
+<div>
+<div class="text-label-md font-label-md text-primary font-bold">Comité de Evaluación</div>
+<div class="text-label-sm font-label-sm text-outline">Ciclo Operativo Vigente</div>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm bg-surface-container text-primary rounded-lg font-label-md text-label-md border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="folder_open">folder_open</span>
+<span>Expedientes Activos</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="groups">groups</span>
+<span>Comité Evaluador</span>
+</a>
+<a class="flex items-center justify-between px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg font-label-md text-label-md transition-colors" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="pending_actions">pending_actions</span>
+<span>Supervisión de Plazos</span>
+</div>
+<span class="text-[10px] font-label-sm px-1.5 py-0.5 rounded bg-error-container text-on-error-container font-bold">3</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="gavel">gavel</span>
+<span>Resoluciones Normativas</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-on-surface-variant hover:bg-surface-container hover:text-on-surface rounded-lg font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="history_edu">history_edu</span>
+<span>Historial y Actas</span>
+</a>
+</nav>
+<div class="pt-2">
+<button class="w-full h-10 border border-outline-variant bg-surface-container-lowest hover:bg-surface-container text-on-surface rounded-lg font-label-md text-label-md flex items-center justify-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[18px]" data-icon="person_add">person_add</span>
+<span>Asignar responsable</span>
+</button>
+</div>
+</div>
+<!-- Footer SideNav tabs -->
+<div class="pt-4 border-t border-surface-container space-y-1">
+<a class="flex items-center gap-space-sm px-space-md py-2 text-on-surface-variant hover:text-on-surface rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+<span>Configuración Reglamentaria</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-2 text-error hover:bg-error-container/40 rounded-lg font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="logout">logout</span>
+<span>Cerrar Sesión</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 min-w-0 space-y-space-lg">
+<!-- Context Breadcrumb & Screen Title -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2">
+<div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
+<span>SIAE</span>
+<span>/</span>
+<span>Supervisión Colegiada</span>
+<span>/</span>
+<span class="text-on-surface font-semibold">Discrepancias y Apelaciones Académicas</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-on-surface mt-1">Panel Institucional de Supervisión y Apelaciones</h1>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Conformidad con Art. 45-52 del Reglamento Escolar (UC-05, UC-07, UC-08 · RF-19, RF-22, RF-29).</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-9 px-3 border border-outline-variant bg-surface-container-lowest hover:bg-surface-container rounded-lg text-label-md font-label-md text-on-surface-variant flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>Exportar Acta (PDF)</span>
+</button>
+<button class="h-9 px-3 bg-secondary text-on-secondary hover:bg-on-secondary-container rounded-lg text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="sync">sync</span>
+<span>Sincronizar Estados</span>
+</button>
+</div>
+</div>
+<!-- Section 2: KPIs & Supervision Metrics (RF-19, RF-22) -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-outline">Avisos pendientes de consulta</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[18px]" data-icon="mark_email_unread">mark_email_unread</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-on-surface">14</span>
+<span class="text-label-sm font-label-sm text-outline">tutores sin lectura</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span>RF-19 Supervisión activa de lectura</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-outline">Casos de discrepancia abiertos</span>
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="balance">balance</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-secondary">7</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">expedientes activos</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_flat">trending_flat</span>
+<span>Flujo de aclaración ordinario</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm hover:border-outline-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-outline">Casos próximos a vencer</span>
+<div class="w-8 h-8 rounded-lg bg-error-container/40 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-error">3</span>
+<span class="text-label-sm font-label-sm text-error">&lt; 24h restantes</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-error">
+<span class="material-symbols-outlined text-[14px]" data-icon="priority_high">priority_high</span>
+<span>Requiere dictamen reglamentario</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest border-2 border-error/30 rounded-xl p-space-md shadow-sm bg-error-container/10 transition-all">
+<div class="flex items-start justify-between">
+<span class="text-label-md font-label-md text-on-error-container font-semibold">Casos escalados automáticos</span>
+<div class="w-8 h-8 rounded-lg bg-error text-on-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="forward">forward</span>
+</div>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="text-headline-xl font-headline-xl text-on-error-container">2</span>
+<span class="text-label-sm font-label-sm text-on-error-container">derivados a Comité</span>
+</div>
+<div class="mt-2 flex items-center gap-1 text-[11px] font-label-sm text-on-error-container font-medium">
+<span class="material-symbols-outlined text-[14px]" data-icon="alarm">alarm</span>
+<span>Vencimiento plazo docente (RF-22)</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Control & Audit Filters Bar -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm space-y-3">
+<div class="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-surface-container">
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="filter_alt">filter_alt</span>
+<span>Filtros de Control y Auditoría Reglamentaria</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-label-sm font-label-sm text-outline">Mostrando <strong class="text-on-surface">7 de 7</strong> casos activos</span>
+<button class="text-label-sm font-label-sm text-secondary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="restart_alt">restart_alt</span>
+<span>Limpiar filtros</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-sm">
+<!-- Filtro Estado -->
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Estado Procesal</label>
+<select class="w-full h-10 px-3 text-label-md font-body-md rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface">
+<option value="all">Todos los estados</option>
+<option value="presentada">Presentada por tutor</option>
+<option value="revision">En Revisión docente</option>
+<option selected="" value="comite">En Comité de Evaluación (3)</option>
+<option value="direccion">Escalado a Dirección</option>
+<option value="resuelta">Resuelta</option>
+</select>
+</div>
+<!-- Filtro Grupo -->
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Grado / Grupo</label>
+<select class="w-full h-10 px-3 text-label-md font-body-md rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface">
+<option value="all">Todos los grupos</option>
+<option selected="" value="3b">3° Secundaria - Grupo B</option>
+<option value="2a">2° Secundaria - Grupo A</option>
+<option value="1c">1° Secundaria - Grupo C</option>
+</select>
+</div>
+<!-- Filtro Materia -->
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Materia / Asignatura</label>
+<select class="w-full h-10 px-3 text-label-md font-body-md rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-1 focus:ring-secondary text-on-surface">
+<option value="all">Todas las materias</option>
+<option selected="" value="mat">Matemáticas Avanzadas</option>
+<option value="len">Lengua y Literatura</option>
+<option value="cie">Ciencias Naturales</option>
+<option value="his">Historia Universal</option>
+</select>
+</div>
+<!-- Filtro Fecha / Periodo -->
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Periodo Reglamentario</label>
+<div class="relative">
+<input class="w-full h-10 pl-3 pr-8 text-label-md font-body-md rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface cursor-pointer" readonly="" type="text" value="I Trimestre 2025 (Últimos 30 días)"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[18px] text-outline pointer-events-none" data-icon="calendar_month">calendar_month</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Institutional Table of Expedients & Discrepancies -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl shadow-sm overflow-hidden">
+<div class="px-space-md py-3.5 border-b border-surface-container flex items-center justify-between bg-surface-container-low/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-secondary" data-icon="inventory_2">inventory_2</span>
+<h2 class="text-headline-sm font-headline-sm text-on-surface">Registro de Expedientes y Apelaciones Formales</h2>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-1 rounded bg-secondary-fixed/60 text-on-secondary-fixed font-semibold">Auditoría Colegiada RF-22</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-high bg-surface-container-lowest text-label-sm font-label-sm text-outline">
+<th class="py-3 px-4 font-semibold">Folio Oficial</th>
+<th class="py-3 px-4 font-semibold">Estudiante / Matrícula</th>
+<th class="py-3 px-4 font-semibold">Materia y Evaluación</th>
+<th class="py-3 px-4 font-semibold">Responsable Asignado</th>
+<th class="py-3 px-4 font-semibold">Estado Procesal</th>
+<th class="py-3 px-4 font-semibold">Plazo Reglamentario</th>
+<th class="py-3 px-4 font-semibold text-right">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-sm">
+<!-- Fila Destacada: REC-2025-0842 (Sofía Mendoza) -->
+<tr class="bg-secondary-fixed/20 hover:bg-secondary-fixed/30 transition-colors border-l-4 border-l-secondary">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified_user">verified_user</span>
+<div>
+<div class="font-label-md font-label-md text-secondary font-bold">REC-2025-0842</div>
+<div class="text-[10px] text-outline">Pre-radicado tutor</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Sofía Mendoza Morales</div>
+<div class="text-[11px] text-outline">2024-SEC-089 · 3° Secundaria B</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Matemáticas Avanzadas</div>
+<div class="text-[11px] text-on-surface-variant">Examen Parcial I · <span class="font-semibold text-secondary">Nota actual: 9.5</span></div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Comité Colegiado</div>
+<div class="text-[11px] text-outline">Dra. Elena Ríos / Prof. R. Vargas</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-secondary-fixed text-on-secondary-fixed border border-secondary-fixed-dim">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    En Comité de Evaluación
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error-container/60 text-on-error-container text-label-sm font-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="alarm">alarm</span>
+<span>Vence en 18h</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="h-8 px-2.5 bg-primary text-on-primary rounded text-label-sm font-label-sm hover:bg-surface-variant transition-colors" title="Ver detalle del expediente">Ver expediente</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center" title="Asignar responsable">
+<span class="material-symbols-outlined text-[16px]" data-icon="person_add">person_add</span>
+</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center" title="Notificar">
+<span class="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 2: REC-2025-0839 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="assignment">assignment</span>
+<div>
+<div class="font-label-md font-label-md text-on-surface font-semibold">REC-2025-0839</div>
+<div class="text-[10px] text-outline">Registro ordinario</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Mateo Delgado Fuentes</div>
+<div class="text-[11px] text-outline">2024-SEC-012 · 2° Secundaria A</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Lengua y Literatura</div>
+<div class="text-[11px] text-on-surface-variant">Ensayo Trimestral · Nota: 8.0</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Prof. Carmen Ortega</div>
+<div class="text-[11px] text-outline">Docente titular de grupo</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-high text-on-surface border border-outline-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    En Revisión Docente
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="text-label-sm font-label-sm text-outline">2 días hábiles</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="h-8 px-2.5 border border-outline-variant text-on-surface rounded text-label-sm font-label-sm hover:bg-surface-container transition-colors">Ver expediente</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="person_add">person_add</span>
+</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 3: REC-2025-0831 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-[18px]" data-icon="error">error</span>
+<div>
+<div class="font-label-md font-label-md text-on-surface font-semibold">REC-2025-0831</div>
+<div class="text-[10px] text-error font-medium">Escalado automático</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Valentina Castro Reyes</div>
+<div class="text-[11px] text-outline">2023-PRI-144 · 6° Primaria B</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Ciencias Naturales</div>
+<div class="text-[11px] text-on-surface-variant">Proyecto Experimental · Nota: 7.5</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Dirección Académica</div>
+<div class="text-[11px] text-outline">Mtro. Daniel Sotomayor</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container border border-error/30 font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Escalado a Dirección
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-error text-on-error text-label-sm font-label-sm font-bold">
+<span class="material-symbols-outlined text-[14px]" data-icon="warning">warning</span>
+<span>Crítico: Vencido</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="h-8 px-2.5 border border-outline-variant text-on-surface rounded text-label-sm font-label-sm hover:bg-surface-container transition-colors">Ver expediente</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="person_add">person_add</span>
+</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="send">send</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Fila 4: REC-2025-0820 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors opacity-80">
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="task_alt">task_alt</span>
+<div>
+<div class="font-label-md font-label-md text-on-surface">REC-2025-0820</div>
+<div class="text-[10px] text-outline">Acta registrada</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Emiliano Cruz Domínguez</div>
+<div class="text-[11px] text-outline">2022-SEC-301 · 3° Secundaria A</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Historia Universal</div>
+<div class="text-[11px] text-on-surface-variant">Evaluación Oral · Nota: 9.0</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="text-on-surface font-medium">Comité de Evaluación</div>
+<div class="text-[11px] text-outline">Acta N° CE-2025-14</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-highest text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    Resuelta
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="text-label-sm font-label-sm text-outline">Cerrado (22 Mar)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="flex items-center justify-end gap-1.5">
+<button class="h-8 px-2.5 border border-outline-variant text-on-surface rounded text-label-sm font-label-sm hover:bg-surface-container transition-colors">Ver expediente</button>
+<button class="h-8 w-8 rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 5: Asymmetric Dual Workspace (Historial de Actuaciones + Formulario de Resolución Colegiada) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg" id="resolution-panel">
+<!-- Left Sub-card: Caso Seleccionado & Bitácora Cronológica (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm space-y-4">
+<div class="border-b border-surface-container pb-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-label-sm font-label-sm bg-secondary-fixed text-on-secondary-fixed font-bold">Caso en análisis activo</span>
+<span class="text-label-sm font-label-sm text-outline">Reg. Art. 48 RIE</span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mt-1">Expediente REC-2025-0842</h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Sofía Mendoza Morales · Matemáticas Avanzadas (Parcial I)</p>
+</div>
+<!-- Chronological Log / Bitácora -->
+<div>
+<h4 class="text-label-md font-label-md text-on-surface mb-3 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-secondary" data-icon="timeline">timeline</span>
+<span>Bitácora de Actuaciones Oficiales</span>
+</h4>
+<div class="relative pl-6 space-y-4 border-l-2 border-surface-container-high">
+<!-- Event 1 -->
+<div class="relative group">
+<span class="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-secondary border-2 border-surface-container-lowest"></span>
+<div class="text-[11px] font-label-sm text-outline">24 Mar 2025 · 09:15 hrs</div>
+<div class="text-body-sm font-medium text-on-surface mt-0.5">Solicitud presentada por tutor legal</div>
+<div class="text-body-sm text-on-surface-variant text-[12px]">Tutor: Carlos Mendoza. Manifiesta inconsistencia en reactivo N° 4 del examen escrito.</div>
+<div class="mt-1.5 inline-flex items-center gap-1 px-2 py-1 rounded bg-surface-container text-on-surface text-[11px] font-medium border border-outline-variant">
+<span class="material-symbols-outlined text-[14px]" data-icon="attachment">attachment</span>
+<span>examen_parcial_hoja_respuestas.pdf</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative group">
+<span class="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-outline border-2 border-surface-container-lowest"></span>
+<div class="text-[11px] font-label-sm text-outline">24 Mar 2025 · 11:30 hrs</div>
+<div class="text-body-sm font-medium text-on-surface mt-0.5">Respuesta de docente titular</div>
+<div class="text-body-sm text-on-surface-variant text-[12px]">Prof. Roberto Vargas ratificó la corrección inicial argumentando omisión del despeje formal en rúbrica analítica.</div>
+</div>
+<!-- Event 3 -->
+<div class="relative group">
+<span class="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-error border-2 border-surface-container-lowest"></span>
+<div class="text-[11px] font-label-sm text-outline">24 Mar 2025 · 14:00 hrs</div>
+<div class="text-body-sm font-medium text-error mt-0.5">Escalado institucional a Comité Evaluador</div>
+<div class="text-body-sm text-on-surface-variant text-[12px]">Discrepancia no conciliada en instancia docente dentro de las 4 horas reglamentarias. Activación de supervisión colegiada (RF-22).</div>
+</div>
+<!-- Event 4 -->
+<div class="relative group">
+<span class="absolute -left-[31px] top-0 w-3.5 h-3.5 rounded-full bg-secondary border-2 border-surface-container-lowest"></span>
+<div class="text-[11px] font-label-sm text-outline">25 Mar 2025 · 08:30 hrs</div>
+<div class="text-body-sm font-medium text-on-surface mt-0.5">Sesión extraordinaria de Comité</div>
+<div class="text-body-sm text-on-surface-variant text-[12px]">Convocada por Dirección Académica. Análisis técnico del reactivo con presencia de la jefa de academia Dra. Elena Ríos.</div>
+</div>
+</div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-lg border border-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="rule">rule</span>
+<span class="text-label-sm font-label-sm text-on-surface">Rúbrica oficial cotejada</span>
+</div>
+<span class="text-[11px] text-outline font-medium">MAT-SEC-2025-V1</span>
+</div>
+</div>
+<!-- Right Sub-card: Formulario Oficial de Resolución Normativa Colegiada (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-md shadow-sm space-y-4">
+<div class="border-b border-surface-container pb-3 flex items-start justify-between">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="gavel">gavel</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Registrar Resolución Normativa</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Emisión del dictamen formal con validez institucional vinculante (RF-29).</p>
+</div>
+<span class="text-[11px] font-label-sm px-2 py-0.5 rounded bg-primary-container text-white font-semibold">Folio REC-2025-0842</span>
+</div>
+<form class="space-y-4" onsubmit="event.preventDefault();">
+<!-- Campo 1: Resultado de la Resolución -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1">
+                1. Sentido del Dictamen Colegiado <span class="text-error">*</span>
+</label>
+<select class="w-full h-11 px-3 text-body-md rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-2 focus:ring-secondary/20 text-on-surface">
+<option selected="" value="favorable">Favorable · Procede modificación de calificación (Error de ponderación demostrado)</option>
+<option value="ratifica">Ratificación de nota original · Desestimada (Criterio docente ajustado a rúbrica)</option>
+<option value="parcial">Resolución parcial · Convocatoria a nuevo instrumento de evaluación complementario</option>
+</select>
+</div>
+<!-- Campo 2: Fundamento Reglamentario y Pedagógico (RF-29) -->
+<div>
+<div class="flex items-center justify-between mb-1">
+<label class="block text-label-md font-label-md text-on-surface">
+                  2. Fundamentación Técnica, Pedagógica y Reglamentaria <span class="text-error">*</span>
+</label>
+<span class="text-[11px] font-label-sm text-outline">Mínimo 80 caracteres</span>
+</div>
+<textarea class="w-full p-3 text-body-sm rounded-lg border border-outline-variant bg-surface-container-lowest focus:border-secondary focus:ring-2 focus:ring-secondary/20 text-on-surface outline-none" placeholder="Indicar artículos aplicables del reglamento, análisis de rúbrica y conclusiones colegiadas..." rows="4">Tras la revisión colegiada del reactivo N° 4 en conjunto con la jefatura del departamento de Ciencias Exactas, se constata que el procedimiento alternativo aplicado por la estudiante Sofía Mendoza cumple rigurosamente con los teoremas de factorización previstos en el plan de estudios, alcanzando el resultado correcto. En virtud de los Artículos 48 y 49 del Reglamento Institucional de Evaluación, procede el ajuste de 0.3 décimas en el instrumento parcial.</textarea>
+</div>
+<!-- Grid: Responsable, Fecha y Nueva Calificación -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-sm">
+<!-- Campo 3: Responsable del Dictamen -->
+<div class="md:col-span-2">
+<label class="block text-label-sm font-label-sm text-outline mb-1">
+                  3. Autoridad Firmante / Responsable Colegiado <span class="text-error">*</span>
+</label>
+<input class="w-full h-10 px-3 text-body-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-medium focus:border-secondary" type="text" value="Comité Evaluador en pleno &amp; Dirección Académica"/>
+</div>
+<!-- Campo 5: Nueva Calificación si aplica -->
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">
+                  5. Nueva Calificación
+                </label>
+<div class="relative">
+<input class="w-full h-10 px-3 text-body-sm rounded-lg border border-secondary bg-secondary-fixed/20 text-on-secondary-fixed font-bold text-center focus:border-secondary" type="text" value="9.8 / 10"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2.5 text-[16px] text-secondary" data-icon="edit_note">edit_note</span>
+</div>
+</div>
+<!-- Campo 4: Fecha y Hora de Resolución -->
+<div class="md:col-span-3">
+<label class="block text-label-sm font-label-sm text-outline mb-1">
+                  4. Fecha y Hora Oficial de Emisión y Notificación
+                </label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+<div class="relative">
+<input class="w-full h-10 px-3 text-body-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface" type="date" value="2025-03-25"/>
+</div>
+<div class="relative">
+<input class="w-full h-10 px-3 text-body-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface" type="time" value="10:00"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Checkbox de Certificación Institucional -->
+<div class="flex items-start gap-2 pt-1">
+<input checked="" class="mt-1 rounded border-outline-variant text-primary focus:ring-primary" id="cert" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant text-[12px]" for="cert">
+                Certifico que este dictamen fue emitido por mayoría calificada del Comité de Evaluación y genera notificación formal fehaciente al tutor legal Carlos Mendoza y al docente titular Prof. Roberto Vargas (Art. 51).
+              </label>
+</div>
+<!-- Botones de Acción Institucional -->
+<div class="pt-3 border-t border-surface-container flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<button class="h-10 px-3.5 border border-outline-variant hover:bg-surface-container text-on-surface rounded-lg text-label-md font-label-md flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="person_pin">person_pin</span>
+<span>Asignar responsable</span>
+</button>
+<button class="h-10 px-3.5 border border-outline-variant hover:bg-surface-container text-on-surface rounded-lg text-label-md font-label-md flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="forward_to_inbox">forward_to_inbox</span>
+<span>Notificar encargado</span>
+</button>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-4 bg-primary hover:bg-surface-variant text-on-primary rounded-lg text-label-md font-label-md flex items-center gap-2 shadow-sm transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+<span>Registrar resolución</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+</section>
+<!-- Institutional Footer Signoff -->
+<footer class="pt-4 pb-8 border-t border-surface-container text-center text-label-sm font-label-sm text-outline flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>Servicio SIAE Operativo · Servidor Seguro Certificado SSL/TLS</span>
+</div>
+<div>
+<span>Dirección Académica &amp; Comité de Evaluación · Ciclo Escolar 2024-2025</span>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

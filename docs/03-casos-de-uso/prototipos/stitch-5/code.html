@@ -1,0 +1,319 @@
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mensajería Institucional - Portal Académico</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface-variant": "#e0e3e5",
+          "on-tertiary-fixed": "#002114",
+          "surface-container": "#eceef0",
+          "on-secondary-fixed": "#00164e",
+          "background": "#f7f9fb",
+          "error-container": "#ffdad6",
+          "primary-fixed-dim": "#bec6e0",
+          "secondary-fixed": "#dce1ff",
+          "error": "#ba1a1a",
+          "surface-container-lowest": "#ffffff",
+          "surface-dim": "#d8dadc",
+          "surface-tint": "#565e74",
+          "on-primary": "#ffffff",
+          "tertiary-fixed": "#85f8c4",
+          "secondary-container": "#8fa7fe",
+          "primary-fixed": "#dae2fd",
+          "secondary-fixed-dim": "#b6c4ff",
+          "on-background": "#191c1e",
+          "surface": "#f7f9fb",
+          "on-primary-fixed-variant": "#3f465c",
+          "primary": "#000000",
+          "tertiary-container": "#002114",
+          "surface-container-highest": "#e0e3e5",
+          "on-secondary": "#ffffff",
+          "surface-container-high": "#e6e8ea",
+          "on-primary-fixed": "#131b2e",
+          "on-error": "#ffffff",
+          "tertiary-fixed-dim": "#68dba9",
+          "on-surface-variant": "#45464d",
+          "on-secondary-fixed-variant": "#264191",
+          "on-surface": "#191c1e",
+          "on-tertiary-fixed-variant": "#005137",
+          "outline-variant": "#c6c6cd",
+          "on-secondary-container": "#1d3989",
+          "inverse-primary": "#bec6e0",
+          "outline": "#76777d",
+          "inverse-on-surface": "#eff1f3",
+          "primary-container": "#131b2e",
+          "tertiary": "#000000",
+          "inverse-surface": "#2d3133",
+          "surface-container-low": "#f2f4f6",
+          "on-error-container": "#93000a",
+          "on-tertiary": "#ffffff",
+          "secondary": "#4059aa",
+          "surface-bright": "#f7f9fb"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "fontFamily": {
+          "sans": ["Plus Jakarta Sans", "sans-serif"]
+        }
+      }
+    }
+  }
+</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-sans antialiased flex justify-center items-start min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full max-w-[480px] flex-col bg-surface group/design-root overflow-x-hidden shadow-xl border-x border-surface-variant">
+<!-- 1. Barra Superior Institucional -->
+<div class="sticky top-0 z-20 bg-surface/95 backdrop-blur-sm border-b border-surface-variant">
+<div class="flex items-center px-4 py-3 justify-between">
+<button aria-label="Regresar" class="flex items-center justify-center size-10 rounded-lg hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-background" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="text-[11px] font-bold tracking-wider uppercase text-on-surface-variant">Portal Académico</span>
+<h1 class="text-base font-bold leading-tight tracking-tight text-on-background">Mensajería Institucional</h1>
+</div>
+<button aria-label="Notificaciones" class="flex items-center justify-center size-10 rounded-lg hover:bg-surface-container transition-colors relative">
+<span class="material-symbols-outlined text-on-background" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 size-2 bg-error rounded-full"></span>
+</button>
+</div>
+</div>
+<main class="flex-1 flex flex-col gap-4 p-4 pb-28">
+<!-- 2. Contexto del Estudiante y Validación de Tutela (RF-23) -->
+<section class="bg-surface-container-low border border-outline-variant/50 rounded-xl p-4 flex flex-col gap-3 shadow-sm">
+<div class="flex items-start justify-between gap-3">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-1.5 text-xs font-semibold text-secondary">
+<span class="material-symbols-outlined text-base" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>Canal Institucional Oficial Vinculado a Expediente</span>
+</div>
+<h2 class="text-lg font-bold text-on-background">Sofía Mendoza Morales</h2>
+<p class="text-xs text-on-surface-variant">Matrícula: 2024-SEC-089 | 3° Año Secundaria - Grupo B</p>
+</div>
+<div class="size-14 rounded-lg bg-cover bg-center shrink-0 border border-outline-variant" data-alt="Official student portrait photograph of a young female high school student wearing a navy blue uniform blazer with a neat white collared shirt, neutral confident expression, soft studio lighting, clean light grey background, crisp high-resolution professional school ID photo style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7xdC0LMCappr5a-x8wf9BTslwh8vQBNQhu2KOCtxuM6PClvW6ysXjdM8d5UvkZttTA5TAuULvVvwlhNxGg7uzv3wysI1oTXj38Rp3e0GFFxcUpcRDdN0UwUPYdj3WLgjBWVrG2rPvtUIax-qKN9mx5TvnIIuxvgp-OXJZCvO5bvZ5Qnvgw1cYRWF2LW-3CqgvK1o50IcboOOJyVfoa6z-g7hUlpmPf-wrrJ33sIshQsoJ0sJxDPdfNQ')"></div>
+</div>
+<div class="bg-surface-container p-2.5 rounded-lg border border-outline-variant/30 flex items-start gap-2 text-xs text-on-surface-variant leading-relaxed">
+<span class="material-symbols-outlined text-sm text-outline mt-0.5 shrink-0" data-icon="lock">lock</span>
+<p><strong class="text-on-background font-semibold">Regla explícita:</strong> No se permiten conversaciones fuera de la relación autorizada entre estudiante, encargado legal y docente titular.</p>
+</div>
+</section>
+<!-- 3. Participantes Autorizados y Alerta de Revocación -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<h3 class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Participantes Autorizados</h3>
+<span class="text-xs text-outline bg-surface-container-high px-2 py-0.5 rounded-full font-medium">3 Activos</span>
+</div>
+<div class="grid grid-cols-1 gap-2">
+<!-- Participante 1 -->
+<div class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/40 p-2.5 rounded-xl">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="Friendly professional portrait of a Hispanic adult male guardian with short dark hair, wearing a casual button-down shirt, warm welcoming smile, bright indoor office lighting, neutral background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBh57tgQUMUQDOpHO6n4DNJOmUUSgyOuv7xckPlt7B-ET4X-_mOpHHpa_1sk7-jaSEXB0WOFswlfhNW0viVPIIPC-iUXPJ0TDjt0t-CdSKzlUYxtTlmvePdYpig58ixKBSMowEJWjIf0Fd0VqR-G_BoVg4rM4opTbHXgLNjR7_eL89J7P2ivuxJS0mKuFkbfbVEaBdQugKn5_6FFXOSBUoCUtAs2c4R3_H4iRw4vCX34UfIljqrsxhIWA')"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-sm font-semibold text-on-background truncate">Carlos Mendoza</span>
+<span class="text-xs text-on-surface-variant truncate">Tutor / Encargado Legal - Autenticado</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Participante 2 -->
+<div class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/40 p-2.5 rounded-xl">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="Professional educator portrait of a middle-aged male teacher with glasses and neatly groomed hair, wearing a formal suit jacket, serious academic expression, well-lit classroom background, high quality portrait." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCxMs61fF3VM-zNggt8HCj1VzLr31NEiCh22RHSuafjAyTlzBF8CFJQnhttuq0i0fvQnESCETM6xbuYOBlIY71Aqkbro7jh8WMGB3EN-c-8HqX0cRcNjJjyLFBRxAltpcmvkHl-cuB2Fcvi0g8CuNdbIBC5OSPmMBb3EKws4I7xKu5poSXHdjy0Dy-57CFn41rVg_aS8dakUcMvrKZkSaeh9bMTEsaxHGnHp5I4Zyk5OGHESu0xnUZWRQ')"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-sm font-semibold text-on-background truncate">Prof. Roberto Vargas</span>
+<span class="text-xs text-on-surface-variant truncate">Docente Titular - Matemáticas Avanzadas</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<!-- Participante 3 -->
+<div class="flex items-center gap-3 bg-surface-container-lowest border border-outline-variant/40 p-2.5 rounded-xl">
+<div class="size-10 rounded-full bg-cover bg-center shrink-0" data-alt="Official student ID badge photo placeholder representing a female teenager with dark hair tied back, neutral expression, crisp uniform lighting, plain light background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1fwYtTHoNIoMt_oEPdC79UWqJq-i1RkqPuqTUC6BwR_nwH_hxt6_qHmyIh9razI9Tf1GNSRFTYeG8-5TGgnqA8a9YMfME2PqIUfmiBk0YigQ7jaBVZqvRx9L16XqZmRHVWfZXMfTRvnipXeJWTLTCLVJgRvz5qao1wOefSESWeJw2qRZpN1lo8C1q9dYmjzzcDYKyYZxj3_yz9Gntb3WHuP5CguQptmqAgUeDuez7jdSIwI5zWWIebA')"></div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="text-sm font-semibold text-on-background truncate">Sofía Mendoza Morales</span>
+<span class="text-xs text-on-surface-variant truncate">Estudiante tutelada</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Alerta de Revocación -->
+<div class="bg-error-container/30 border border-error/30 rounded-xl p-3 flex gap-2.5 items-start">
+<span class="material-symbols-outlined text-error text-lg shrink-0 mt-0.5" data-icon="gpp_bad" style="font-variation-settings: 'FILL' 1;">gpp_bad</span>
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-error">Aviso de revocación de acceso</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">El Prof. Martín Ortega (docente adjunto previo) ya no cuenta con autorización activa para este periodo lectivo; su acceso a nuevos mensajes ha sido restringido automáticamente conforme a directiva institucional.</p>
+</div>
+</div>
+</section>
+<!-- 4. Asunto del Hilo y Vinculación Formal (RF-24) -->
+<section class="bg-surface-container-low border border-outline-variant/50 rounded-xl p-3.5 flex flex-col gap-3">
+<div class="flex flex-col gap-1">
+<span class="text-[11px] font-bold uppercase tracking-wider text-outline">Asunto del Hilo Oficial</span>
+<h3 class="text-sm font-bold text-on-background leading-snug">Seguimiento y aclaración técnica - Examen Parcial I (Matemáticas Avanzadas)</h3>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-lg p-3 flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="link">link</span>
+            Vinculado a Expediente
+          </span>
+<span class="text-[11px] bg-secondary-fixed text-on-secondary-fixed font-bold px-2 py-0.5 rounded">#REC-2025-0842</span>
+</div>
+<p class="text-xs text-on-surface-variant font-medium">Evaluación Parcial I (Calificación: 9.5/10) - Ver expediente y rúbrica detallada.</p>
+</div>
+<button class="w-full py-2 px-3 bg-surface-container border border-outline-variant/50 hover:bg-surface-container-high rounded-lg text-xs font-semibold text-on-background flex items-center justify-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="add_link">add_link</span>
+<span>Relacionar con otra evaluación o trámite</span>
+</button>
+</section>
+<!-- 5. Historial de Conversación Cronológico -->
+<section class="flex flex-col gap-4">
+<div class="flex items-center justify-center">
+<span class="text-[11px] bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-medium">Lunes, 24 de Marzo de 2025</span>
+</div>
+<!-- Mensaje 1 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<div class="size-7 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait thumbnail of professional male teacher wearing glasses." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAeyYt3Jb0y8Mvc-qWBg0EFsQG_johiqC6_LOy85oBQWDVBcVdVMKKbGOyODlcADzhjt_OiEJc_FOKia1ADJX0oNSTYLvktCL8y-1woL4PFF6ZfBC3rFluhgGHgzj_CkRpCLorxlAmVDS-Mui_cpWehSuMFcQXKzAJpZsekFDXz_mUelO3XOxMI2caAgRbZTQdU6TqjDI4vFy-QDQnGKliTdC4eaqllW0nbCxZ8aUhXpxYtGShHVc5sAQ')"></div>
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-bold text-on-background">Prof. Roberto Vargas</span>
+<span class="text-[10px] text-outline">Docente Titular</span>
+<span class="text-[10px] text-outline ml-auto">24 Mar, 09:15 hrs</span>
+</div>
+</div>
+<div class="ml-9 bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs text-on-background leading-relaxed flex flex-col gap-2">
+<p>Estimado tutor, comparto la explicación pedagógica de la rúbrica correspondiente al reactivo 4 del Examen Parcial I, donde se evalúa el desarrollo algebraico paso a paso.</p>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary font-medium pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="done_all" style="font-variation-settings: 'FILL' 1;">done_all</span>
+<span>Consultado por el tutor · 24 Mar, 09:40 hrs</span>
+</div>
+</div>
+</div>
+<!-- Mensaje 2 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<div class="size-7 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait thumbnail of guardian Carlos Mendoza." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAa-5VxPGudoWkkatsX1lA6Gphlv-G9ZU6D84JEMzY48QYzPczftZh_2E6enZzUYht0WTPKeb-PDOev24NA3Nx63lFJbirdT99ivV8gGXUr3avyEhUI51RC-GWNcrL9oYs4ZMHNyJDJgVJ6XVdh0ujUogSU8MSkPFCZtED1cXpp6e15YJJp4__WKb6TpBAs-pESa-PwoEkhs4f4NASRcIdGV6FScVIJ3izfjzak2LHD3BkFSto4S8DT5w')"></div>
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-bold text-on-background">Carlos Mendoza</span>
+<span class="text-[10px] text-outline">Tutor / Encargado Legal</span>
+<span class="text-[10px] text-outline ml-auto">24 Mar, 09:55 hrs</span>
+</div>
+</div>
+<div class="ml-9 bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-3 text-xs text-on-background leading-relaxed flex flex-col gap-2">
+<p>Agradezco la aclaración, profesor. Tenemos dudas específicas sobre el procedimiento algebraico aplicado en el inciso B y solicitamos el cotejo con la hoja física entregada por Sofía.</p>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary font-medium pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="done_all" style="font-variation-settings: 'FILL' 1;">done_all</span>
+<span>Consultado por el docente · 24 Mar, 10:05 hrs</span>
+</div>
+</div>
+</div>
+<!-- Mensaje 3 -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<div class="size-7 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait thumbnail of professional male teacher." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTku2VuFZJEacGrvXM178Aml7Ez_I5dRsPd9TphspFeT02OFhmycDhwjWRPz1cw5NMQZkafQ5JSdIv4ZijuLUus9NcJq_miouTHnU-3PqDm5aeovhCtd7fum22SwCkwb1veyo6ciaGJW2SA6V9FQrh1M9W_F_TmgGG3s2B-UKIRfkya3lzIuatmDo8ZNXP_dkgClDQ1gM27U4aikoNhWzOwCgIImiJLkJRdqEiWKrg530rGDwTRwa-8Q')"></div>
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-bold text-on-background">Prof. Roberto Vargas</span>
+<span class="text-[10px] text-outline">Docente Titular</span>
+<span class="text-[10px] text-outline ml-auto">24 Mar, 10:20 hrs</span>
+</div>
+</div>
+<div class="ml-9 bg-surface-container-low border border-outline-variant/30 rounded-xl p-3 text-xs text-on-background leading-relaxed flex flex-col gap-2">
+<p>Enterado. Procederé a realizar el cotejo físico en colegiado académico durante la sesión de la tarde y les notificaremos el resultado oficial por este mismo medio.</p>
+<div class="flex items-center gap-1.5 text-[11px] text-secondary font-medium pt-1 border-t border-outline-variant/20">
+<span class="material-symbols-outlined text-sm" data-icon="done" style="font-variation-settings: 'FILL' 1;">done</span>
+<span>Consultado · 24 Mar, 10:30 hrs</span>
+</div>
+</div>
+</div>
+<!-- Mensaje 4 (Nuevo / Borrador Pendiente) -->
+<div class="flex flex-col gap-1.5">
+<div class="flex items-center gap-2">
+<div class="size-7 rounded-full bg-cover bg-center shrink-0" data-alt="Portrait thumbnail of guardian Carlos Mendoza." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCeygzUzEGiNq6nxp74eITtyXiw6xf0_Y1-izJWTwdEjKVX1tlQFGt0D98x54_yGCEquLdgzOHkICFJEwtVs-vAlXqd5q9E4AyEpFmiSj6QklVHC_aFNNGfDDcDwi_lOHtoGMWVYt8SeBDzAxfCDYKwIK96OEBhLpA6Rf1DHck_fiuuwG3tB2VRhvV4sKkvE31GwvuhYYldml7OPdQHzPI9EP28rChAF6R7OT3ZkP_xPdUPp94OHsUEFA')"></div>
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-bold text-on-background">Carlos Mendoza</span>
+<span class="text-[10px] text-outline">Tutor / Encargado Legal</span>
+<span class="text-[10px] text-outline ml-auto">Hoy, 11:05 hrs</span>
+</div>
+</div>
+<div class="ml-9 bg-primary-container text-on-primary-container rounded-xl p-3 text-xs leading-relaxed flex flex-col gap-2 shadow-sm">
+<p class="text-on-primary">Quedamos a la espera de la confirmación del colegiado. Muchas gracias por su disposición y seguimiento puntual al caso de nuestra hija.</p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/20">
+<span class="text-[11px] bg-error-container text-on-error-container font-semibold px-2 py-0.5 rounded flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+              No consultado aún (Pendiente lectura oficial RF-23)
+            </span>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Área de Redacción y Despacho Formal -->
+<section class="bg-surface-container-low border border-outline-variant/50 rounded-xl p-3.5 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Redacción de Comunicación Oficial</span>
+<button class="text-xs text-secondary font-medium flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="attach_file">attach_file</span>
+          Adjuntar evidencia
+        </button>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-3 text-xs text-on-background placeholder:text-outline focus:ring-2 focus:ring-primary focus:outline-none resize-none" placeholder="Escriba una comunicación oficial aquí..." rows="3"></textarea>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1">
+<p class="text-[10px] text-outline leading-tight">Toda comunicación queda registrada con fines de trazabilidad y auditoría escolar.</p>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg text-xs font-bold hover:opacity-90 transition-opacity flex items-center gap-1.5 shrink-0">
+<span class="material-symbols-outlined text-base" data-icon="send">send</span>
+<span>Enviar mensaje</span>
+</button>
+</div>
+</section>
+</main>
+<!-- 7. Barra de Navegación Inferior Móvil -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[480px] mx-auto z-30 bg-surface border-t border-surface-variant flex px-4 pb-4 pt-2 shadow-lg">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-on-background transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="House" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Resumen</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-on-background transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Book" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Materias</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-surface-variant hover:text-on-background transition-colors" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="Clock" data-size="24px" data-weight="regular">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm64-88a8,8,0,0,1-8,8H128a8,8,0,0,1-8-8V72a8,8,0,0,1,16,0v48h48A8,8,0,0,1,192,128Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Historial</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-on-background font-semibold" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="ArrowsOut" data-size="24px" data-weight="fill">
+<svg fill="currentColor" height="24px" viewbox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M109.66,146.34a8,8,0,0,1,0,11.32L83.31,184l18.35,18.34A8,8,0,0,1,96,216H48a8,8,0,0,1-8-8V160a8,8,0,0,1,13.66-5.66L72,172.69l26.34-26.35A8,8,0,0,1,109.66,146.34ZM83.31,72l18.35-18.34A8,8,0,0,0,96,40H48a8,8,0,0,0-8,8V96a8,8,0,0,0,13.66,5.66L72,83.31l26.34,26.35a8,8,0,0,0,11.32-11.32ZM208,40H160a8,8,0,0,0-5.66,13.66L172.69,72,146.34,98.34a8,8,0,0,0,11.32,11.32L184,83.31l18.34,18.35A8,8,0,0,0,216,96V48A8,8,0,0,0,208,40Zm3.06,112.61a8,8,0,0,0-8.72,1.73L184,172.69l-26.34-26.35a8,8,0,0,0-11.32,11.32L172.69,184l-18.35,18.34A8,8,0,0,0,160,216h48a8,8,0,0,0,8-8V160A8,8,0,0,0,211.06,152.61Z"></path>
+</svg>
+</div>
+<p class="text-xs font-medium leading-normal">Mensajes</p>
+</a>
+</nav>
+</div>
+</body></html>
