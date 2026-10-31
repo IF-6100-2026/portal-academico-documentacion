@@ -62,3 +62,11 @@ Característica: CU-05 — Dar seguimiento a avisos no consultados
     Dado que ya se emitió el recordatorio 1 de AV-01 en el intervalo vigente
     Cuando se ejecuta otra revisión dentro del mismo intervalo
     Entonces no se emite otro recordatorio
+
+  Escenario: TP-CU05-A08 — Vínculo revocado después del recordatorio (paso 6)
+    Dado que se emitió un recordatorio de AV-01 cuando el vínculo estaba activo
+    Y el vínculo de ENC-01 con EST-01 fue finalizado después del envío
+    Cuando ENC-01 intenta abrir AV-01 desde el recordatorio
+    Entonces el Portal deniega el contenido sin revelar datos de EST-01
+    Y no registra un acuse de lectura
+    Y conserva el historial y registra el intento denegado

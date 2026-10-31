@@ -89,7 +89,7 @@
         <dc:Bounds x="50" y="320" width="950" height="140" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="SEA_01_di" bpmnElement="SEA_01">
         <dc:Bounds x="100" y="92" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="62" y="132" width="120" height="40" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="80" y="132" width="120" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GA_01_di" bpmnElement="GA_01">
         <dc:Bounds x="190" y="85" width="50" height="50" />

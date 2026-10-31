@@ -28,11 +28,11 @@ Cada operación del Portal deberá comprobar la identidad de quien la solicita, 
 - Un vínculo suspendido o finalizado deja de dar acceso en la **siguiente solicitud**.
 - Una docente solo ve los grupos y materias que tiene asignados en el periodo vigente; al cambiar la asignación, el cambio rige en la siguiente solicitud.
 
-> **Fuera de este RS.** El cifrado de la comunicación, el almacenamiento de contraseñas y la expiración de sesiones los resuelve el framework de seguridad. Se definen en el diseño (`docs/05-diseno/`) y no se especifican como requerimiento.
+> **Fuera de este RS.** El cifrado de la comunicación, el almacenamiento de contraseñas y la expiración de sesiones se implementarán configurando el framework de seguridad y el despliegue; no quedan resueltos por usar Spring Boot. Se definen en el diseño (`docs/05-diseno/`) y no se especifican como requerimiento.
 
 ## Método de verificación
 
-Matriz de pruebas por actor con un caso permitido y uno denegado en cada operación. Corresponde a los escenarios `A01` de cada `.feature` y a `TP-CU01-A02`.
+Matriz de pruebas por actor con un caso permitido y uno denegado en cada operación. Consultar la tabla siguiente: el número del flujo negativo varía por CU. CU-01 cubre sesión inválida con `TP-CU01-A05` y acceso horizontal con `TP-CU01-A02`; CU-05 cubre vínculo inactivo al revisar (`A02`) y revocado al abrir (`A08`).
 
 ## Efecto en los casos de uso
 
@@ -40,11 +40,11 @@ En **todos** los CU hay un paso del flujo básico en que el Portal valida actor,
 
 | CU | Paso de validación | Flujo alterno |
 |---|---|---|
-| [CU-01](../../03-casos-de-uso/CU-01-consultar-progreso-academico.md) | 2 y 5 | A01, A02 |
+| [CU-01](../../03-casos-de-uso/CU-01-consultar-progreso-academico.md) | 2 y 5 | A01, A02, A05 |
 | [CU-02](../../03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md) | 2 | A01 |
 | [CU-03](../../03-casos-de-uso/CU-03-publicar-evaluacion-asignada.md) | 2 | A01 |
 | [CU-04](../../03-casos-de-uso/CU-04-publicar-calificacion.md) | 2 | A01 |
-| [CU-05](../../03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md) | 3 | A02 |
+| [CU-05](../../03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md) | 3 y 6 | A02, A08 |
 | [CU-06](../../03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md) | 2 | A01 |
 | [CU-07](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md) | 2 | A01 |
 | [CU-08](../../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md) | 2 | A01 |

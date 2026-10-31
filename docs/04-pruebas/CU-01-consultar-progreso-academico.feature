@@ -45,3 +45,10 @@ Característica: CU-01 — Consultar progreso académico
     Cuando ENC-01 abre la calificación de EVA-01
     Entonces ve 85 como versión vigente con la fecha de la corrección
     Y puede ver la versión anterior con el valor 70
+
+  Escenario: TP-CU01-A05 — Sesión inválida (paso 2)
+    Dado que la sesión de ENC-01 venció
+    Cuando ENC-01 solicita el progreso de EST-01
+    Entonces el Portal solicita autenticación válida
+    Y no devuelve estudiantes, vínculos ni publicaciones
+    Y no registra una lectura académica
