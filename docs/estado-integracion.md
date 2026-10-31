@@ -47,7 +47,7 @@ No se ejecutó Docker/PostgreSQL ni una prueba real React → Spring → Postgre
 | Alta | Activar issues del fork y crear los 11 CU | URLs reales en cada ficha y matriz. Actualmente dicen `por crear`; no se inventaron números. |
 | Alta | Completar diseño académico | Modelo de dominio/relacional, contratos API, realización de CU y reglas alineadas con los 25 RF. La pantalla de salud no satisface un CU. |
 | Alta | Implementar RS-03 | Autenticación, autorización por rol/vínculo/asignación y pruebas negativas. Spring Boot y CORS por sí solos no lo resuelven. |
-| Alta | Completar casos negativos de acceso | CU-01 A01 representa ausencia de vínculos, no sesión inválida. CU-05 valida el vínculo al programar, pero debe volver a validarlo al abrir el aviso si se revoca entre ambos momentos. Revisar fichas y escenarios con Josué. |
+| Implementación | Ejecutar los casos negativos de acceso | Se añadieron CU-01 A05 (sesión inválida) y CU-05 A08 (vínculo revocado al abrir). Falta implementarlos y automatizarlos. |
 | Alta | Verificar arranque integrado | PostgreSQL 17 saludable, migración aplicada, API disponible y frontend conectado usando los mismos valores de entorno. |
 | Media | Construir funcionalidades académicas | Frontend, servicios, persistencia y pruebas de cada CU; actualmente están pendientes los 11 CU. Priorizar vínculos, publicación y consulta tras acordar el diseño. |
 | Media | Prototipos CU-02 y CU-12 | Vistas de vinculación y queja; los HTML heredados son referencias, no funcionalidades. |
@@ -55,3 +55,7 @@ No se ejecutó Docker/PostgreSQL ni una prueba real React → Spring → Postgre
 | Entrega | Revisar supuestos y artefactos del curso | Validación con profesor/escuela, declaración de IA actualizada por el equipo y tag `pc2` después de revisión final. |
 
 Los cambios documentales quedan en un PR hacia la rama de análisis. La integración rechazó crear un árbol Git en Frontend con HTTP 403; los cambios de código quedan como [parches aplicables](../integracion/README.md) en el fork, no como ramas publicadas de la organización. No implican aprobación académica ni que `main` ya esté actualizado.
+
+## Integración solicitada tras recibir la evaluación del profesor
+
+La evaluación del PC1 fue aportada por Sebastián en una captura. La respuesta por observación está en [revision-profesor-pc1.md](revision-profesor-pc1.md). Los 69 escenarios de la revisión inicial se conservan y se agregan dos negativos de seguridad: **71 escenarios especificados en total**. No se consideran ejecutados.

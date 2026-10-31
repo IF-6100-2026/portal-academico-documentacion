@@ -12,7 +12,7 @@
 ## Flujo básico
 
 1. La persona encargada ingresa al Portal.
-2. El Portal valida la identidad y obtiene los vínculos activos de la persona encargada (RS-03) (A01).
+2. El Portal valida la identidad y obtiene los vínculos activos de la persona encargada (RS-03) (A01, A05).
 3. El Portal muestra los estudiantes vinculados y, para el primero, las últimas publicaciones y los avisos pendientes (RS-01).
 4. La persona encargada elige un estudiante y un periodo.
 5. El Portal vuelve a validar el vínculo para esa solicitud concreta (RS-03) (A02).
@@ -28,12 +28,14 @@
 - **A03 — Periodo sin publicaciones (paso 6).** El Portal informa que el periodo no tiene publicaciones, sin mostrar borradores. El flujo continúa en el paso 9.
 - **A04 — Calificación corregida (paso 8).** El Portal muestra la versión vigente e indica que fue corregida, con la fecha de la corrección. La persona encargada puede ver la versión anterior. El flujo continúa en el paso 9.
 
+- **A05 — Sesión ausente, vencida o cuenta inactiva (paso 2).** El Portal deniega la consulta y solicita autenticación válida sin mostrar estudiantes, publicaciones ni vínculos. No registra una lectura académica y el caso de uso termina.
+
 ## Otros campos
 
 - **Excepciones:** ninguna fuera de los flujos alternos.
 - **Restricciones:** [RS-01](../02-requerimientos/suplementarios/RS-01-usabilidad-para-encargados.md), [RS-02](../02-requerimientos/suplementarios/RS-02-trazabilidad-de-consultas.md), [RS-03](../02-requerimientos/suplementarios/RS-03-seguridad-por-actor-y-vinculo.md)
 - **Especificación de interfaz de usuario:** [Perfil y progreso académico](prototipos/stitch-1/screen.png)
-- **Métricas:** complejidad media (9 pasos y 4 flujos alternos).
+- **Métricas:** complejidad media (9 pasos y 5 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.

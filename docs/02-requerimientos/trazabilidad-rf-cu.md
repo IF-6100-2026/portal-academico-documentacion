@@ -61,3 +61,12 @@ Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU
 - Los 25 RF tienen actor, evidencia, actividad del BPMN, al menos un CU y al menos un escenario.
 - Los 11 CU tienen al menos un RF, un archivo `.feature` y un issue.
 - Los escenarios `A01` de cada CU que prueban accesos no autorizados se trazan a RS-03.
+
+## Cobertura transversal de acceso (RS-03)
+
+| CU | Escenario | Condición |
+|---|---|---|
+| CU-01 | `TP-CU01-A05` | Rechazar una sesión inválida antes de revelar vínculos o publicaciones. |
+| CU-05 | `TP-CU05-A08` | Revalidar el vínculo al abrir, aunque el recordatorio se emitió con autorización. |
+
+Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El catálogo integrado contiene 71 escenarios.

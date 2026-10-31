@@ -2,7 +2,7 @@
 
 Índice de la documentación del Portal Académico del Centro Educativo María Montessori (IF-6100, PC2). Las secciones siguen el orden de las fases del proyecto.
 
-[Estado integrado y pendientes](estado-integracion.md) · [Flujo de colaboración](06-configuracion/flujo-colaboracion.md)
+[Respuesta a observaciones del profesor](revision-profesor-pc1.md) · [Estado integrado y pendientes](estado-integracion.md) · [Flujo de colaboración](06-configuracion/flujo-colaboracion.md)
 
 **Cadena de trazabilidad:** proceso actual (BPMN) → problema → requerimiento funcional → caso de uso → escenario de prueba → issue → código.
 
