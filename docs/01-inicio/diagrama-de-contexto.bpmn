@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Portal Académico (generador del equipo)" exporterVersion="1.0" id="Defs_Contexto">
+  <bpmn:collaboration id="Collab_Contexto">
+    <bpmn:participant id="Part_Portal" name="Portal Académico" />
+    <bpmn:participant id="Part_Enc" name="Persona encargada legal" />
+    <bpmn:participant id="Part_Doc" name="Docente" />
+    <bpmn:participant id="Part_Com" name="Comité de Evaluación" />
+    <bpmn:participant id="Part_Dir" name="Dirección" />
+    <bpmn:messageFlow id="Flow_F_01" name="F-01 Criterios de consulta" sourceRef="Part_Enc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_02" name="F-02 Mensaje sobre el estudiante" sourceRef="Part_Enc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_03" name="F-03 Apelación con respaldo" sourceRef="Part_Enc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_04" name="F-04 Queja por información no recibida" sourceRef="Part_Enc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_05" name="F-05 Acuse de consulta" sourceRef="Part_Enc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_06" name="F-06 Perfil, evaluaciones y calificaciones" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_07" name="F-07 Aviso de evaluación asignada" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_08" name="F-08 Aviso de calificación o corrección" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_09" name="F-09 Recordatorio de aviso pendiente" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_10" name="F-10 Respuesta de la docente" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_11" name="F-11 Resolución de la apelación" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_12" name="F-12 Respuesta a la queja" sourceRef="Part_Portal" targetRef="Part_Enc" />
+    <bpmn:messageFlow id="Flow_F_13" name="F-13 Evaluación asignada confirmada" sourceRef="Part_Doc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_14" name="F-14 Calificaciones del grupo confirmadas" sourceRef="Part_Doc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_15" name="F-15 Corrección con motivo" sourceRef="Part_Doc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_16" name="F-16 Respuesta al mensaje" sourceRef="Part_Doc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_17" name="F-17 Prueba y criterio de calificación" sourceRef="Part_Doc" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_18" name="F-18 Mensaje de la persona encargada" sourceRef="Part_Portal" targetRef="Part_Doc" />
+    <bpmn:messageFlow id="Flow_F_19" name="F-19 Aviso de apelación" sourceRef="Part_Portal" targetRef="Part_Doc" />
+    <bpmn:messageFlow id="Flow_F_20" name="F-20 Solicitud de publicación faltante" sourceRef="Part_Portal" targetRef="Part_Doc" />
+    <bpmn:messageFlow id="Flow_F_21" name="F-21 Resumen de publicación" sourceRef="Part_Portal" targetRef="Part_Doc" />
+    <bpmn:messageFlow id="Flow_F_22" name="F-22 Resolución de la apelación" sourceRef="Part_Com" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_23" name="F-23 Solicitud de información adicional" sourceRef="Part_Com" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_24" name="F-24 Expediente de la apelación" sourceRef="Part_Portal" targetRef="Part_Com" />
+    <bpmn:messageFlow id="Flow_F_25" name="F-25 Vínculo con respaldo" sourceRef="Part_Dir" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_26" name="F-26 Plazos y política de recordatorios" sourceRef="Part_Dir" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_27" name="F-27 Observaciones de la apelación" sourceRef="Part_Dir" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_28" name="F-28 Hallazgo y respuesta de la queja" sourceRef="Part_Dir" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_29" name="F-29 Criterios de supervisión" sourceRef="Part_Dir" targetRef="Part_Portal" />
+    <bpmn:messageFlow id="Flow_F_30" name="F-30 Alerta de aviso sin consulta" sourceRef="Part_Portal" targetRef="Part_Dir" />
+    <bpmn:messageFlow id="Flow_F_31" name="F-31 Estado del seguimiento" sourceRef="Part_Portal" targetRef="Part_Dir" />
+    <bpmn:messageFlow id="Flow_F_32" name="F-32 Registro de consultas" sourceRef="Part_Portal" targetRef="Part_Dir" />
+    <bpmn:messageFlow id="Flow_F_33" name="F-33 Aviso de queja" sourceRef="Part_Portal" targetRef="Part_Dir" />
+    <bpmn:messageFlow id="Flow_F_34" name="F-34 Aviso de apelación o vencimiento" sourceRef="Part_Portal" targetRef="Part_Dir" />
+  </bpmn:collaboration>
+  <bpmndi:BPMNDiagram id="Diagram_Contexto">
+    <bpmndi:BPMNPlane id="Plane_Contexto" bpmnElement="Collab_Contexto">
+      <bpmndi:BPMNShape id="Part_Portal_di" bpmnElement="Part_Portal" isHorizontal="true"><dc:Bounds x="60" y="260" width="2408" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Enc_di" bpmnElement="Part_Enc" isHorizontal="true"><dc:Bounds x="60" y="40" width="1332" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Doc_di" bpmnElement="Part_Doc" isHorizontal="true"><dc:Bounds x="1432" y="40" width="996" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Com_di" bpmnElement="Part_Com" isHorizontal="true"><dc:Bounds x="522" y="500" width="324" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Dir_di" bpmnElement="Part_Dir" isHorizontal="true"><dc:Bounds x="886" y="500" width="1108" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_F_01_di" bpmnElement="Flow_F_01">
+        <di:waypoint x="75" y="110" />
+        <di:waypoint x="75" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="81" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_02_di" bpmnElement="Flow_F_02">
+        <di:waypoint x="187" y="110" />
+        <di:waypoint x="187" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="193" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_03_di" bpmnElement="Flow_F_03">
+        <di:waypoint x="299" y="110" />
+        <di:waypoint x="299" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="305" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_04_di" bpmnElement="Flow_F_04">
+        <di:waypoint x="411" y="110" />
+        <di:waypoint x="411" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="417" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_05_di" bpmnElement="Flow_F_05">
+        <di:waypoint x="523" y="110" />
+        <di:waypoint x="523" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="529" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_06_di" bpmnElement="Flow_F_06">
+        <di:waypoint x="635" y="260" />
+        <di:waypoint x="635" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="641" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_07_di" bpmnElement="Flow_F_07">
+        <di:waypoint x="747" y="260" />
+        <di:waypoint x="747" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="753" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_08_di" bpmnElement="Flow_F_08">
+        <di:waypoint x="859" y="260" />
+        <di:waypoint x="859" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="865" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_09_di" bpmnElement="Flow_F_09">
+        <di:waypoint x="971" y="260" />
+        <di:waypoint x="971" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="977" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_10_di" bpmnElement="Flow_F_10">
+        <di:waypoint x="1083" y="260" />
+        <di:waypoint x="1083" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1089" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_11_di" bpmnElement="Flow_F_11">
+        <di:waypoint x="1195" y="260" />
+        <di:waypoint x="1195" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1201" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_12_di" bpmnElement="Flow_F_12">
+        <di:waypoint x="1307" y="260" />
+        <di:waypoint x="1307" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1313" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_13_di" bpmnElement="Flow_F_13">
+        <di:waypoint x="1447" y="110" />
+        <di:waypoint x="1447" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1453" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_14_di" bpmnElement="Flow_F_14">
+        <di:waypoint x="1559" y="110" />
+        <di:waypoint x="1559" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1565" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_15_di" bpmnElement="Flow_F_15">
+        <di:waypoint x="1671" y="110" />
+        <di:waypoint x="1671" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1677" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_16_di" bpmnElement="Flow_F_16">
+        <di:waypoint x="1783" y="110" />
+        <di:waypoint x="1783" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1789" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_17_di" bpmnElement="Flow_F_17">
+        <di:waypoint x="1895" y="110" />
+        <di:waypoint x="1895" y="260" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1901" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_18_di" bpmnElement="Flow_F_18">
+        <di:waypoint x="2007" y="260" />
+        <di:waypoint x="2007" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2013" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_19_di" bpmnElement="Flow_F_19">
+        <di:waypoint x="2119" y="260" />
+        <di:waypoint x="2119" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2125" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_20_di" bpmnElement="Flow_F_20">
+        <di:waypoint x="2231" y="260" />
+        <di:waypoint x="2231" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2237" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_21_di" bpmnElement="Flow_F_21">
+        <di:waypoint x="2343" y="260" />
+        <di:waypoint x="2343" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2349" y="155" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_22_di" bpmnElement="Flow_F_22">
+        <di:waypoint x="537" y="500" />
+        <di:waypoint x="537" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="543" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_23_di" bpmnElement="Flow_F_23">
+        <di:waypoint x="649" y="500" />
+        <di:waypoint x="649" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="655" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_24_di" bpmnElement="Flow_F_24">
+        <di:waypoint x="761" y="350" />
+        <di:waypoint x="761" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="767" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_25_di" bpmnElement="Flow_F_25">
+        <di:waypoint x="901" y="500" />
+        <di:waypoint x="901" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="907" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_26_di" bpmnElement="Flow_F_26">
+        <di:waypoint x="1013" y="500" />
+        <di:waypoint x="1013" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1019" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_27_di" bpmnElement="Flow_F_27">
+        <di:waypoint x="1125" y="500" />
+        <di:waypoint x="1125" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1131" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_28_di" bpmnElement="Flow_F_28">
+        <di:waypoint x="1237" y="500" />
+        <di:waypoint x="1237" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1243" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_29_di" bpmnElement="Flow_F_29">
+        <di:waypoint x="1349" y="500" />
+        <di:waypoint x="1349" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1355" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_30_di" bpmnElement="Flow_F_30">
+        <di:waypoint x="1461" y="350" />
+        <di:waypoint x="1461" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1467" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_31_di" bpmnElement="Flow_F_31">
+        <di:waypoint x="1573" y="350" />
+        <di:waypoint x="1573" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1579" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_32_di" bpmnElement="Flow_F_32">
+        <di:waypoint x="1685" y="350" />
+        <di:waypoint x="1685" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1691" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_33_di" bpmnElement="Flow_F_33">
+        <di:waypoint x="1797" y="350" />
+        <di:waypoint x="1797" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1803" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_F_34_di" bpmnElement="Flow_F_34">
+        <di:waypoint x="1909" y="350" />
+        <di:waypoint x="1909" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1915" y="395" width="92" height="60" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

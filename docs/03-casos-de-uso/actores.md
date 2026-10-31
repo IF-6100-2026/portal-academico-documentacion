@@ -4,7 +4,7 @@ Los actores coinciden con los participantes del [proceso actual](../01-inicio/bp
 
 ![Diagrama de casos de uso](diagrama-casos-de-uso.png)
 
-Fuente editable: [diagrama-casos-de-uso.puml](diagrama-casos-de-uso.puml).
+Fuente editable en [bpmn.io](https://bpmn.io/): [diagrama-casos-de-uso.bpmn](diagrama-casos-de-uso.bpmn). Está dibujado en notación BPMN: cada pool externo es un actor, cada tarea es un caso de uso y cada flecha es una asociación actor–caso. La relación «extend» se muestra como una asociación con flecha y su nota.
 
 ## Resumen
 

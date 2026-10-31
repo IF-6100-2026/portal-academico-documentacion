@@ -78,8 +78,7 @@ Son personas y registros ficticios que se usan solo en los escenarios.
 | **SMS** | Mensaje de texto al teléfono |
 | **PNG** | Formato de imagen en el que se exportan los diagramas |
 | **`.feature`** | Archivo de escenarios de prueba escritos en Gherkin (Dado / Cuando / Entonces) |
-| **`.puml`** | Archivo fuente de PlantUML, la herramienta del diagrama de casos de uso |
-| **Mermaid** | Notación de texto para diagramas, que GitHub dibuja directamente; se usa en el diagrama de contexto |
+| **Mermaid** | Notación de texto para diagramas, que GitHub dibuja directamente; se usa en el diagrama de arquitectura |
 
 ## Identificadores del PC1 (solo en las equivalencias)
 

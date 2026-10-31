@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Portal Académico (generador del equipo)" exporterVersion="1.0" id="Defs_CasosDeUso">
+  <bpmn:collaboration id="Collab_CasosDeUso">
+    <bpmn:participant id="Part_Portal" name="Portal Académico" processRef="Process_CasosDeUso" />
+    <bpmn:participant id="Part_Enc" name="A-01 Persona encargada legal" />
+    <bpmn:participant id="Part_Tie" name="A-05 Tiempo (servicio programado)" />
+    <bpmn:participant id="Part_Doc" name="A-02 Docente" />
+    <bpmn:participant id="Part_Com" name="A-03 Comité de Evaluación" />
+    <bpmn:participant id="Part_Dir" name="A-04 Dirección" />
+    <bpmn:messageFlow id="Link_Enc_CU_01" sourceRef="Part_Enc" targetRef="CU_01" />
+    <bpmn:messageFlow id="Link_Enc_CU_06" sourceRef="Part_Enc" targetRef="CU_06" />
+    <bpmn:messageFlow id="Link_Enc_CU_07" sourceRef="Part_Enc" targetRef="CU_07" />
+    <bpmn:messageFlow id="Link_Enc_CU_12" sourceRef="Part_Enc" targetRef="CU_12" />
+    <bpmn:messageFlow id="Link_Enc_CU_05" sourceRef="Part_Enc" targetRef="CU_05" />
+    <bpmn:messageFlow id="Link_Tie_CU_05" sourceRef="Part_Tie" targetRef="CU_05" />
+    <bpmn:messageFlow id="Link_Doc_CU_03" sourceRef="Part_Doc" targetRef="CU_03" />
+    <bpmn:messageFlow id="Link_Doc_CU_04" sourceRef="Part_Doc" targetRef="CU_04" />
+    <bpmn:messageFlow id="Link_Doc_CU_06" sourceRef="Part_Doc" targetRef="CU_06" />
+    <bpmn:messageFlow id="Link_Doc_CU_09" sourceRef="Part_Doc" targetRef="CU_09" />
+    <bpmn:messageFlow id="Link_Doc_CU_07" sourceRef="Part_Doc" targetRef="CU_07" />
+    <bpmn:messageFlow id="Link_Com_CU_07" sourceRef="Part_Com" targetRef="CU_07" />
+    <bpmn:messageFlow id="Link_Dir_CU_07" sourceRef="Part_Dir" targetRef="CU_07" />
+    <bpmn:messageFlow id="Link_Dir_CU_12" sourceRef="Part_Dir" targetRef="CU_12" />
+    <bpmn:messageFlow id="Link_Dir_CU_05" sourceRef="Part_Dir" targetRef="CU_05" />
+    <bpmn:messageFlow id="Link_Dir_CU_02" sourceRef="Part_Dir" targetRef="CU_02" />
+    <bpmn:messageFlow id="Link_Dir_CU_08" sourceRef="Part_Dir" targetRef="CU_08" />
+    <bpmn:messageFlow id="Link_Dir_CU_10" sourceRef="Part_Dir" targetRef="CU_10" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_CasosDeUso" isExecutable="false">
+    <bpmn:task id="CU_03" name="CU-03 Publicar evaluación asignada" />
+    <bpmn:task id="CU_04" name="CU-04 Publicar calificación" />
+    <bpmn:task id="CU_01" name="CU-01 Consultar progreso académico" />
+    <bpmn:task id="CU_06" name="CU-06 Comunicarse sobre un estudiante" />
+    <bpmn:task id="CU_09" name="CU-09 Corregir una calificación publicada" />
+    <bpmn:task id="CU_07" name="CU-07 Gestionar apelación de una calificación" />
+    <bpmn:task id="CU_12" name="CU-12 Presentar queja por información no recibida" />
+    <bpmn:task id="CU_05" name="CU-05 Dar seguimiento a avisos no consultados" />
+    <bpmn:task id="CU_02" name="CU-02 Vincular encargado con estudiante" />
+    <bpmn:task id="CU_08" name="CU-08 Supervisar el seguimiento académico" />
+    <bpmn:task id="CU_10" name="CU-10 Configurar plazos y recordatorios" />
+    <bpmn:textAnnotation id="Nota_Extend"><bpmn:text>«extend»: CU-09 extiende a CU-07 en el punto «Resolución con cambio de calificación».</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Nota_Estudiante"><bpmn:text>El estudiante participa en el proceso actual (BPMN), pero no tiene cuenta en el MVP.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="Nota_Lectura"><bpmn:text>Lectura: cada pool externo es un actor, cada tarea es un caso de uso y cada flecha es una asociación actor–caso.</bpmn:text></bpmn:textAnnotation>
+    <bpmn:association id="Extend_CU09_CU07" associationDirection="One" sourceRef="CU_09" targetRef="CU_07" />
+    <bpmn:association id="Assoc_Nota_Extend" sourceRef="Nota_Extend" targetRef="Extend_CU09_CU07" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_CasosDeUso">
+    <bpmndi:BPMNPlane id="Plane_CasosDeUso" bpmnElement="Collab_CasosDeUso">
+      <bpmndi:BPMNShape id="Part_Portal_di" bpmnElement="Part_Portal" isHorizontal="true"><dc:Bounds x="60" y="200" width="2560" height="240" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Enc_di" bpmnElement="Part_Enc" isHorizontal="true"><dc:Bounds x="500" y="40" width="1130" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Tie_di" bpmnElement="Part_Tie" isHorizontal="true"><dc:Bounds x="1640" y="40" width="300" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Doc_di" bpmnElement="Part_Doc" isHorizontal="true"><dc:Bounds x="110" y="520" width="1018" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Com_di" bpmnElement="Part_Com" isHorizontal="true"><dc:Bounds x="1138" y="520" width="124" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Part_Dir_di" bpmnElement="Part_Dir" isHorizontal="true"><dc:Bounds x="1272" y="520" width="1078" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_03_di" bpmnElement="CU_03"><dc:Bounds x="110" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_04_di" bpmnElement="CU_04"><dc:Bounds x="305" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_01_di" bpmnElement="CU_01"><dc:Bounds x="500" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_06_di" bpmnElement="CU_06"><dc:Bounds x="695" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_09_di" bpmnElement="CU_09"><dc:Bounds x="890" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_07_di" bpmnElement="CU_07"><dc:Bounds x="1085" y="300" width="230" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_12_di" bpmnElement="CU_12"><dc:Bounds x="1360" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_05_di" bpmnElement="CU_05"><dc:Bounds x="1555" y="300" width="210" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_02_di" bpmnElement="CU_02"><dc:Bounds x="1810" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_08_di" bpmnElement="CU_08"><dc:Bounds x="2005" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="CU_10_di" bpmnElement="CU_10"><dc:Bounds x="2200" y="300" width="150" height="90" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Nota_Extend_di" bpmnElement="Nota_Extend"><dc:Bounds x="880" y="212" width="240" height="62" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Nota_Estudiante_di" bpmnElement="Nota_Estudiante"><dc:Bounds x="2390" y="240" width="210" height="60" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Nota_Lectura_di" bpmnElement="Nota_Lectura"><dc:Bounds x="2390" y="330" width="210" height="72" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Link_Enc_CU_01_di" bpmnElement="Link_Enc_CU_01">
+        <di:waypoint x="575" y="110" />
+        <di:waypoint x="575" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Enc_CU_06_di" bpmnElement="Link_Enc_CU_06">
+        <di:waypoint x="770" y="110" />
+        <di:waypoint x="770" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Enc_CU_07_di" bpmnElement="Link_Enc_CU_07">
+        <di:waypoint x="1200" y="110" />
+        <di:waypoint x="1200" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Enc_CU_12_di" bpmnElement="Link_Enc_CU_12">
+        <di:waypoint x="1435" y="110" />
+        <di:waypoint x="1435" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Enc_CU_05_di" bpmnElement="Link_Enc_CU_05">
+        <di:waypoint x="1605" y="110" />
+        <di:waypoint x="1605" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Tie_CU_05_di" bpmnElement="Link_Tie_CU_05">
+        <di:waypoint x="1715" y="110" />
+        <di:waypoint x="1715" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Doc_CU_03_di" bpmnElement="Link_Doc_CU_03">
+        <di:waypoint x="185" y="520" />
+        <di:waypoint x="185" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Doc_CU_04_di" bpmnElement="Link_Doc_CU_04">
+        <di:waypoint x="380" y="520" />
+        <di:waypoint x="380" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Doc_CU_06_di" bpmnElement="Link_Doc_CU_06">
+        <di:waypoint x="770" y="520" />
+        <di:waypoint x="770" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Doc_CU_09_di" bpmnElement="Link_Doc_CU_09">
+        <di:waypoint x="965" y="520" />
+        <di:waypoint x="965" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Doc_CU_07_di" bpmnElement="Link_Doc_CU_07">
+        <di:waypoint x="1112" y="520" />
+        <di:waypoint x="1112" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Com_CU_07_di" bpmnElement="Link_Com_CU_07">
+        <di:waypoint x="1200" y="520" />
+        <di:waypoint x="1200" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_07_di" bpmnElement="Link_Dir_CU_07">
+        <di:waypoint x="1288" y="520" />
+        <di:waypoint x="1288" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_12_di" bpmnElement="Link_Dir_CU_12">
+        <di:waypoint x="1435" y="520" />
+        <di:waypoint x="1435" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_05_di" bpmnElement="Link_Dir_CU_05">
+        <di:waypoint x="1660" y="520" />
+        <di:waypoint x="1660" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_02_di" bpmnElement="Link_Dir_CU_02">
+        <di:waypoint x="1885" y="520" />
+        <di:waypoint x="1885" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_08_di" bpmnElement="Link_Dir_CU_08">
+        <di:waypoint x="2080" y="520" />
+        <di:waypoint x="2080" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Link_Dir_CU_10_di" bpmnElement="Link_Dir_CU_10">
+        <di:waypoint x="2275" y="520" />
+        <di:waypoint x="2275" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Extend_CU09_CU07_di" bpmnElement="Extend_CU09_CU07">
+        <di:waypoint x="1040" y="345" />
+        <di:waypoint x="1085" y="345" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Assoc_Nota_Extend_di" bpmnElement="Assoc_Nota_Extend">
+        <di:waypoint x="1062" y="274" />
+        <di:waypoint x="1062" y="345" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

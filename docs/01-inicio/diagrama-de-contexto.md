@@ -4,35 +4,9 @@ El Portal Académico aparece como **una sola caja negra**. A su alrededor están
 
 ![Diagrama de contexto del Portal Académico](diagrama-de-contexto.png)
 
-## Fuente (Mermaid)
+## Fuente
 
-GitHub dibuja este bloque directamente; la imagen anterior se exportó de esta misma fuente.
-
-```mermaid
-flowchart LR
-    ENC["Persona encargada legal"]
-    DOC["Docente"]
-    COM["Comité de Evaluación"]
-    DIR["Dirección"]
-    P(("Portal Académico"))
-
-    ENC -- "F-01 criterios de consulta<br/>F-02 mensaje sobre el estudiante<br/>F-03 apelación con respaldo<br/>F-04 queja por información no recibida<br/>F-05 acuse de consulta" --> P
-    P -- "F-06 perfil, evaluaciones y calificaciones<br/>F-07 aviso de evaluación asignada<br/>F-08 aviso de calificación o corrección<br/>F-09 recordatorio de aviso pendiente<br/>F-10 respuesta de la docente<br/>F-11 resolución de la apelación<br/>F-12 respuesta a la queja" --> ENC
-
-    DOC -- "F-13 evaluación asignada confirmada<br/>F-14 calificaciones del grupo confirmadas<br/>F-15 corrección con motivo<br/>F-16 respuesta al mensaje<br/>F-17 prueba y criterio de calificación" --> P
-    P -- "F-18 mensaje de la persona encargada<br/>F-19 aviso de apelación<br/>F-20 solicitud de publicación faltante<br/>F-21 resumen de publicación" --> DOC
-
-    COM -- "F-22 resolución de la apelación<br/>F-23 solicitud de información adicional" --> P
-    P -- "F-24 expediente de la apelación" --> COM
-
-    DIR -- "F-25 vínculo con respaldo<br/>F-26 plazos y política de recordatorios<br/>F-27 observaciones de la apelación<br/>F-28 hallazgo y respuesta de la queja<br/>F-29 criterios de supervisión" --> P
-    P -- "F-30 alerta de aviso sin consulta<br/>F-31 estado del seguimiento<br/>F-32 registro de consultas<br/>F-33 aviso de queja<br/>F-34 aviso de apelación o vencimiento" --> DIR
-
-    classDef ext fill:#F8FBFF,stroke:#275D85,color:#17324D
-    classDef sys fill:#275D85,stroke:#17324D,color:#FFFFFF,font-weight:bold
-    class ENC,DOC,COM,DIR ext
-    class P sys
-```
+El diagrama se edita en [bpmn.io](https://bpmn.io/) desde [diagrama-de-contexto.bpmn](diagrama-de-contexto.bpmn), y la imagen anterior se exportó de ese archivo. Cada pool es una entidad externa o el Portal como caja negra, y cada flujo de mensaje es un dato F-xx. Es una representación en notación BPMN del diagrama de contexto.
 
 ## Correspondencia de las entidades externas
 
