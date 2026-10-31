@@ -1,0 +1,182 @@
+From b540b0f1b0fcab2f23a843f745e9ff1e9ceae97e Mon Sep 17 00:00:00 2001
+From: Codex <codex@openai.com>
+Date: Fri, 30 Oct 2026 21:03:20 -0600
+Subject: [PATCH] =?UTF-8?q?fix:=20compartir=20configuraci=C3=B3n=20local?=
+ =?UTF-8?q?=20de=20API=20y=20PostgreSQL?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ .env.example                                  |  3 +-
+ README.md                                     | 19 +++++++++
+ docker-compose.yml                            |  2 +-
+ src/main/resources/application.yml            |  7 +++-
+ .../portal/config/LocalConfigurationTest.java | 28 +++++++++++++
+ .../portal/health/HealthControllerTest.java   | 42 +++++++++++++++++++
+ 6 files changed, 98 insertions(+), 3 deletions(-)
+ create mode 100644 src/test/java/cr/ac/ucr/if6100/portal/config/LocalConfigurationTest.java
+ create mode 100644 src/test/java/cr/ac/ucr/if6100/portal/health/HealthControllerTest.java
+
+diff --git a/.env.example b/.env.example
+index b0765a4..c1f1c0d 100644
+--- a/.env.example
++++ b/.env.example
+@@ -2,5 +2,6 @@ DB_NAME=portal_academico
+ DB_USER=portal
+ DB_PASSWORD=portal
+ DB_PORT=5432
+-DB_URL=jdbc:postgresql://localhost:5432/portal_academico
++# DB_URL overrides DB_NAME and DB_PORT only for an external database.
+ SERVER_PORT=8080
++CORS_ALLOWED_ORIGIN=http://localhost:5173
+diff --git a/README.md b/README.md
+index 22dc610..cd82d65 100644
+--- a/README.md
++++ b/README.md
+@@ -11,3 +11,22 @@ Incluye una API de salud, PostgreSQL con migración inicial Liquibase y configur
+ [Backend](https://github.com/IF-6100-2026/portal-academico-backend) · [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) · [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion).
+ 
+ [Drive del proyecto](https://drive.google.com/drive/folders/1HXbHqTi6umEA5Odw2i7tapiS0VMGntZ3).
++
++## Integración del PC2
++
++El análisis revisado está en el [PR de documentación](https://github.com/cbastiancq-lab/portal-academico_documentacion_preliminar/pull/1). Usar sus CU/RF y equivalencias, no los números del PC1. La documentación oficial se actualizará después de la revisión.
++
++### Arranque local
++
++Requiere JDK 21, Maven 3.9+ y Docker Compose v2. Desde esta carpeta:
++
++```bash
++cp .env.example .env
++docker compose up -d --wait
++mvn test
++mvn spring-boot:run
++```
++
++En PowerShell, usar `Copy-Item .env.example .env`. Spring y Compose leen el mismo `.env`; `DB_PORT` y `DB_NAME` forman la URL JDBC salvo que se defina `DB_URL`. Variables exportadas tienen precedencia. CORS se configura con `CORS_ALLOWED_ORIGIN`.
++
++`/api/v1/health` comprueba HTTP; `/actuator/health` comprueba los componentes configurados, incluida PostgreSQL. No hay autenticación ni endpoints académicos todavía.
+diff --git a/docker-compose.yml b/docker-compose.yml
+index b90ef63..81c623b 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -6,7 +6,7 @@ services:
+       POSTGRES_USER: ${DB_USER:-portal}
+       POSTGRES_PASSWORD: ${DB_PASSWORD:-portal}
+     ports:
+-      - "${DB_PORT:-5432}:5432"
++      - "127.0.0.1:${DB_PORT:-5432}:5432"
+     volumes:
+       - postgres_data:/var/lib/postgresql/data
+     healthcheck:
+diff --git a/src/main/resources/application.yml b/src/main/resources/application.yml
+index 123e15c..d516629 100644
+--- a/src/main/resources/application.yml
++++ b/src/main/resources/application.yml
+@@ -1,10 +1,12 @@
+ server:
+   port: ${SERVER_PORT:8080}
+ spring:
++  config:
++    import: "optional:file:.env[.properties]"
+   application:
+     name: portal-academico-api
+   datasource:
+-    url: ${DB_URL:jdbc:postgresql://localhost:5432/portal_academico}
++    url: ${DB_URL:jdbc:postgresql://localhost:${DB_PORT:5432}/${DB_NAME:portal_academico}}
+     username: ${DB_USER:portal}
+     password: ${DB_PASSWORD:portal}
+   jpa:
+@@ -18,3 +20,6 @@ management:
+     web:
+       exposure:
+         include: health,info
++app:
++  cors:
++    allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+diff --git a/src/test/java/cr/ac/ucr/if6100/portal/config/LocalConfigurationTest.java b/src/test/java/cr/ac/ucr/if6100/portal/config/LocalConfigurationTest.java
+new file mode 100644
+index 0000000..61bc1e2
+--- /dev/null
++++ b/src/test/java/cr/ac/ucr/if6100/portal/config/LocalConfigurationTest.java
+@@ -0,0 +1,28 @@
++package cr.ac.ucr.if6100.portal.config;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.boot.test.context.ConfigDataApplicationContextInitializer;
++import org.springframework.boot.test.context.runner.ApplicationContextRunner;
++import static org.assertj.core.api.Assertions.assertThat;
++
++class LocalConfigurationTest {
++    private final ApplicationContextRunner runner = new ApplicationContextRunner()
++        .withInitializer(new ConfigDataApplicationContextInitializer());
++
++    @Test void buildsJdbcUrlFromSharedVariables() {
++        runner.withPropertyValues("DB_NAME=portal_test", "DB_PORT=55432",
++            "CORS_ALLOWED_ORIGIN=http://localhost:5174").run(context -> {
++            assertThat(context.getEnvironment().getProperty("spring.datasource.url"))
++                .isEqualTo("jdbc:postgresql://localhost:55432/portal_test");
++            assertThat(context.getEnvironment().getProperty("app.cors.allowed-origin"))
++                .isEqualTo("http://localhost:5174");
++        });
++    }
++
++    @Test void permitsExplicitExternalJdbcUrl() {
++        runner.withPropertyValues("DB_URL=jdbc:postgresql://db.example:6432/external",
++            "DB_NAME=ignored", "DB_PORT=55432").run(context ->
++            assertThat(context.getEnvironment().getProperty("spring.datasource.url"))
++                .isEqualTo("jdbc:postgresql://db.example:6432/external"));
++    }
++}
+diff --git a/src/test/java/cr/ac/ucr/if6100/portal/health/HealthControllerTest.java b/src/test/java/cr/ac/ucr/if6100/portal/health/HealthControllerTest.java
+new file mode 100644
+index 0000000..11cf3a0
+--- /dev/null
++++ b/src/test/java/cr/ac/ucr/if6100/portal/health/HealthControllerTest.java
+@@ -0,0 +1,42 @@
++package cr.ac.ucr.if6100.portal.health;
++
++import cr.ac.ucr.if6100.portal.config.WebConfig;
++import org.junit.jupiter.api.Test;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
++import org.springframework.context.annotation.Import;
++import org.springframework.test.context.TestPropertySource;
++import org.springframework.test.web.servlet.MockMvc;
++import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
++import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
++
++@WebMvcTest(HealthController.class)
++@Import(WebConfig.class)
++@TestPropertySource(properties = "app.cors.allowed-origin=http://localhost:5173")
++class HealthControllerTest {
++    @Autowired MockMvc mvc;
++
++    @Test void exposesTheFrontendContract() throws Exception {
++        mvc.perform(get("/api/v1/health"))
++            .andExpect(status().isOk())
++            .andExpect(jsonPath("$.status").value("UP"))
++            .andExpect(jsonPath("$.service").value("portal-academico-api"))
++            .andExpect(jsonPath("$.timestamp").isString());
++    }
++
++    @Test void permitsConfiguredOrigin() throws Exception {
++        mvc.perform(options("/api/v1/health")
++            .header("Origin", "http://localhost:5173")
++            .header("Access-Control-Request-Method", "GET"))
++            .andExpect(status().isOk())
++            .andExpect(header().string("Access-Control-Allow-Origin", "http://localhost:5173"));
++    }
++
++    @Test void rejectsOtherOrigin() throws Exception {
++        mvc.perform(options("/api/v1/health")
++            .header("Origin", "https://untrusted.example")
++            .header("Access-Control-Request-Method", "GET"))
++            .andExpect(status().isForbidden())
++            .andExpect(header().doesNotExist("Access-Control-Allow-Origin"));
++    }
++}
+-- 
+2.51.1
+

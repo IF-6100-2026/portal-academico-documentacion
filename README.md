@@ -10,9 +10,18 @@ Equipo actual: **Josué Delgado Corrales y Sebastián Cordero Quesada**.
 
 El [tag `pc1`](https://github.com/IF-6100-2026/portal-academico-documentacion/tree/pc1) conserva los 48 archivos del primer entregable tal como fueron entregados, comprobados por SHA-256. Sus autores y fechas originales se conservan como antecedente histórico. Este README se agregó después de ese tag para organizar el trabajo del PC2.
 
-La documentación del PC1 todavía requiere las correcciones indicadas por el profesor. Su importación no significa que ya esté corregida.
+## Punto de entrada del PC2
 
-## Primer entregable
+La revisión del análisis está en [docs/README.md](docs/README.md): **25 RF, 3 RS y 11 CU**. Usar estos identificadores para el diseño y la implementación. Los documentos numerados de la raíz, `features/` y `prototipos/` son antecedentes del **PC1**, no la especificación vigente del PC2. Se conservan para no perder historia ni romper referencias.
+
+- [Estado integrado y pendientes](docs/estado-integracion.md).
+- [Parches verificados de Frontend y Backend](integracion/README.md).
+- [Equivalencias PC1 → PC2](docs/cambios-pc1-pc2.md).
+- [Flujo entre fork y repositorios de la organización](docs/06-configuracion/flujo-colaboracion.md).
+
+El PC2 está en revisión: esta organización de archivos no implica aprobación del profesor ni funcionalidades implementadas.
+
+## Primer entregable — archivo histórico
 
 - [Índice original](00-README.md)
 - [Problema y visión](01-problema-vision.md)
@@ -31,13 +40,13 @@ La documentación del PC1 todavía requiere las correcciones indicadas por el pr
 
 ## Repositorios del proyecto
 
-Los tres repositorios pertenecen a la organización [IF-6100-2026](https://github.com/IF-6100-2026).
+Los repositorios oficiales pertenecen a [IF-6100-2026](https://github.com/IF-6100-2026). El equipo prepara las correcciones en el [fork de trabajo](https://github.com/cbastiancq-lab/portal-academico_documentacion_preliminar); se proponen al oficial mediante pull request. La documentación nueva se revisa junto con el PR de análisis de Josué.
 
-| Repositorio | Contenido de esta carga |
+| Repositorio | Estado |
 |---|---|
-| [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion) | Los 48 originales del PC1, el tag histórico `pc1` y este índice de coordinación. |
-| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; compilación e integración con PostgreSQL verificadas. |
-| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; build de producción e integración de pantalla con API verificados. |
+| [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion) | Archivo histórico PC1; las correcciones PC2 se integran desde el fork. |
+| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; sin casos de uso académicos implementados. |
+| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; pantalla técnica de salud, sin pantallas de negocio implementadas. |
 
 ## Diseño y ambiente del PC2
 
