@@ -173,3 +173,14 @@ Los identificadores pasan de `TP-UCxx-…` a `TP-CUxx-…`. Cuando un flujo alte
 ## Resultado del PC1
 
 Nota del PC1: 68/100. Rubros logrados: problema y visión, detalle de casos de uso (con −7 por inconsistencia con el problema), escenarios de prueba, y formato y entrega. Rubros parciales: BPMN, trazabilidad BPMN↔RF, RF, RS, diagrama de casos de uso y actores. Las cuatro observaciones prioritarias y los comentarios de cada rubro se atienden en la tabla del inicio.
+
+## Integración final del PC2
+
+| Observación / requisito | Cambio | Archivos |
+|---|---|---|
+| Un repositorio con documentos y código | Incorporados backend/ y frontend/; antecedentes PC1 consultables en el historial | README.md, backend/, frontend/ |
+| Realización representativa | Diseño CU-01 desde pantalla hasta tablas, sin afirmar implementación | docs/05-diseno/arquitectura.md |
+| Lineamientos aplicados | Ejemplos propios de CU-01, CU-04 y CU-09, DTO, transacciones, hooks y composición | docs/05-diseno/ |
+| Seguridad transversal | Añadidos CU-01 A05 y CU-05 A08: sesión inválida y vínculo revocado al abrir; 71 escenarios especificados | docs/04-pruebas/ |
+
+Supuestos abiertos: responsable institucional de vínculos, cardinalidad y estados; plazo de apelación; simultaneidad de participantes del Comité; equivalencia de hojas y reporte semestral. No se presentan como políticas confirmadas.

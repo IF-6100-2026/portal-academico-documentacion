@@ -59,7 +59,7 @@ Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU
 ## Controles
 
 - Los 25 RF tienen actor, evidencia, actividad del BPMN, al menos un CU y al menos un escenario.
-- Los 11 CU tienen al menos un RF, un archivo `.feature` y un issue.
+- Los 11 CU tienen al menos un RF y un archivo `.feature`. Los enlaces de issues se completan al publicarlos; «por crear» es un pendiente real.
 - Los escenarios `A01` de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)

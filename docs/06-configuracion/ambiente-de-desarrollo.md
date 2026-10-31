@@ -2,13 +2,23 @@
 
 ## Versiones y estado
 
-JDK 21, Maven 3.9+, Node.js 22.12+ (línea 22, `.nvmrc`; también se admite Node 24+), npm, Git y Docker Compose v2. Compose usa PostgreSQL 17. Frontend, backend y documentación permanecen en repositorios separados; ver [flujo de colaboración](flujo-colaboracion.md).
+JDK 21, Maven 3.9+, Node.js 22.12+ (línea 22, `.nvmrc`; también se admite Node 24+), npm, Git y Docker Compose v2. Compose usa PostgreSQL 17. Documentación, backend y frontend están en este mismo repositorio.
 
-Esta guía describe la configuración de los PR de integración. Hasta fusionarlos, `main` puede conservar el arranque anterior.
+## Clonación
+
+```bash
+git clone https://github.com/IF-6100-2026/portal-academico-documentacion.git
+cd portal-academico-documentacion
+```
+
+Usar la rama o tag que contenga la integración PC2. Una vez publicada la entrega, ejecutar `git checkout pc2`. No usar el main antiguo si la integración sigue pendiente.
+
+## Propósito y alcance
+Levantar PostgreSQL, API y frontend locales del esqueleto PC2, sin datos académicos reales.
 
 ## Base de datos y backend
 
-Desde `portal-academico-backend`, copiar `.env.example` a `.env`:
+Desde `backend/`, copiar `.env.example` a `.env`:
 
 ```powershell
 Copy-Item .env.example .env
@@ -32,7 +42,7 @@ Usar valores sin comillas en `.env` para que Spring y Compose los interpreten ig
 
 ## Frontend
 
-Desde `portal-academico-frontend`:
+Desde `frontend/`:
 
 ```powershell
 Copy-Item .env.example .env
@@ -59,4 +69,8 @@ Detener Vite y Spring con Ctrl+C; desde backend usar `docker compose down`. Cons
 
 Si la API abre en el navegador pero el frontend falla, comprobar el origen CORS y `VITE_API_URL`. Si Spring no arranca, comprobar JDK 21, credenciales, puerto y que Maven se ejecute desde la raíz del backend.
 
-Los escenarios Gherkin de `docs/04-pruebas` son especificaciones; todavía no existe un ejecutor que los conecte al sistema. Ver [el estado de la revisión](../estado-integracion.md) para distinguir comprobaciones realizadas de pendientes.
+Los escenarios Gherkin de `docs/04-pruebas` son especificaciones; todavía no existe un ejecutor que los conecte al sistema. No se presentan estos escenarios como pruebas ejecutadas.
+
+## Verificación de esta preparación
+
+Frontend: npm ci y npm run build completados con Node 24.22.1. Validador documental: 11 CU, 11 archivos feature, 71 escenarios y cero errores estructurales. Backend: 5 pruebas pasadas con Java 21, sin base de datos real. Mockito se carga como agente explícito desde Surefire para evitar depender del autoacoplamiento de la JVM. El arranque real con PostgreSQL requiere confirmación antes de entregar. Los issues están preparados en scripts/issues-pc2.json, pero la publicación oficial devolvió 403; no se consideran creados. No se ha creado pc2.

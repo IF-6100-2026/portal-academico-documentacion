@@ -1,32 +1,40 @@
 # Arquitectura propuesta
 
-## Estilo
+## Estilo y justificación
+Monolito modular cliente-servidor con capas cerradas: React → API Spring Boot → servicios de aplicación → persistencia → PostgreSQL. Dos integrantes pueden desarrollar y desplegar una sola API; no se justifican microservicios. Cada módulo expone servicios públicos y mantiene sus repositorios internos. RS-01 exige una consulta sencilla; RS-02 exige registro de consultas y RS-03 obliga a verificar sesión, rol y vínculo en el servidor.
 
-Monolito modular cliente-servidor con capas cerradas. Para el alcance de primaria y el equipo actual permite entregar una sola API y una sola interfaz con despliegue sencillo. La separación por módulos mantiene responsabilidades claras si luego se agregan las funciones académicas. PostgreSQL conserva relaciones e integridad; Liquibase registra los cambios de esquema.
+## Vista de componentes
 
+![Vista de componentes](arquitectura.png)
+
+[Fuente SVG editable](arquitectura.svg).
 ```mermaid
 flowchart TD
-  E[Encargado o docente] --> UI[React · presentación]
-  UI --> API[API REST Spring Boot]
-  API --> APP[Servicios de aplicación]
-  APP --> DOM[Modelo y reglas]
-  APP --> REP[Repositorios]
-  REP --> DB[(PostgreSQL)]
-  DB -. esquema versionado .-> LIQ[Liquibase]
+ UI["Frontend React"] --> API["Controladores y DTO"]
+ API --> APP["Servicios de aplicación"]
+ APP --> DOM["Reglas de dominio"]
+ APP --> REP["Repositorios JPA"]
+ REP --> DB["PostgreSQL"]
 ```
+La fuente editable está arriba. La vista establece dependencias permitidas: un controlador no consulta repositorios y un componente visual no accede a la base de datos.
 
-## Dependencias
+## Realización diseñada de CU-01: consultar progreso académico
+Esta es una propuesta para PC3, no código implementado. Se basa en [CU-01](../03-casos-de-uso/CU-01-consultar-progreso-academico.md), RF-02/RF-03 y RS-01/02/03.
 
-El navegador conoce contratos HTTP y tipos públicos; no accede a la base de datos. Los controladores reciben y validan transporte, llaman a servicios de aplicación y traducen resultados a HTTP. Los servicios coordinan reglas y transacciones. La persistencia implementa interfaces de repositorio y no decide políticas de acceso. Liquibase es la autoridad del esquema; Hibernate valida el mapeo con `ddl-auto=validate`.
+| Paso | Capa y elemento propuesto | Responsabilidad |
+|---|---|---|
+| 1 | Presentación: ProgresoPage y SelectorEstudiante | Seleccionar estudiante y periodo; mostrar carga, ausencia de publicaciones o error. |
+| 2 | Hook useProgreso y api/progreso.ts | Solicitar GET /api/v1/estudiantes/{id}/progreso?periodo=...; cancelar solicitudes obsoletas. |
+| 3 | Seguridad y ProgresoController (boundary) | Resolver identidad de la sesión, validar parámetros y entregar ProgresoResponse; nunca aceptar un encargadoId del cliente como identidad. |
+| 4 | ConsultarProgresoService (control) | En una transacción, verificar cuenta activa, rol y vínculo vigente; obtener solo publicaciones y registrar la consulta autorizada. |
+| 5 | VinculoRepository y PublicacionRepository | Consultas acotadas por encargado autenticado, estudiante, periodo y estado publicado. |
+| 6 | Persistencia (entity) | VinculoEncargadoEstudiante, Estudiante, Evaluacion, Calificacion y RegistroConsulta. |
+| 7 | Tablas propuestas | vinculo_encargado_estudiante, estudiante, evaluacion, calificacion, registro_consulta. Aún no creadas por la migración inicial. |
+| 8 | Respuesta y presentación | DTO con perfil autorizado, publicaciones y versión vigente; CalificacionCard indica corrección e historial accesible. |
 
-## Realización representativa: consulta de salud
+La transacción no es de solo lectura porque RS-02 registra la consulta. La autorización se repite por solicitud; no se conserva un permiso indefinidamente en el frontend. La revocación confirmada debe impedir la siguiente consulta. Antes de construir se definirá una estrategia de concurrencia para revocaciones simultáneas (bloqueo o control de versión del vínculo).
 
-La pantalla de desarrollo solicita `GET /api/v1/health` al módulo tipado `src/api/health.ts`. Spring MVC enruta la solicitud a `HealthController`, que devuelve estado, nombre del servicio y hora UTC. El endpoint verifica transporte e integración de frontend y backend; no pretende implementar CU-01 ni exponer datos académicos. La línea base de análisis propuesta está en [el índice PC2](../README.md); la realización de negocio de CU-01 sigue pendiente.
+Flujos negativos: sesión inválida → 401 sin datos; vínculo ausente/revocado → respuesta de acceso denegado sin revelar existencia de estudiantes ajenos; periodo vacío → 200 con lista vacía; corrección → versión vigente y acceso autorizado al historial. El error visible corresponde a los escenarios A01–A05 del CU.
 
-## Decisiones pendientes
-
-El análisis PC2 ya propone el contexto, los actores y la matriz RF → CU. Falta revisar su aprobación y derivar el modelo de dominio, el esquema relacional, los DTO y la realización de negocio. No reutilizar automáticamente los números RF del PC1: consultar [las equivalencias](../cambios-pc1-pc2.md).
-
-## Seguridad pendiente de implementación
-
-RS-03 exige sesión, rol y vínculo/asignación en cada operación académica. El backend actual no incluye Spring Security ni endpoints académicos. CORS solo controla orígenes del navegador: no autentica ni autoriza. Antes de exponer datos de estudiantes se deben implementar autenticación, autorización por operación y las pruebas positivas y negativas de RS-03. Elegir y configurar el framework es trabajo pendiente; no ocurre automáticamente por usar Spring Boot.
+## Estado implementado
+El código incluido implementa exclusivamente configuración, migración inicial y GET /api/v1/health. El diseño de CU-01 no implica su construcción. Autenticación, autorización académica y escenarios ejecutables pertenecen a la construcción posterior.
