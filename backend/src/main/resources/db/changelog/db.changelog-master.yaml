@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-baseline
+      author: equipo-montessori
+      changes:
+        - createTable:
+            tableName: schema_baseline
+            remarks: Registro inicial de migración del Portal Académico.
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false

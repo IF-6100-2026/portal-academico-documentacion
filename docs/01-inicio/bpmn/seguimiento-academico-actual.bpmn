@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Defs_Process_SeguimientoActual" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Portal Académico (generador del equipo)" exporterVersion="1.0">
+  <bpmn:collaboration id="Collab_SeguimientoActual">
+    <bpmn:participant id="Part_Centro" name="Centro Educativo María Montessori — comunicación del seguimiento académico (AS-IS)" processRef="Process_SeguimientoActual" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_SeguimientoActual" name="Comunicar el seguimiento académico (proceso actual)" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_Docente" name="Docente">
+        <bpmn:flowNodeRef>SE_01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_00</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_06</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_07</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Estudiante" name="Estudiante">
+        <bpmn:flowNodeRef>AC_02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_08</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_04</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Encargado" name="Persona encargada legal">
+        <bpmn:flowNodeRef>AC_03</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_01</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_04</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_02</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_09</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>AC_10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>G_05</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EE_01</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Comite" name="Comité de Evaluación">
+        <bpmn:flowNodeRef>SP_01</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Direccion" name="Dirección">
+        <bpmn:flowNodeRef>AC_11</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="SE_01" name="Inicia el periodo lectivo">
+      <bpmn:outgoing>F_01</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="G_00" name="">
+      <bpmn:incoming>F_01</bpmn:incoming>
+      <bpmn:incoming>F_12</bpmn:incoming>
+      <bpmn:outgoing>F_02</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="AC_01" name="AC-01 Anotar la evaluación en el cuaderno y registrarla en la plataforma y el registro físico">
+      <bpmn:documentation>E-01, E-02</bpmn:documentation>
+      <bpmn:incoming>F_02</bpmn:incoming>
+      <bpmn:outgoing>F_03</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DA_01"><bpmn:targetRef>DS_Plataforma</bpmn:targetRef></bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DA_02"><bpmn:targetRef>DS_RegistroFisico</bpmn:targetRef></bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DA_03"><bpmn:targetRef>DO_Cuaderno</bpmn:targetRef></bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="AC_02" name="AC-02 Llevar el cuaderno al hogar">
+      <bpmn:documentation>E-02, E-04, E-12</bpmn:documentation>
+      <bpmn:incoming>F_03</bpmn:incoming>
+      <bpmn:outgoing>F_04</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="AC_03" name="AC-03 Revisar la anotación y firmar de recibido en el cuaderno">
+      <bpmn:documentation>E-02, E-04</bpmn:documentation>
+      <bpmn:incoming>F_04</bpmn:incoming>
+      <bpmn:outgoing>F_05</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_01" name="¿Está de acuerdo con la calificación?">
+      <bpmn:incoming>F_05</bpmn:incoming>
+      <bpmn:outgoing>F_06</bpmn:outgoing>
+      <bpmn:outgoing>F_07</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="AC_04" name="AC-04 Escribir la apelación en el cuaderno de recados">
+      <bpmn:documentation>E-07</bpmn:documentation>
+      <bpmn:incoming>F_07</bpmn:incoming>
+      <bpmn:outgoing>F_08</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DA_04"><bpmn:targetRef>DO_Recados</bpmn:targetRef></bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:callActivity id="SP_01" name="SP-01 Resolver la apelación" calledElement="Process_ResolverApelacion">
+      <bpmn:documentation>E-07, E-08, E-11. Detalle en resolver-apelacion-actual.bpmn</bpmn:documentation>
+      <bpmn:incoming>F_08</bpmn:incoming>
+      <bpmn:outgoing>F_09</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:task id="AC_05" name="AC-05 Recibir la resolución">
+      <bpmn:documentation>E-11</bpmn:documentation>
+      <bpmn:incoming>F_09</bpmn:incoming>
+      <bpmn:outgoing>F_10</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_02" name="">
+      <bpmn:incoming>F_06</bpmn:incoming>
+      <bpmn:incoming>F_10</bpmn:incoming>
+      <bpmn:outgoing>F_11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="G_03" name="¿Terminó el periodo?">
+      <bpmn:incoming>F_11</bpmn:incoming>
+      <bpmn:outgoing>F_12</bpmn:outgoing>
+      <bpmn:outgoing>F_13</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="AC_06" name="AC-06 Preparar el reporte físico de calificaciones">
+      <bpmn:documentation>E-03, E-12</bpmn:documentation>
+      <bpmn:incoming>F_13</bpmn:incoming>
+      <bpmn:outgoing>F_14</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DA_05"><bpmn:targetRef>DO_Reporte</bpmn:targetRef></bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:task id="AC_07" name="AC-07 Entregar el reporte al estudiante">
+      <bpmn:documentation>E-12</bpmn:documentation>
+      <bpmn:incoming>F_14</bpmn:incoming>
+      <bpmn:outgoing>F_15</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="AC_08" name="AC-08 Llevar el reporte al hogar">
+      <bpmn:documentation>E-12</bpmn:documentation>
+      <bpmn:incoming>F_15</bpmn:incoming>
+      <bpmn:outgoing>F_16</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_04" name="¿Lo entrega a tiempo?">
+      <bpmn:incoming>F_16</bpmn:incoming>
+      <bpmn:outgoing>F_17</bpmn:outgoing>
+      <bpmn:outgoing>F_18</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="AC_09" name="AC-09 Revisar el reporte">
+      <bpmn:documentation>E-03</bpmn:documentation>
+      <bpmn:incoming>F_17</bpmn:incoming>
+      <bpmn:outgoing>F_21</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="AC_10" name="AC-10 Presentar una queja por no recibir la información">
+      <bpmn:documentation>E-14</bpmn:documentation>
+      <bpmn:incoming>F_18</bpmn:incoming>
+      <bpmn:outgoing>F_19</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="AC_11" name="AC-11 Atender la queja">
+      <bpmn:documentation>E-06, E-14</bpmn:documentation>
+      <bpmn:incoming>F_19</bpmn:incoming>
+      <bpmn:outgoing>F_20</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="G_05" name="">
+      <bpmn:incoming>F_20</bpmn:incoming>
+      <bpmn:incoming>F_21</bpmn:incoming>
+      <bpmn:outgoing>F_22</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="EE_01" name="Comunicación del periodo cerrada">
+      <bpmn:incoming>F_22</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_01" sourceRef="SE_01" targetRef="G_00" />
+    <bpmn:sequenceFlow id="F_02" sourceRef="G_00" targetRef="AC_01" />
+    <bpmn:sequenceFlow id="F_03" sourceRef="AC_01" targetRef="AC_02" />
+    <bpmn:sequenceFlow id="F_04" sourceRef="AC_02" targetRef="AC_03" />
+    <bpmn:sequenceFlow id="F_05" sourceRef="AC_03" targetRef="G_01" />
+    <bpmn:sequenceFlow id="F_06" name="Sí" sourceRef="G_01" targetRef="G_02" />
+    <bpmn:sequenceFlow id="F_07" name="No" sourceRef="G_01" targetRef="AC_04" />
+    <bpmn:sequenceFlow id="F_08" sourceRef="AC_04" targetRef="SP_01" />
+    <bpmn:sequenceFlow id="F_09" sourceRef="SP_01" targetRef="AC_05" />
+    <bpmn:sequenceFlow id="F_10" sourceRef="AC_05" targetRef="G_02" />
+    <bpmn:sequenceFlow id="F_11" sourceRef="G_02" targetRef="G_03" />
+    <bpmn:sequenceFlow id="F_12" name="No" sourceRef="G_03" targetRef="G_00" />
+    <bpmn:sequenceFlow id="F_13" name="Sí" sourceRef="G_03" targetRef="AC_06" />
+    <bpmn:sequenceFlow id="F_14" sourceRef="AC_06" targetRef="AC_07" />
+    <bpmn:sequenceFlow id="F_15" sourceRef="AC_07" targetRef="AC_08" />
+    <bpmn:sequenceFlow id="F_16" sourceRef="AC_08" targetRef="G_04" />
+    <bpmn:sequenceFlow id="F_17" name="Sí" sourceRef="G_04" targetRef="AC_09" />
+    <bpmn:sequenceFlow id="F_18" name="No, lo retrasa u oculta" sourceRef="G_04" targetRef="AC_10" />
+    <bpmn:sequenceFlow id="F_19" sourceRef="AC_10" targetRef="AC_11" />
+    <bpmn:sequenceFlow id="F_20" sourceRef="AC_11" targetRef="G_05" />
+    <bpmn:sequenceFlow id="F_21" sourceRef="AC_09" targetRef="G_05" />
+    <bpmn:sequenceFlow id="F_22" sourceRef="G_05" targetRef="EE_01" />
+    <bpmn:dataStoreReference id="DS_Plataforma" name="Plataforma digital" />
+    <bpmn:dataStoreReference id="DS_RegistroFisico" name="Registro físico" />
+    <bpmn:dataObjectReference id="DO_Cuaderno" name="Cuaderno de la asignatura" dataObjectRef="Obj_DO_Cuaderno" />
+    <bpmn:dataObject id="Obj_DO_Cuaderno" />
+    <bpmn:dataObjectReference id="DO_Recados" name="Cuaderno de recados" dataObjectRef="Obj_DO_Recados" />
+    <bpmn:dataObject id="Obj_DO_Recados" />
+    <bpmn:dataObjectReference id="DO_Reporte" name="Reporte físico de calificaciones" dataObjectRef="Obj_DO_Reporte" />
+    <bpmn:dataObject id="Obj_DO_Reporte" />
+    <bpmn:textAnnotation id="TA_Direccion"><bpmn:text>La Dirección supervisa el seguimiento académico (E-06).</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TA_Plazo"><bpmn:text>El plazo para resolver la apelación depende de la situación (E-08).</bpmn:text></bpmn:textAnnotation>
+    <bpmn:textAnnotation id="TA_Firma"><bpmn:text>La firma en el cuaderno es la única constancia de recibido (E-04).</bpmn:text></bpmn:textAnnotation>
+    <bpmn:association id="AS_01" sourceRef="AC_11" targetRef="TA_Direccion" />
+    <bpmn:association id="AS_02" sourceRef="SP_01" targetRef="TA_Plazo" />
+    <bpmn:association id="AS_03" sourceRef="AC_03" targetRef="TA_Firma" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_Process_SeguimientoActual">
+    <bpmndi:BPMNPlane id="Plane_Process_SeguimientoActual" bpmnElement="Collab_SeguimientoActual">
+      <bpmndi:BPMNShape id="Part_Centro_di" bpmnElement="Part_Centro" isHorizontal="true">
+        <dc:Bounds x="20" y="40" width="2470" height="880" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Docente_di" bpmnElement="Lane_Docente" isHorizontal="true">
+        <dc:Bounds x="50" y="40" width="2440" height="220" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Estudiante_di" bpmnElement="Lane_Estudiante" isHorizontal="true">
+        <dc:Bounds x="50" y="260" width="2440" height="140" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Encargado_di" bpmnElement="Lane_Encargado" isHorizontal="true">
+        <dc:Bounds x="50" y="400" width="2440" height="240" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Comite_di" bpmnElement="Lane_Comite" isHorizontal="true">
+        <dc:Bounds x="50" y="640" width="2440" height="140" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Direccion_di" bpmnElement="Lane_Direccion" isHorizontal="true">
+        <dc:Bounds x="50" y="780" width="2440" height="140" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SE_01_di" bpmnElement="SE_01">
+        <dc:Bounds x="100" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="68" y="212" width="100" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_00_di" bpmnElement="G_00" isMarkerVisible="true">
+        <dc:Bounds x="170" y="165" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_01_di" bpmnElement="AC_01">
+        <dc:Bounds x="245" y="145" width="160" height="90" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_02_di" bpmnElement="AC_02">
+        <dc:Bounds x="410" y="290" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_03_di" bpmnElement="AC_03">
+        <dc:Bounds x="570" y="430" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_01_di" bpmnElement="G_01" isMarkerVisible="true">
+        <dc:Bounds x="730" y="445" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="705" y="403" width="110" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_04_di" bpmnElement="AC_04">
+        <dc:Bounds x="800" y="535" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="SP_01_di" bpmnElement="SP_01">
+        <dc:Bounds x="960" y="670" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_05_di" bpmnElement="AC_05">
+        <dc:Bounds x="1120" y="535" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_02_di" bpmnElement="G_02" isMarkerVisible="true">
+        <dc:Bounds x="1290" y="445" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_03_di" bpmnElement="G_03" isMarkerVisible="true">
+        <dc:Bounds x="1400" y="165" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1300" y="160" width="90" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_06_di" bpmnElement="AC_06">
+        <dc:Bounds x="1490" y="150" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_07_di" bpmnElement="AC_07">
+        <dc:Bounds x="1650" y="150" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_08_di" bpmnElement="AC_08">
+        <dc:Bounds x="1810" y="290" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_04_di" bpmnElement="G_04" isMarkerVisible="true">
+        <dc:Bounds x="1970" y="305" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1945" y="270" width="100" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_09_di" bpmnElement="AC_09">
+        <dc:Bounds x="2090" y="430" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_10_di" bpmnElement="AC_10">
+        <dc:Bounds x="1935" y="535" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="AC_11_di" bpmnElement="AC_11">
+        <dc:Bounds x="1935" y="810" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="G_05_di" bpmnElement="G_05" isMarkerVisible="true">
+        <dc:Bounds x="2300" y="445" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EE_01_di" bpmnElement="EE_01">
+        <dc:Bounds x="2400" y="452" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2380" y="494" width="80" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DS_Plataforma_di" bpmnElement="DS_Plataforma">
+        <dc:Bounds x="255" y="74" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="242" y="44" width="76" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DS_RegistroFisico_di" bpmnElement="DS_RegistroFisico">
+        <dc:Bounds x="345" y="74" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="332" y="44" width="76" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DO_Cuaderno_di" bpmnElement="DO_Cuaderno">
+        <dc:Bounds x="432" y="74" width="36" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="412" y="44" width="76" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DO_Recados_di" bpmnElement="DO_Recados">
+        <dc:Bounds x="860" y="665" width="36" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="840" y="717" width="76" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DO_Reporte_di" bpmnElement="DO_Reporte">
+        <dc:Bounds x="1532" y="74" width="36" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1512" y="44" width="76" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TA_Direccion_di" bpmnElement="TA_Direccion">
+        <dc:Bounds x="1600" y="815" width="260" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TA_Plazo_di" bpmnElement="TA_Plazo">
+        <dc:Bounds x="1200" y="720" width="260" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TA_Firma_di" bpmnElement="TA_Firma">
+        <dc:Bounds x="560" y="560" width="190" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_01_di" bpmnElement="F_01">
+        <di:waypoint x="136" y="190" />
+        <di:waypoint x="170" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_02_di" bpmnElement="F_02">
+        <di:waypoint x="220" y="190" />
+        <di:waypoint x="245" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_03_di" bpmnElement="F_03">
+        <di:waypoint x="405" y="190" />
+        <di:waypoint x="470" y="190" />
+        <di:waypoint x="470" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_04_di" bpmnElement="F_04">
+        <di:waypoint x="530" y="330" />
+        <di:waypoint x="630" y="330" />
+        <di:waypoint x="630" y="430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_05_di" bpmnElement="F_05">
+        <di:waypoint x="690" y="470" />
+        <di:waypoint x="730" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_06_di" bpmnElement="F_06">
+        <di:waypoint x="780" y="470" />
+        <di:waypoint x="1290" y="470" />
+        <bpmndi:BPMNLabel><dc:Bounds x="786" y="448" width="22" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_07_di" bpmnElement="F_07">
+        <di:waypoint x="755" y="495" />
+        <di:waypoint x="755" y="575" />
+        <di:waypoint x="800" y="575" />
+        <bpmndi:BPMNLabel><dc:Bounds x="761" y="499" width="22" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_08_di" bpmnElement="F_08">
+        <di:waypoint x="920" y="575" />
+        <di:waypoint x="1020" y="575" />
+        <di:waypoint x="1020" y="670" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_09_di" bpmnElement="F_09">
+        <di:waypoint x="1080" y="710" />
+        <di:waypoint x="1180" y="710" />
+        <di:waypoint x="1180" y="615" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_10_di" bpmnElement="F_10">
+        <di:waypoint x="1240" y="575" />
+        <di:waypoint x="1315" y="575" />
+        <di:waypoint x="1315" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_11_di" bpmnElement="F_11">
+        <di:waypoint x="1340" y="470" />
+        <di:waypoint x="1425" y="470" />
+        <di:waypoint x="1425" y="215" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_12_di" bpmnElement="F_12">
+        <di:waypoint x="1425" y="165" />
+        <di:waypoint x="1425" y="132" />
+        <di:waypoint x="195" y="132" />
+        <di:waypoint x="195" y="165" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1430" y="140" width="22" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_13_di" bpmnElement="F_13">
+        <di:waypoint x="1450" y="190" />
+        <di:waypoint x="1490" y="190" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1456" y="168" width="22" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_14_di" bpmnElement="F_14">
+        <di:waypoint x="1610" y="190" />
+        <di:waypoint x="1650" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_15_di" bpmnElement="F_15">
+        <di:waypoint x="1770" y="190" />
+        <di:waypoint x="1870" y="190" />
+        <di:waypoint x="1870" y="290" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_16_di" bpmnElement="F_16">
+        <di:waypoint x="1930" y="330" />
+        <di:waypoint x="1970" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_17_di" bpmnElement="F_17">
+        <di:waypoint x="2020" y="330" />
+        <di:waypoint x="2150" y="330" />
+        <di:waypoint x="2150" y="430" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2026" y="308" width="22" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_18_di" bpmnElement="F_18">
+        <di:waypoint x="1995" y="355" />
+        <di:waypoint x="1995" y="535" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2001" y="359" width="110" height="28" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_19_di" bpmnElement="F_19">
+        <di:waypoint x="1995" y="615" />
+        <di:waypoint x="1995" y="810" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_20_di" bpmnElement="F_20">
+        <di:waypoint x="2055" y="850" />
+        <di:waypoint x="2325" y="850" />
+        <di:waypoint x="2325" y="495" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_21_di" bpmnElement="F_21">
+        <di:waypoint x="2210" y="470" />
+        <di:waypoint x="2300" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_22_di" bpmnElement="F_22">
+        <di:waypoint x="2350" y="470" />
+        <di:waypoint x="2400" y="470" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DA_01_di" bpmnElement="DA_01">
+        <di:waypoint x="280" y="145" />
+        <di:waypoint x="280" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DA_02_di" bpmnElement="DA_02">
+        <di:waypoint x="370" y="145" />
+        <di:waypoint x="370" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DA_03_di" bpmnElement="DA_03">
+        <di:waypoint x="405" y="160" />
+        <di:waypoint x="440" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DA_04_di" bpmnElement="DA_04">
+        <di:waypoint x="860" y="615" />
+        <di:waypoint x="878" y="665" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DA_05_di" bpmnElement="DA_05">
+        <di:waypoint x="1550" y="150" />
+        <di:waypoint x="1550" y="124" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS_01_di" bpmnElement="AS_01">
+        <di:waypoint x="1935" y="835" />
+        <di:waypoint x="1860" y="835" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS_02_di" bpmnElement="AS_02">
+        <di:waypoint x="1080" y="740" />
+        <di:waypoint x="1200" y="740" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="AS_03_di" bpmnElement="AS_03">
+        <di:waypoint x="630" y="510" />
+        <di:waypoint x="630" y="560" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

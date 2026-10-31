@@ -1,9 +1,25 @@
-# Lineamientos de frontend
+# Lineamientos del frontend
 
-- Las páginas coordinan carga y acciones; componentes pequeños presentan datos y emiten eventos mediante callbacks.
-- El acceso HTTP vive en `src/api/`, con un tipo TypeScript por respuesta. Ningún componente arma URLs ni llama `fetch` directamente.
-- El estado local vive junto a la pantalla que lo necesita. Solo se promueve estado compartido cuando dos flujos reales lo requieran.
-- Los errores de red y los estados de carga son visibles y recuperables. Las vistas distinguen falta de conexión de ausencia de información.
-- Un acceso futuro al progreso académico deberá consumir DTO publicados por backend; no simulará autorización ni esconderá información como control de seguridad.
-- Mantener `strict` y prohibir `any`; nombres de componentes en PascalCase, funciones y variables en camelCase.
-- Evitar una biblioteca global de estado hasta que la complejidad del flujo la justifique.
+## Carpetas
+src/pages contiene ProgresoPage y PublicarCalificacionPage; src/components contiene SelectorEstudiante, CalificacionCard y EstadoCarga; src/hooks contiene useProgreso; src/api contiene progreso.ts y health.ts; src/types contiene ProgresoResponse. Estos elementos académicos se crearán en PC3. El esqueleto actual conserva src/ui/App.tsx y src/api/health.ts.
+
+## Componentes y composición
+ProgresoPage es el contenedor: coordina selección y carga. CalificacionCard solo recibe valor, fecha y corregida mediante props y emite onVerHistorial. No consulta la red. Se divide un componente cuando mezcla carga, formulario y presentación o cuando una parte se reutiliza.
+Composición: ProgresoPage compone SelectorEstudiante, EstadoCarga y una lista de CalificacionCard; se prefieren props y children a jerarquías de herencia.
+
+## Estado y comunicación
+estudianteId y periodo viven en ProgresoPage. SelectorEstudiante recibe value y onChange; los datos bajan por props y los eventos suben por callbacks. El borrador de una calificación vive en su formulario. No se introduce Redux para estos flujos.
+Context solo se usará para identidad/estado de sesión compartidos por rutas; no contendrá permisos que sustituyan autorización del backend. No persistir datos académicos sensibles en localStorage por defecto.
+
+## Hooks
+useProgreso(estudianteId, periodo) devolverá datos, cargando, error y reintentar. Su efecto cancela la solicitud previa al cambiar de estudiante o desmontar; una respuesta vieja no puede sustituir al estudiante seleccionado. Ejemplo CU-01 A03: lista vacía muestra «Sin publicaciones», no «Error de conexión».
+
+## API y tipado
+Solo src/api construye URLs y usa fetch. Los hooks llaman funciones de ese módulo. ProgresoResponse tipa los datos y la frontera HTTP valida respuestas desconocidas; una aserción TypeScript no valida JSON.
+401 solicita autenticación; acceso denegado muestra un mensaje sin datos de terceros; un error de red ofrece reintento. No reintentar automáticamente una publicación: CU-04 requiere evitar duplicados.
+
+## Patrones aplicados
+Contenedor/presentación separa ProgresoPage de CalificacionCard. Composición reutiliza EstadoCarga en consulta y publicación. Un hook personalizado encapsula el ciclo de carga y cancelación de CU-01. No se añade Strategy u Observer artificialmente: solo se adoptarán si aparece una variación real y se documenta el componente concreto.
+
+## Convenciones y RS-01
+TypeScript strict, sin any; componentes PascalCase, hooks useX, funciones camelCase. CSS por componente o módulo, con tokens compartidos para colores y espaciado. Formularios con labels, foco visible, navegación por teclado y errores junto al campo. La carga se anuncia con aria-live y el significado de una nota corregida no depende solo del color.

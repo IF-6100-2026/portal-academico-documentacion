@@ -1,60 +1,23 @@
-# Portal Académico — Documentación
+# Portal Académico Montessori — PC2
 
-Centro Educativo María Montessori · IF-6100 · Grupo 4.
+IF-6100, UCR · Centro Educativo María Montessori.
+Integrantes: Josué Delgado Corrales y Sebastián Cordero Quesada.
 
-Análisis, requisitos, procesos, casos de uso y diseño del sistema. Proyecto del curso IF-6100, UCR, 2026.
+El Portal propone registro y consulta académica, comunicación y seguimiento de apelaciones. Este PC2 entrega el análisis revisado, diseño y esqueleto integrado; no implementa todavía los casos de uso académicos.
 
-## Estado y equipo actual
+- [Documentación](docs/README.md)
+- [Guía completa de arranque y verificación](docs/06-configuracion/ambiente-de-desarrollo.md)
+- [Cambios respecto del PC1](docs/cambios-pc1-pc2.md)
 
-Equipo actual: **Josué Delgado Corrales y Sebastián Cordero Quesada**.
+## Organización
+Documentación en docs/, Spring Boot en backend/ y React en frontend/. Se consolidaron los repositorios anteriores sin borrar su historia. El PC1 se consulta en el historial y en el tag pc1 del repositorio oficial.
 
-El [tag `pc1`](https://github.com/IF-6100-2026/portal-academico-documentacion/tree/pc1) conserva los 48 archivos del primer entregable tal como fueron entregados, comprobados por SHA-256. Sus autores y fechas originales se conservan como antecedente histórico. Este README se agregó después de ese tag para organizar el trabajo del PC2.
+## Arranque resumido
+Requiere Java 21, Maven 3.9+, Node 22.12+ o 24+, npm y Docker Compose v2.
+Desde backend/: copiar .env.example a .env, ejecutar docker compose up -d --wait y mvn spring-boot:run.
+Desde frontend/, en otra terminal: copiar .env.example a .env, npm ci y npm run dev.
+Abrir http://localhost:5173. Consultar la guía para verificar PostgreSQL, migraciones y errores.
 
-La documentación del PC1 todavía requiere las correcciones indicadas por el profesor. Su importación no significa que ya esté corregida.
-
-## Primer entregable
-
-- [Índice original](00-README.md)
-- [Problema y visión](01-problema-vision.md)
-- [Proceso actual y trazabilidad](02-proceso-actual-y-trazabilidad.md)
-- [Requerimientos funcionales](03-requerimientos-funcionales.md)
-- [Requerimientos suplementarios](04-requerimientos-suplementarios.md)
-- [Actores](05-actores.md)
-- [Casos de uso](06-casos-de-uso-detallados.md)
-- [Guion de pruebas](07-guion-pruebas.md)
-- [Matriz de trazabilidad](08-matriz-trazabilidad.md)
-- [Supuestos y validaciones](09-supuestos-validaciones.md)
-- [Validación con la escuela](13-validacion-entrevista-daisy.md)
-- [Diagramas](diagramas/)
-- [Escenarios de prueba](features/)
-- [Prototipos](prototipos/)
-
-## Repositorios del proyecto
-
-Los tres repositorios pertenecen a la organización [IF-6100-2026](https://github.com/IF-6100-2026).
-
-| Repositorio | Contenido de esta carga |
-|---|---|
-| [Documentación](https://github.com/IF-6100-2026/portal-academico-documentacion) | Los 48 originales del PC1, el tag histórico `pc1` y este índice de coordinación. |
-| [Backend](https://github.com/IF-6100-2026/portal-academico-backend) | API Spring Boot 3 / Java 21, endpoint de salud y migración inicial Liquibase; compilación e integración con PostgreSQL verificadas. |
-| [Frontend](https://github.com/IF-6100-2026/portal-academico-frontend) | React, TypeScript y Vite; build de producción e integración de pantalla con API verificados. |
-
-## Diseño y ambiente del PC2
-
-- [Arquitectura propuesta](docs/05-diseno/arquitectura.md)
-- [Lineamientos de backend](docs/05-diseno/lineamientos-backend.md)
-- [Lineamientos de frontend](docs/05-diseno/lineamientos-frontend.md)
-- [Lineamientos de base de datos](docs/05-diseno/lineamientos-base-de-datos.md)
-- [Guía de ambiente e integración](docs/06-configuracion/ambiente-de-desarrollo.md)
-
-La rama `main` integra el historial local del PC1 y el commit inicial que ya existía en GitHub. El tag `pc1` mantiene el commit original `763fd64280f83d5c5c84fc4762de44938c30d94f`.
-
-Existe una diferencia entre la distribución en tres repositorios indicada por Sebastián y el enunciado escrito del PC2 que menciona un repositorio único. Antes de la entrega se debe confirmar y registrar la organización vigente.
-
-## Coordinación
-
-[Drive del proyecto](https://drive.google.com/drive/folders/1HXbHqTi6umEA5Odw2i7tapiS0VMGntZ3) · [Reparto y estado del PC2](https://drive.google.com/file/d/1uJZ4iDJiIYR6P5lmGzmipbD9y62ntsIy/view).
-
-Josué corrige el análisis, contexto, trazabilidad e issues. Sebastián prepara repositorios, configuración integrada, arquitectura, lineamientos y guía; también comprueba el arranque y los enlaces. Ambos realizan sus propios aportes y commits.
-
-El tag `pc2` solo se creará sobre la versión completa, integrada y revisada.
+## Entrega
+Repositorio oficial previsto: https://github.com/IF-6100-2026/portal-academico-documentacion
+El tag pc2 se crea únicamente después de verificar la versión final. Una rama de preparación no equivale a entrega en Mediación Virtual.
