@@ -47,8 +47,3 @@ La bitácora completa está en [bitacora.md](bitacora.md).
 4. **Corrige bien con buena información:** con el mensaje de error encontró la causa sola y lo resolvió en una vuelta.
 5. **Límite de las pruebas generadas:** las del controller comprueban la ruta leyendo las anotaciones, no con una petición HTTP real, así que el JWT y el JSON no quedan probados. Harían falta pruebas E2E.
 6. **El contexto también se revisa:** la app migra sola la configuración de otra herramienta, pero con un reemplazo mecánico que introduce errores.
-
-## Pendiente
-
-- Revisión de Codex del diff completo (V4) y medición de la cuota usada al final.
-- Revisión humana por la otra persona (V5) e integración.

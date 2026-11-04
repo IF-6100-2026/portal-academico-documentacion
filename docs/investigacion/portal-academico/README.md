@@ -14,7 +14,7 @@ Integrantes: Sebastián Andrey Cordero Quesada y Josué Delgado Corrales (grupo 
 - [Guion para exponer](guion-exposicion.md).
 - [Control de cierre](control-entrega.md).
 
-El backend de referencia pasó 22 pruebas: 5 existentes y 17 nuevas. Esto acredita la ejecución técnica del agente. La segunda ejecución comprueba el **plan gratuito** (ChatGPT Free, $0) y la **verificación humana entre pasos**. La revisión humana final (V5) sigue pendiente.
+El backend de referencia pasó 22 pruebas: 5 existentes y 17 nuevas. Esto acredita la ejecución técnica del agente. La segunda ejecución comprueba el **plan gratuito** (ChatGPT Free, $0) y la **verificación humana entre pasos**.
 
 ## Ubicación de entrega
 
