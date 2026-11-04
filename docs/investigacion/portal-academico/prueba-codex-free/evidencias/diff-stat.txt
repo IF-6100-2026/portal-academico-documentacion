@@ -1,0 +1,9 @@
+﻿ AGENTS.md                                          | 117 +++++++++++++++++++
+ .../UpdateCurrentUserNameController.java           |  41 +++++++
+ .../api/request/UpdateCurrentUserNameRequest.java  |   4 +
+ .../dev/leocamacho/demo/exception/ErrorCode.java   |   1 +
+ .../commands/UpdateCurrentUserNameHandler.java     |  22 ++++
+ .../impl/UpdateCurrentUserNameHandlerImpl.java     |  35 ++++++
+ .../api/UpdateCurrentUserNameControllerTests.java  | 130 +++++++++++++++++++++
+ .../UpdateCurrentUserNameHandlerTests.java         |  95 +++++++++++++++
+ 8 files changed, 445 insertions(+)

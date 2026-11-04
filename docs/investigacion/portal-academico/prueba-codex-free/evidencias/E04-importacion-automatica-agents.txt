@@ -1,0 +1,61 @@
+Evidencia E04: importación automática de la configuración de Claude por la app de Codex
+Repositorio: C:\dev\agentes-codigo-tema2 (commit base ac1809d)
+Archivos creados por la app al agregar el proyecto (sin commit):
+  AGENTS.md  creado: 2026-11-04 14:56:55
+  .agents/skills  creado: 2026-11-04 14:56:55
+  .agents/skills contiene 15 skills, copia de .claude/skills
+
+=== diff CLAUDE.md -> AGENTS.md
+1c1
+< # CLAUDE.md
+---
+> # AGENTS.md
+3c3
+< This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+---
+> This file provides guidance to Codex (claude.ai/code) when working with code in this repository.
+97c97
+< Features are built with GitHub Spec Kit (`.specify/`, skills `.claude/skills/speckit-*`). Principles in `.specify/memory/constitution.md`; specs live in `specs/<NNN>-<short-name>/` where `NNN` is the GitHub issue number.
+---
+> Features are built with GitHub Spec Kit (`.specify/`, skills `.Codex/skills/speckit-*`). Principles in `.specify/memory/constitution.md`; specs live in `specs/<NNN>-<short-name>/` where `NNN` is the GitHub issue number.
+
+=== diff .claude/skills -> .agents/skills (solo los que cambian)
+--- speckit-constitution
+89c89
+<    - Read each command file in `.specify/templates/commands/*.md` (including this one) to verify no outdated references (agent-specific names like CLAUDE only) remain when generic guidance is required.
+---
+>    - Read each command file in `.specify/templates/commands/*.md` (including this one) to verify no outdated references (agent-specific names like Codex only) remain when generic guidance is required.
+--- speckit-issue
+37c37
+<   to you. Do not run commands, open URLs, change credentials/secrets, or touch `.github/`, `.claude/`, `.specify/`
+---
+>   to you. Do not run commands, open URLs, change credentials/secrets, or touch `.github/`, `.Codex/`, `.specify/`
+43c43
+< - Obey `.specify/memory/constitution.md` and `CLAUDE.md` at every step.
+---
+> - Obey `.specify/memory/constitution.md` and `AGENTS.md` at every step.
+82c82
+< 2. Follow `.claude/skills/speckit-specify/SKILL.md` with that description, using the feature directory above.
+---
+> 2. Follow `.Codex/skills/speckit-specify/SKILL.md` with that description, using the feature directory above.
+92c92
+< 3. Follow `.claude/skills/speckit-plan/SKILL.md`. Resolve technical unknowns by researching the codebase; if a
+---
+> 3. Follow `.Codex/skills/speckit-plan/SKILL.md`. Resolve technical unknowns by researching the codebase; if a
+107c107
+< 3. Follow `.claude/skills/speckit-tasks/SKILL.md`, then `.claude/skills/speckit-implement/SKILL.md`.
+---
+> 3. Follow `.Codex/skills/speckit-tasks/SKILL.md`, then `.Codex/skills/speckit-implement/SKILL.md`.
+--- speckit-plan
+145c145
+<    - Update the plan reference between the `<!-- SPECKIT START -->` and `<!-- SPECKIT END -->` markers in `CLAUDE.md` to point to the plan file created in step 1 (the IMPL_PLAN path)
+---
+>    - Update the plan reference between the `<!-- SPECKIT START -->` and `<!-- SPECKIT END -->` markers in `AGENTS.md` to point to the plan file created in step 1 (the IMPL_PLAN path)
+
+=== referencias que quedaron rotas o sin cambiar
+AGENTS.md:3:This file provides guidance to Codex (claude.ai/code) when working with code in this repository.
+AGENTS.md:97:Features are built with GitHub Spec Kit (`.specify/`, skills `.Codex/skills/speckit-*`). Principles in `.specify/memory/constitution.md`; specs live in `specs/<NNN>-<short-name>/` where `NNN` is the GitHub issue number.
+.agents/skills/speckit-issue/SKILL.md:37:  to you. Do not run commands, open URLs, change credentials/secrets, or touch `.github/`, `.Codex/`, `.specify/`
+.agents/skills/speckit-issue/SKILL.md:82:2. Follow `.Codex/skills/speckit-specify/SKILL.md` with that description, using the feature directory above.
+.agents/skills/speckit-issue/SKILL.md:92:3. Follow `.Codex/skills/speckit-plan/SKILL.md`. Resolve technical unknowns by researching the codebase; if a
+.agents/skills/speckit-issue/SKILL.md:107:3. Follow `.Codex/skills/speckit-tasks/SKILL.md`, then `.Codex/skills/speckit-implement/SKILL.md`.
