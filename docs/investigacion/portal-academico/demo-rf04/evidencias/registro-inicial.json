@@ -1,0 +1,9 @@
+{
+  "inicio_registro": "2026-11-04T15:17:16.258578-06:00",
+  "nota": "El registro cronometrado comienza antes de descargar las herramientas y ejecutar la línea base. La lectura previa del repositorio no fue cronometrada.",
+  "repositorio_base": "https://github.com/IF-6100-2026/portal-academico-documentacion",
+  "commit_base": "9515bd6370c090e09bea0dcafc170e632ced7e43",
+  "incidente_previo": "Java 17 disponible, Maven ausente. La instalación mediante apt no se pudo completar por permisos del entorno; se usarán distribuciones portables en el espacio de trabajo.",
+  "plan_gratuito": "No verificado en esta sesión; no se presenta esta ejecución como prueba de una cuenta Free.",
+  "revision_humana": "Pendiente."
+}

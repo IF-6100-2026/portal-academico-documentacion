@@ -1,0 +1,18 @@
+[
+  {
+    "tool": "jdk",
+    "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.13_9.tar.gz",
+    "algorithm": "sha256",
+    "checksum": "d7f5d5cf865a2902b70ff549b97586a7d3f234e016f041ab447ea740c7d66d1c",
+    "seconds": 19.921,
+    "directory": "/workspace/scratch/be28c0d25fbf/.tools/jdk-21.0.13+9"
+  },
+  {
+    "tool": "maven",
+    "url": "https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.9.11/apache-maven-3.9.11-bin.tar.gz",
+    "algorithm": "sha512",
+    "checksum": "bcfe4fe305c962ace56ac7b5fc7a08b87d5abd8b7e89027ab251069faebee516b0ded8961445d6d91ec1985dfe30f8153268843c89aa392733d1a3ec956c9978",
+    "seconds": 8.398,
+    "directory": "/workspace/scratch/be28c0d25fbf/.tools/apache-maven-3.9.11"
+  }
+]

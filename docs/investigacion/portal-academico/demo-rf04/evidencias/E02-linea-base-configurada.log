@@ -1,0 +1,5 @@
+Inicio: 2026-11-04T15:23:11.933207-06:00
+Directorio: /workspace/scratch/be28c0d25fbf/demo-portal-academico/backend
+Comando: mvn -s /workspace/scratch/be28c0d25fbf/.build/maven-settings.xml -B -ntp -U -Dstyle.color=never -Dmaven.repo.local=/workspace/scratch/be28c0d25fbf/.tools/m2 test
+
+[INFO] Scanning for projects...

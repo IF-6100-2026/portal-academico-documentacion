@@ -1,0 +1,7 @@
+﻿E07-02 Verificación V3 del paso 1 (2026-11-04 15:27) — .\gradlew.bat build
+19 pruebas, 4 fallan; ArchUnit y Checkstyle sin errores.
+
+[1] name = null: org.opentest4j.AssertionFailedError: expected: <RequiredFields[fields=[Ljava.lang.String;@3ae38ece]> but was: <RequiredFields[fields=[Ljava.lang.String;@23e063ee]>
+[2] name = "": org.opentest4j.AssertionFailedError: expected: <RequiredFields[fields=[Ljava.lang.String;@2b381c76]> but was: <RequiredFields[fields=[Ljava.lang.String;@557665b2]>
+[3] name = "   ": org.opentest4j.AssertionFailedError: expected: <RequiredFields[fields=[Ljava.lang.String;@f9b0bfb]> but was: <RequiredFields[fields=[Ljava.lang.String;@653d1d7c]>
+updateCurrentUserNameShouldReturnInvalidFieldsWhenTrimmedNameIsTooLong(): org.opentest4j.AssertionFailedError: expected: <InvalidFields[fields=[Ljava.lang.String;@21ee9923]> but was: <InvalidFields[fields=[Ljava.lang.String;@43c0736a]>

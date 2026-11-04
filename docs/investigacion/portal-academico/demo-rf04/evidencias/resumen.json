@@ -1,0 +1,33 @@
+{
+  "base_commit": "9515bd6370c090e09bea0dcafc170e632ced7e43",
+  "java": "21.0.13+9 (Temurin)",
+  "maven": "3.9.11",
+  "junit_jupiter": "5.12.2",
+  "tests": {
+    "linea-base": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "backend": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "demo": {
+      "tests": 17,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "escenarios_consola": 6,
+  "archivos_backend_nuevos": 4,
+  "lineas_agregadas_backend": 148,
+  "revision_humana": "pendiente",
+  "modalidad_gratuita": "no comprobada",
+  "commit_nuevo": null,
+  "pr": null
+}

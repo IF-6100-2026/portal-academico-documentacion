@@ -1,0 +1,49 @@
+Inicio: 2026-11-04T15:27:51.423045-06:00
+Directorio: /workspace/scratch/be28c0d25fbf/demo-rf04
+Comando: mvn -s /workspace/scratch/be28c0d25fbf/.build/maven-settings.xml -B -ntp -Dstyle.color=never -Dmaven.repo.local=/workspace/scratch/be28c0d25fbf/.tools/m2 test
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------< cr.ac.ucr.if6100.demo:validacion-evaluacion-rf04 >----------
+[INFO] Building Demostración de validación RF-04 1.0.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ validacion-evaluacion-rf04 ---
+[INFO] skip non existing resourceDirectory /workspace/scratch/be28c0d25fbf/demo-rf04/src/main/resources
+[INFO] skip non existing resourceDirectory /workspace/scratch/be28c0d25fbf/demo-rf04/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ validacion-evaluacion-rf04 ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ validacion-evaluacion-rf04 ---
+[INFO] skip non existing resourceDirectory /workspace/scratch/be28c0d25fbf/demo-rf04/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ validacion-evaluacion-rf04 ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ validacion-evaluacion-rf04 ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.188 s -- in cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.464 s
+[INFO] Finished at: 2026-11-04T15:27:55-06:00
+[INFO] ------------------------------------------------------------------------
+
+Fin: 2026-11-04T15:27:55.064365-06:00
+Segundos: 3.641
+Código de salida: 0

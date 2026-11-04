@@ -1,0 +1,5 @@
+ .../portal/evaluacion/domain/DatosEvaluacion.java  | 11 +++
+ .../portal/evaluacion/domain/ErrorValidacion.java  |  4 +
+ .../evaluacion/domain/ValidadorEvaluacion.java     | 34 ++++++++
+ .../evaluacion/domain/ValidadorEvaluacionTest.java | 99 ++++++++++++++++++++++
+ 4 files changed, 148 insertions(+)

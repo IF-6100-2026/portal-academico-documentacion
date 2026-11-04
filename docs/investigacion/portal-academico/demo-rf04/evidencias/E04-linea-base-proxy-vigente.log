@@ -1,0 +1,73 @@
+Inicio: 2026-11-04T15:26:09.614017-06:00
+Directorio: /workspace/scratch/be28c0d25fbf/demo-portal-academico/backend
+Comando: mvn -s /workspace/scratch/be28c0d25fbf/.build/maven-settings.xml -B -ntp -U -Dstyle.color=never -Dmaven.repo.local=/workspace/scratch/be28c0d25fbf/.tools/m2 test
+
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------< cr.ac.ucr.if6100:portal-academico-api >----------------
+[INFO] Building portal-academico-api 0.1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- enforcer:3.5.0:enforce (require-java-21) @ portal-academico-api ---
+[INFO] Rule 0: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ portal-academico-api ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.0:compile (default-compile) @ portal-academico-api ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 3 source files with javac [debug parameters release 21] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ portal-academico-api ---
+[INFO] skip non existing resourceDirectory /workspace/scratch/be28c0d25fbf/demo-portal-academico/backend/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.0:testCompile (default-testCompile) @ portal-academico-api ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.3:test (default-test) @ portal-academico-api ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running cr.ac.ucr.if6100.portal.health.HealthControllerTest
+15:26:42.843 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [cr.ac.ucr.if6100.portal.health.HealthControllerTest]: HealthControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:26:42.981 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration cr.ac.ucr.if6100.portal.PortalAcademicoApplication for test class cr.ac.ucr.if6100.portal.health.HealthControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.5)
+
+2026-11-04T15:26:43.469-06:00  INFO 110 --- [portal-academico-api] [           main] c.a.u.i.p.health.HealthControllerTest    : Starting HealthControllerTest using Java 21.0.13 with PID 110 (started by root in /workspace/scratch/be28c0d25fbf/demo-portal-academico/backend)
+2026-11-04T15:26:43.470-06:00  INFO 110 --- [portal-academico-api] [           main] c.a.u.i.p.health.HealthControllerTest    : No active profile set, falling back to 1 default profile: "default"
+2026-11-04T15:26:44.399-06:00  INFO 110 --- [portal-academico-api] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-04T15:26:44.399-06:00  INFO 110 --- [portal-academico-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-04T15:26:44.401-06:00  INFO 110 --- [portal-academico-api] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-04T15:26:44.421-06:00  INFO 110 --- [portal-academico-api] [           main] c.a.u.i.p.health.HealthControllerTest    : Started HealthControllerTest in 1.337 seconds (process running for 2.367)
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.241 s -- in cr.ac.ucr.if6100.portal.health.HealthControllerTest
+[INFO] Running cr.ac.ucr.if6100.portal.config.LocalConfigurationTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s -- in cr.ac.ucr.if6100.portal.config.LocalConfigurationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  34.058 s
+[INFO] Finished at: 2026-11-04T15:26:45-06:00
+[INFO] ------------------------------------------------------------------------
+
+Fin: 2026-11-04T15:26:45.111273-06:00
+Segundos: 35.497
+Código de salida: 0

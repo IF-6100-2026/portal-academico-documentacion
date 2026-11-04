@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.107" tests="17" errors="0" skipped="0" failures="0">
+  <testcase name="ca03RechazaEntregaAnteriorEIdentificaElCampo(String, String)[1]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.011" />
+  <testcase name="ca03RechazaEntregaAnteriorEIdentificaElCampo(String, String)[2]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca01AceptaEntregaPosterior" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca01AceptaFechasValidasAlCambiarDeAnioOEnBisiesto(String, String)[1]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca01AceptaFechasValidasAlCambiarDeAnioOEnBisiesto(String, String)[2]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca02PermiteOmitirLaFechaDeEntrega" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[1]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.003" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[2]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[3]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.0" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[4]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.0" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[5]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.0" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[6]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[7]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04IdentificaCadaCampoObligatorio(DatosEvaluacion, String)[8]" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04InformaTodosLosCamposInvalidosEnUnaSolaValidacion" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca04InformaCuandoNoSeRecibenDatos" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+  <testcase name="ca01AceptaEntregaElMismoDia" classname="cr.ac.ucr.if6100.portal.evaluacion.domain.ValidadorEvaluacionTest" time="0.001" />
+</testsuite>

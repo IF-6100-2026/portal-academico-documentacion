@@ -1,0 +1,37 @@
+Inicio: 2026-11-04T15:28:04.296553-06:00
+Directorio: /workspace/scratch/be28c0d25fbf/demo-rf04
+Comando: bash demo.sh
+
+
+CA-01: entrega posterior
+  ACEPTADA
+  Resultado esperado: OK
+
+CA-01: entrega el mismo día
+  ACEPTADA
+  Resultado esperado: OK
+
+CA-02: sin fecha de entrega
+  ACEPTADA
+  Resultado esperado: OK
+
+CA-03: entrega anterior
+  fechaEntrega: La fecha de entrega debe ser igual o posterior a la fecha de asignación.
+  Resultado esperado: OK
+
+CA-04: faltan campos
+  nombre: Debe indicar el nombre de la evaluación.
+  tipo: Debe indicar el tipo de evaluación.
+  fechaAsignacion: Debe indicar la fecha de asignación.
+  instrucciones: Debe indicar las instrucciones.
+  Resultado esperado: OK
+
+CA-04: no hay datos
+  evaluacion: Debe proporcionar los datos de la evaluación.
+  Resultado esperado: OK
+
+6 escenarios comprobados. Esta demo no guarda datos ni implementa todo RF-04.
+
+Fin: 2026-11-04T15:28:05.208160-06:00
+Segundos: 0.912
+Código de salida: 0

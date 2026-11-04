@@ -1,0 +1,3 @@
+﻿d4f3617 15:38 feat: add PUT /api/private/users/current/name endpoint
+c61d529 15:30 feat: add command to update the current user's name
+5e6c3fe 15:08 docs: add AGENTS.md and Codex skills

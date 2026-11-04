@@ -1,0 +1,498 @@
+﻿diff --git a/AGENTS.md b/AGENTS.md
+new file mode 100644
+index 0000000..9f0358d
+--- /dev/null
++++ b/AGENTS.md
+@@ -0,0 +1,117 @@
++# AGENTS.md
++
++This file provides guidance to Codex when working with code in this repository.
++
++## Commands
++
++```bash
++# Build and run all tests (includes Checkstyle)
++./gradlew build
++
++# Run tests only
++./gradlew test
++
++# Run a single test class
++./gradlew test --tests "dev.leocamacho.demo.tests.handlers.commands.RegisterUserHandlerTests"
++
++# Run Cucumber E2E tests (app must already be running; not part of build)
++./gradlew e2eTest
++./gradlew e2eTest -Dhost=http://localhost -Dport=8080
++
++# Run Checkstyle only
++./gradlew checkstyleMain checkstyleTest
++
++# Boot the app locally (H2 file DB at C:/data/testdb123)
++./gradlew bootRun
++```
++
++Always run `./gradlew build` before declaring a task done — it runs both tests and Checkstyle.
++
++Requires JDK 26 (Gradle 9.8 wrapper, toolchain 26). If `JAVA_HOME` points elsewhere, run Gradle with `JAVA_HOME=~/.jdks/openjdk-26.0.2.1`.
++
++## Architecture
++
++Spring Boot 4.1 / Java 26 app following **CQRS** with a strict layered architecture enforced at test time by **ArchUnit** (`StructureValidationTests`). The reference architecture is `docs/ARCHITECTURE.md` (mandated by the constitution, principle I); the code follows it.
++
++### Layer rules (enforced)
++```
++api (controllers, request, responses, GlobalExceptionHandler)
++  └── handlers (commands, queries)
++        └── persistence (model, repositories)
++```
++- `api` may only be accessed by `security` and tests.
++- `handlers` may only be accessed by `api` and tests.
++- `persistence` may only be accessed by `handlers`, `security`, and tests.
++- `exception` (`BusinessException`, `ErrorCode`), `security` and `session` are cross-cutting and sit outside the enforced layers. `providers` (external integrations behind interfaces) is created only when a use case needs one.
++
++### Package conventions (also enforced by ArchUnit)
++| Package | Pattern | Constraints |
++|---|---|---|
++| `api.controllers` | `*Controller` | `@RestController` + `@RequestMapping`; ≤7 public methods; params only from `api.request`; returns `api.responses` types or `ResponseEntity` |
++| `handlers.commands.impl` | `*HandlerImpl` | `@Component`/`@Service`; exactly 1 public method (`handle`); implements its `*Handler` interface; params only from `commands` |
++| `handlers.commands` / `handlers.queries` | contracts | Must not depend on `persistence` (no entities in `Command`/`Query`/`Result`) |
++| `persistence.repositories` | `*Repository` | Interface extending `JpaRepository`; **no** `@Repository` |
++
++### Handler pattern
++Each use case has:
++- An **interface** declaring a `Result` sealed interface plus the entry method:
++  - Commands (`handlers/commands/`): a `Command` record and `Result handle(Command)`; impl is `*HandlerImpl` in `commands/impl/`.
++  - Queries (`handlers/queries/`): `Result query(...)` with plain params; impl is `*QueryImpl` in `queries/impl/`. The ArchUnit impl rule only covers `commands.impl`, so query impls are convention-only (the no-entities rule covers both).
++- The impl annotated `@Component`. `Result` variants carry their own records (e.g. `Success(UUID id, String name, String email)`); impls map entities to them explicitly — entities never leave the handler.
++
++Expected business outcomes (invalid fields, email exists, invalid credentials, user not found) are `Result` variants. Controllers pattern-match exhaustively and return `ResponseEntity`: success → 200 with an `api.responses` DTO, expected errors → 400 with `ErrorResponse.of(ErrorCode, correlationId, params...)`. `BusinessException` (unchecked, `ErrorCode` + Builder) is only for rolling back an operation in progress; `GlobalExceptionHandler` (the single `@RestControllerAdvice`) maps it to 500 and any other `Throwable` to 400 `UNKNOWN_ERROR`.
++
++### Security
++- Routes under `/api/private/**` require a JWT; routes under `/api/public/**` are open.
++- `JwtRequestFilter` runs on every request and stores a `Session` (the Spring `Authentication`) — built from JWT claims, or anonymous if no valid token. Read the current user via `SessionContextHolder.getSession()`.
++- JWT secret is configured in `application.yaml` under `jwt.secret`.
++
++### Database
++H2 file-based (`jdbc:h2:file:C:/data/testdb123`); migrations managed by **Liquibase** (`db.changelog-master.xml`). The H2 console is available at `/h2`.
++
++## Testing
++
++Two test suites:
++
++1. **Unit/handler tests** — plain JUnit 5, test `*HandlerImpl` in isolation (e.g., `RegisterUserHandlerTests`).
++2. **Cucumber E2E tests** — runner at `CucumberTestRunner`; feature files live in `src/test/resources/features/`. Steps use `ScenarioContext` (PicoContainer-injected) to share state between steps. `ApiContext` holds the bearer token between steps. `UserApi` wraps REST-Assured calls; request records are built from Gherkin data tables via `CucumberAdapters.mapToInstance`.
++   - These are **black-box tests against a running server** (no `@SpringBootTest`): start the app with `./gradlew bootRun` first. Target defaults to `http://localhost:8080`, overridable with `-Dhost=` / `-Dport=` (forwarded to the test JVM by the `e2eTest` task, read in `ApiVerbs`).
++   - They run **only** via `./gradlew e2eTest` (JUnit Platform `@Suite` + `cucumber-junit-platform-engine`); the `test` task excludes the `cucumber` and `junit-platform-suite` engines, so `./gradlew build` never runs them. This split is intentional: CI (`.github/workflows/ci.yml`, on PRs and pushes to `main`) runs a `build` job, then an `e2e` job that starts the app with an in-memory H2 (`SPRING_DATASOURCE_URL`, since `application.yaml` points to a Windows path) and runs `e2eTest`. HTML report: `build/reports/cucumber/cucumber.html` (uploaded as the `e2e-reports` artifact in CI).
++   - Scenarios must not depend on data left by previous runs: CI always starts from an empty database.
++   - REST-Assured must be 6.x: Spring Boot 4 forces Groovy 5, and REST-Assured 5.x (Groovy 4) fails with an NPE on GET requests.
++
++Feature files support a `{String:N}` placeholder (generates a random N-char string) and `{String:N:$var}` to save the value in a named variable for reuse as `{$var}`.
++
++## Checkstyle
++
++Sun coding conventions enforced at severity `error` (config in `config/checkstyle/checkstyle.xml`). `checkstyleMain` runs before `checkstyleTest`, so a failure in main hides test violations — use `--continue` to see both. Key rules to watch:
++- Max line length is **120** (raised from the default 80).
++- No star imports (including `import static ...*`), no unused imports, files must end with a newline, tabs forbidden (use spaces).
++- `static final` fields must be `UPPER_SNAKE_CASE` — this includes loggers and ArchUnit `@ArchTest` rules. Method names are camelCase with no underscores, test methods included.
++- `NeedBraces` — `if`/`else` always need braces, even on one-liners.
++- `MagicNumber` rule — extract numeric literals to named constants.
++- `TodoComment` rule — no `TODO` comments may remain in submitted code.
++
++## Spec-driven workflow (Spec Kit)
++
++Features were structured with GitHub Spec Kit (`.specify/`, skills `.agents/skills/speckit-*`). Principles in `.specify/memory/constitution.md`; specs live in `specs/<NNN>-<short-name>/` where `NNN` is the GitHub issue number. Do not run Spec Kit commands for work in this repository.
++
++Issues are processed by `/speckit-issue <N|next>`, driven by labels: `speckit` (queue spec + plan) → `speckit:awaiting-approval` → human adds `speckit:approved` → tasks + implementation + PR → `speckit:review`. Questions go to the issue (`speckit:needs-info`); errors set `speckit:failed`. The skill is run manually (no scheduler): it needs a clean working tree and switches branches, so running it from a separate git worktree keeps the main working copy untouched. It never asks in chat — questions and status always go to the issue.
++
++<!-- SPECKIT START -->
++For additional context about technologies to be used, project structure,
++shell commands, and other important information, read the current plan:
++`specs/005-reference-architecture-migration/plan.md`
++<!-- SPECKIT END -->
++
++## Work rules
++
++- Propose a plan and wait for approval before writing code.
++- Implement one plan step per turn, then stop and report the result.
++- Write JUnit tests for every acceptance criterion.
++- Run `.\gradlew.bat build` and show its output before saying that anything passes.
++- Do not add dependencies.
++- Do not modify `security/`, `application.yaml`, or Liquibase migrations.
++- Do not use Spec Kit commands.
++- Do not commit, push, or merge.
++- Never write passwords, keys, or tokens.
+diff --git a/src/main/java/dev/leocamacho/demo/api/controllers/UpdateCurrentUserNameController.java b/src/main/java/dev/leocamacho/demo/api/controllers/UpdateCurrentUserNameController.java
+new file mode 100644
+index 0000000..f1c93fb
+--- /dev/null
++++ b/src/main/java/dev/leocamacho/demo/api/controllers/UpdateCurrentUserNameController.java
+@@ -0,0 +1,41 @@
++package dev.leocamacho.demo.api.controllers;
++
++import dev.leocamacho.demo.api.request.UpdateCurrentUserNameRequest;
++import dev.leocamacho.demo.api.responses.ErrorResponse;
++import dev.leocamacho.demo.api.responses.UserResponse;
++import dev.leocamacho.demo.exception.ErrorCode;
++import dev.leocamacho.demo.handlers.commands.UpdateCurrentUserNameHandler;
++import dev.leocamacho.demo.session.SessionContextHolder;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.http.ResponseEntity;
++import org.springframework.web.bind.annotation.PutMapping;
++import org.springframework.web.bind.annotation.RequestBody;
++import org.springframework.web.bind.annotation.RequestMapping;
++import org.springframework.web.bind.annotation.RestController;
++
++@RestController
++@RequestMapping("/api/private/users")
++public class UpdateCurrentUserNameController {
++
++    @Autowired
++    private UpdateCurrentUserNameHandler handler;
++
++    @PutMapping("/current/name")
++    public ResponseEntity<?> updateCurrentUserName(@RequestBody UpdateCurrentUserNameRequest request) {
++        var session = SessionContextHolder.getSession();
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command(session.email(), request.name()));
++        return switch (result) {
++            case UpdateCurrentUserNameHandler.Result.Success success ->
++                    ResponseEntity.ok(new UserResponse(success.name(), success.email()));
++            case UpdateCurrentUserNameHandler.Result.RequiredFields requiredFields ->
++                    ResponseEntity.badRequest().body(ErrorResponse.of(
++                            ErrorCode.REQUIRED_FIELDS, session.correlationId(), requiredFields.fields()));
++            case UpdateCurrentUserNameHandler.Result.InvalidFields invalidFields ->
++                    ResponseEntity.badRequest().body(ErrorResponse.of(
++                            ErrorCode.INVALID_FIELDS, session.correlationId(), invalidFields.fields()));
++            case UpdateCurrentUserNameHandler.Result.UserNotFound ignored ->
++                    ResponseEntity.badRequest().body(ErrorResponse.of(
++                            ErrorCode.INVALID_USER, session.correlationId()));
++        };
++    }
++}
+diff --git a/src/main/java/dev/leocamacho/demo/api/request/UpdateCurrentUserNameRequest.java b/src/main/java/dev/leocamacho/demo/api/request/UpdateCurrentUserNameRequest.java
+new file mode 100644
+index 0000000..551d1fb
+--- /dev/null
++++ b/src/main/java/dev/leocamacho/demo/api/request/UpdateCurrentUserNameRequest.java
+@@ -0,0 +1,4 @@
++package dev.leocamacho.demo.api.request;
++
++public record UpdateCurrentUserNameRequest(String name) {
++}
+diff --git a/src/main/java/dev/leocamacho/demo/exception/ErrorCode.java b/src/main/java/dev/leocamacho/demo/exception/ErrorCode.java
+index e106253..f9dd4f4 100644
+--- a/src/main/java/dev/leocamacho/demo/exception/ErrorCode.java
++++ b/src/main/java/dev/leocamacho/demo/exception/ErrorCode.java
+@@ -7,6 +7,7 @@ public enum ErrorCode {
+     ERROR_NOT_IDENTIFIED(1001, "Error not identified"),
+     REQUIRED_FIELDS(1002, "Required fields are missing"),
+     UNKNOWN_ERROR(1003, "Unknown error"),
++    INVALID_FIELDS(1004, "Invalid fields"),
+ 
+     // Security Validations
+     UNAUTHORIZED(401, "Unauthorized"),
+diff --git a/src/main/java/dev/leocamacho/demo/handlers/commands/UpdateCurrentUserNameHandler.java b/src/main/java/dev/leocamacho/demo/handlers/commands/UpdateCurrentUserNameHandler.java
+new file mode 100644
+index 0000000..7280064
+--- /dev/null
++++ b/src/main/java/dev/leocamacho/demo/handlers/commands/UpdateCurrentUserNameHandler.java
+@@ -0,0 +1,22 @@
++package dev.leocamacho.demo.handlers.commands;
++
++public interface UpdateCurrentUserNameHandler {
++
++    Result handle(Command command);
++
++    sealed interface Result {
++        record Success(String name, String email) implements Result {
++        }
++
++        record RequiredFields(String... fields) implements Result {
++        }
++
++        record InvalidFields(String... fields) implements Result {
++        }
++
++        record UserNotFound() implements Result {
++        }
++    }
++
++    record Command(String email, String name) { }
++}
+diff --git a/src/main/java/dev/leocamacho/demo/handlers/commands/impl/UpdateCurrentUserNameHandlerImpl.java b/src/main/java/dev/leocamacho/demo/handlers/commands/impl/UpdateCurrentUserNameHandlerImpl.java
+new file mode 100644
+index 0000000..dd9be41
+--- /dev/null
++++ b/src/main/java/dev/leocamacho/demo/handlers/commands/impl/UpdateCurrentUserNameHandlerImpl.java
+@@ -0,0 +1,35 @@
++package dev.leocamacho.demo.handlers.commands.impl;
++
++import dev.leocamacho.demo.handlers.commands.UpdateCurrentUserNameHandler;
++import dev.leocamacho.demo.persistence.repositories.UserRepository;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.stereotype.Component;
++
++@Component
++public class UpdateCurrentUserNameHandlerImpl implements UpdateCurrentUserNameHandler {
++    private static final int MAX_NAME_LENGTH = 100;
++
++    @Autowired
++    private UserRepository repository;
++
++    @Override
++    public Result handle(Command command) {
++        String normalizedName = command.name() == null ? null : command.name().strip();
++        if (normalizedName == null || normalizedName.isBlank()) {
++            return new Result.RequiredFields("name");
++        }
++        if (normalizedName.length() > MAX_NAME_LENGTH) {
++            return new Result.InvalidFields("name");
++        }
++
++        var user = repository.findByEmail(command.email());
++        if (user.isEmpty()) {
++            return new Result.UserNotFound();
++        }
++
++        var currentUser = user.get();
++        currentUser.setName(normalizedName);
++        var savedUser = repository.save(currentUser);
++        return new Result.Success(savedUser.getName(), savedUser.getEmail());
++    }
++}
+diff --git a/src/test/java/dev/leocamacho/demo/tests/api/UpdateCurrentUserNameControllerTests.java b/src/test/java/dev/leocamacho/demo/tests/api/UpdateCurrentUserNameControllerTests.java
+new file mode 100644
+index 0000000..66891bb
+--- /dev/null
++++ b/src/test/java/dev/leocamacho/demo/tests/api/UpdateCurrentUserNameControllerTests.java
+@@ -0,0 +1,130 @@
++package dev.leocamacho.demo.tests.api;
++
++import dev.leocamacho.demo.api.controllers.UpdateCurrentUserNameController;
++import dev.leocamacho.demo.api.request.UpdateCurrentUserNameRequest;
++import dev.leocamacho.demo.api.responses.ErrorResponse;
++import dev.leocamacho.demo.api.responses.UserResponse;
++import dev.leocamacho.demo.exception.ErrorCode;
++import dev.leocamacho.demo.handlers.commands.UpdateCurrentUserNameHandler;
++import dev.leocamacho.demo.session.Session;
++import dev.leocamacho.demo.session.SessionContextHolder;
++import org.junit.jupiter.api.AfterEach;
++import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.NullAndEmptySource;
++import org.junit.jupiter.params.provider.ValueSource;
++import org.mockito.InjectMocks;
++import org.mockito.Mock;
++import org.mockito.junit.jupiter.MockitoExtension;
++import org.springframework.http.HttpStatus;
++import org.springframework.http.ResponseEntity;
++import org.springframework.security.core.context.SecurityContextHolder;
++import org.springframework.web.bind.annotation.PutMapping;
++import org.springframework.web.bind.annotation.RequestMapping;
++
++import java.util.UUID;
++
++import static org.junit.jupiter.api.Assertions.assertArrayEquals;
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertInstanceOf;
++import static org.mockito.Mockito.verify;
++import static org.mockito.Mockito.when;
++
++@ExtendWith(MockitoExtension.class)
++public class UpdateCurrentUserNameControllerTests {
++    private static final int TOO_LONG_NAME_LENGTH = 101;
++    private static final String SESSION_EMAIL = "alice@mail.com";
++    private static final UUID CORRELATION_ID = UUID.fromString("82f2d0e4-bb08-4ecd-aa9a-df720c2cc75a");
++
++    @Mock
++    private UpdateCurrentUserNameHandler handler;
++    @InjectMocks
++    private UpdateCurrentUserNameController controller;
++
++    @AfterEach
++    public void clearSecurityContext() {
++        SecurityContextHolder.clearContext();
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldUsePutRoute() throws NoSuchMethodException {
++        var classMapping = UpdateCurrentUserNameController.class.getAnnotation(RequestMapping.class);
++        var methodMapping = UpdateCurrentUserNameController.class
++                .getMethod("updateCurrentUserName", UpdateCurrentUserNameRequest.class)
++                .getAnnotation(PutMapping.class);
++
++        assertEquals("/api/private/users", classMapping.value()[0]);
++        assertEquals("/current/name", methodMapping.value()[0]);
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldReturnUpdatedUser() {
++        setSession();
++        when(handler.handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, "  Alice  ")))
++                .thenReturn(new UpdateCurrentUserNameHandler.Result.Success("Alice", SESSION_EMAIL));
++
++        ResponseEntity<?> response = controller.updateCurrentUserName(new UpdateCurrentUserNameRequest("  Alice  "));
++
++        assertEquals(HttpStatus.OK, response.getStatusCode());
++        assertEquals(new UserResponse("Alice", SESSION_EMAIL), response.getBody());
++        verify(handler).handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, "  Alice  "));
++    }
++
++    @ParameterizedTest
++    @NullAndEmptySource
++    @ValueSource(strings = {"   "})
++    public void updateCurrentUserNameShouldReturnRequiredFields(String name) {
++        setSession();
++        when(handler.handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, name)))
++                .thenReturn(new UpdateCurrentUserNameHandler.Result.RequiredFields("name"));
++
++        ResponseEntity<?> response = controller.updateCurrentUserName(new UpdateCurrentUserNameRequest(name));
++
++        assertError(response, ErrorCode.REQUIRED_FIELDS, "name");
++        verify(handler).handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, name));
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldReturnInvalidFieldsWhenNameIsTooLong() {
++        setSession();
++        String name = "a".repeat(TOO_LONG_NAME_LENGTH);
++        when(handler.handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, name)))
++                .thenReturn(new UpdateCurrentUserNameHandler.Result.InvalidFields("name"));
++
++        ResponseEntity<?> response = controller.updateCurrentUserName(new UpdateCurrentUserNameRequest(name));
++
++        assertError(response, ErrorCode.INVALID_FIELDS, "name");
++        verify(handler).handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, name));
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldReturnInvalidUserWhenSessionEmailDoesNotExist() {
++        setSession();
++        when(handler.handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, "New Name")))
++                .thenReturn(new UpdateCurrentUserNameHandler.Result.UserNotFound());
++
++        ResponseEntity<?> response = controller.updateCurrentUserName(new UpdateCurrentUserNameRequest("New Name"));
++
++        assertError(response, ErrorCode.INVALID_USER);
++        verify(handler).handle(new UpdateCurrentUserNameHandler.Command(SESSION_EMAIL, "New Name"));
++    }
++
++    private void setSession() {
++        var session = Session.newBuilder()
++                .withId(UUID.randomUUID())
++                .withEmail(SESSION_EMAIL)
++                .withRoles("USER")
++                .withCorrelationId(CORRELATION_ID)
++                .build();
++        SessionContextHolder.setSession(session);
++    }
++
++    private void assertError(ResponseEntity<?> response, ErrorCode errorCode, String... params) {
++        assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
++        var error = assertInstanceOf(ErrorResponse.class, response.getBody());
++        assertEquals(errorCode.code(), error.code());
++        assertEquals(CORRELATION_ID, error.correlationId());
++        assertArrayEquals(params, error.params());
++    }
++}
+diff --git a/src/test/java/dev/leocamacho/demo/tests/handlers/commands/UpdateCurrentUserNameHandlerTests.java b/src/test/java/dev/leocamacho/demo/tests/handlers/commands/UpdateCurrentUserNameHandlerTests.java
+new file mode 100644
+index 0000000..70e2d0a
+--- /dev/null
++++ b/src/test/java/dev/leocamacho/demo/tests/handlers/commands/UpdateCurrentUserNameHandlerTests.java
+@@ -0,0 +1,95 @@
++package dev.leocamacho.demo.tests.handlers.commands;
++
++import dev.leocamacho.demo.handlers.commands.UpdateCurrentUserNameHandler;
++import dev.leocamacho.demo.handlers.commands.impl.UpdateCurrentUserNameHandlerImpl;
++import dev.leocamacho.demo.persistence.model.UserEntity;
++import dev.leocamacho.demo.persistence.repositories.UserRepository;
++import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.extension.ExtendWith;
++import org.junit.jupiter.params.ParameterizedTest;
++import org.junit.jupiter.params.provider.NullAndEmptySource;
++import org.junit.jupiter.params.provider.ValueSource;
++import org.mockito.InjectMocks;
++import org.mockito.Mock;
++import org.mockito.junit.jupiter.MockitoExtension;
++
++import java.util.Optional;
++
++import static dev.leocamacho.demo.persistence.model.UserEntity.UserEntityBuilder.anUserEntity;
++import static org.junit.jupiter.api.Assertions.assertArrayEquals;
++import static org.junit.jupiter.api.Assertions.assertEquals;
++import static org.junit.jupiter.api.Assertions.assertInstanceOf;
++import static org.mockito.ArgumentMatchers.any;
++import static org.mockito.Mockito.never;
++import static org.mockito.Mockito.verify;
++import static org.mockito.Mockito.when;
++
++@ExtendWith(MockitoExtension.class)
++public class UpdateCurrentUserNameHandlerTests {
++    private static final int MAX_NAME_LENGTH = 100;
++
++    @Mock
++    private UserRepository repository;
++    @InjectMocks
++    private UpdateCurrentUserNameHandlerImpl handler;
++
++    @Test
++    public void updateCurrentUserNameShouldTrimAndSaveName() {
++        var user = anUserEntity().withName("Old Name").withEmail("alice@mail.com")
++                .withPassword("hash").build();
++        when(repository.findByEmail("alice@mail.com")).thenReturn(Optional.of(user));
++        when(repository.save(any(UserEntity.class))).thenAnswer(invocation -> invocation.getArgument(0));
++
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command("alice@mail.com", "  Alice  "));
++
++        assertEquals(new UpdateCurrentUserNameHandler.Result.Success("Alice", "alice@mail.com"), result);
++        assertEquals("Alice", user.getName());
++        verify(repository).save(user);
++    }
++
++    @ParameterizedTest
++    @NullAndEmptySource
++    @ValueSource(strings = {"   "})
++    public void updateCurrentUserNameShouldReturnRequiredFields(String name) {
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command("alice@mail.com", name));
++
++        var requiredFields = assertInstanceOf(UpdateCurrentUserNameHandler.Result.RequiredFields.class, result);
++        assertArrayEquals(new String[] {"name"}, requiredFields.fields());
++        verify(repository, never()).save(any(UserEntity.class));
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldAllowExactlyOneHundredTrimmedCharacters() {
++        String name = "a".repeat(MAX_NAME_LENGTH);
++        var user = anUserEntity().withName("Old Name").withEmail("alice@mail.com")
++                .withPassword("hash").build();
++        when(repository.findByEmail("alice@mail.com")).thenReturn(Optional.of(user));
++        when(repository.save(any(UserEntity.class))).thenAnswer(invocation -> invocation.getArgument(0));
++
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command("alice@mail.com", name));
++
++        assertEquals(new UpdateCurrentUserNameHandler.Result.Success(name, "alice@mail.com"), result);
++        verify(repository).save(user);
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldReturnInvalidFieldsWhenTrimmedNameIsTooLong() {
++        String name = " " + "a".repeat(MAX_NAME_LENGTH + 1) + " ";
++
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command("alice@mail.com", name));
++
++        var invalidFields = assertInstanceOf(UpdateCurrentUserNameHandler.Result.InvalidFields.class, result);
++        assertArrayEquals(new String[] {"name"}, invalidFields.fields());
++        verify(repository, never()).save(any(UserEntity.class));
++    }
++
++    @Test
++    public void updateCurrentUserNameShouldReturnUserNotFound() {
++        when(repository.findByEmail("nobody@mail.com")).thenReturn(Optional.empty());
++
++        var result = handler.handle(new UpdateCurrentUserNameHandler.Command("nobody@mail.com", "New Name"));
++
++        assertEquals(new UpdateCurrentUserNameHandler.Result.UserNotFound(), result);
++        verify(repository, never()).save(any(UserEntity.class));
++    }
++}
