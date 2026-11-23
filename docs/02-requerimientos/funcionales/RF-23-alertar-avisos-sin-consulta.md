@@ -1,5 +1,7 @@
 # RF-23 — Alertar a la Dirección los avisos sin consulta
 
+> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-31](RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](RF-32-gestionar-apelaciones-y-pendientes.md).
+
 | Campo | Detalle |
 |---|---|
 | Épica | 3. Seguimiento de apelaciones y pendientes |

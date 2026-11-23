@@ -1,8 +1,12 @@
-# Diagrama de contexto
+# C4 — Diagrama de contexto del sistema (Nivel 1)
 
-El sistema se representa como **una sola caja negra** y se muestran únicamente las cuatro entidades externas y los datos que intercambian. Los módulos, pantallas, tablas, servicios y participantes internos quedan fuera de este diagrama. El archivo SVG es la fuente editable y la imagen publicada.
+**Fuente editable vigente:** [Abrir el diagrama en IcePanel](https://app.icepanel.io/landscapes/jSlrJUPuQEwgKYqN5RTa/versions/latest/diagrams/editor?diagram=oXddYb8mH3).
 
-![Diagrama de contexto del Portal Académico](diagrama-de-contexto.svg)
+El modelo se construyó en IcePanel con los actores y flujos de esta documentación. No se utilizó la función de generación automática con IA. Los nombres breves del lienzo facilitan la lectura; las descripciones de cada relación conservan los IDs F-xx y sus casos de uso.
+
+**Modelo:** C4, Nivel 1 — Contexto del sistema. El Portal aparece como caja negra; se muestran entidades externas y relaciones principales, no componentes internos.
+
+El sistema se representa como **una sola caja negra** y se muestran únicamente las cuatro entidades externas y los datos que intercambian. Los módulos, pantallas, tablas, servicios y participantes internos quedan fuera de este diagrama. El archivo `diagrama-de-contexto.svg` queda como referencia offline; el modelo editable vigente es el de IcePanel. Los flujos F-35 a F-39 corresponden a propuestas CU-17 a CU-21 y no implican que el equipo ya haya aprobado ese alcance.
 
 El PC2 contenía una colaboración BPMN con numerosos flujos. Se conserva en `historial/` como antecedente, no como diagrama de contexto vigente. La tabla siguiente mantiene la definición individual y trazable de cada flujo F-xx; el gráfico agrupa visualmente esos datos por entidad para que se pueda leer.
 
@@ -13,7 +17,7 @@ El PC2 contenía una colaboración BPMN con numerosos flujos. Se conserva en `hi
 | Persona encargada legal | [A-01](../03-casos-de-uso/actores.md#a-01--persona-encargada-legal) | Envía criterios, mensajes, apelaciones, quejas y acuses; recibe publicaciones, respuestas y avisos. |
 | Docente | [A-02](../03-casos-de-uso/actores.md#a-02--docente) | Envía evaluaciones, calificaciones y respuestas; recibe mensajes, expedientes y solicitudes. |
 | Comité de Evaluación | [A-03](../03-casos-de-uso/actores.md#a-03--comité-de-evaluación) | Envía resoluciones y solicitudes de información; recibe el expediente de una apelación. |
-| Dirección | [A-04](../03-casos-de-uso/actores.md#a-04--dirección) | Envía vínculos, plazos, observaciones y criterios; recibe alertas y estados de seguimiento. |
+| Dirección | [A-04](../03-casos-de-uso/actores.md#a-04--dirección) | Envía vínculos, plazos, observaciones, criterios y (provisionalmente) datos de grupos, matrícula y perfiles docentes; recibe alertas, estados y confirmaciones. |
 
 **Quiénes no aparecen y por qué:**
 
@@ -61,3 +65,8 @@ No aparece ninguna entidad nueva respecto de los actores definidos para el Porta
 | F-32 | Portal | Dirección | Registro de consultas | [CU-08](../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md), [CU-12](../03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) |
 | F-33 | Portal | Dirección | Aviso de queja registrada | [CU-12](../03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) |
 | F-34 | Portal | Dirección | Aviso de apelación o de plazo vencido | [CU-07](../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md), [CU-08](../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md) |
+| F-35 | Dirección | Portal | Curso/materia, grupo y periodo académico | [CU-17](../03-casos-de-uso/CU-17-registrar-grupo-academico.md) · propuesta |
+| F-36 | Dirección | Portal | Asignación de un perfil docente a un grupo | [CU-18](../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md) · propuesta |
+| F-37 | Dirección | Portal | Inscripción de estudiante en grupo | [CU-19](../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md) · propuesta |
+| F-38 | Dirección | Portal | Alta de perfil docente asociado a cuenta institucional | [CU-20](../03-casos-de-uso/CU-20-registrar-docente.md) · propuesta |
+| F-39 | Dirección | Portal | Cambio o inactivación de perfil docente | [CU-21](../03-casos-de-uso/CU-21-actualizar-perfil-docente.md) · propuesta |

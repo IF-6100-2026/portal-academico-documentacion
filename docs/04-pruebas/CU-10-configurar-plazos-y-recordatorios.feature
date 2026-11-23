@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-10-configurar-plazos-y-recordatorios.md
-# Requerimientos: RF-22, RS-02, RS-03
+# Requerimientos generales: RF-32, RS-02, RS-03
 # Los valores de este archivo son de prueba; no son la política de la escuela.
 Característica: CU-10 — Configurar plazos y recordatorios
   Como Dirección

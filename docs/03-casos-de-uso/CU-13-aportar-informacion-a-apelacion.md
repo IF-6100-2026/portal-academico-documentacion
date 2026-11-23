@@ -30,6 +30,7 @@
 - **Métricas:** complejidad media (6 pasos y 3 flujos alternos).
 - **Prioridad:** alta (RF-19 tiene prioridad «Debe»).
 - **Estado:** nuevo desglose de RF-19 para atender la observación del PC2; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
-- **Requerimientos:** [RF-19](../02-requerimientos/funcionales/RF-19-registrar-aportes-de-docente-y-direccion.md).
+- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Refinamientos detallados conservados:** RF-19, RF-21
 - **Pruebas:** [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature).
 - **Issue:** pendiente de crear en GitHub.

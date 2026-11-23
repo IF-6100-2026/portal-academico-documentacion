@@ -2,7 +2,7 @@ import { useState } from 'react';
 import type { FormEvent } from 'react';
 import './completion.css';
 import {
-  changeLinkStatus, createLink, getLinkCatalog, getProgress, getStudents,
+  changeLinkStatus, createLink, getLinkCatalog, getProgress, getStudents, registerStudent,
   type Credentials, type LinkCatalog, type LinkView, type Progress, type StudentSummary,
 } from '../api/academic';
 
@@ -27,6 +27,10 @@ export default function App() {
   const [changeReason, setChangeReason] = useState('');
   const [guardianChoice, setGuardianChoice] = useState('');
   const [studentChoice, setStudentChoice] = useState('');
+  const [studentFullName, setStudentFullName] = useState('');
+  const [studentGradeLevel, setStudentGradeLevel] = useState('');
+  const [studentGroupName, setStudentGroupName] = useState('');
+  const [studentTeacherName, setStudentTeacherName] = useState('');
 
   async function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -109,6 +113,36 @@ export default function App() {
     }
   }
 
+  async function submitStudent(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (!credentials) return;
+    setError('');
+    setNotice('');
+    setBusy(true);
+    try {
+      const student = await registerStudent(credentials, {
+        fullName: studentFullName.trim(),
+        gradeLevel: studentGradeLevel.trim(),
+        groupName: studentGroupName.trim(),
+        teacherName: studentTeacherName.trim(),
+      });
+      setNotice(`Ficha creada para ${student.fullName} (${student.id}).`);
+      try {
+        setCatalog(await getLinkCatalog(credentials));
+      } catch {
+        setError('La ficha sí se creó, pero no se pudo actualizar la lista. Vuelva a cargar el panel.');
+      }
+      setStudentFullName('');
+      setStudentGradeLevel('');
+      setStudentGroupName('');
+      setStudentTeacherName('');
+    } catch (reason: unknown) {
+      setError(reason instanceof Error ? reason.message : 'No se pudo completar el registro del estudiante.');
+    } finally {
+      setBusy(false);
+    }
+  }
+
   async function updateLink(link: LinkView, status: 'SUSPENDED' | 'ENDED') {
     if (!credentials) return;
     if (!changeReason.trim()) {
@@ -135,6 +169,10 @@ export default function App() {
     setProgress(undefined);
     setStudents([]);
     setCatalog(undefined);
+    setStudentFullName('');
+    setStudentGradeLevel('');
+    setStudentGroupName('');
+    setStudentTeacherName('');
     setError('');
     setNotice('');
     setPassword('');
@@ -194,8 +232,15 @@ export default function App() {
       </>}
       <small className="footnote">Los registros mostrados son ficticios y se usan para la demostración local.</small>
     </section> : <section className="workspace director-workspace">
-      <div className="page-heading"><div><p className="eyebrow">DIRECCIÓN</p><h1>Vínculos autorizados</h1><p className="intro">Registre la referencia del respaldo y conserve el historial de cada cambio.</p></div></div>
+      <div className="page-heading"><div><p className="eyebrow">DIRECCIÓN</p><h1>Estudiantes y vínculos</h1><p className="intro">Primero registre la ficha. Luego vincule a una persona encargada con su respaldo autorizado.</p></div></div>
       {error && <p className="alert error" role="alert">{error}</p>}{notice && <p className="alert success" role="status">{notice}</p>}
+      <div className="director-grid"><form className="panel link-form" onSubmit={submitStudent}><h2>Registrar estudiante</h2><p className="muted">El Portal genera el identificador. Este paso no concede acceso familiar.</p>
+        <label>Nombre completo<input required maxLength={160} value={studentFullName} onChange={(event) => setStudentFullName(event.target.value)} /></label>
+        <label>Nivel<input required maxLength={30} value={studentGradeLevel} onChange={(event) => setStudentGradeLevel(event.target.value)} /></label>
+        <label>Grupo<input required maxLength={30} value={studentGroupName} onChange={(event) => setStudentGroupName(event.target.value)} /></label>
+        <label>Docente<input required maxLength={160} value={studentTeacherName} onChange={(event) => setStudentTeacherName(event.target.value)} /></label>
+        <button className="primary-button" disabled={busy || !catalog}>{busy ? 'Guardando…' : 'Crear ficha'}</button>
+      </form><aside className="panel audit-note"><span className="note-mark">↗</span><h3>Ficha académica</h3><p>La creación conserva quién registró al estudiante y cuándo. La ficha queda activa y aparece en el formulario de vínculos.</p><p className="tiny">Se usan datos ficticios. No se valida duplicidad por nombre porque falta definir un identificador institucional.</p></aside></div>
       <div className="director-grid"><form className="panel link-form" onSubmit={submitLink}><h2>Registrar vínculo</h2><p className="muted">Solo se habilita con personas y estudiantes activos.</p>
         <label>Persona encargada<select required value={guardianChoice} onChange={(event) => setGuardianChoice(event.target.value)}><option value="">Seleccione una persona</option>{catalog?.guardians.map((guardian) => <option key={guardian.username} value={guardian.username}>{guardian.displayName}</option>)}</select></label>
         <label>Estudiante<select required value={studentChoice} onChange={(event) => setStudentChoice(event.target.value)}><option value="">Seleccione un estudiante</option>{catalog?.students.map((student) => <option key={student.id} value={student.id}>{student.fullName} · {student.gradeLevel} {student.groupName}</option>)}</select></label>

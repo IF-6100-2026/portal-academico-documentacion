@@ -30,6 +30,10 @@ export type LinkCatalog = {
   students: Array<{ id: string; fullName: string; gradeLevel: string; groupName: string }>;
   links: LinkView[];
 };
+export type RegisteredStudent = {
+  id: string; fullName: string; gradeLevel: string; groupName: string; teacherName: string;
+  active: boolean; createdBy: string; createdAt: string;
+};
 
 export class ApiFailure extends Error {
   constructor(message: string, readonly status: number) { super(message); }
@@ -70,6 +74,14 @@ export function getProgress(credentials: Credentials, studentId: string, period:
 
 export function getLinkCatalog(credentials: Credentials): Promise<LinkCatalog> {
   return request('/api/v1/director/guardian-links/catalog', credentials);
+}
+
+export function registerStudent(credentials: Credentials, input: {
+  fullName: string; gradeLevel: string; groupName: string; teacherName: string;
+}): Promise<RegisteredStudent> {
+  return request('/api/v1/director/students', credentials, {
+    method: 'POST', body: JSON.stringify(input),
+  });
 }
 
 export function createLink(credentials: Credentials, input: {

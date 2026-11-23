@@ -40,7 +40,7 @@ Siglas y prefijos que se usan en la documentación del Portal Académico. Cuando
 
 | Sigla | Significado | Formato y ejemplo | Dónde está |
 |---|---|---|---|
-| **F** | Flujo de datos entre una entidad externa y el Portal | `F-01` … `F-34` | [diagrama-de-contexto.md](01-inicio/diagrama-de-contexto.md) |
+| **F** | Flujo de datos entre una entidad externa y el Portal | `F-01` … `F-39` | [diagrama-de-contexto.md](01-inicio/diagrama-de-contexto.md) |
 
 ## Datos de prueba en los `.feature`
 

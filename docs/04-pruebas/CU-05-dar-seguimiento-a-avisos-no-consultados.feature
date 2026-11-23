@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md
-# Requerimientos: RF-12, RF-13, RF-23, RS-01, RS-02, RS-03
+# Requerimientos generales: RF-31, RF-32, RS-01, RS-02, RS-03
 # Los intervalos de este archivo son valores de prueba, no la política de la escuela:
 # la Dirección los configura en CU-10.
 Característica: CU-05 — Dar seguimiento a avisos no consultados

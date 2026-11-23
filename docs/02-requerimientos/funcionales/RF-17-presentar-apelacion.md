@@ -1,5 +1,7 @@
 # RF-17 — Presentar una apelación sobre una calificación
 
+> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-32](RF-32-gestionar-apelaciones-y-pendientes.md).
+
 | Campo | Detalle |
 |---|---|
 | Épica | 3. Seguimiento de apelaciones y pendientes |

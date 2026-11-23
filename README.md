@@ -2,9 +2,9 @@
 
 Proyecto de Análisis y Diseño de Sistemas (IF-6100) para el Centro Educativo María Montessori. El repositorio integra documentación, API Spring Boot, interfaz React y PostgreSQL.
 
-**Alcance funcional de esta entrega:** núcleo integrado propuesto de CU-01 y CU-02, con datos ficticios. CU-01 incluye publicaciones recientes, avisos pendientes y versiones anteriores de una calificación corregida. CU-02 permite registrar, consultar, suspender y finalizar vínculos; una solicitud pendiente por restricción no concede acceso. La selección CU-01 + CU-02 es una propuesta razonada del equipo: no se encontró una aprobación docente y no se atribuye una aprobación inexistente.
+**Alcance funcional verificado:** núcleo integrado propuesto de CU-01 y CU-02, con datos ficticios. CU-01 incluye publicaciones recientes, avisos pendientes y versiones anteriores de una calificación corregida. CU-02 permite registrar, consultar, suspender y finalizar vínculos; una solicitud pendiente por restricción no concede acceso. CU-16 también pasó pruebas unitarias y una verificación HTTP manual contra una instancia PostgreSQL 16 temporal; esta última no está automatizada en CI. La selección CU-01 + CU-02 es una propuesta razonada del equipo: no se encontró una aprobación docente y no se atribuye una aprobación inexistente.
 
-Los otros casos de uso están especificados en la documentación, pero no tienen implementación funcional en esta entrega. Las políticas institucionales, el alcance y las brechas abiertas se explican en [estado de implementación](docs/07-construccion/estado-de-implementacion.md), [brechas](docs/07-construccion/brechas-de-requerimientos.md) y [decisiones](docs/07-construccion/decisiones-de-diseno.md).
+Los otros casos de uso están especificados, pero no tienen implementación funcional verificada. CU-16 se probó en una base temporal, aunque todavía no tiene issue de seguimiento ni verificación automatizada de integración. Las políticas institucionales, el alcance y las brechas abiertas se explican en [estado de implementación](docs/07-construccion/estado-de-implementacion.md), [brechas](docs/07-construccion/brechas-de-requerimientos.md) y [decisiones](docs/07-construccion/decisiones-de-diseno.md).
 
 ## Integrantes registrados
 
@@ -42,6 +42,10 @@ Abre <http://localhost:5173>. La guía de [ambiente de desarrollo](docs/06-confi
 
 - [Documentación e índice de artefactos](docs/README.md)
 - [Respuesta a la evaluación PC2 y alcance PC3](docs/cambios-pc2-pc3.md)
+- [Análisis de retroalimentación docente y avance independiente](docs/07-construccion/ANALISIS-Y-AVANCE-DEFINICION-REGISTRO-ESTUDIANTE.md)
+- [Jerarquía general RF → CU → refinamiento y prueba](docs/02-requerimientos/trazabilidad-rf-cu.md)
+- [Guía del curso: skills y SDD](docs/06-configuracion/guia-sdd-y-skills-del-curso.md)
+- [Spec, plan y tareas de registrar estudiante](specs/001-registrar-estudiante/spec.md)
 - [Estado de implementación](docs/07-construccion/estado-de-implementacion.md)
 - [Brechas y decisiones pendientes](docs/07-construccion/brechas-de-requerimientos.md)
 - [Decisiones de diseño](docs/07-construccion/decisiones-de-diseno.md)

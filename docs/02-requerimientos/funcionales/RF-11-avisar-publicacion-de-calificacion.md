@@ -1,5 +1,7 @@
 # RF-11 — Avisar la publicación de una calificación o su corrección
 
+> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-31](RF-31-gestionar-comunicacion-y-avisos.md).
+
 | Campo | Detalle |
 |---|---|
 | Épica | 2. Comunicación entre la escuela y la persona encargada |

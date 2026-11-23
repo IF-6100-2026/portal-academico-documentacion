@@ -14,5 +14,23 @@ El PC2 recibió la observación de que el grupo debe encontrar vacíos de inform
 | B-08 | ¿Qué evidencias, anexos, acuses y notificaciones necesita cada paso? | Almacenamiento, correo y ciclo completo de apelación. | Fichas describen escenarios para discusión; el backend no envía avisos ni almacena adjuntos. | Profesor / Centro |
 | B-09 | ¿Qué datos puede ver la Dirección en supervisión y cuánto tiempo se conservan las trazas? | RF-24/RF-25, privacidad y auditoría. | El núcleo registra lectura y cambios de vínculo, pero no implementa consulta administrativa ni política de retención. | Centro / profesor |
 | B-10 | ¿Qué accesibilidad, navegadores y dispositivos se deben soportar? | Aceptación del frontend y prueba de usabilidad. | Mantener controles visibles, navegación por teclado y mensajes claros; falta validación con usuarios. | Profesor / usuarios |
+| B-11 | ¿Cómo se representan curso, materia, nivel, grupo, periodo, matrícula y asignación docente? | RF-27/RF-28 y CU-17 a CU-19; los datos académicos serían la base de publicaciones y permisos futuros. | CU-17 a CU-19 son propuestas documentales; no se codificó un modelo hasta acordar entidades, cardinalidades y vigencia. | Grupo y profesor |
 
 La propuesta de CU-13, CU-14 y CU-15 separa el aporte de información, decisión del Comité y consulta de la persona encargada para no concentrar varios objetivos en CU-07. La descomposición se debe revisar antes de tomarla como definitiva.
+
+## Casos de uso sin implementación funcional en PC3
+
+Esta tabla relaciona los casos que no aparecen implementados en [el checklist](checklist-casos-de-uso.md) con las brechas que explican sus principales decisiones pendientes. No reemplaza la revisión de cada ficha ni convierte sus propuestas en reglas aprobadas.
+
+| Casos de uso | Brechas relacionadas | Decisión pendiente antes de ampliar el producto |
+|---|---|---|
+| CU-03 y CU-04 — Publicaciones y calificaciones | B-02, B-05, B-08 | Confirmar escala, acceso por rol y mecanismo de avisos. |
+| CU-05 y CU-06 — Avisos y comunicación | B-05, B-08 | Confirmar autenticación, canales, acuses, destinatarios y conservación. |
+| CU-07, CU-12 y CU-13 a CU-15 — Apelaciones, quejas y resolución | B-03, B-07, B-08, B-09 | Validar estados, plazos, evidencias, actores, visibilidad y retención. CU-13 a CU-15 son desgloses propuestos. |
+| CU-08 — Supervisión | B-09 | Definir datos y trazas que Dirección puede consultar. |
+| CU-09 — Corrección de calificaciones | B-02, B-06 | Confirmar escala, política de corrección e historial visible. |
+| CU-10 — Plazos y recordatorios | B-07, B-08 | Confirmar plazos, pausas, responsables y canales de notificación. |
+| CU-17 a CU-19 — Cursos, grupos e inscripciones | B-05, B-11 | Revisar modelo académico, permisos e identidad de quien asigna/incluye estudiantes. |
+| CU-20 y CU-21 — Catálogo y perfil docente | B-05, B-11 | Confirmar identidad docente, aprovisionamiento de cuentas, campos y permisos. |
+
+CU-16 sí tiene código en el PR #15 y issue #16. Sus criterios de aceptación aún requieren revisión del equipo; no se usa como justificación para declarar cerradas las demás brechas.

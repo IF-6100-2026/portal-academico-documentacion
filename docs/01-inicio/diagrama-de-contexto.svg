@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
-  <title id="title">Diagrama de contexto del Portal Académico</title>
-  <desc id="description">Caja negra del Portal Académico e intercambios de información con cuatro entidades externas.</desc>
+  <title id="title">C4 nivel 1: contexto del Portal Académico</title>
+  <desc id="description">Diagrama C4 de nivel 1: caja negra del Portal Académico y sus relaciones con cuatro entidades externas.</desc>
   <defs>
     <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
       <path d="M0,0 L9,4.5 L0,9 Z" fill="#59796b"/>
@@ -10,7 +10,7 @@
     </style>
   </defs>
   <rect width="1200" height="760" fill="#f7f8f4"/>
-  <text x="600" y="46" text-anchor="middle" class="title">Portal Académico · Diagrama de contexto</text>
+  <text x="600" y="46" text-anchor="middle" class="title">C4 · Nivel 1 · Contexto del Portal Académico</text>
   <text x="600" y="72" text-anchor="middle" class="small">Flujos de información con entidades externas · alcance: primaria</text>
 
   <!-- Entidades externas -->
@@ -37,7 +37,7 @@
     <circle cx="927" cy="568" r="15" fill="#e8f0e9"/>
     <text x="953" y="568" class="actor">Dirección</text>
     <text x="918" y="601" class="small">Entidad externa · actor A-04</text>
-    <text x="918" y="625" class="small">Administra vínculos y supervisa pendientes.</text>
+    <text x="918" y="625" class="small">Gestiona vínculos, cursos y docentes.</text>
   </g>
 
   <!-- Caja negra del sistema -->
@@ -71,10 +71,10 @@
 
   <path d="M895 577 C846 577 828 516 768 455" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
   <path d="M768 448 C828 495 846 620 895 620" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <rect x="773" y="490" width="127" height="38" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="836" y="506" text-anchor="middle" class="id">F-25 a F-29</text><text x="836" y="521" text-anchor="middle" class="small">vínculos y supervisión</text>
+  <rect x="755" y="486" width="163" height="46" rx="8" fill="#fff" stroke="#d7e0d9"/>
+  <text x="836" y="502" text-anchor="middle" class="id">F-25–F-29 · F-35–F-39</text><text x="836" y="520" text-anchor="middle" class="small">vínculos y catálogos</text>
   <rect x="773" y="650" width="127" height="38" rx="8" fill="#fff" stroke="#d7e0d9"/>
   <text x="836" y="666" text-anchor="middle" class="id">F-30 a F-34</text><text x="836" y="681" text-anchor="middle" class="small">alertas y estados</text>
 
-  <text x="600" y="728" text-anchor="middle" class="small">F-xx identifica cada flujo individual definido en la tabla del documento.</text>
+  <text x="600" y="716" text-anchor="middle" class="small">F-xx identifica cada flujo detallado en la tabla; F-35 a F-39 reflejan propuestas pendientes de aprobación.</text>
 </svg>

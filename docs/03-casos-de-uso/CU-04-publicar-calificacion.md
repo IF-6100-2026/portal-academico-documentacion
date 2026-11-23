@@ -41,7 +41,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos:** [RF-05](../02-requerimientos/funcionales/RF-05-confirmar-congruencia-con-el-cuaderno.md), [RF-07](../02-requerimientos/funcionales/RF-07-registrar-calificaciones-del-grupo.md), [RF-08](../02-requerimientos/funcionales/RF-08-publicar-calificacion.md), [RF-11](../02-requerimientos/funcionales/RF-11-avisar-publicacion-de-calificacion.md)
+- **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
+- **Refinamientos detallados conservados:** RF-05, RF-07, RF-08, RF-11
 - **Pruebas:** [CU-04-publicar-calificacion.feature](../04-pruebas/CU-04-publicar-calificacion.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6) <!-- issue:CU-04 -->
 - **Equivale en el PC1 a:** UC-04 («Publicar resultado académico»)
