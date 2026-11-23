@@ -1,12 +1,12 @@
 # Resultados de pruebas y verificaciones
 
-Ejecución del **23 de noviembre de 2026** sobre la rama `codex/pc3-remaining-use-cases`. Las comprobaciones de integración de los flujos nuevos se hicieron con una API local en `http://localhost:8083` y una base temporal PostgreSQL 17 en el puerto 55434. El contenedor se creó para esta revisión y no corresponde a la base local de desarrollo del equipo.
+Ejecución del **23 de noviembre de 2026** sobre los cambios del PR #26 y sus correcciones de revisión. `mvn test` se ejecutó con JDK 21, Docker Desktop 29.4.2 y PostgreSQL 17 desechable mediante Testcontainers. Las comprobaciones HTTP manuales de los flujos nuevos se hicieron con una API local en `http://localhost:8083` y una base temporal PostgreSQL 17 en el puerto 55434. Los contenedores de prueba no corresponden a la base local de desarrollo del equipo.
 
 ## Resultado por caso de uso
 
 | CU | Implementación | Evidencia ejecutada |
 |---|---|---|
-| CU-01 Consultar progreso académico | Implementado en la base PC3. | 31 comprobaciones HTTP heredadas, contra PostgreSQL 17 limpio; consulta, publicaciones, avisos, borradores, historial y permisos. |
+| CU-01 Consultar progreso académico | Implementado en la base PC3. | 31 comprobaciones HTTP heredadas y 6 pruebas automatizadas de integración con PostgreSQL 17: vínculos y publicaciones visibles, consulta sin vínculos, acceso denegado sin revelar el estudiante, periodo vacío, historial de nota corregida y sesión inválida. |
 | CU-02 Vincular encargado con estudiante | Implementado en la base PC3. | Las mismas 31 comprobaciones HTTP: catálogo, altas, duplicados, vínculo pendiente, permisos e historial. |
 | CU-03 Publicar evaluación asignada | Implementado en esta rama. | HTTP: publicación de grupo para dos estudiantes y repetición idempotente. |
 | CU-04 Publicar calificación | Implementado en esta rama. | HTTP: calificación publicada y aviso; valores de escala considerados provisionales. |
@@ -21,7 +21,7 @@ Ejecución del **23 de noviembre de 2026** sobre la rama `codex/pc3-remaining-us
 | CU-13 Aportar información a una apelación | Implementado en esta rama. | HTTP: aporte docente persistido en el expediente con autor/fecha. |
 | CU-14 Registrar resolución de apelación | Implementado en esta rama. | HTTP: Comité guardó resolución `UPHELD`, sin modificar la calificación. |
 | CU-15 Consultar resolución de apelación | Implementado en esta rama. | HTTP: persona encargada consultó, registró lectura y cerró el expediente. |
-| CU-16 Registrar estudiante | Implementado en la base PC3. | Tres pruebas unitarias, build frontend y verificación HTTP manual contra PostgreSQL: 401 sin sesión, 201 Dirección, 403 Docente, 400 dato requerido vacío. |
+| CU-16 Registrar estudiante | Implementado en la base PC3. | Tres pruebas unitarias y 5 pruebas automatizadas de integración: alta válida, grupo vacío rechazado indicando `groupName` sin guardar, rol docente rechazado, alta separada del vínculo familiar y nombres repetidos permitidos. |
 | CU-17 Registrar grupo académico | Implementado en esta rama. | HTTP: Dirección creó un grupo académico. |
 | CU-18 Asignar docente a grupo | Implementado en esta rama. | HTTP: perfil docente asignado y acceso docente ligado al grupo. |
 | CU-19 Inscribir estudiante en grupo | Implementado en esta rama. | HTTP: dos estudiantes activos inscritos y usados en la publicación de CU-03. |
@@ -32,7 +32,7 @@ Ejecución del **23 de noviembre de 2026** sobre la rama `codex/pc3-remaining-us
 
 | Comando o actividad | Resultado | Alcance |
 |---|---|---|
-| `mvn test` (JDK 21) | **Correcto:** 12 pruebas, 0 fallos, 0 errores, Checkstyle con 0 violaciones. | Incluye configuración local, cuatro pruebas del catálogo académico, tres de registro de estudiante y pruebas de salud. No equivale a cubrir todos los flujos del negocio. |
+| `mvn test` (JDK 21) | **Correcto:** 23 pruebas, 0 fallos, 0 errores, 0 omitidas; Checkstyle con 0 violaciones. | Incluye 12 pruebas anteriores y 11 pruebas Testcontainers de CU-01 y CU-16. Se ejecutó contra PostgreSQL 17 desechable; no equivale a cubrir todos los flujos del negocio. `backend/src/test/resources/docker-java.properties` fija la API Docker 1.44 para compatibilidad con Docker Engine 29. |
 | `npm run build` | **Correcto:** `tsc -b` y compilación Vite. | 35 módulos transformados; no automatiza interacciones de UI. |
 | `python scripts/validar_documentacion.py` | **Correcto:** 20 CUs, 20 archivos `.feature`, 103 escenarios escritos y 0 errores estructurales. | Valida estructura e IDs. No ejecuta Cucumber. |
 | Arranque de la API contra PostgreSQL 17 temporal | **Correcto:** Liquibase aplicó 8 changesets y Spring respondió saludable. | Puerto de API 8083 y base aislada en 55434; no se modificó la base local del equipo. |
@@ -48,4 +48,5 @@ Ejecución del **23 de noviembre de 2026** sobre la rama `codex/pc3-remaining-us
 - Los avisos y mensajes son internos al Portal: no hay correo/SMS, archivos adjuntos ni scheduler externo. El procesamiento de recordatorios se ejecuta mediante endpoint de Dirección.
 - La escala de calificación, los plazos académicos, el procedimiento del Comité, el modelo curso/materia/grupo y la identidad institucional siguen siendo supuestos que el equipo debe validar.
 - No se ejecutaron pruebas automatizadas de UI, accesibilidad, rendimiento ni pruebas con usuarios.
+- En el primer intento, Testcontainers 1.21.3 omitió sus 11 pruebas porque intentó usar la API Docker 1.32; Docker Engine 29 requiere una API más nueva. Se fijó `api.version=1.44` para las pruebas. La primera ejecución efectiva detectó que la validación de `groupName` respondía `INVALID_REQUEST`; el manejador ahora identifica el campo y la nueva ejecución completa las 23 pruebas sin fallos.
 - La instancia temporal se utilizó exclusivamente con datos sintéticos y se detiene al completar la verificación.
