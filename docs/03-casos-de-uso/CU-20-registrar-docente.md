@@ -28,7 +28,7 @@
 - **Restricciones:** RS-03; no guardar contraseñas en el perfil académico.
 - **Dependencias:** la provisión de la identidad institucional ocurre fuera de este CU; CU-18 usa el perfil activo.
 - **Pruebas:** [CU-20-registrar-docente.feature](../04-pruebas/CU-20-registrar-docente.feature).
-- **Issue:** pendiente de crear. <!-- issue:CU-20 -->
+- **Issue:** [#23 — Registrar docente](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/23). <!-- issue:CU-20 -->
 - **Decisiones abiertas:** datos institucionales requeridos, mecanismo de provisión de cuentas, rol autorizado y relación entre perfil docente y usuario.
 
 \n

@@ -33,4 +33,4 @@ Esta tabla relaciona los casos que no aparecen implementados en [el checklist](c
 | CU-17 a CU-19 — Cursos, grupos e inscripciones | B-05, B-11 | Revisar modelo académico, permisos e identidad de quien asigna/incluye estudiantes. |
 | CU-20 y CU-21 — Catálogo y perfil docente | B-05, B-11 | Confirmar identidad docente, aprovisionamiento de cuentas, campos y permisos. |
 
-CU-16 sí tiene código en el PR #15 y issue #16. Sus criterios de aceptación aún requieren revisión del equipo; no se usa como justificación para declarar cerradas las demás brechas.
+CU-16 está implementado y fusionado mediante el PR #15; el issue #16 está cerrado. La automatización de su integración y la revisión de sus supuestos institucionales siguen pendientes; no se usa como justificación para declarar cerradas las demás brechas.

@@ -28,7 +28,7 @@
 - **Restricciones:** RS-03; usar inactivación lógica, sin borrar el historial académico.
 - **Dependencias:** CU-20 Registrar docente; los grupos pueden requerir reasignación mediante CU-18.
 - **Pruebas:** [CU-21-actualizar-perfil-docente.feature](../04-pruebas/CU-21-actualizar-perfil-docente.feature).
-- **Issue:** pendiente de crear. <!-- issue:CU-21 -->
+- **Issue:** [#24 — Actualizar perfil docente](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/24). <!-- issue:CU-21 -->
 - **Decisiones abiertas:** campos editables, quién puede inactivar, confirmación de reasignaciones y auditoría requerida.
 
 \n

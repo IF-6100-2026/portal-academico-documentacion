@@ -28,7 +28,7 @@
 - **Restricciones:** RS-03; no eliminar físicamente grupos que ya tengan actividad académica.
 - **Dependencias:** ninguna para crear la ficha; CU-18 y CU-19 requieren un grupo activo.
 - **Pruebas:** [CU-17-registrar-grupo-academico.feature](../04-pruebas/CU-17-registrar-grupo-academico.feature).
-- **Issue:** pendiente de crear. <!-- issue:CU-17 -->
+- **Issue:** [#20 — Registrar grupo académico](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/20). <!-- issue:CU-17 -->
 - **Decisiones abiertas:** distinguir curso/materia de grupo; formato de periodo; campos obligatorios; clave para prevenir duplicados; rol autorizado.
 
 \n

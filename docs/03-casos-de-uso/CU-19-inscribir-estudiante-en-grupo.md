@@ -28,7 +28,7 @@
 - **Restricciones:** RS-03; una persona encargada no obtiene acceso por la matrícula; el vínculo autorizado sigue siendo CU-02.
 - **Dependencias:** CU-16 Registrar estudiante y CU-17 Registrar grupo académico.
 - **Pruebas:** [CU-19-inscribir-estudiante-en-grupo.feature](../04-pruebas/CU-19-inscribir-estudiante-en-grupo.feature).
-- **Issue:** pendiente de crear. <!-- issue:CU-19 -->
+- **Issue:** [#22 — Inscribir estudiante en grupo](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/22). <!-- issue:CU-19 -->
 - **Decisiones abiertas:** una o varias matrículas activas por periodo, retiros/cambios de grupo, fecha de vigencia y rol autorizado.
 
 \n

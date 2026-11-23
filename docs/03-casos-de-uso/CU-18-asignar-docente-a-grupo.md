@@ -28,7 +28,7 @@
 - **Restricciones:** RS-03; conservar historial de asignaciones para explicar publicaciones anteriores.
 - **Dependencias:** CU-17 Registrar grupo académico y CU-20 Registrar docente.
 - **Pruebas:** [CU-18-asignar-docente-a-grupo.feature](../04-pruebas/CU-18-asignar-docente-a-grupo.feature).
-- **Issue:** pendiente de crear. <!-- issue:CU-18 -->
+- **Issue:** [#21 — Asignar docente a grupo](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/21). <!-- issue:CU-18 -->
 - **Decisiones abiertas:** cardinalidad docente/grupo, vigencia de una asignación, regla de sustitución y rol autorizado.
 
 \n
