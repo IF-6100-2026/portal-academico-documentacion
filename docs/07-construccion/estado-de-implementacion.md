@@ -2,7 +2,7 @@
 
 ## Resumen
 
-La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Otros 12 CU documentados son especificaciones, no módulos funcionales. CU-16 tiene implementación en API/formulario; sus tres pruebas unitarias pasan, el frontend compila y el flujo HTTP se comprobó en una base PostgreSQL temporal. La prueba HTTP no está automatizada en CI. Las limitaciones de política, seguridad institucional y escenarios pendientes siguen registradas en [brechas](brechas-de-requerimientos.md).
+La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Otros 17 CU documentados son especificaciones o borradores, no módulos funcionales. CU-16 tiene implementación en API/formulario; sus tres pruebas unitarias pasan, el frontend compila y el flujo HTTP se comprobó en una base PostgreSQL temporal. Las propuestas CU-17 a CU-21 descomponen RF-27/RF-28, pero no tienen implementación ni aprobación. La prueba HTTP de CU-16 no está automatizada en CI.
 
 | CU | Estado | Código disponible | Faltantes principales |
 |---|---|---|---|
@@ -12,13 +12,15 @@ La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02
 | CU-12 | Especificado | Ficha y escenarios Gherkin. | Registro y atención de quejas. |
 | CU-13 a CU-15 | Propuesta especificada | Desglose de RF-19/RF-20, fichas y escenarios Gherkin. | Validación del grupo/profesor, issue de seguimiento y toda la implementación. |
 | CU-16 Registrar estudiante | Implementación local verificada manualmente | Ficha, criterios, escenarios, handler con 3 pruebas unitarias, endpoint y migración comprobados en PostgreSQL temporal, formulario React compilado. | Issue, revisión humana, política institucional de identidad/duplicados y automatización de la prueba integrada en CI. |
+| CU-17 a CU-19 Cursos y grupos | Borradores especificados; no implementados | Fichas y cuatro escenarios por caso para registrar grupos, asignar docentes e inscribir estudiantes. | Revisar modelo curso/materia/grupo/periodo, cardinalidad, matrículas, permisos e issues. |
+| CU-20 a CU-21 Docentes | Borradores especificados; no implementados | Fichas y cuatro escenarios por caso para registrar, actualizar e inactivar perfiles sin borrar historia. | Confirmar identidad, provisión de cuentas, campos y permisos; crear issues. |
 
-Hay 15 CU documentados (CU-01 a CU-10 y CU-12 a CU-16); CU-11 se retiró previamente. El conteo no significa que los 15 estén implementados. El modelo documental agrupa las capacidades en RF-26 a RF-32 y conserva RF-01 a RF-25 como refinamientos detallados; véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
+Hay 20 CU documentados (CU-01 a CU-10 y CU-12 a CU-21); CU-11 se retiró previamente. El conteo no significa que estén implementados o aprobados. El modelo documental agrupa las capacidades en RF-26 a RF-32 y conserva RF-01 a RF-25 como refinamientos detallados; véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
 
 ## Componentes integrados
 
 - `backend/`: API Java 21/Spring Boot, handlers, seguridad, persistencia JPA, migración Liquibase y datos ficticios.
-- `frontend/`: interfaz React/TypeScript para CU-01 y CU-02.
+- `frontend/`: interfaz React/TypeScript para CU-01, CU-02 y el alta local de CU-16.
 - `docker-compose.yml`: servicio PostgreSQL local con volumen persistente.
 - `scripts/verificar-nucleo-pc3.ps1`: comprobaciones API reales del alcance CU-01/CU-02.
 

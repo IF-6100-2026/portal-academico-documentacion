@@ -2,7 +2,7 @@
 
 **Estado del documento:** avance local preparado para revisión del equipo.  
 **Base:** material público de IF-6100-2026 y notas de retroalimentación compartidas en este chat.  
-**Alcance:** trabajo documental y de especificación en una rama propia; no integra ni reemplaza trabajo de otros integrantes.  
+**Alcance:** trabajo documental y de especificación en una rama local; los pendientes que el usuario pidió asumir se documentan como propuestas, sin atribuirlos a Josué ni a otro integrante.
 **Importante:** esta rama no se ha publicado en GitHub. La integración de GitHub rechazó la creación de rama con HTTP 403. No se afirma aprobación del profesor. CU-16 pasó pruebas unitarias del handler, build frontend, validación documental y una prueba HTTP manual contra PostgreSQL temporal; falta automatizar la verificación de integración.
 
 ## Resumen ejecutivo
@@ -14,9 +14,9 @@ La retroalimentación docente aporta cuatro ajustes concretos al proyecto:
 3. Incorporar el caso de uso que falta: registrar estudiante, y distinguirlo de vincular una persona encargada con un estudiante ya registrado.
 4. Trabajar incrementalmente con un flujo de definición, planificación y revisión antes de implementar.
 
-En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores, CU-16, cinco escenarios Gherkin y un paquete documental SDD. CU-16 también tiene handler, endpoint protegido, migración de auditoría básica y formulario React. Las tres pruebas unitarias del handler, el build de React y el validador documental pasan; además, el endpoint y la migración corrieron contra una base PostgreSQL temporal. **La integración no tiene prueba automatizada ni issue asociado.**
+En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores y seis casos nuevos (CU-16 a CU-21) con sus features. CU-16 también tiene handler, endpoint protegido, migración de auditoría básica y formulario React. Las tres pruebas unitarias del handler, el build de React y el validador documental pasan; además, el endpoint y la migración corrieron contra una base PostgreSQL temporal. **La integración manual no está automatizada; CU-17 a CU-21 no tienen código.**
 
-La jerarquía RF/CU quedó reorganizada localmente: RF-26 a RF-32 expresan capacidades amplias, RF-01 a RF-25 se identifican como refinamientos detallados preservados, y cada CU enlaza ahora los RF generales junto con los IDs detallados que lo originaron. Se conservaron 15 CU con metas o disparadores identificables; no se fusionaron metas distintas solo para bajar el conteo. Esta propuesta requiere revisión del grupo y no se presenta como aprobada por el profesor.
+La jerarquía RF/CU quedó reorganizada localmente: RF-26 a RF-32 expresan capacidades amplias y RF-01 a RF-25 se identifican como refinamientos detallados preservados. Se documentan 20 CUs con metas identificables, incluidos cinco borradores para cursos y docentes. Esta propuesta requiere revisión del grupo y no se presenta como aprobada por el profesor.
 
 ## 1. Qué material del curso encontramos
 
@@ -38,7 +38,7 @@ Eso no descarta que el profesor tenga un repositorio privado o que haya comparti
 | Specify | Actor, necesidad, alcance, flujos y aceptación | `specs/001-registrar-estudiante/spec.md` |
 | Plan | Enfoque técnico para backend, frontend y persistencia | `specs/001-registrar-estudiante/plan.md` |
 | Tasks | Pasos implementables en orden | `specs/001-registrar-estudiante/tasks.md` |
-| Implement | Código y revisión posterior del cambio | Handler, endpoint, migración y formulario implementados localmente; handler probado, frontend compilado. Falta integración DB. |
+| Implement | Código y revisión posterior del cambio | Handler, endpoint, migración y formulario implementados localmente; handler probado, frontend compilado y endpoint/migración comprobados manualmente contra PostgreSQL temporal. Falta automatizar la integración. |
 
 La idea central del material es pensar y revisar cada paso antes de pasar al siguiente; Spec Kit puede ordenar los archivos, pero no sustituye las decisiones del equipo.
 
@@ -46,8 +46,9 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 
 | Observación compartida | Qué significa en el proyecto | Avance local | Estado real |
 |---|---|---|---|
-| Diagrama de contexto en C4 | Mostrar el Portal como sistema único y nombrar relaciones/datos externos; no dibujar componentes internos en el Nivel 1. | El SVG y su página ahora dicen C4 Nivel 1 y explican la caja negra. Se conserva la tabla de flujos F-01 a F-34. | Etiquetado y explicación ajustados; el equipo todavía debe revisar que el dibujo represente exactamente los datos acordados. |
+| Diagrama de contexto en C4 | Mostrar el Portal como sistema único y nombrar relaciones/datos externos; no dibujar componentes internos en el Nivel 1. | El SVG y su página dicen C4 Nivel 1 y explican la caja negra; el catálogo F-01 a F-39 marca los flujos propuestos de cursos/docentes. | Etiquetado y explicación ajustados; el equipo debe revisar los nuevos flujos propuestos junto con CU-17 a CU-21. |
 | RF más generales y CU más concretos | Un RF expresa una capacidad de negocio amplia; los CUs describen metas concretas del actor. | Se definieron RF-26 a RF-32; RF-01 a RF-25 se mapearon como refinamientos y se actualizaron las relaciones de CUs/features. | Reorganizado en la rama local; falta revisión del grupo y actualización de issues en GitHub. |
+| Descomponer cursos y docentes | RF-27/RF-28 deben expresarse como objetivos concretos de actores. | RF-27 → CU-17 a CU-19; RF-28 → CU-20/CU-21; CU-18 se relaciona con ambos RF. | Cinco fichas/features propuestas, sin código; actor, modelo y reglas siguen abiertos y requieren revisión. |
 | Falta registrar estudiante | El estudiante debe existir antes de asociar vínculos y dar seguimiento. | CU-16, feature, endpoint protegido, formulario y auditoría básica; alta separada de CU-02. | Handler y frontend verificados; cinco respuestas HTTP comprobadas en PostgreSQL temporal. Falta automatizar la integración, issue y revisión de grupo. Actor/campos provisionales. |
 | Empezar desde la idea, planear y entregar incrementos | Aclarar propósito, generar/revisar plan y construir una porción pequeña antes de ampliar el sistema. | Constitución, spec, plan, tasks SDD y porción vertical local de CU-16. | Verificaciones locales completadas, incluida la integración manual con PostgreSQL; falta revisión en grupo y automatizarla. |
 
@@ -56,8 +57,8 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 ### Requerimientos y caso nuevo
 
 - [RF-26 Gestionar el registro de estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): capacidad general; define que el registro y el vínculo familiar son distintos.
-- [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general; faltan CUs que la descompongan.
-- [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general; faltan CUs que la descompongan.
+- [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general descompuesta provisionalmente en CU-17 a CU-19.
+- [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general descompuesta provisionalmente en CU-20/CU-21 y CU-18.
 - [RF-29 Gestionar vínculos y acceso](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md): agrupa el detalle RF-01.
 - [RF-30 Gestionar seguimiento académico](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md): agrupa RF-02 a RF-09.
 - [RF-31 Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md): agrupa RF-10 a RF-16 y RF-23.
@@ -85,17 +86,17 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 
 - El punto de partida local es la rama PC3 `pc3/core-consulta-vinculos`, commit `c17d519` (`feat: completar el núcleo funcional de PC3`). El trabajo nuevo está en una rama local separada: `codex/pc3-sdd-registro-estudiantes`.
 - CU-01 y CU-02 ya estaban implementados en el núcleo PC3. Este avance no cambia esos módulos ni atribuye su autoría a una persona nueva.
-- La rama actual documenta **15 casos de uso, 15 archivos `.feature` y 83 escenarios especificados**: el corte previo tenía 14/14/78; CU-16 agrega cinco escenarios escritos.
-- En esta revisión, `mvn test` pasó con 8 pruebas (incluidas tres nuevas del handler CU-16) y sin violaciones de Checkstyle; `npm run build` pasó y `python scripts/validar_documentacion.py` informó 15/15/83 sin errores.
+- La rama actual documenta **20 casos de uso, 20 archivos `.feature` y 103 escenarios especificados**: el corte previo a CU-16 tenía 14/14/78; CU-16 agrega cinco escenarios y CU-17 a CU-21 agregan veinte.
+- En esta revisión, `mvn test` pasó con 8 pruebas (incluidas tres nuevas del handler CU-16) y sin violaciones de Checkstyle; `npm run build` pasó y `python scripts/validar_documentacion.py` informó 20/20/103 sin errores.
 - CU-16 tiene handler, endpoint, migración de auditoría y formulario local. Las pruebas del handler usan repositorios simulados; además, el servicio arrancó en una base PostgreSQL temporal nueva y cinco respuestas HTTP esperadas fueron comprobadas. Esta prueba manual todavía no está automatizada.
-- CU-13, CU-14, CU-15 y CU-16 aparecen sin issue asociado en la matriz. El requisito de un issue por CU sigue sin completarse para esos cuatro casos.
+- CU-13 a CU-21 aparecen sin issue asociado en la matriz. El requisito de un issue por CU sigue sin completarse para esos nueve casos.
 - GitHub rechazó con HTTP 403 la creación de la rama remota de este avance. Por tanto, el commit/tag publicado del repositorio no cambia con este trabajo local.
 
 ## 6. Trabajo pendiente priorizado
 
 ### Antes de entregar
 
-1. Revisar la rama local completa y acordar quién presenta cada cambio. Mantener aparte el trabajo que corresponde a Josué; esta rama no intenta completarlo ni atribuírselo a otra persona.
+1. Revisar y acordar quién presenta cada cambio. Los borradores CU-17 a CU-21 se prepararon por solicitud del usuario para cubrir pendientes que antes se atribuían a Josué; no se registran como trabajo suyo.
 2. Revisar manualmente el `git diff` y decidir si el equipo acepta los supuestos de CU-16: actor, campos, identidad/duplicidad y relación separada con CU-02.
 3. Recuperar acceso de escritura al repositorio oficial por el mecanismo normal del equipo; luego publicar la rama/PR y crear los issues pendientes según la convención del proyecto. El 403 no se resolvió en esta sesión.
 4. Convertir la comprobación manual de PostgreSQL/HTTP para CU-16 en una verificación automatizada y repetible.
@@ -103,11 +104,11 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 ### Próximo incremento académico/técnico
 
 1. Revisar con el equipo que RF-01 a RF-25 estén correctamente ubicados bajo RF-26 a RF-32; sus IDs se preservaron para no romper la historia.
-2. Descomponer RF-27 y RF-28 en casos de uso concretos solo cuando haya actor, objetivo y datos acordados.
-3. Abrir el issue de CU-16 y revisar la porción vertical ya preparada: endpoint protegido de alta → ficha persistida → formulario de Dirección → confirmación/error.
+2. Revisar CU-17 a CU-21 con el grupo, especialmente el modelo curso/grupo/periodo, la matrícula, identidad docente y permisos.
+3. Crear issues para CU-13 a CU-21 siguiendo la plantilla del repositorio y enlazar cada ficha y feature.
 4. Definir la clave institucional para duplicados, datos obligatorios, edición/inactivación y auditoría; añadir escenarios derivados de las decisiones.
 5. Añadir pruebas de API e integración para CU-16 cuando se defina el entorno DB de verificación.
 
 ## 7. Lectura franca para la rúbrica
 
-El avance mejora la legibilidad, organiza siete capacidades funcionales generales sobre los refinamientos conservados, incorpora el CU que el profesor señaló y muestra el proceso SDD. También atiende el rótulo C4. CU-16 tiene implementación local verificada: **pasan el handler unitario, el build, el validador y un smoke HTTP manual con PostgreSQL**. Quedan automatizar ese smoke, revisar supuestos en grupo, enlazar issues donde faltan y publicar la rama oficial. La documentación separa cada alcance para reflejar exactamente la evidencia disponible.
+El avance mejora la legibilidad, organiza siete capacidades funcionales generales, incorpora CU-16 y descompone cursos/docentes con cinco borradores provisionales. También atiende el rótulo C4. CU-16 tiene implementación local verificada: **pasan el handler unitario, el build, el validador y un smoke HTTP manual con PostgreSQL**; CU-17 a CU-21 no tienen implementación. Quedan revisar las nuevas reglas en grupo, automatizar el smoke, enlazar issues y publicar la rama oficial.

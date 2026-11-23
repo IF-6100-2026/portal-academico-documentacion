@@ -13,7 +13,9 @@ Se utilizó Codex (modelo GPT-6) como asistente durante la preparación de PC3, 
 - Implementación de publicaciones recientes, avisos pendientes, historial de corrección y bloqueo de acceso para vínculos pendientes.
 - Preparación y ejecución de comprobaciones de compilación, API y documentación (los resultados concretos se registran en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md)).
 - Búsqueda del material público del curso sobre Claude Code, skills y SDD; elaboración asistida de constitución, spec, plan y tasks para CU-16. La especificación y el plan requieren revisión humana.
-- Implementación local de CU-16: handler Java, endpoint protegido, migración de auditoría de alta y formulario React. Se ejecutaron `mvn test` (8 pruebas, 0 fallos), `npm run build` y el validador documental. Falta la prueba integrada de la migración y el endpoint contra PostgreSQL, además de la revisión humana.
+- Implementación local de CU-16: handler Java, endpoint protegido, migración de auditoría de alta y formulario React. Se ejecutaron `mvn test` (8 pruebas, 0 fallos), `npm run build`, el validador documental y una comprobación manual de endpoint/migración contra PostgreSQL temporal. Falta automatizar la integración y completar la revisión humana.
+- Descomposición provisional de RF-27/RF-28 en CU-17 a CU-21 y sus escenarios Gherkin. Los actores, el modelo curso/grupo, la identidad docente y las reglas de inscripción están marcados como supuestos para revisión; no se generó código para esos casos.
+- Se cargó el modelo C4 Nivel 1 en IcePanel como objetos y relaciones explícitos a partir de los flujos documentados. No se invocó la generación automática de diagramas; F-35 a F-39 quedan con estado futuro y requieren revisión del grupo.
 
 ## Revisión humana pendiente
 

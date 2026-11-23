@@ -9,8 +9,8 @@ Estos siete RF son el nivel general del modelo. Los RF-01 a RF-25 se conservan c
 | RF general | Capacidad | Refinamientos detallados conservados | CUs asociados/estado |
 |---|---|---|---|
 | [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 tiene handler probado, frontend compilado y verificación HTTP en PostgreSQL temporal. |
-| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | Sin CU; requiere descomposición. |
-| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | Sin CU; requiere descomposición. |
+| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | CU-17, CU-18 y CU-19 propuestos; modelo pendiente de revisión; sin implementación. |
+| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | CU-18, CU-20 y CU-21 propuestos; identidad/permisos pendientes; sin implementación. |
 | [RF-29 Gestionar vínculos y acceso](funcionales/RF-29-gestionar-vinculos-y-acceso.md) | Controlar qué persona encargada puede consultar cada estudiante. | RF-01. | CU-02 administra el vínculo; CU-01 consulta con autorización vigente. |
 | [RF-30 Gestionar seguimiento académico](funcionales/RF-30-gestionar-seguimiento-academico.md) | Registrar y consultar evaluaciones, calificaciones y su historial. | RF-02 a RF-09. | CU-01, CU-03, CU-04, CU-08 y CU-09. |
 | [RF-31 Gestionar comunicación y avisos](funcionales/RF-31-gestionar-comunicacion-y-avisos.md) | Comunicar publicaciones y registrar consultas, mensajes y reportes. | RF-10 a RF-16 y RF-23. | CU-03, CU-04, CU-05, CU-06, CU-08 y CU-12. |
@@ -75,12 +75,17 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 | [CU-14 — Registrar resolución de apelación](../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | RF-32 | RF-20, RF-21 | RS-03 | [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-14 --> |
 | [CU-15 — Consultar resolución de apelación](../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | RF-32 | RF-20 | RS-01, RS-02, RS-03 | [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-15 --> |
 | [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | — | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | Issue pendiente <!-- issue:CU-16 --> |
+| [CU-17 — Registrar grupo académico](../03-casos-de-uso/CU-17-registrar-grupo-academico.md) | RF-27 | — | RS-03 | [CU-17-registrar-grupo-academico.feature](../04-pruebas/CU-17-registrar-grupo-academico.feature) | Issue pendiente <!-- issue:CU-17 --> |
+| [CU-18 — Asignar docente a grupo](../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md) | RF-27, RF-28 | — | RS-03 | [CU-18-asignar-docente-a-grupo.feature](../04-pruebas/CU-18-asignar-docente-a-grupo.feature) | Issue pendiente <!-- issue:CU-18 --> |
+| [CU-19 — Inscribir estudiante en grupo](../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md) | RF-26, RF-27 | — | RS-03 | [CU-19-inscribir-estudiante-en-grupo.feature](../04-pruebas/CU-19-inscribir-estudiante-en-grupo.feature) | Issue pendiente <!-- issue:CU-19 --> |
+| [CU-20 — Registrar docente](../03-casos-de-uso/CU-20-registrar-docente.md) | RF-28 | — | RS-03 | [CU-20-registrar-docente.feature](../04-pruebas/CU-20-registrar-docente.feature) | Issue pendiente <!-- issue:CU-20 --> |
+| [CU-21 — Actualizar perfil docente](../03-casos-de-uso/CU-21-actualizar-perfil-docente.md) | RF-28 | — | RS-03 | [CU-21-actualizar-perfil-docente.feature](../04-pruebas/CU-21-actualizar-perfil-docente.feature) | Issue pendiente <!-- issue:CU-21 --> |
 
 ## Controles
 
 - Los siete RF generales son RF-26 a RF-32. RF-01 a RF-25 se conservan como refinamientos históricos; los enlaces y los identificadores de escenarios/issue no se renumeran.
-- RF-27 y RF-28 aún no tienen CUs: primero deben descomponerse con actores, objetivos y datos validados. RF-26 se especializa en CU-16.
-- Hay 15 CUs y 15 archivos feature; CU-13 a CU-16 tienen issues pendientes. Estos casos requieren revisión del grupo; no se declaran aprobados por el profesor.
+- RF-26 se especializa en CU-16 y CU-19; RF-27 en CU-17 a CU-19; RF-28 en CU-18, CU-20 y CU-21. Los CUs nuevos son borradores con actores/datos explícitamente provisionales.
+- Hay 20 CUs y 20 archivos feature; CU-13 a CU-21 tienen issues pendientes. Las propuestas requieren revisión del grupo; no se declaran aprobadas por el profesor.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)
@@ -90,4 +95,4 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 | CU-01 | `TP-CU01-A05` | Rechazar una sesión inválida antes de revelar vínculos o publicaciones. |
 | CU-05 | `TP-CU05-A08` | Revalidar el vínculo al abrir, aunque el recordatorio se emitió con autorización. |
 
-Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte previo contenía 78 escenarios; CU-16 agrega 5 escenarios documentales, para 83 escenarios descritos. Los escenarios Gherkin no se ejecutan automáticamente; el handler de CU-16 tiene tres pruebas unitarias y su endpoint se verificó manualmente contra PostgreSQL temporal, según [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
+Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte previo a CU-16 contenía 78 escenarios; CU-16 agrega 5 y CU-17 a CU-21 agregan 20, para 103 escenarios descritos. Los CUs nuevos son propuestas documentales; solo CU-16 tiene pruebas de código. Véanse los [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).

@@ -15,7 +15,7 @@
 ## 01 — Inicio
 
 - [Problema y visión](01-inicio/problema-y-vision.md): evidencia, problemas, épicas, alcance y supuestos.
-- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): C4 Nivel 1, caja negra en SVG y catálogo F-01 a F-34.
+- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): C4 Nivel 1, caja negra en SVG y catálogo F-01 a F-39; F-35 a F-39 son propuestas pendientes de revisión.
 - [Proceso actual (BPMN) y trazabilidad hacia los RF](01-inicio/bpmn/trazabilidad-bpmn-rf.md)
   - [seguimiento-academico-actual.bpmn](01-inicio/bpmn/seguimiento-academico-actual.bpmn) · [PNG](01-inicio/bpmn/seguimiento-academico-actual.png)
   - [resolver-apelacion-actual.bpmn](01-inicio/bpmn/resolver-apelacion-actual.bpmn) · [PNG](01-inicio/bpmn/resolver-apelacion-actual.png)
@@ -27,8 +27,8 @@
 **Requerimientos funcionales generales**
 
 - [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 define e implementa el alta; handler, build y flujo HTTP en PostgreSQL temporal verificados.
-- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): falta descomponer en CUs concretos.
-- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): falta descomponer en CUs concretos.
+- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): borradores CU-17 a CU-19 listos para revisión.
+- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): borradores CU-20 y CU-21; CU-18 cubre asignación docente.
 - [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
 - [RF-30 Gestionar seguimiento académico](02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
 - [RF-31 Gestionar comunicación y avisos](02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
@@ -77,6 +77,11 @@
 | [CU-14 Registrar resolución de apelación](03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) |
 | [CU-15 Consultar resolución de apelación](03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) |
 | [CU-16 Registrar estudiante](03-casos-de-uso/CU-16-registrar-estudiante.md) | [feature](04-pruebas/CU-16-registrar-estudiante.feature) |
+| [CU-17 Registrar grupo académico](03-casos-de-uso/CU-17-registrar-grupo-academico.md) | [feature](04-pruebas/CU-17-registrar-grupo-academico.feature) |
+| [CU-18 Asignar docente a grupo](03-casos-de-uso/CU-18-asignar-docente-a-grupo.md) | [feature](04-pruebas/CU-18-asignar-docente-a-grupo.feature) |
+| [CU-19 Inscribir estudiante en grupo](03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md) | [feature](04-pruebas/CU-19-inscribir-estudiante-en-grupo.feature) |
+| [CU-20 Registrar docente](03-casos-de-uso/CU-20-registrar-docente.md) | [feature](04-pruebas/CU-20-registrar-docente.feature) |
+| [CU-21 Actualizar perfil docente](03-casos-de-uso/CU-21-actualizar-perfil-docente.md) | [feature](04-pruebas/CU-21-actualizar-perfil-docente.feature) |
 
 CU-11 no existe: correspondía a la bitácora de auditoría del PC1, que se retiró (ver [cambios](cambios-pc1-pc2.md#casos-de-uso)).
 
