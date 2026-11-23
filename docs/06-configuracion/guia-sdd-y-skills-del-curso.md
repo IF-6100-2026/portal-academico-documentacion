@@ -22,4 +22,4 @@ El material enlaza actor, objetivo, precondiciones, flujos, reglas y criterios c
 - [Plan](../../specs/001-registrar-estudiante/plan.md)
 - [Tasks](../../specs/001-registrar-estudiante/tasks.md)
 
-La implementación de CU-16 todavía no existe; los supuestos están marcados. Fuente del curso: [IF-6100-2026/public, sesión B](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-b/index.html), atribuida a MSc. Leonardo Camacho Navarro, UCR.
+CU-16 tiene implementación local en backend y frontend; todavía no se han ejecutado verificaciones ni se ha publicado la rama. Los supuestos están marcados. Fuente del curso: [IF-6100-2026/public, sesión B](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-b/index.html), atribuida a MSc. Leonardo Camacho Navarro, UCR.

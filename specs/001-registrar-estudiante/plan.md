@@ -1,6 +1,6 @@
 # Plan: registrar estudiante
 
-**Estado:** plan; el código funcional no está escrito.
+**Estado:** plan de la implementación local; las verificaciones todavía están pendientes.
 
 ## Backend
 1. Añadir comando/handler siguiendo los patrones actuales.
@@ -21,4 +21,4 @@
 Reutilizar el rol de Dirección, mantener datos ficticios y no crear cuentas del estudiante. No deduplicar hasta definir identidad escolar.
 
 ## Relación con PC3
-CU-01 y CU-02 son el núcleo implementado. Este plan prepara CU-16 y no afirma que ya exista código o verificación.
+CU-01 y CU-02 son el núcleo implementado. CU-16 se implementó localmente como el siguiente incremento; falta verificarlo antes de presentarlo como funcionalmente comprobado.

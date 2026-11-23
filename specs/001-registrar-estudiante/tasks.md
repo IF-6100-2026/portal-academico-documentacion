@@ -11,11 +11,12 @@
 - [ ] Crear issue CU-16 y enlazar ficha, RF, feature y matriz. GitHub rechazó crear la rama, por eso este avance no publica el issue.
 - [ ] Integrar el cambio revisado con un commit de la persona que lo adopte.
 
-## Implementación posterior
-- [ ] Crear comando/handler y validaciones.
-- [ ] Añadir endpoint protegido para Dirección.
-- [ ] Añadir formulario React y refrescar el catálogo.
+## Implementación y verificación
+- [x] Crear comando/handler y validaciones para Dirección.
+- [x] Añadir endpoint protegido `POST /api/v1/director/students`.
+- [x] Añadir formulario React y refrescar el catálogo.
+- [x] Registrar quién creó la ficha y cuándo con una nueva migración Liquibase.
 - [ ] Definir identidad/duplicados con regla institucional.
-- [ ] Añadir pruebas para criterios y comprobación integrada.
+- [ ] Añadir/ejecutar verificaciones para criterios y comprobación integrada.
 - [ ] Verificar desde clon limpio y actualizar resultados.
-- [ ] Declarar CU-16 especificado o implementado según el trabajo realmente completado.
+- [ ] Crear issue y publicar la rama para revisión.

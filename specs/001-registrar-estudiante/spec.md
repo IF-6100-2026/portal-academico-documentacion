@@ -2,7 +2,7 @@
 
 **CU:** CU-16 (nuevo; se conservan los identificadores históricos)  
 **RF general:** RF-26 Gestionar el registro de estudiantes  
-**Estado:** especificado en avance local; no implementado.
+**Estado:** especificado e implementado localmente; verificación de ejecución pendiente.
 
 ## Contexto y actor
 El estudiante necesita una ficha en el Portal para organizar el seguimiento. La persona autorizada crea la ficha. Se usa **Dirección (A-04)** provisionalmente, por continuidad con CU-02. El profesor señaló explícitamente que falta el CU de registrar estudiante.
@@ -47,7 +47,7 @@ Incluye alta, validación de campos existentes, UUID interno y confirmación. Ex
 Los escenarios están en docs/04-pruebas/CU-16-registrar-estudiante.feature. Son criterios escritos, no pruebas ejecutadas.
 
 ## Trazabilidad
-RF-26 → CU-16 → feature → issue pendiente → implementación posterior. CU-02 es una operación relacionada y separada.
+RF-26 → CU-16 → feature → issue pendiente → endpoint/formulario local. CU-02 es una operación relacionada y separada. Falta ejecutar la verificación y actualizar el issue al recuperar acceso.
 
 ## Riesgos abiertos
 Definir quién actualiza/inactiva, el identificador para duplicados y cuáles campos son obligatorios al alta. El modelo actual almacena el docente como texto.

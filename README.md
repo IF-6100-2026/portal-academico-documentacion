@@ -2,9 +2,9 @@
 
 Proyecto de Análisis y Diseño de Sistemas (IF-6100) para el Centro Educativo María Montessori. El repositorio integra documentación, API Spring Boot, interfaz React y PostgreSQL.
 
-**Alcance funcional de esta entrega:** núcleo integrado propuesto de CU-01 y CU-02, con datos ficticios. CU-01 incluye publicaciones recientes, avisos pendientes y versiones anteriores de una calificación corregida. CU-02 permite registrar, consultar, suspender y finalizar vínculos; una solicitud pendiente por restricción no concede acceso. La selección CU-01 + CU-02 es una propuesta razonada del equipo: no se encontró una aprobación docente y no se atribuye una aprobación inexistente.
+**Alcance funcional verificado previamente:** núcleo integrado propuesto de CU-01 y CU-02, con datos ficticios. CU-01 incluye publicaciones recientes, avisos pendientes y versiones anteriores de una calificación corregida. CU-02 permite registrar, consultar, suspender y finalizar vínculos; una solicitud pendiente por restricción no concede acceso. CU-16 se implementó después en esta rama local, pero aún no se verificó ni forma parte de los resultados ejecutados. La selección CU-01 + CU-02 es una propuesta razonada del equipo: no se encontró una aprobación docente y no se atribuye una aprobación inexistente.
 
-Los otros casos de uso están especificados en la documentación, pero no tienen implementación funcional en esta entrega. Las políticas institucionales, el alcance y las brechas abiertas se explican en [estado de implementación](docs/07-construccion/estado-de-implementacion.md), [brechas](docs/07-construccion/brechas-de-requerimientos.md) y [decisiones](docs/07-construccion/decisiones-de-diseno.md).
+Los otros casos de uso están especificados, pero no tienen implementación funcional verificada. CU-16 se implementó localmente como avance; todavía no cuenta con verificación ejecutada ni issue de seguimiento. Las políticas institucionales, el alcance y las brechas abiertas se explican en [estado de implementación](docs/07-construccion/estado-de-implementacion.md), [brechas](docs/07-construccion/brechas-de-requerimientos.md) y [decisiones](docs/07-construccion/decisiones-de-diseno.md).
 
 ## Integrantes registrados
 

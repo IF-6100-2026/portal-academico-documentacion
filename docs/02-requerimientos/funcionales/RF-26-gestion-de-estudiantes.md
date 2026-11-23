@@ -5,7 +5,7 @@
 | Nivel | Requerimiento funcional general |
 | Épica | Registro y consulta de notas y evaluaciones |
 | Actor | Dirección, provisionalmente por continuidad con CU-02 |
-| Estado | Propuesta; CU-16 especifica el alta. No implementado. |
+| Estado | Propuesta general; CU-16 tiene implementación local pendiente de verificación. |
 
 ## Necesidad
 El seguimiento académico requiere una ficha del estudiante antes de asociar vínculos y publicaciones.

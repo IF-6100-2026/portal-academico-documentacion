@@ -8,7 +8,7 @@ Estos siete RF son el nivel general del modelo. Los RF-01 a RF-25 se conservan c
 
 | RF general | Capacidad | Refinamientos detallados conservados | CUs asociados/estado |
 |---|---|---|---|
-| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 especifica el alta; no está implementado. |
+| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 tiene implementación local; falta verificación. |
 | [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | Sin CU; requiere descomposición. |
 | [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | Sin CU; requiere descomposición. |
 | [RF-29 Gestionar vínculos y acceso](funcionales/RF-29-gestionar-vinculos-y-acceso.md) | Controlar qué persona encargada puede consultar cada estudiante. | RF-01. | CU-02 administra el vínculo; CU-01 consulta con autorización vigente. |

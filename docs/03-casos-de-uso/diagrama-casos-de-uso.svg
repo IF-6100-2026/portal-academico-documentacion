@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1010" viewBox="0 0 1500 1010" role="img" aria-labelledby="title desc">
   <title id="title">Casos de uso del Portal Académico</title>
-  <desc id="desc">Catorce casos de uso agrupados por las tres épicas, con actores principales. CU-13, CU-14 y CU-15 están propuestos y pendientes de validación.</desc>
+  <desc id="desc">Quince casos de uso agrupados por las tres épicas, con actores principales. CU-13, CU-14 y CU-15 están propuestos; CU-16 tiene avance local pendiente de validación.</desc>
   <defs>
     <style>
       .bg{fill:#f5f7fb}.title{font:700 32px Arial,sans-serif;fill:#15223b}.sub{font:16px Arial,sans-serif;fill:#506079}
@@ -12,9 +12,9 @@
   </defs>
   <rect class="bg" width="1500" height="1010"/>
   <text class="title" x="40" y="55">Casos de uso del Portal Académico</text>
-  <text class="sub" x="40" y="83">Mapa de alcance por épica y actor principal · 14 casos documentados · CU-11 fue retirado</text>
+  <text class="sub" x="40" y="83">Mapa de alcance por épica y actor principal · 15 casos documentados · CU-11 fue retirado</text>
 
-  <rect class="panel" x="35" y="112" width="455" height="820" rx="16"/>
+  <rect class="panel" x="35" y="112" width="455" height="840" rx="16"/>
   <text class="head" x="58" y="151">1 · Registro y consulta</text>
   <text class="muted" x="58" y="174">Notas y evaluaciones</text>
   <g transform="translate(55 195)">
@@ -31,6 +31,9 @@
   </g>
   <g transform="translate(55 703)">
     <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-09</text><text class="name" x="16" y="50">Corregir calificación publicada</text><text class="actor" x="16" y="78">Actor: docente</text>
+  </g>
+  <g transform="translate(55 830)">
+    <rect class="proposal" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-16 · AVANCE LOCAL</text><text class="name" x="16" y="50">Registrar estudiante</text><text class="actor" x="16" y="78">Actor provisional: Dirección</text>
   </g>
 
   <rect class="panel" x="522" y="112" width="455" height="820" rx="16"/>

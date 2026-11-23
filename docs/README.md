@@ -26,7 +26,7 @@
 
 **Requerimientos funcionales generales**
 
-- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 especifica el alta.
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 define e implementa localmente el alta, pendiente de verificación.
 - [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): falta descomponer en CUs concretos.
 - [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): falta descomponer en CUs concretos.
 - [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
@@ -47,12 +47,6 @@
 | [RF-07 Registrar calificaciones del grupo](02-requerimientos/funcionales/RF-07-registrar-calificaciones-del-grupo.md) | [RF-16 Atender queja por información no recibida](02-requerimientos/funcionales/RF-16-atender-queja-por-informacion-no-recibida.md) | [RF-23 Alertar avisos sin consulta](02-requerimientos/funcionales/RF-23-alertar-avisos-sin-consulta.md) |
 | [RF-08 Publicar calificación](02-requerimientos/funcionales/RF-08-publicar-calificacion.md) | | [RF-24 Consultar estado del seguimiento](02-requerimientos/funcionales/RF-24-consultar-estado-del-seguimiento.md) |
 | [RF-09 Corregir calificación con historial](02-requerimientos/funcionales/RF-09-corregir-calificacion-con-historial.md) | | [RF-25 Consultar registro de consultas](02-requerimientos/funcionales/RF-25-consultar-registro-de-consultas.md) |
-
-**Capacidades funcionales generales incorporadas tras la retroalimentación**
-
-- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 especifica el alta; CU-02 conserva el vínculo como acción independiente.
-- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general identificada; faltan CUs específicos.
-- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general identificada; faltan CUs específicos.
 
 **Suplementarios**
 

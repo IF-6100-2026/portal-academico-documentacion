@@ -14,7 +14,7 @@ La retroalimentación docente aporta cuatro ajustes concretos al proyecto:
 3. Incorporar el caso de uso que falta: registrar estudiante, y distinguirlo de vincular una persona encargada con un estudiante ya registrado.
 4. Trabajar incrementalmente con un flujo de definición, planificación y revisión antes de implementar.
 
-En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores, CU-16, cuatro escenarios Gherkin y un paquete documental SDD para ese caso. **El avance es principalmente especificación:** registrar estudiante todavía no tiene código, issue asociado ni verificación ejecutada.
+En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores, CU-16, cuatro escenarios Gherkin y un paquete documental SDD. CU-16 también tiene handler, endpoint protegido, migración de auditoría básica y formulario React. **Su implementación local todavía no está verificada ni tiene issue asociado.**
 
 La jerarquía RF/CU quedó reorganizada localmente: RF-26 a RF-32 expresan capacidades amplias, RF-01 a RF-25 se identifican como refinamientos detallados preservados, y cada CU enlaza ahora los RF generales junto con los IDs detallados que lo originaron. Se conservaron 15 CU con metas o disparadores identificables; no se fusionaron metas distintas solo para bajar el conteo. Esta propuesta requiere revisión del grupo y no se presenta como aprobada por el profesor.
 
@@ -48,8 +48,8 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 |---|---|---|---|
 | Diagrama de contexto en C4 | Mostrar el Portal como sistema único y nombrar relaciones/datos externos; no dibujar componentes internos en el Nivel 1. | El SVG y su página ahora dicen C4 Nivel 1 y explican la caja negra. Se conserva la tabla de flujos F-01 a F-34. | Etiquetado y explicación ajustados; el equipo todavía debe revisar que el dibujo represente exactamente los datos acordados. |
 | RF más generales y CU más concretos | Un RF expresa una capacidad de negocio amplia; los CUs describen metas concretas del actor. | Se definieron RF-26 a RF-32; RF-01 a RF-25 se mapearon como refinamientos y se actualizaron las relaciones de CUs/features. | Reorganizado en la rama local; falta revisión del grupo y actualización de issues en GitHub. |
-| Falta registrar estudiante | El estudiante debe existir antes de asociar vínculos y dar seguimiento. | CU-16, feature con cuatro escenarios y trazabilidad desde RF-26; alta separada de CU-02. | Especificado, no implementado, no probado y sin issue. Actor/campos provisionales. |
-| Empezar desde la idea, planear y entregar incrementos | Aclarar propósito, generar/revisar plan y construir una porción pequeña antes de ampliar el sistema. | Constitución, spec, plan y tasks SDD de CU-16; actualización de la guía de colaboración. | Preparación documental lista; no se implementó un incremento de CU-16. |
+| Falta registrar estudiante | El estudiante debe existir antes de asociar vínculos y dar seguimiento. | CU-16, feature, endpoint protegido, formulario y auditoría básica; alta separada de CU-02. | Implementado localmente, sin verificación ejecutada ni issue. Actor/campos provisionales. |
+| Empezar desde la idea, planear y entregar incrementos | Aclarar propósito, generar/revisar plan y construir una porción pequeña antes de ampliar el sistema. | Constitución, spec, plan, tasks SDD y porción vertical local de CU-16. | Implementación preparada; falta ejecutar verificaciones y revisar en grupo. |
 
 ## 3. Avance concreto realizado en esta rama
 
@@ -62,7 +62,7 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 - [RF-30 Gestionar seguimiento académico](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md): agrupa RF-02 a RF-09.
 - [RF-31 Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md): agrupa RF-10 a RF-16 y RF-23.
 - [RF-32 Gestionar apelaciones y pendientes](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md): agrupa RF-17 a RF-22 y RF-24 a RF-25.
-- [CU-16 Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md): actor Dirección provisional, campos existentes y escenarios alternos.
+- [CU-16 Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md): actor Dirección provisional, campos existentes, escenarios alternos e implementación local.
 - [Feature de CU-16](../04-pruebas/CU-16-registrar-estudiante.feature): cuatro escenarios de especificación; no se reportan como ejecutados.
 - [Matriz de trazabilidad RF → CU → prueba → issue](../02-requerimientos/trazabilidad-rf-cu.md): enlaza el nuevo requisito/caso y registra que el issue sigue pendiente.
 
@@ -86,8 +86,8 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 - El punto de partida local es la rama PC3 `pc3/core-consulta-vinculos`, commit `c17d519` (`feat: completar el núcleo funcional de PC3`). El trabajo nuevo está en una rama local separada: `codex/pc3-sdd-registro-estudiantes`.
 - CU-01 y CU-02 ya estaban implementados en el núcleo PC3. Este avance no cambia esos módulos ni atribuye su autoría a una persona nueva.
 - La rama actual documenta **15 casos de uso, 15 archivos `.feature` y 82 escenarios especificados**: el corte previo tenía 14/14/78; CU-16 agrega cuatro escenarios escritos.
-- La página de resultados conserva las comprobaciones registradas para el corte anterior. Se agregó una nota para que no parezca que el validador o las pruebas cubrieron CU-16.
-- No se implementó el endpoint ni el formulario de CU-16. Tampoco se ejecutaron pruebas, builds ni el validador después de estos cambios.
+- La página de resultados conserva las comprobaciones registradas para el corte anterior. Se agregó una nota para que no parezca que el validador o las pruebas cubrieron CU-16; su implementación local no se ha verificado.
+- CU-16 ahora tiene handler, endpoint, migración de auditoría de creación y formulario local. No se ejecutaron pruebas, builds ni el validador después de estos cambios.
 - CU-13, CU-14, CU-15 y CU-16 aparecen sin issue asociado en la matriz. El requisito de un issue por CU sigue sin completarse para esos cuatro casos.
 - GitHub rechazó con HTTP 403 la creación de la rama remota de este avance. Por tanto, el commit/tag publicado del repositorio no cambia con este trabajo local.
 
@@ -98,16 +98,16 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 1. Revisar la rama local completa y acordar quién presenta cada cambio. Mantener aparte el trabajo que corresponde a Josué; esta rama no intenta completarlo ni atribuírselo a otra persona.
 2. Revisar manualmente el `git diff` y decidir si el equipo acepta los supuestos de CU-16: actor, campos, identidad/duplicidad y relación separada con CU-02.
 3. Recuperar acceso de escritura al repositorio oficial por el mecanismo normal del equipo; luego publicar la rama/PR y crear los issues pendientes según la convención del proyecto. El 403 no se resolvió en esta sesión.
-4. Si no da tiempo para implementar CU-16, entregar con la limitación declarada como especificación y trabajo futuro. No presentar el caso como funcional ni como probado.
+4. Si no da tiempo para verificar CU-16, declararlo como implementación local pendiente de comprobación. No presentarlo como probado.
 
 ### Próximo incremento académico/técnico
 
 1. Revisar con el equipo que RF-01 a RF-25 estén correctamente ubicados bajo RF-26 a RF-32; sus IDs se preservaron para no romper la historia.
 2. Descomponer RF-27 y RF-28 en casos de uso concretos solo cuando haya actor, objetivo y datos acordados.
-3. Abrir el issue de CU-16, revisar el plan y construir una porción vertical pequeña: endpoint protegido de alta → ficha persistida → formulario de Dirección → confirmación/error.
+3. Abrir el issue de CU-16 y revisar la porción vertical ya preparada: endpoint protegido de alta → ficha persistida → formulario de Dirección → confirmación/error.
 4. Definir la clave institucional para duplicados, datos obligatorios, edición/inactivación y auditoría; añadir escenarios derivados de las decisiones.
 5. Ejecutar y registrar verificaciones reales contra los criterios de aceptación antes de declarar CU-16 implementado.
 
 ## 7. Lectura franca para la rúbrica
 
-El avance mejora la legibilidad, organiza siete capacidades funcionales generales sobre los refinamientos conservados, incorpora el CU que el profesor señaló y muestra el proceso SDD. También atiende el rótulo C4. Sin embargo, **no cierra por sí solo la rúbrica completa**: faltan la revisión del equipo, enlazar issues donde faltan, implementar/probar CU-16 si entra en el alcance y publicar en la rama oficial. La documentación diferencia cada cosa para evitar dar una impresión de completitud que la evidencia no respalda.
+El avance mejora la legibilidad, organiza siete capacidades funcionales generales sobre los refinamientos conservados, incorpora el CU que el profesor señaló y muestra el proceso SDD. También atiende el rótulo C4. CU-16 tiene implementación local, pero **todavía no está verificada**. Faltan la revisión del equipo, enlazar issues donde faltan, ejecutar verificaciones y publicar en la rama oficial. La documentación diferencia cada cosa para evitar dar una impresión de completitud que la evidencia no respalda.

@@ -2,7 +2,7 @@
 
 Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, con Java 21, PostgreSQL 17, Node.js y datos de demostración ficticios.
 
-> **Alcance del corte:** los resultados de esta página corresponden a la validación registrada antes de incorporar localmente CU-16. Esa validación encontró 14 CUs, 14 archivos `.feature` y 78 escenarios. Después se añadió CU-16 con 4 escenarios especificados (15 CUs, 15 archivos y 82 escenarios en el estado documental actual). No se volvieron a ejecutar los comandos ni el validador tras ese cambio; CU-16 no está implementado ni probado.
+> **Alcance del corte:** los resultados ejecutados que siguen corresponden a la validación registrada antes de incorporar CU-16. Esa validación encontró 14 CUs, 14 archivos `.feature` y 78 escenarios. Después se añadió CU-16 con cuatro escenarios (15 CUs y 82 escenarios descritos) y se preparó su implementación local. No se volvieron a ejecutar los comandos ni el validador tras esos cambios; la implementación de CU-16 no está verificada.
 
 ## Resultado por caso de uso
 
@@ -13,7 +13,7 @@ Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, 
 | CU-03 a CU-10 | Especificados; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
 | CU-12 | Especificado; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
 | CU-13 a CU-15 | Propuestas especificadas; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
-| CU-16 Registrar estudiante | Especificado en avance local; sin implementación funcional. | 4 escenarios escritos; no ejecutados ni incluidos en el corte de validación del 22 de noviembre. |
+| CU-16 Registrar estudiante | Implementado localmente; ejecución no verificada. | 4 escenarios escritos; no ejecutados ni incluidos en el corte de validación del 22 de noviembre. |
 
 ## Comprobaciones ejecutadas
 
@@ -30,7 +30,7 @@ Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, 
 
 - Los 78 escenarios Gherkin del corte validado son especificaciones; no hay ejecutor Cucumber conectado. Los 4 escenarios de CU-16 también son especificaciones y no se incluyeron en ese corte.
 - No se ejecutaron pruebas automatizadas de interfaz, accesibilidad, distintos navegadores ni rendimiento.
-- CU-03 a CU-10 y CU-12 a CU-15 no tienen implementación funcional ni pruebas de integración.
+- CU-03 a CU-10 y CU-12 a CU-15 no tienen implementación funcional ni pruebas de integración. CU-16 tiene código local, pero no cuenta con verificaciones ejecutadas.
 - El backend no tiene una suite de pruebas unitarias de reglas de vínculo, historial, errores y concurrencia.
 - El smoke conserva auditoría y agrega registros ficticios de vínculos suspendidos/finalizados. Puede ejecutarse nuevamente; no limpia ni reinicia la base local.
 - CU-01 + CU-02 son la propuesta ejecutada por el equipo, no una selección docente que se haya podido confirmar.

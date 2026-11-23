@@ -1,5 +1,6 @@
 package cr.ac.ucr.if6100.portal.persistence.entity;
 
+import java.time.Instant;
 import java.util.UUID;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,7 +31,25 @@ public class StudentEntity {
     @Column(nullable = false)
     private boolean active;
 
+    @Column(name = "created_by", nullable = false, length = 80)
+    private String createdBy;
+
+    @Column(name = "created_at", nullable = false)
+    private Instant createdAt;
+
     protected StudentEntity() { }
+
+    public StudentEntity(String fullName, String gradeLevel, String groupName,
+        String teacherName, String createdBy, Instant createdAt) {
+        this.id = UUID.randomUUID();
+        this.fullName = fullName;
+        this.gradeLevel = gradeLevel;
+        this.groupName = groupName;
+        this.teacherName = teacherName;
+        this.active = true;
+        this.createdBy = createdBy;
+        this.createdAt = createdAt;
+    }
 
     public UUID getId() {
         return id;
@@ -54,5 +73,13 @@ public class StudentEntity {
 
     public boolean isActive() {
         return active;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 }

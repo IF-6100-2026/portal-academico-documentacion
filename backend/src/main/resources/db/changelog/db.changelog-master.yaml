@@ -206,3 +206,20 @@ databaseChangeLog:
               CREATE UNIQUE INDEX uq_guardian_student_open
                 ON guardian_student_link(guardian_username, student_id)
                 WHERE status IN ('ACTIVE', 'PENDING');
+  - changeSet:
+      id: 005-student-registration-audit
+      author: equipo-montessori
+      comment: Registra quién y cuándo creó cada ficha de estudiante.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              ALTER TABLE student ADD COLUMN created_by VARCHAR(80);
+              ALTER TABLE student ADD COLUMN created_at TIMESTAMPTZ;
+              UPDATE student
+                SET created_by = 'direccion.demo', created_at = CURRENT_TIMESTAMP
+                WHERE created_by IS NULL OR created_at IS NULL;
+              ALTER TABLE student ALTER COLUMN created_by SET NOT NULL;
+              ALTER TABLE student ALTER COLUMN created_at SET NOT NULL;
+              ALTER TABLE student ADD CONSTRAINT fk_student_created_by
+                FOREIGN KEY (created_by) REFERENCES portal_user(username);
