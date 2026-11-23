@@ -74,7 +74,7 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 | [CU-13 — Aportar información a una apelación](../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | RF-32 | RF-19, RF-21 | RS-03 | [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) | Issue pendiente <!-- issue:CU-13 --> |
 | [CU-14 — Registrar resolución de apelación](../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | RF-32 | RF-20, RF-21 | RS-03 | [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-14 --> |
 | [CU-15 — Consultar resolución de apelación](../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | RF-32 | RF-20 | RS-01, RS-02, RS-03 | [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-15 --> |
-| [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | — | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | Issue pendiente <!-- issue:CU-16 --> |
+| [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | — | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | [Issue #16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16), [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15) <!-- issue:CU-16 --> |
 | [CU-17 — Registrar grupo académico](../03-casos-de-uso/CU-17-registrar-grupo-academico.md) | RF-27 | — | RS-03 | [CU-17-registrar-grupo-academico.feature](../04-pruebas/CU-17-registrar-grupo-academico.feature) | Issue pendiente <!-- issue:CU-17 --> |
 | [CU-18 — Asignar docente a grupo](../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md) | RF-27, RF-28 | — | RS-03 | [CU-18-asignar-docente-a-grupo.feature](../04-pruebas/CU-18-asignar-docente-a-grupo.feature) | Issue pendiente <!-- issue:CU-18 --> |
 | [CU-19 — Inscribir estudiante en grupo](../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md) | RF-26, RF-27 | — | RS-03 | [CU-19-inscribir-estudiante-en-grupo.feature](../04-pruebas/CU-19-inscribir-estudiante-en-grupo.feature) | Issue pendiente <!-- issue:CU-19 --> |
@@ -85,7 +85,7 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 
 - Los siete RF generales son RF-26 a RF-32. RF-01 a RF-25 se conservan como refinamientos históricos; los enlaces y los identificadores de escenarios/issue no se renumeran.
 - RF-26 se especializa en CU-16 y CU-19; RF-27 en CU-17 a CU-19; RF-28 en CU-18, CU-20 y CU-21. Los CUs nuevos son borradores con actores/datos explícitamente provisionales.
-- Hay 20 CUs y 20 archivos feature; CU-13 a CU-21 tienen issues pendientes. Las propuestas requieren revisión del grupo; no se declaran aprobadas por el profesor.
+- Hay 20 CUs y 20 archivos feature; los issues de CU-13 a CU-15 y CU-17 a CU-21 siguen pendientes. CU-16 está enlazado al issue #16 y PR #15. Las propuestas requieren revisión del grupo; no se declaran aprobadas por el profesor.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)

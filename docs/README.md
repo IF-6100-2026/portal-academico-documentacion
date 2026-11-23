@@ -9,7 +9,7 @@
 - [Cambios del PC1 al PC2](cambios-pc1-pc2.md): observaciones atendidas y equivalencias de identificadores.
 - [Cambios del PC2 al PC3](cambios-pc2-pc3.md): respuesta a la evaluación y límites conocidos del núcleo construido.
 - [Análisis de retroalimentación docente y avance independiente](07-construccion/ANALISIS-Y-AVANCE-DEFINICION-REGISTRO-ESTUDIANTE.md): decisiones, supuestos, cambios locales y pendientes.
-- [Estado de implementación](07-construccion/estado-de-implementacion.md), [brechas](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [guion de demostración PC3](07-construccion/guion-demostracion-pc3.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
+- [Estado de implementación](07-construccion/estado-de-implementacion.md), [checklist de implementación por CU](07-construccion/checklist-casos-de-uso.md), [brechas](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [guion de demostración PC3](07-construccion/guion-demostracion-pc3.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
 - [Glosario de siglas e identificadores](glosario.md): CU, RF, RS, E, P, AC, TP y los demás prefijos.
 
 ## 01 — Inicio

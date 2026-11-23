@@ -15,9 +15,10 @@ No se encontró una selección aprobada del núcleo y el equipo no la recuerda c
 | Producto integrado | Se conectaron interfaz React, API Spring Boot, PostgreSQL y migraciones Liquibase. | El núcleo funcional propuesto se concentra en CU-01 y CU-02; los otros casos están especificados y se documentan sin presentarlos como implementados. |
 | Patrones de implementación del curso | La API usa handlers CQRS, resultados `sealed`, UUID, Liquibase y Checkstyle. | El cumplimiento se limita al código presente; no implica una certificación del profesor. |
 | Necesidad de casos de prueba | Hay un archivo Gherkin por CU, un guion repetible de humo API y resultados de pruebas separados por tipo. | Gherkin permanece como especificación, no ejecutado por Cucumber. |
+| Issue por caso de uso y trazabilidad bidireccional | El repositorio tiene issues para CU-01 a CU-10, CU-12 y CU-16; el issue #16 enlaza CU-16/RF-26 y el PR #15. | La observación sigue incompleta: faltan issues de CU-13 a CU-15 y CU-17 a CU-21, además de revisar etiqueta y responsable para los issues existentes. Ver [estado de implementación](07-construccion/estado-de-implementacion.md). |
 
 ## Estado y decisiones pendientes
 
 La fuente editable del contexto está en [IcePanel y su catálogo de flujos](01-inicio/diagrama-de-contexto.md). El inventario de código, brechas y verificaciones está en [estado de implementación](07-construccion/estado-de-implementacion.md), [brechas](07-construccion/brechas-de-requerimientos.md) y [resultados](08-resultados-de-pruebas/resultados-pruebas.md).
 
-PC3 requiere commits de los integrantes. El historial del repositorio conserva las contribuciones previas de sus autores; esta entrega no crea ni atribuye commits ficticios. El equipo debe revisar su propia contribución y enviar el enlace de repositorio/tag en Mediación Virtual.
+PC3 requiere commits de los integrantes. El historial del repositorio conserva las contribuciones previas de sus autores; esta entrega no crea ni atribuye commits ficticios. El equipo debe revisar el PR #15, confirmar que cada integrante tenga commits atribuibles a su autoría, actualizar el tag `pc3` al commit final y enviar los enlaces del repositorio/tag en Mediación Virtual.

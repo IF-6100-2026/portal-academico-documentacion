@@ -26,7 +26,8 @@
 ## Otros campos
 - Restricciones: RS-03; usar datos ficticios en demos.
 - Prioridad: alta para habilitar registro académico.
-- Estado: implementado localmente en API y formulario. Pasan tres pruebas unitarias del handler y se verificaron endpoint y migración contra PostgreSQL temporal. Actor y datos son supuestos explícitos; automatizar la integración sigue pendiente.
+- Estado: implementado en la rama del PR #15 en API y formulario. Pasan tres pruebas unitarias del handler y se verificaron endpoint y migración contra PostgreSQL temporal. Actor y datos son supuestos explícitos; automatizar la integración y la revisión de grupo siguen pendientes.
 - Requerimiento general: [RF-26](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md).
 - Pruebas: [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature).
-- Issue: pendiente de crear; la integración no permitió publicar la rama de este avance.
+- Issue: [#16 — Registrar estudiante](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16).
+- Pull request: [#15 — implementar registro de estudiantes y actualizar documentación](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15); abierto y pendiente de revisión del equipo.
