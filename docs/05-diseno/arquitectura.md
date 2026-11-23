@@ -15,7 +15,7 @@ flowchart LR
     AUD --> R
 ```
 
-El flujo desplegado está respaldado por CU-01 y CU-02. No hay microservicios: el alcance del curso no lo requiere y dos desarrolladores pueden ejecutar la solución localmente.
+La integración PC3 implementa los 20 casos vigentes mediante un backend Spring Boot, una interfaz React con espacios de trabajo por actor y PostgreSQL. No hay microservicios: el alcance del curso no lo requiere y el grupo puede ejecutar la solución localmente.
 
 ## CU-01 — Consultar progreso académico
 

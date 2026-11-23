@@ -1,6 +1,6 @@
 # Checklist PC3 de implementación y pruebas por caso de uso
 
-Actualizado el 23 de noviembre de 2026 en la rama `codex/pc3-remaining-use-cases`, basada en `pc3/core-consulta-vinculos`. Esta rama contiene código para los 20 casos vigentes. La marca **verificado** se limita a la evidencia descrita; los `.feature` siguen siendo especificaciones y no se ejecutaron con Cucumber.
+Actualizado el 23 de noviembre de 2026 para la integración PC3 de `pc3/core-consulta-vinculos`. El PR #25 se fusionó en el merge `e5701a6` y el tag `pc3` identifica la versión final de entrega. La integración contiene código para los 20 casos vigentes. La marca **verificado** se limita a la evidencia descrita; los `.feature` siguen siendo especificaciones y no se ejecutaron con Cucumber.
 
 | CU | Implementado | Resultado y alcance de la verificación |
 |---|---:|---|
@@ -31,4 +31,4 @@ Actualizado el 23 de noviembre de 2026 en la rama `codex/pc3-remaining-use-cases
 - Código funcional disponible en esta rama para **20 de 20 casos vigentes**; CU-11 se retiró previamente.
 - `mvn test`: 12 pruebas aprobadas, sin fallos, errores ni violaciones de Checkstyle. `npm run build`: correcto. El validador detecta 20 CUs, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
 - CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21 tuvieron al menos un flujo principal comprobado por HTTP en una base PostgreSQL 17 temporal e independiente. Los escenarios alternos no se ejecutaron en bloque con Cucumber; la evidencia completa y sus límites están en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
-- La rama está publicada en el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25), aún abierto y pendiente de revisión e integración en `pc3/core-consulta-vinculos`. Los issues asociados siguen abiertos y deberán cerrarse explícitamente al integrar; el PR no contiene palabras clave de cierre. Las reglas provisionales no equivalen a políticas aprobadas por el profesor o el centro.
+- El [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está fusionado y el tag `pc3` apunta a su merge. Los issues #3 y #4 siguen abiertos como tareas del tablero aunque CU-01 y CU-02 tienen código y evidencia documentada. Las reglas provisionales no equivalen a políticas aprobadas por el profesor o el centro.

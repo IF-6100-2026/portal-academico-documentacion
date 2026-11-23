@@ -2,9 +2,9 @@
 
 Proyecto de Análisis y Diseño de Sistemas (IF-6100) para el Centro Educativo María Montessori. El repositorio integra documentación, API Spring Boot, interfaz React y PostgreSQL.
 
-**Alcance funcional de la rama PC3:** los 20 casos vigentes tienen código, incluidos los 17 flujos añadidos en `codex/pc3-remaining-use-cases`; CU-11 se retiró antes. CU-01/CU-02 son el núcleo previo y CU-16 se integró con PR #15. La rama nueva tuvo pruebas unitarias, compilación frontend, validación documental y smoke HTTP de los flujos principales contra PostgreSQL 17 temporal. Los escenarios Gherkin no se ejecutaron como suite; los supuestos institucionales y los límites se detallan en [estado de implementación](docs/07-construccion/estado-de-implementacion.md) y [brechas](docs/07-construccion/brechas-de-requerimientos.md).
+**Alcance funcional de PC3:** hay código integrado para los 20 casos vigentes; CU-11 se retiró antes de PC3. El PR #25 fue fusionado en `pc3/core-consulta-vinculos` (merge `e5701a6`). El tag `pc3` identifica la versión final de entrega. La rama tuvo pruebas unitarias, compilación del frontend, validación documental y smoke HTTP de los flujos principales contra PostgreSQL 17 temporal. Los escenarios Gherkin no se ejecutaron como suite; los supuestos institucionales y los límites se detallan en [estado de implementación](docs/07-construccion/estado-de-implementacion.md) y [brechas](docs/07-construccion/brechas-de-requerimientos.md).
 
-La rama `codex/pc3-remaining-use-cases` ya está publicada y el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está abierto contra `pc3/core-consulta-vinculos`, pendiente de revisión e integración. El tag `pc3` todavía debe actualizarse después de integrar los cambios. Los issues #5–#13 y #17–#24 siguen abiertos y requieren cierre al completar la revisión. Los perfiles, grupos, escala de calificación, plazos, notificaciones y procedimiento de apelación incluyen decisiones provisionales que el grupo debe revisar; no se atribuye aprobación docente.
+El [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está fusionado. Los issues de CU-01 y CU-02 (#3 y #4) siguen abiertos en GitHub aunque esos casos sí tienen código y evidencia HTTP; su estado de seguimiento no significa que falte su implementación. Los perfiles, grupos, escala de calificación, plazos, notificaciones y procedimiento de apelación incluyen decisiones provisionales que el grupo debe revisar; no se atribuye aprobación docente.
 
 ## Integrantes registrados
 
@@ -57,6 +57,6 @@ Para repetir la verificación integrada del núcleo, iniciar base y API y ejecut
 
 ## Entrega PC3
 
-El tag `pc3` todavía apunta al commit base anterior a estos 17 flujos. Después de integrar el PR #25, actualízalo al commit final y copia los enlaces del repositorio y del tag en la actividad PC3 de Mediación Virtual; subir el tag no registra por sí solo la entrega.
+El tag `pc3` identifica la versión integrada que contiene los 20 casos vigentes. Copia los enlaces del repositorio y del tag en la actividad PC3 de Mediación Virtual; subir el tag no registra por sí solo la entrega.
 
 La selección docente del núcleo no se pudo confirmar antes de la fecha límite; por eso el alcance ejecutado se registra como propuesta del equipo. La revisión final del grupo y la entrega del enlace/tag en Mediación Virtual se completan aparte.
