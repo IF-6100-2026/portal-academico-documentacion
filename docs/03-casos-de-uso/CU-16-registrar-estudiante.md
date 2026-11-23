@@ -26,7 +26,7 @@
 ## Otros campos
 - Restricciones: RS-03; usar datos ficticios en demos.
 - Prioridad: alta para habilitar registro académico.
-- Estado: implementado localmente en API y formulario; no verificado en ejecución. Actor y datos son supuestos explícitos.
+- Estado: implementado localmente en API y formulario. Pasan tres pruebas unitarias del handler y se verificaron endpoint y migración contra PostgreSQL temporal. Actor y datos son supuestos explícitos; automatizar la integración sigue pendiente.
 - Requerimiento general: [RF-26](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md).
 - Pruebas: [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature).
 - Issue: pendiente de crear; la integración no permitió publicar la rama de este avance.

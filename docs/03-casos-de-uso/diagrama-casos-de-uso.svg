@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1010" viewBox="0 0 1500 1010" role="img" aria-labelledby="title desc">
   <title id="title">Casos de uso del Portal Académico</title>
-  <desc id="desc">Quince casos de uso agrupados por las tres épicas, con actores principales. CU-13, CU-14 y CU-15 están propuestos; CU-16 tiene avance local pendiente de validación.</desc>
+  <desc id="desc">Quince casos de uso agrupados por las tres épicas, con actores principales. CU-13, CU-14 y CU-15 están propuestos; CU-16 tiene avance local parcialmente verificado, pendiente de integración con PostgreSQL.</desc>
   <defs>
     <style>
       .bg{fill:#f5f7fb}.title{font:700 32px Arial,sans-serif;fill:#15223b}.sub{font:16px Arial,sans-serif;fill:#506079}

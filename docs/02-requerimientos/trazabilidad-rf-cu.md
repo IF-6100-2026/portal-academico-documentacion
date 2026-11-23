@@ -8,7 +8,7 @@ Estos siete RF son el nivel general del modelo. Los RF-01 a RF-25 se conservan c
 
 | RF general | Capacidad | Refinamientos detallados conservados | CUs asociados/estado |
 |---|---|---|---|
-| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 tiene implementación local; falta verificación. |
+| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 tiene handler probado, frontend compilado y verificación HTTP en PostgreSQL temporal. |
 | [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | Sin CU; requiere descomposición. |
 | [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | Sin CU; requiere descomposición. |
 | [RF-29 Gestionar vínculos y acceso](funcionales/RF-29-gestionar-vinculos-y-acceso.md) | Controlar qué persona encargada puede consultar cada estudiante. | RF-01. | CU-02 administra el vínculo; CU-01 consulta con autorización vigente. |
@@ -90,4 +90,4 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 | CU-01 | `TP-CU01-A05` | Rechazar una sesión inválida antes de revelar vínculos o publicaciones. |
 | CU-05 | `TP-CU05-A08` | Revalidar el vínculo al abrir, aunque el recordatorio se emitió con autorización. |
 
-Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte validado antes de añadir CU-16 contenía 78 escenarios. CU-16 agrega 4 escenarios documentales, para 82 escenarios descritos en el estado actual. Ninguno de esos 4 nuevos escenarios se reporta como ejecutado; véase [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
+Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte previo contenía 78 escenarios; CU-16 agrega 5 escenarios documentales, para 83 escenarios descritos. Los escenarios Gherkin no se ejecutan automáticamente; el handler de CU-16 tiene tres pruebas unitarias y su endpoint se verificó manualmente contra PostgreSQL temporal, según [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).

@@ -30,3 +30,9 @@ Característica: CU-16 — Registrar estudiante
     Cuando DIR-01 registra una ficha válida para "Ana Demo"
     Entonces la ficha queda activa
     Y ninguna persona encargada obtiene acceso hasta que CU-02 registre un vínculo autorizado
+
+  Escenario: TP-CU16-A04 — Coincidencia de nombre sin identificador institucional
+    Dado que ya existe una ficha para "Ana Demo" sin código institucional
+    Cuando DIR-01 registra otra ficha con el nombre "Ana Demo"
+    Entonces el Portal no bloquea el alta únicamente por coincidir el nombre
+    Y conserva las dos fichas para revisión posterior de la institución

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/director/students")
 public class DirectorStudentController {
+    private static final int PERSON_NAME_LENGTH = 160;
+    private static final int GROUP_LABEL_LENGTH = 30;
     private final RegisterStudentHandler handler;
 
     public DirectorStudentController(RegisterStudentHandler handler) {
@@ -39,8 +41,8 @@ public class DirectorStudentController {
     }
 
     public record RegisterStudentRequest(
-        @NotBlank @Size(max = 160) String fullName,
-        @NotBlank @Size(max = 30) String gradeLevel,
-        @NotBlank @Size(max = 30) String groupName,
-        @NotBlank @Size(max = 160) String teacherName) { }
+        @NotBlank @Size(max = PERSON_NAME_LENGTH) String fullName,
+        @NotBlank @Size(max = GROUP_LABEL_LENGTH) String gradeLevel,
+        @NotBlank @Size(max = GROUP_LABEL_LENGTH) String groupName,
+        @NotBlank @Size(max = PERSON_NAME_LENGTH) String teacherName) { }
 }

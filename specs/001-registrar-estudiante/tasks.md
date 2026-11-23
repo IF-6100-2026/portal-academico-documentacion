@@ -17,6 +17,7 @@
 - [x] Añadir formulario React y refrescar el catálogo.
 - [x] Registrar quién creó la ficha y cuándo con una nueva migración Liquibase.
 - [ ] Definir identidad/duplicados con regla institucional.
-- [ ] Añadir/ejecutar verificaciones para criterios y comprobación integrada.
+- [x] Añadir y ejecutar pruebas unitarias del handler para permisos, alta válida y campo requerido.
+- [x] Probar por HTTP el endpoint y aplicar la migración 005 contra una instancia PostgreSQL temporal aislada.
 - [ ] Verificar desde clon limpio y actualizar resultados.
 - [ ] Crear issue y publicar la rama para revisión.

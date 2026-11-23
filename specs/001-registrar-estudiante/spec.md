@@ -47,7 +47,7 @@ Incluye alta, validación de campos existentes, UUID interno y confirmación. Ex
 Los escenarios están en docs/04-pruebas/CU-16-registrar-estudiante.feature. Son criterios escritos, no pruebas ejecutadas.
 
 ## Trazabilidad
-RF-26 → CU-16 → feature → issue pendiente → endpoint/formulario local. CU-02 es una operación relacionada y separada. Falta ejecutar la verificación y actualizar el issue al recuperar acceso.
+RF-26 → CU-16 → feature → issue pendiente → endpoint/formulario local. CU-02 es una operación relacionada y separada. Las pruebas unitarias del handler pasan; falta la verificación integrada y actualizar el issue al recuperar acceso.
 
 ## Riesgos abiertos
 Definir quién actualiza/inactiva, el identificador para duplicados y cuáles campos son obligatorios al alta. El modelo actual almacena el docente como texto.

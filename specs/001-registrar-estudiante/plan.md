@@ -1,6 +1,6 @@
 # Plan: registrar estudiante
 
-**Estado:** plan de la implementación local; las verificaciones todavía están pendientes.
+**Estado:** implementación local verificada con pruebas unitarias y una comprobación HTTP contra PostgreSQL temporal; frontend compilado. La integración manual no está automatizada en CI; falta revisión del equipo.
 
 ## Backend
 1. Añadir comando/handler siguiendo los patrones actuales.
@@ -21,4 +21,4 @@
 Reutilizar el rol de Dirección, mantener datos ficticios y no crear cuentas del estudiante. No deduplicar hasta definir identidad escolar.
 
 ## Relación con PC3
-CU-01 y CU-02 son el núcleo implementado. CU-16 se implementó localmente como el siguiente incremento; falta verificarlo antes de presentarlo como funcionalmente comprobado.
+CU-01 y CU-02 son el núcleo integrado implementado. CU-16 se implementó localmente como el siguiente incremento; las pruebas unitarias del handler y el build del frontend pasan. La migración 005 y los estados principales del endpoint se verificaron contra una instancia PostgreSQL temporal; se recomienda convertir esa comprobación manual en una prueba de integración repetible.

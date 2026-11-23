@@ -5,7 +5,7 @@
 | Nivel | Requerimiento funcional general |
 | Épica | Registro y consulta de notas y evaluaciones |
 | Actor | Dirección, provisionalmente por continuidad con CU-02 |
-| Estado | Propuesta general; CU-16 tiene implementación local pendiente de verificación. |
+| Estado | Propuesta general; CU-16 tiene handler probado, frontend compilado y verificación HTTP en PostgreSQL temporal. |
 
 ## Necesidad
 El seguimiento académico requiere una ficha del estudiante antes de asociar vínculos y publicaciones.

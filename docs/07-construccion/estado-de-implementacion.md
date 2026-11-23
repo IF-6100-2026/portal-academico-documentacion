@@ -2,7 +2,7 @@
 
 ## Resumen
 
-La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Otros 12 CU documentados son especificaciones, no módulos funcionales. CU-16 tiene implementación local en API/formulario, todavía sin verificación ejecutada. Las limitaciones de política, seguridad institucional y escenarios pendientes siguen registradas en [brechas](brechas-de-requerimientos.md).
+La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Otros 12 CU documentados son especificaciones, no módulos funcionales. CU-16 tiene implementación en API/formulario; sus tres pruebas unitarias pasan, el frontend compila y el flujo HTTP se comprobó en una base PostgreSQL temporal. La prueba HTTP no está automatizada en CI. Las limitaciones de política, seguridad institucional y escenarios pendientes siguen registradas en [brechas](brechas-de-requerimientos.md).
 
 | CU | Estado | Código disponible | Faltantes principales |
 |---|---|---|---|
@@ -11,7 +11,7 @@ La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02
 | CU-03 a CU-10 | Especificado | Fichas de CU y escenarios Gherkin. | Publicación docente, avisos, mensajes, seguimiento, apelación, corrección y plazos. |
 | CU-12 | Especificado | Ficha y escenarios Gherkin. | Registro y atención de quejas. |
 | CU-13 a CU-15 | Propuesta especificada | Desglose de RF-19/RF-20, fichas y escenarios Gherkin. | Validación del grupo/profesor, issue de seguimiento y toda la implementación. |
-| CU-16 Registrar estudiante | Implementado localmente, sin verificar | Ficha, criterios, escenarios, handler, endpoint protegido, formulario React y auditoría básica de alta. | Issue, revisión humana, política de identidad/duplicados y ejecución de verificaciones. |
+| CU-16 Registrar estudiante | Implementación local verificada manualmente | Ficha, criterios, escenarios, handler con 3 pruebas unitarias, endpoint y migración comprobados en PostgreSQL temporal, formulario React compilado. | Issue, revisión humana, política institucional de identidad/duplicados y automatización de la prueba integrada en CI. |
 
 Hay 15 CU documentados (CU-01 a CU-10 y CU-12 a CU-16); CU-11 se retiró previamente. El conteo no significa que los 15 estén implementados. El modelo documental agrupa las capacidades en RF-26 a RF-32 y conserva RF-01 a RF-25 como refinamientos detallados; véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
 

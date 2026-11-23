@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 public class StudentEntity {
     private static final int PERSON_NAME_LENGTH = 160;
     private static final int GROUP_LABEL_LENGTH = 30;
+    private static final int USERNAME_LENGTH = 80;
 
     @Id
     private UUID id;
@@ -31,7 +32,7 @@ public class StudentEntity {
     @Column(nullable = false)
     private boolean active;
 
-    @Column(name = "created_by", nullable = false, length = 80)
+    @Column(name = "created_by", nullable = false, length = USERNAME_LENGTH)
     private String createdBy;
 
     @Column(name = "created_at", nullable = false)

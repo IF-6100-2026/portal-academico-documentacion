@@ -13,7 +13,7 @@ Se utilizó Codex (modelo GPT-6) como asistente durante la preparación de PC3, 
 - Implementación de publicaciones recientes, avisos pendientes, historial de corrección y bloqueo de acceso para vínculos pendientes.
 - Preparación y ejecución de comprobaciones de compilación, API y documentación (los resultados concretos se registran en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md)).
 - Búsqueda del material público del curso sobre Claude Code, skills y SDD; elaboración asistida de constitución, spec, plan y tasks para CU-16. La especificación y el plan requieren revisión humana.
-- Implementación local de CU-16: handler Java, endpoint protegido, migración de auditoría de alta y formulario React. No se ejecutaron pruebas ni build después de estos cambios; el código queda pendiente de revisión humana y verificación.
+- Implementación local de CU-16: handler Java, endpoint protegido, migración de auditoría de alta y formulario React. Se ejecutaron `mvn test` (8 pruebas, 0 fallos), `npm run build` y el validador documental. Falta la prueba integrada de la migración y el endpoint contra PostgreSQL, además de la revisión humana.
 
 ## Revisión humana pendiente
 

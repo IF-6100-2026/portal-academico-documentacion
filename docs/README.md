@@ -26,7 +26,7 @@
 
 **Requerimientos funcionales generales**
 
-- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 define e implementa localmente el alta, pendiente de verificación.
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 define e implementa el alta; handler, build y flujo HTTP en PostgreSQL temporal verificados.
 - [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): falta descomponer en CUs concretos.
 - [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): falta descomponer en CUs concretos.
 - [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
