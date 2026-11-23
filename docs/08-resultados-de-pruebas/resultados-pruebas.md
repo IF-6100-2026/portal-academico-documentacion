@@ -2,6 +2,8 @@
 
 Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, con Java 21, PostgreSQL 17, Node.js y datos de demostración ficticios.
 
+> **Alcance del corte:** los resultados de esta página corresponden a la validación registrada antes de incorporar localmente CU-16. Esa validación encontró 14 CUs, 14 archivos `.feature` y 78 escenarios. Después se añadió CU-16 con 4 escenarios especificados (15 CUs, 15 archivos y 82 escenarios en el estado documental actual). No se volvieron a ejecutar los comandos ni el validador tras ese cambio; CU-16 no está implementado ni probado.
+
 ## Resultado por caso de uso
 
 | CU | Estado de implementación PC3 | Verificación ejecutada |
@@ -11,6 +13,7 @@ Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, 
 | CU-03 a CU-10 | Especificados; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
 | CU-12 | Especificado; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
 | CU-13 a CU-15 | Propuestas especificadas; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
+| CU-16 Registrar estudiante | Especificado en avance local; sin implementación funcional. | 4 escenarios escritos; no ejecutados ni incluidos en el corte de validación del 22 de noviembre. |
 
 ## Comprobaciones ejecutadas
 
@@ -21,11 +24,11 @@ Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, 
 | `npm run build` | **Correcto:** TypeScript y compilación de producción Vite. | Comprueba el contrato de tipos y genera los archivos estáticos; no prueba interacciones de navegador. |
 | `scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:18081` | **Correcto:** 31 comprobaciones HTTP por ejecución; se corrió tres veces en total, la última con la migración 004 aplicada. | API integrada para el alcance CU-01/CU-02. Se usó el puerto 18081 porque el 18080 local ya estaba ocupado. |
 | Revisión manual de la interfaz local | **Correcto:** acceso de persona encargada y Dirección, lista de estudiantes, historial de calificación, cambio de periodo con lista vacía y catálogo con vínculo pendiente. | Exploración manual en navegador; no equivale a una prueba automatizada de UI. |
-| `python scripts/validar_documentacion.py` | **Correcto:** 14 CU, 14 archivos `.feature`, 78 escenarios especificados y 0 errores estructurales. | Verifica formato y estructura documental; no ejecuta Gherkin ni valida su contenido académico. |
+| `python scripts/validar_documentacion.py` | **Correcto en el corte previo a CU-16:** 14 CU, 14 archivos `.feature`, 78 escenarios especificados y 0 errores estructurales. | Verifica formato y estructura documental; no ejecuta Gherkin ni valida su contenido académico. El resultado no cubre los documentos añadidos después. |
 
 ## Límites de esta evidencia
 
-- Los 78 escenarios Gherkin son especificaciones; no hay ejecutor Cucumber conectado.
+- Los 78 escenarios Gherkin del corte validado son especificaciones; no hay ejecutor Cucumber conectado. Los 4 escenarios de CU-16 también son especificaciones y no se incluyeron en ese corte.
 - No se ejecutaron pruebas automatizadas de interfaz, accesibilidad, distintos navegadores ni rendimiento.
 - CU-03 a CU-10 y CU-12 a CU-15 no tienen implementación funcional ni pruebas de integración.
 - El backend no tiene una suite de pruebas unitarias de reglas de vínculo, historial, errores y concurrencia.

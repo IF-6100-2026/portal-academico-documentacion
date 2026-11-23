@@ -42,6 +42,9 @@ Abre <http://localhost:5173>. La guía de [ambiente de desarrollo](docs/06-confi
 
 - [Documentación e índice de artefactos](docs/README.md)
 - [Respuesta a la evaluación PC2 y alcance PC3](docs/cambios-pc2-pc3.md)
+- [Análisis de retroalimentación docente y avance independiente](docs/07-construccion/ANALISIS-Y-AVANCE-DEFINICION-REGISTRO-ESTUDIANTE.md)
+- [Guía del curso: skills y SDD](docs/06-configuracion/guia-sdd-y-skills-del-curso.md)
+- [Spec, plan y tareas de registrar estudiante](specs/001-registrar-estudiante/spec.md)
 - [Estado de implementación](docs/07-construccion/estado-de-implementacion.md)
 - [Brechas y decisiones pendientes](docs/07-construccion/brechas-de-requerimientos.md)
 - [Decisiones de diseño](docs/07-construccion/decisiones-de-diseno.md)

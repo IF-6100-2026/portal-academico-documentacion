@@ -2,7 +2,17 @@
 
 Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU → escenario de prueba → issue → código**. El tramo BPMN → problema → RF está en [trazabilidad-bpmn-rf.md](../01-inicio/bpmn/trazabilidad-bpmn-rf.md). Las equivalencias con los identificadores del PC1 están en [cambios-pc1-pc2.md](../cambios-pc1-pc2.md).
 
-## Requerimientos funcionales
+## Requerimientos funcionales generales
+
+Estos RF fijan capacidades de sistema en un nivel más amplio. RF-01 a RF-25 conservan debajo su detalle histórico.
+
+| RF general | Capacidad | CUs asociados/estado |
+|---|---|---|
+| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener ficha académica básica. | CU-16 especifica el alta; CU-02 depende de una ficha existente. |
+| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Sin CU específico implementado; requiere descomposición. |
+| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Sin CU específico implementado; requiere descomposición. |
+
+### RF detallados existentes (RF-01 a RF-25)
 
 | RF | Nombre | Épica | Actor | Proceso actual | CU | Escenarios |
 |---|---|---|---|---|---|---|
@@ -58,11 +68,12 @@ Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU
 | [CU-13 — Aportar información a una apelación](../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | RF-19, RF-21 | RS-03 | [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) | Issue pendiente <!-- issue:CU-13 --> |
 | [CU-14 — Registrar resolución de apelación](../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | RF-20, RF-21 | RS-03 | [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-14 --> |
 | [CU-15 — Consultar resolución de apelación](../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | RF-20 | RS-01, RS-02, RS-03 | [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-15 --> |
+| [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | Issue pendiente <!-- issue:CU-16 --> |
 
 ## Controles
 
-- Los 25 RF tienen actor, evidencia, actividad del BPMN, al menos un CU y al menos un escenario.
-- Los 14 CU tienen al menos un RF y un archivo `.feature`. CU-13, CU-14 y CU-15 son propuestas de desglose; sus issues y aprobación docente siguen pendientes.
+- RF-01 a RF-25 conservan su trazabilidad detallada. RF-26 a RF-28 agrupan capacidades; RF-27/28 requieren CUs antes de implementarse.
+- Hay 15 CUs y 15 archivos feature; CU-13 a CU-16 tienen issues pendientes. Estos casos requieren revisión del grupo; no se declaran aprobados por el profesor.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)
@@ -72,4 +83,4 @@ Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU
 | CU-01 | `TP-CU01-A05` | Rechazar una sesión inválida antes de revelar vínculos o publicaciones. |
 | CU-05 | `TP-CU05-A08` | Revalidar el vínculo al abrir, aunque el recordatorio se emitió con autorización. |
 
-Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El catálogo contiene 78 escenarios especificados; solo los que se registran en `resultados-pruebas.md` se presentan como ejecutados.
+Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte validado antes de añadir CU-16 contenía 78 escenarios. CU-16 agrega 4 escenarios documentales, para 82 escenarios descritos en el estado actual. Ninguno de esos 4 nuevos escenarios se reporta como ejecutado; véase [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).

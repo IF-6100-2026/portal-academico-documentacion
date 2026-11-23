@@ -8,13 +8,14 @@
 
 - [Cambios del PC1 al PC2](cambios-pc1-pc2.md): observaciones atendidas y equivalencias de identificadores.
 - [Cambios del PC2 al PC3](cambios-pc2-pc3.md): respuesta a la evaluación y límites conocidos del núcleo construido.
+- [Análisis de retroalimentación docente y avance independiente](07-construccion/ANALISIS-Y-AVANCE-DEFINICION-REGISTRO-ESTUDIANTE.md): decisiones, supuestos, cambios locales y pendientes.
 - [Estado de implementación](07-construccion/estado-de-implementacion.md), [brechas](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [guion de demostración PC3](07-construccion/guion-demostracion-pc3.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
 - [Glosario de siglas e identificadores](glosario.md): CU, RF, RS, E, P, AC, TP y los demás prefijos.
 
 ## 01 — Inicio
 
 - [Problema y visión](01-inicio/problema-y-vision.md): evidencia, problemas, épicas, alcance y supuestos.
-- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): modelo de caja negra en SVG y catálogo F-01 a F-34.
+- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): C4 Nivel 1, caja negra en SVG y catálogo F-01 a F-34.
 - [Proceso actual (BPMN) y trazabilidad hacia los RF](01-inicio/bpmn/trazabilidad-bpmn-rf.md)
   - [seguimiento-academico-actual.bpmn](01-inicio/bpmn/seguimiento-academico-actual.bpmn) · [PNG](01-inicio/bpmn/seguimiento-academico-actual.png)
   - [resolver-apelacion-actual.bpmn](01-inicio/bpmn/resolver-apelacion-actual.bpmn) · [PNG](01-inicio/bpmn/resolver-apelacion-actual.png)
@@ -36,6 +37,12 @@
 | [RF-07 Registrar calificaciones del grupo](02-requerimientos/funcionales/RF-07-registrar-calificaciones-del-grupo.md) | [RF-16 Atender queja por información no recibida](02-requerimientos/funcionales/RF-16-atender-queja-por-informacion-no-recibida.md) | [RF-23 Alertar avisos sin consulta](02-requerimientos/funcionales/RF-23-alertar-avisos-sin-consulta.md) |
 | [RF-08 Publicar calificación](02-requerimientos/funcionales/RF-08-publicar-calificacion.md) | | [RF-24 Consultar estado del seguimiento](02-requerimientos/funcionales/RF-24-consultar-estado-del-seguimiento.md) |
 | [RF-09 Corregir calificación con historial](02-requerimientos/funcionales/RF-09-corregir-calificacion-con-historial.md) | | [RF-25 Consultar registro de consultas](02-requerimientos/funcionales/RF-25-consultar-registro-de-consultas.md) |
+
+**Capacidades funcionales generales incorporadas tras la retroalimentación**
+
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 especifica el alta; CU-02 conserva el vínculo como acción independiente.
+- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general identificada; faltan CUs específicos.
+- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general identificada; faltan CUs específicos.
 
 **Suplementarios**
 
@@ -65,8 +72,15 @@
 | [CU-13 Aportar información a una apelación](03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | [.feature](04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) |
 | [CU-14 Registrar resolución de apelación](03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) |
 | [CU-15 Consultar resolución de apelación](03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) |
+| [CU-16 Registrar estudiante](03-casos-de-uso/CU-16-registrar-estudiante.md) | [feature](04-pruebas/CU-16-registrar-estudiante.feature) |
 
 CU-11 no existe: correspondía a la bitácora de auditoría del PC1, que se retiró (ver [cambios](cambios-pc1-pc2.md#casos-de-uso)).
+
+## SDD — Especificación dirigida por diseño
+
+- [Guía del curso sobre skills y SDD](06-configuracion/guia-sdd-y-skills-del-curso.md)
+- [Constitución](../.specify/memory/constitution.md)
+- [Spec CU-16](../specs/001-registrar-estudiante/spec.md) · [plan](../specs/001-registrar-estudiante/plan.md) · [tasks](../specs/001-registrar-estudiante/tasks.md)
 
 ## 04 — Pruebas
 

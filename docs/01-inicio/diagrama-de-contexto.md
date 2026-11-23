@@ -1,4 +1,6 @@
-# Diagrama de contexto
+# C4 — Diagrama de contexto del sistema (Nivel 1)
+
+**Modelo:** C4, Nivel 1 — Contexto del sistema. El Portal aparece como caja negra; se muestran entidades externas y relaciones principales, no componentes internos.
 
 El sistema se representa como **una sola caja negra** y se muestran únicamente las cuatro entidades externas y los datos que intercambian. Los módulos, pantallas, tablas, servicios y participantes internos quedan fuera de este diagrama. El archivo SVG es la fuente editable y la imagen publicada.
 

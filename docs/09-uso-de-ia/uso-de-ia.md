@@ -12,6 +12,7 @@ Se utilizó Codex (modelo GPT-6) como asistente durante la preparación de PC3, 
 - Revisión/actualización de trazabilidad, casos de uso, escenarios Gherkin, diagramas, decisiones, brechas y guías.
 - Implementación de publicaciones recientes, avisos pendientes, historial de corrección y bloqueo de acceso para vínculos pendientes.
 - Preparación y ejecución de comprobaciones de compilación, API y documentación (los resultados concretos se registran en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md)).
+- Búsqueda del material público del curso sobre Claude Code, skills y SDD; elaboración asistida de constitución, spec, plan y tasks para CU-16. Esta propuesta local requiere revisión humana; la implementación no se generó ni verificó.
 
 ## Revisión humana pendiente
 

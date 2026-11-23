@@ -2,7 +2,7 @@
 
 ## Resumen
 
-La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Los demás 12 CU son especificaciones, no módulos funcionales. Las limitaciones de política, seguridad institucional y escenarios pendientes siguen registradas en [brechas](brechas-de-requerimientos.md).
+La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02 están implementados para la demostración y verificados en su alcance documentado aquí**. La propuesta se ejecutó porque el equipo no pudo confirmar qué selección se aprobó con el profesor; no se presenta como aprobación docente. Los otros 13 CU documentados son especificaciones, no módulos funcionales. CU-16 se añadió como definición de alta, todavía sin código. Las limitaciones de política, seguridad institucional y escenarios pendientes siguen registradas en [brechas](brechas-de-requerimientos.md).
 
 | CU | Estado | Código disponible | Faltantes principales |
 |---|---|---|---|
@@ -11,8 +11,9 @@ La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02
 | CU-03 a CU-10 | Especificado | Fichas de CU y escenarios Gherkin. | Publicación docente, avisos, mensajes, seguimiento, apelación, corrección y plazos. |
 | CU-12 | Especificado | Ficha y escenarios Gherkin. | Registro y atención de quejas. |
 | CU-13 a CU-15 | Propuesta especificada | Desglose de RF-19/RF-20, fichas y escenarios Gherkin. | Validación del grupo/profesor, issue de seguimiento y toda la implementación. |
+| CU-16 Registrar estudiante | Especificado en avance local SDD | Ficha, criterios y escenarios Gherkin. | Issue, revisión humana, API, formulario, política de identidad/duplicados y verificaciones. |
 
-Hay 14 CU documentados (CU-01 a CU-10, CU-12 a CU-15); CU-11 se retiró previamente. El conteo no significa que los 14 estén implementados. Véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
+Hay 15 CU documentados (CU-01 a CU-10 y CU-12 a CU-16); CU-11 se retiró previamente. El conteo no significa que los 15 estén implementados. Véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
 
 ## Componentes integrados
 
