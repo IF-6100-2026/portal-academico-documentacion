@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -19,6 +20,15 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiErrorResponse> invalidRequest(Exception exception) {
         return ResponseEntity.badRequest().body(ApiErrorResponse.generic(
             "INVALID_REQUEST", "Revise los datos enviados."));
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ApiErrorResponse> expectedFailure(ResponseStatusException exception) {
+        UUID correlationId = UUID.randomUUID();
+        String reason = exception.getReason() == null
+            ? "No se pudo completar la solicitud." : exception.getReason();
+        return ResponseEntity.status(exception.getStatusCode()).body(
+            new ApiErrorResponse("REQUEST_REJECTED", reason, correlationId));
     }
 
     @ExceptionHandler(Exception.class)

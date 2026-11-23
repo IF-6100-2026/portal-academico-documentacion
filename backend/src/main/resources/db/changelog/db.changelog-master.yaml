@@ -223,3 +223,239 @@ databaseChangeLog:
               ALTER TABLE student ALTER COLUMN created_at SET NOT NULL;
               ALTER TABLE student ADD CONSTRAINT fk_student_created_by
                 FOREIGN KEY (created_by) REFERENCES portal_user(username);
+  - changeSet:
+      id: 006-academic-catalog
+      author: equipo-montessori
+      comment: Agrega perfiles docentes, grupos académicos, asignaciones e inscripciones auditables.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              CREATE TABLE teacher_profile (
+                username VARCHAR(80) PRIMARY KEY REFERENCES portal_user(username),
+                display_name VARCHAR(160) NOT NULL,
+                active BOOLEAN NOT NULL DEFAULT TRUE,
+                created_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                created_at TIMESTAMPTZ NOT NULL,
+                changed_by VARCHAR(80) REFERENCES portal_user(username),
+                changed_at TIMESTAMPTZ
+              );
+              CREATE TABLE teacher_profile_history (
+                id UUID PRIMARY KEY,
+                teacher_username VARCHAR(80) NOT NULL REFERENCES teacher_profile(username),
+                display_name VARCHAR(160) NOT NULL,
+                active BOOLEAN NOT NULL,
+                changed_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                changed_at TIMESTAMPTZ NOT NULL
+              );
+              CREATE INDEX ix_teacher_profile_history_time
+                ON teacher_profile_history(teacher_username, changed_at DESC);
+              CREATE TABLE academic_group (
+                id UUID PRIMARY KEY,
+                subject VARCHAR(100) NOT NULL,
+                grade_level VARCHAR(30) NOT NULL,
+                group_name VARCHAR(30) NOT NULL,
+                period VARCHAR(40) NOT NULL,
+                active BOOLEAN NOT NULL DEFAULT TRUE,
+                created_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                created_at TIMESTAMPTZ NOT NULL,
+                CONSTRAINT uq_academic_group_identity
+                  UNIQUE (subject, grade_level, group_name, period)
+              );
+              CREATE TABLE teaching_assignment (
+                id UUID PRIMARY KEY,
+                group_id UUID NOT NULL REFERENCES academic_group(id),
+                teacher_username VARCHAR(80) NOT NULL REFERENCES teacher_profile(username),
+                active BOOLEAN NOT NULL DEFAULT TRUE,
+                assigned_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                assigned_at TIMESTAMPTZ NOT NULL,
+                ended_by VARCHAR(80) REFERENCES portal_user(username),
+                ended_at TIMESTAMPTZ
+              );
+              CREATE UNIQUE INDEX uq_teaching_assignment_active
+                ON teaching_assignment(group_id, teacher_username) WHERE active = TRUE;
+              CREATE TABLE student_enrollment (
+                id UUID PRIMARY KEY,
+                student_id UUID NOT NULL REFERENCES student(id),
+                group_id UUID NOT NULL REFERENCES academic_group(id),
+                active BOOLEAN NOT NULL DEFAULT TRUE,
+                enrolled_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                enrolled_at TIMESTAMPTZ NOT NULL,
+                ended_by VARCHAR(80) REFERENCES portal_user(username),
+                ended_at TIMESTAMPTZ
+              );
+              CREATE UNIQUE INDEX uq_student_enrollment_active
+                ON student_enrollment(student_id, group_id) WHERE active = TRUE;
+              INSERT INTO teacher_profile
+                (username, display_name, active, created_by, created_at)
+              VALUES ('docente.demo', 'Docente (demostración)', TRUE,
+                'direccion.demo', CURRENT_TIMESTAMP);
+              INSERT INTO teacher_profile_history
+                (id, teacher_username, display_name, active, changed_by, changed_at)
+              VALUES ('11111111-2222-4333-8444-555555555555', 'docente.demo',
+                'Docente (demostración)', TRUE, 'direccion.demo', CURRENT_TIMESTAMP);
+  - changeSet:
+      id: 007-academic-workflows
+      author: equipo-montessori
+      comment: Agrega persistencia para publicaciones, avisos, mensajes, apelaciones, quejas y seguimiento.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              CREATE TABLE group_assessment_publication (
+                id UUID PRIMARY KEY,
+                group_id UUID NOT NULL REFERENCES academic_group(id),
+                teacher_username VARCHAR(80) NOT NULL REFERENCES teacher_profile(username),
+                title VARCHAR(180) NOT NULL,
+                subject VARCHAR(100) NOT NULL,
+                period VARCHAR(40) NOT NULL,
+                assigned_date DATE NOT NULL,
+                due_date DATE NOT NULL,
+                instructions TEXT NOT NULL,
+                confirmed_with_notebook BOOLEAN NOT NULL DEFAULT FALSE,
+                status VARCHAR(15) NOT NULL DEFAULT 'DRAFT',
+                published_at TIMESTAMPTZ,
+                UNIQUE (group_id, title, assigned_date)
+              );
+              ALTER TABLE assessment ADD COLUMN group_id UUID REFERENCES academic_group(id);
+              ALTER TABLE assessment ADD COLUMN group_publication_id UUID
+                REFERENCES group_assessment_publication(id);
+              ALTER TABLE assessment ADD COLUMN due_date DATE;
+              ALTER TABLE assessment ADD COLUMN created_by VARCHAR(80) REFERENCES portal_user(username);
+              ALTER TABLE assessment ADD COLUMN cancelled BOOLEAN NOT NULL DEFAULT FALSE;
+              ALTER TABLE assessment ADD COLUMN cuaderno_confirmed BOOLEAN NOT NULL DEFAULT TRUE;
+              UPDATE assessment SET created_by = 'docente.demo' WHERE created_by IS NULL;
+              CREATE UNIQUE INDEX uq_assessment_group_publication_student
+                ON assessment(group_publication_id, student_id)
+                WHERE group_publication_id IS NOT NULL;
+              ALTER TABLE grade_record ADD COLUMN created_by VARCHAR(80) REFERENCES portal_user(username);
+              ALTER TABLE grade_record ADD COLUMN created_at TIMESTAMPTZ;
+              ALTER TABLE grade_record ADD COLUMN updated_by VARCHAR(80) REFERENCES portal_user(username);
+              ALTER TABLE grade_record ADD COLUMN updated_at TIMESTAMPTZ;
+              ALTER TABLE grade_record ADD COLUMN version INTEGER NOT NULL DEFAULT 0;
+              UPDATE grade_record SET created_by = 'docente.demo', created_at = CURRENT_TIMESTAMP
+                WHERE created_by IS NULL OR created_at IS NULL;
+              CREATE TABLE grade_draft (
+                assessment_id UUID PRIMARY KEY REFERENCES assessment(id),
+                numeric_value NUMERIC(6, 2) NOT NULL,
+                observation TEXT NOT NULL,
+                published_date DATE NOT NULL,
+                updated_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                updated_at TIMESTAMPTZ NOT NULL
+              );
+              CREATE TABLE portal_notification (
+                id UUID PRIMARY KEY,
+                recipient_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                student_id UUID NOT NULL REFERENCES student(id),
+                notification_type VARCHAR(30) NOT NULL,
+                reference_id UUID NOT NULL,
+                subject VARCHAR(180) NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL,
+                read_at TIMESTAMPTZ,
+                reminder_count INTEGER NOT NULL DEFAULT 0,
+                last_reminded_at TIMESTAMPTZ,
+                alerted_at TIMESTAMPTZ,
+                active BOOLEAN NOT NULL DEFAULT TRUE
+              );
+              CREATE UNIQUE INDEX uq_portal_notification_recipient_reference
+                ON portal_notification(recipient_username, notification_type, reference_id);
+              CREATE INDEX ix_portal_notification_pending
+                ON portal_notification(recipient_username, created_at) WHERE read_at IS NULL AND active;
+              CREATE TABLE student_message (
+                id UUID PRIMARY KEY,
+                student_id UUID NOT NULL REFERENCES student(id),
+                sender_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                recipient_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                subject VARCHAR(180) NOT NULL,
+                content TEXT NOT NULL,
+                reply_to_id UUID REFERENCES student_message(id),
+                created_at TIMESTAMPTZ NOT NULL,
+                read_at TIMESTAMPTZ
+              );
+              CREATE INDEX ix_student_message_conversation
+                ON student_message(student_id, created_at);
+              CREATE TABLE appeal_deadline_config (
+                id BIGSERIAL PRIMARY KEY,
+                appeal_window_days INTEGER NOT NULL CHECK (appeal_window_days > 0),
+                resolution_window_days INTEGER NOT NULL CHECK (resolution_window_days > 0),
+                reminder_interval_hours INTEGER NOT NULL CHECK (reminder_interval_hours > 0),
+                max_reminders INTEGER NOT NULL CHECK (max_reminders > 0),
+                changed_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                changed_at TIMESTAMPTZ NOT NULL
+              );
+              CREATE TABLE grade_appeal (
+                id UUID PRIMARY KEY,
+                appeal_number VARCHAR(30) NOT NULL UNIQUE,
+                assessment_id UUID NOT NULL REFERENCES assessment(id),
+                guardian_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                points TEXT NOT NULL,
+                reason TEXT NOT NULL,
+                evidence_reference VARCHAR(500) NOT NULL,
+                status VARCHAR(30) NOT NULL CHECK (status IN
+                  ('OPEN', 'IN_REVIEW', 'PENDING_INFORMATION', 'RESOLVED', 'CLOSED')),
+                created_at TIMESTAMPTZ NOT NULL,
+                deadline_at DATE NOT NULL,
+                resolution_due_at DATE NOT NULL
+              );
+              CREATE UNIQUE INDEX uq_grade_appeal_open_per_guardian
+                ON grade_appeal(assessment_id, guardian_username)
+                WHERE status IN ('OPEN', 'IN_REVIEW', 'PENDING_INFORMATION');
+              CREATE TABLE appeal_contribution (
+                id UUID PRIMARY KEY,
+                appeal_id UUID NOT NULL REFERENCES grade_appeal(id),
+                actor_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                target_username VARCHAR(80) REFERENCES portal_user(username),
+                contribution_type VARCHAR(30) NOT NULL,
+                content TEXT NOT NULL,
+                created_at TIMESTAMPTZ NOT NULL
+              );
+              CREATE INDEX ix_appeal_contribution_time
+                ON appeal_contribution(appeal_id, created_at);
+              CREATE TABLE appeal_resolution (
+                id UUID PRIMARY KEY,
+                appeal_id UUID NOT NULL UNIQUE REFERENCES grade_appeal(id),
+                outcome VARCHAR(40) NOT NULL,
+                foundation TEXT NOT NULL,
+                committee_members TEXT NOT NULL,
+                correction_required BOOLEAN NOT NULL,
+                resolved_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                resolved_at TIMESTAMPTZ NOT NULL,
+                guardian_read_at TIMESTAMPTZ,
+                closed_at TIMESTAMPTZ
+              );
+              CREATE TABLE information_complaint (
+                id UUID PRIMARY KEY,
+                complaint_number BIGSERIAL UNIQUE,
+                student_id UUID NOT NULL REFERENCES student(id),
+                guardian_username VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                assessment_id UUID REFERENCES assessment(id),
+                information_type VARCHAR(60) NOT NULL,
+                subject VARCHAR(100),
+                period VARCHAR(40),
+                content TEXT NOT NULL,
+                status VARCHAR(30) NOT NULL DEFAULT 'OPEN',
+                created_at TIMESTAMPTZ NOT NULL,
+                assigned_to VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                finding VARCHAR(30),
+                response TEXT,
+                related_publication_id UUID REFERENCES group_assessment_publication(id),
+                requested_teacher VARCHAR(80) REFERENCES portal_user(username),
+                updated_by VARCHAR(80) REFERENCES portal_user(username),
+                updated_at TIMESTAMPTZ
+              );
+              CREATE INDEX ix_information_complaint_status
+                ON information_complaint(status, created_at);
+              CREATE SEQUENCE grade_appeal_number_seq START 1;
+              INSERT INTO portal_user (username, display_name, role_name, active)
+                VALUES ('comite.demo', 'Comité de Evaluación (demostración)', 'COMMITTEE', TRUE)
+                ON CONFLICT (username) DO NOTHING;
+  - changeSet:
+      id: 008-notification-reminder-relation
+      author: equipo-montessori
+      comment: Relaciona cada recordatorio generado con el aviso original sin limitar intervalos posteriores.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              ALTER TABLE portal_notification ADD COLUMN related_notification_id UUID
+                REFERENCES portal_notification(id);

@@ -39,7 +39,7 @@
 - **Especificación de interfaz de usuario:** [Panel institucional de supervisión](prototipos/stitch-4/screen.png)
 - **Métricas:** complejidad alta (8 pasos y 8 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; lectura, recordatorios limitados y alerta se comprobaron por HTTP en la rama PC3. La antigüedad se simuló en una BD temporal; no se ejecutó Cucumber.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-12, RF-13, RF-23

@@ -7,7 +7,7 @@
 | **Actores** | Dirección (provisional; confirmar quién tiene permiso). |
 | **Precondiciones** | Sesión válida y permiso para mantener la oferta académica. |
 | **Postcondiciones** | El grupo queda registrado y disponible para asignar docentes y estudiantes. |
-| **Estado** | Borrador de descomposición; sin implementación. La relación entre curso/materia, nivel, grupo y periodo debe revisarse con el equipo. |
+| **Estado** | Implementado provisionalmente y comprobado por HTTP en la rama PC3. La relación entre curso/materia, nivel, grupo y periodo debe revisarse con el equipo. |
 
 ## Flujo básico
 

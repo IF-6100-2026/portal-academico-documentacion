@@ -27,7 +27,7 @@
 - **Restricciones:** [RS-01](../02-requerimientos/suplementarios/RS-01-usabilidad-para-encargados.md), [RS-02](../02-requerimientos/suplementarios/RS-02-trazabilidad-de-consultas.md), [RS-03](../02-requerimientos/suplementarios/RS-03-seguridad-por-actor-y-vinculo.md). El estado «cerrada» se mantiene como propuesta S-03 hasta su validación.
 - **Métricas:** complejidad baja (5 pasos y 2 flujos alternos).
 - **Prioridad:** alta (RF-20 tiene prioridad «Debe»).
-- **Estado:** nuevo desglose de RF-20 para separar la acción de la persona encargada; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
+- **Estado:** nuevo desglose de RF-20 para separar la acción de la persona encargada; consulta, acuse y cierre implementados y comprobados por HTTP en la rama PC3. El desglose requiere revisión del grupo/docente.
 - **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-20
 - **Pruebas:** [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature).

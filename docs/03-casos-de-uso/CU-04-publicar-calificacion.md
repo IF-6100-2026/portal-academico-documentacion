@@ -39,7 +39,7 @@
 - **Especificación de interfaz de usuario:** [Publicar evaluación y resultado](prototipos/stitch-2/screen.png)
 - **Métricas:** complejidad media (11 pasos y 6 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; publicación básica implementada y comprobada por HTTP en la rama PC3. La escala usada es provisional.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
 - **Refinamientos detallados conservados:** RF-05, RF-07, RF-08, RF-11

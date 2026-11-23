@@ -1,114 +1,52 @@
 # Análisis de retroalimentación docente y avance independiente
 
-- **Estado:** avance integrado a la rama PC3 mediante PR #15; queda revisión del equipo sobre supuestos y criterios institucionales.
-- **Base:** material público de IF-6100-2026 y notas de retroalimentación compartidas en este chat.
-- **Alcance:** trabajo documental y de especificación en `codex/pc3-sdd-registro-estudiantes`; los pendientes que el usuario pidió asumir se documentan como propuestas, sin atribuirlos a Josué ni a otro integrante.
-- **Importante:** el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15) fue fusionado y el [issue #16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16) cerrado. No hay aprobación del profesor registrada. CU-16 pasó pruebas unitarias del handler, build frontend y verificación HTTP manual contra PostgreSQL temporal; falta automatizar la integración y revisar los supuestos del grupo.
+- **Estado:** CU-16 se integró mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). La rama publicada `codex/pc3-remaining-use-cases` agrega los otros 17 casos mediante [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25), abierto y pendiente de revisión e integración.
+- **Fuente:** enunciado/lineamientos PC3, comentarios del profesor compartidos por el equipo y material público de IF-6100-2026.
+- **Autoría:** este avance no atribuye cambios a un integrante que no los haya realizado.
+- **Límite académico:** no se encontró confirmación escrita del profesor para la selección del núcleo ni para las decisiones provisionales que se describen aquí.
 
-## Resumen ejecutivo
+## Retroalimentación docente y respuesta
 
-La retroalimentación docente aporta cuatro ajustes concretos al proyecto:
-
-1. Presentar el diagrama de contexto usando C4 Nivel 1: el Portal como caja negra, con actores/entidades externas y datos que cruzan el límite.
-2. Ordenar los requisitos desde capacidades generales hacia objetivos más concretos de los actores.
-3. Incorporar el caso de uso que falta: registrar estudiante, y distinguirlo de vincular una persona encargada con un estudiante ya registrado.
-4. Trabajar incrementalmente con un flujo de definición, planificación y revisión antes de implementar.
-
-En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores y seis casos nuevos (CU-16 a CU-21) con sus features. CU-16 también tiene handler, endpoint protegido, migración de auditoría básica y formulario React. Las tres pruebas unitarias del handler, el build de React y el validador documental pasan; además, el endpoint y la migración corrieron contra una base PostgreSQL temporal. **La integración manual no está automatizada; CU-17 a CU-21 no tienen código.**
-
-La jerarquía RF/CU quedó reorganizada localmente: RF-26 a RF-32 expresan capacidades amplias y RF-01 a RF-25 se identifican como refinamientos detallados preservados. Se documentan 20 CUs con metas identificables, incluidos cinco borradores para cursos y docentes. Esta propuesta requiere revisión del grupo y no se presenta como aprobada por el profesor.
-
-## 1. Qué material del curso encontramos
-
-La organización pública [IF-6100-2026](https://github.com/orgs/IF-6100-2026/repositories) muestra cuatro repositorios públicos: documentación del Portal, frontend, backend y `public`. El más relacionado con lo que describió el profesor es [`IF-6100-2026/public`](https://github.com/IF-6100-2026/public), repositorio de material público del curso.
-
-En su carpeta `ia/` están [sesión A](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-a/index.html) y [sesión B](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-b/index.html). La sesión B explica **Claude Code**, las skills y Spec-Driven Development (SDD). Así que probablemente lo recordado como “Cloud” era **Claude**.
-
-### ¿Dónde están las skills?
-
-El repositorio público enseña qué es una skill y cómo se usa; no encontramos ahí una colección instalable con muchos `SKILL.md` ni otro repositorio público separado de skills del profesor. La guía describe una skill como instrucciones y recursos organizados alrededor de `SKILL.md`, que se cargan cuando hacen falta. `AGENTS.md` o `CLAUDE.md`, en cambio, guardan instrucciones generales del proyecto.
-
-Eso no descarta que el profesor tenga un repositorio privado o que haya compartido archivos por Mediación/Drive. Lo comprobable en los repositorios públicos es el material educativo; no debe afirmarse que ya descargamos o aplicamos skills del curso.
-
-### SDD que presenta la sesión
-
-| Paso | Qué deja definido | Archivo que preparamos para CU-16 |
-|---|---|---|
-| Constitution | Reglas de producto, arquitectura y límites | `.specify/memory/constitution.md` |
-| Specify | Actor, necesidad, alcance, flujos y aceptación | `specs/001-registrar-estudiante/spec.md` |
-| Plan | Enfoque técnico para backend, frontend y persistencia | `specs/001-registrar-estudiante/plan.md` |
-| Tasks | Pasos implementables en orden | `specs/001-registrar-estudiante/tasks.md` |
-| Implement | Código y revisión posterior del cambio | Handler, endpoint, migración y formulario implementados localmente; handler probado, frontend compilado y endpoint/migración comprobados manualmente contra PostgreSQL temporal. Falta automatizar la integración. |
-
-La idea central del material es pensar y revisar cada paso antes de pasar al siguiente; Spec Kit puede ordenar los archivos, pero no sustituye las decisiones del equipo.
-
-## 2. Retroalimentación docente y respuesta del repositorio
-
-| Observación compartida | Qué significa en el proyecto | Avance local | Estado real |
+| Observación | Qué implica | Respuesta del repositorio | Pendiente |
 |---|---|---|---|
-| Diagrama de contexto en C4 | Mostrar el Portal como sistema único y nombrar relaciones/datos externos; no dibujar componentes internos en el Nivel 1. | El SVG y su página dicen C4 Nivel 1 y explican la caja negra; el catálogo F-01 a F-39 marca los flujos propuestos de cursos/docentes. | Etiquetado y explicación ajustados; el equipo debe revisar los nuevos flujos propuestos junto con CU-17 a CU-21. |
-| RF más generales y CU más concretos | Un RF expresa una capacidad de negocio amplia; los CUs describen metas concretas del actor. | Se definieron RF-26 a RF-32; RF-01 a RF-25 se mapearon como refinamientos y se actualizaron las relaciones de CUs/features. | Reorganizado en la rama publicada; faltan revisión del grupo y los issues de CU-13 a CU-15 y CU-17 a CU-21. |
-| Descomponer cursos y docentes | RF-27/RF-28 deben expresarse como objetivos concretos de actores. | RF-27 → CU-17 a CU-19; RF-28 → CU-20/CU-21; CU-18 se relaciona con ambos RF. | Cinco fichas/features propuestas, sin código; actor, modelo y reglas siguen abiertos y requieren revisión. |
-| Falta registrar estudiante | El estudiante debe existir antes de asociar vínculos y dar seguimiento. | CU-16, feature, endpoint protegido, formulario y auditoría básica; alta separada de CU-02. | Handler y frontend verificados; respuestas HTTP comprobadas en PostgreSQL temporal. El issue #16 se cerró con el PR #15 fusionado; quedan automatización de integración y validación de actor/campos provisionales. |
-| Empezar desde la idea, planear y entregar incrementos | Aclarar propósito, generar/revisar plan y construir una porción pequeña antes de ampliar el sistema. | Constitución, spec, plan, tasks SDD y porción vertical local de CU-16. | Verificaciones locales completadas, incluida la integración manual con PostgreSQL; falta revisión en grupo y automatizarla. |
+| El diagrama de contexto debe usar C4. | Portal como caja negra con entidades externas y datos que cruzan el límite. | La documentación identifica C4 Nivel 1 y el modelo editable está en IcePanel; BPMN se reserva para procesos. | Revisar que actores/relaciones del modelo representen el alcance actual. |
+| Hay demasiados CU y RF quedaron más específicos que los CU. | RF debe expresar una capacidad general; cada CU detalla una meta de un actor. | RF-26 a RF-32 son generales; RF-01 a RF-25 se conservan como refinamientos históricos y se trazan a CU/features/issues. | Confirmar la agrupación con el equipo/profesor. |
+| Falta un caso de uso de registrar estudiante. | La ficha del estudiante precede a matrícula, publicaciones y vínculo familiar. | CU-16 tiene ficha, handler, endpoint protegido, migración, formulario React y pruebas unitarias/HTTP. Dar de alta no concede acceso familiar. | Confirmar actor, campos e identificación para duplicados. |
+| Hay que ordenar la idea, planificar y avanzar incrementalmente. | Definir propósito y reglas, revisar un plan y construir una porción verificable. | Se documentó flujo SDD para CU-16 en `.specify/` y `specs/001-registrar-estudiante/`; luego el usuario pidió completar los otros 17 casos. | Revisar el alcance, decisiones y cambios antes de presentar. |
 
-## 3. Avance concreto realizado en esta rama
+## Material del curso que se pudo verificar
 
-### Requerimientos y caso nuevo
+La organización pública [IF-6100-2026](https://github.com/orgs/IF-6100-2026/repositories) publica el repositorio [`public`](https://github.com/IF-6100-2026/public). Su carpeta `ia/` incluye [sesión A](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-a/index.html) y [sesión B](https://github.com/IF-6100-2026/public/blob/main/ia/sesion-b/index.html), con material sobre Claude Code, skills y Spec-Driven Development (SDD). En lo que se revisó no había un paquete público instalable de skills del profesor con `SKILL.md`; eso no descarta recursos privados compartidos por Mediación/Drive.
 
-- [RF-26 Gestionar el registro de estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): capacidad general; define que el registro y el vínculo familiar son distintos.
-- [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general descompuesta provisionalmente en CU-17 a CU-19.
-- [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general descompuesta provisionalmente en CU-20/CU-21 y CU-18.
-- [RF-29 Gestionar vínculos y acceso](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md): agrupa el detalle RF-01.
-- [RF-30 Gestionar seguimiento académico](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md): agrupa RF-02 a RF-09.
-- [RF-31 Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md): agrupa RF-10 a RF-16 y RF-23.
-- [RF-32 Gestionar apelaciones y pendientes](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md): agrupa RF-17 a RF-22 y RF-24 a RF-25.
-- [CU-16 Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md): actor Dirección provisional, campos existentes, escenarios alternos e implementación local.
-- [Feature de CU-16](../04-pruebas/CU-16-registrar-estudiante.feature): cinco escenarios de especificación; no se reportan como ejecutados por Cucumber.
-- [Matriz de trazabilidad RF → CU → prueba → issue](../02-requerimientos/trazabilidad-rf-cu.md): los 20 casos tienen issue enlazado; #17–#24 son brechas abiertas y #16 está cerrado.
+Una skill organiza instrucciones y recursos alrededor de `SKILL.md`; `AGENTS.md` o `CLAUDE.md` guardan instrucciones generales del repositorio. La guía pública explica el concepto, pero no acredita que este equipo haya descargado o aplicado una skill privada del profesor.
 
-### Documentación y navegación
+## SDD documentado para CU-16
 
-- Se identificó explícitamente el diagrama de contexto como C4 Nivel 1 y se mantuvo el detalle de flujos que ya existía.
-- Se agregaron enlaces desde los índices principales hacia RF-26 a RF-32, CU-16 y sus artefactos SDD.
-- Se actualizaron el estado de implementación, los cambios PC2→PC3, la colaboración y el registro de uso de IA para distinguir propuesta, código y evidencia.
-- La guía SDD local enlaza el material público del curso y aclara que no se encontró un paquete instalable de skills.
+| Fase | Archivo o evidencia |
+|---|---|
+| Constitution | `.specify/memory/constitution.md` |
+| Specify | `specs/001-registrar-estudiante/spec.md` |
+| Plan | `specs/001-registrar-estudiante/plan.md` |
+| Tasks | `specs/001-registrar-estudiante/tasks.md` |
+| Implement y verificar | Handler Java, endpoint Dirección, migración Liquibase, formulario React, `mvn test`, compilación frontend y prueba HTTP manual contra PostgreSQL temporal. |
 
-## 4. Decisiones provisionales de CU-16
+El flujo documentado de SDD se aplicó con detalle a CU-16. Los incrementos restantes se implementaron a partir de las fichas/features existentes; no se afirma que cada caso haya tenido su propio ciclo de Spec Kit.
 
-El caso se redactó con el modelo que ya existe en el repositorio: nombre completo, nivel, grupo, docente, UUID interno y estado activo. Dirección aparece como actor provisional por continuidad con el mantenimiento de vínculos en CU-02. **No son reglas confirmadas por la institución ni por el profesor.**
+## Alcance funcional añadido en la rama actual
 
-Registrar estudiante crea la ficha; CU-02 establece después quién puede consultar sus datos. El alta no crea automáticamente una relación con la persona encargada. Esta separación reduce el riesgo de que una ficha nueva otorgue acceso a datos académicos.
+La rama `codex/pc3-remaining-use-cases` implementa los 17 casos que faltaban: CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21. Con CU-01, CU-02 y CU-16 hay código para los **20 casos vigentes**; CU-11 fue retirado antes de PC3. La matriz, clases, endpoints y evidencia concreta están en [estado de implementación](estado-de-implementacion.md) y [checklist por CU](checklist-casos-de-uso.md).
 
-Se dejó pendiente la política de duplicidad porque no encontramos un identificador escolar confirmado. El borrador no inventa un número de documento ni bloquea altas únicamente por coincidencia de nombre. También falta decidir quién actualiza/inactiva registros y qué campos son obligatorios institucionalmente.
+## Estado de verificación
 
-## 5. Estado verificable y límites
+- `mvn test` con JDK 21: 12 pruebas, 0 fallos/errores y 0 violaciones de Checkstyle.
+- `npm run build`: TypeScript y Vite pasan.
+- `python scripts/validar_documentacion.py`: 20 CU, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
+- PostgreSQL 17 temporal: Liquibase aplicó 8 changesets; la API respondió saludable y se comprobó por HTTP el flujo principal de los 17 casos nuevos.
+- CU-16: además de pruebas unitarias, respuestas HTTP 401/201/403/400 comprobadas manualmente.
+- Los escenarios alternos Gherkin no se ejecutaron como suite Cucumber; la prueba HTTP de los flujos nuevos no está automatizada en CI.
 
-- El punto de partida fue la rama PC3 `pc3/core-consulta-vinculos`, commit `c17d519`. El PR #15 integró CU-16 y documentación desde `codex/pc3-sdd-registro-estudiantes`; el merge commit es `f9099a78cc8563a96a31b7b87c03c48ead2a7988`.
-- CU-01 y CU-02 ya estaban implementados en el núcleo PC3. Este avance no cambia esos módulos ni atribuye su autoría a una persona nueva.
-- La rama actual documenta **20 casos de uso, 20 archivos `.feature` y 103 escenarios especificados**: el corte previo a CU-16 tenía 14/14/78; CU-16 agrega cinco escenarios y CU-17 a CU-21 agregan veinte.
-- En esta revisión, `mvn test` pasó con 8 pruebas (incluidas tres nuevas del handler CU-16) y sin violaciones de Checkstyle; `npm run build` pasó y `python scripts/validar_documentacion.py` informó 20/20/103 sin errores.
-- CU-16 tiene handler, endpoint, migración de auditoría y formulario local. Las pruebas del handler usan repositorios simulados; además, el servicio arrancó en una base PostgreSQL temporal nueva y cinco respuestas HTTP esperadas fueron comprobadas. Esta prueba manual todavía no está automatizada.
-- CU-13 a CU-15 y CU-17 a CU-21 ya tienen issues #17–#24, enlazados desde la matriz y sus fichas, etiquetados como caso de uso/brecha y asignados a la cuenta del responsable.
-- El conector de GitHub rechazó algunas escrituras con HTTP 403. Se completaron desde la sesión Git autenticada del propietario; PR #15 fusionado e issue #16 cerrado.
+## Decisiones provisionales que deben revisarse
 
-## 6. Trabajo pendiente priorizado
+Los plazos y estados de apelación, los perfiles y permisos docentes, la estructura curso/materia/grupo/periodo, la escala 0–100, el procedimiento de avisos y la política de vínculo familiar están codificados para una demo local. Se detallan en [brechas](brechas-de-requerimientos.md). Nada aquí equivale a una política institucional aprobada.
 
-### Antes de entregar
-
-1. Revisar y acordar quién presenta cada cambio. Los borradores CU-17 a CU-21 se prepararon por solicitud del usuario para cubrir pendientes que antes se atribuían a Josué; no se registran como trabajo suyo.
-2. Revisar manualmente el `git diff` y decidir si el equipo acepta los supuestos de CU-16: actor, campos, identidad/duplicidad y relación separada con CU-02.
-3. Revisar el merge, la ficha CU-16 y sus criterios de aceptación como equipo; los issues pendientes #17–#24 son la trazabilidad del alcance aún sin construir.
-4. Convertir la comprobación manual de PostgreSQL/HTTP para CU-16 en una verificación automatizada y repetible.
-
-### Próximo incremento académico/técnico
-
-1. Revisar con el equipo que RF-01 a RF-25 estén correctamente ubicados bajo RF-26 a RF-32; sus IDs se preservaron para no romper la historia.
-2. Revisar CU-17 a CU-21 con el grupo, especialmente el modelo curso/grupo/periodo, la matrícula, identidad docente y permisos.
-3. Completar y revisar los issues CU-13 a CU-21 ya creados, según el alcance que apruebe el equipo.
-4. Definir la clave institucional para duplicados, datos obligatorios, edición/inactivación y auditoría; añadir escenarios derivados de las decisiones.
-5. Añadir pruebas de API e integración para CU-16 cuando se defina el entorno DB de verificación.
-
-## 7. Lectura franca para la rúbrica
-
-El avance mejora la legibilidad, organiza siete capacidades funcionales generales, incorpora CU-16 y descompone cursos/docentes con cinco borradores provisionales. También atiende el rótulo C4. CU-16 tiene implementación fusionada: **pasan las pruebas unitarias del handler, el build y consta una verificación HTTP manual con PostgreSQL**; CU-17 a CU-21 no tienen implementación. El PR #15 está fusionado, issues #17–#24 creados, etiquetados y asignados; siguen pendientes automatizar el smoke, la revisión del equipo/profesor, confirmar commits de cada integrante y publicar el tag final.
+La rama final debe integrarse en `pc3/core-consulta-vinculos`, cerrarse los issues asociados, actualizarse el tag `pc3` al commit de entrega y entregarse mediante sus enlaces de GitHub en Mediación Virtual. El historial no se altera para inventar commits de los integrantes.

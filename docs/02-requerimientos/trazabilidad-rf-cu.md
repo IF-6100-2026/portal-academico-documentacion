@@ -8,13 +8,13 @@ Estos siete RF son el nivel general del modelo. Los RF-01 a RF-25 se conservan c
 
 | RF general | Capacidad | Refinamientos detallados conservados | CUs asociados/estado |
 |---|---|---|---|
-| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 tiene handler probado, frontend compilado y verificación HTTP en PostgreSQL temporal. |
-| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | CU-17, CU-18 y CU-19 propuestos; modelo pendiente de revisión; sin implementación. |
-| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | CU-18, CU-20 y CU-21 propuestos; identidad/permisos pendientes; sin implementación. |
+| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 registra fichas; CU-19 agrega una matrícula a grupo. Código disponible y flujo HTTP verificado en base temporal. |
+| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | CU-17 crea grupos, CU-18 asigna docentes y CU-19 inscribe estudiantes; modelo de demostración, sujeto a revisión. |
+| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | CU-18 usa la asignación; CU-20 crea perfiles ligados a usuarios existentes y CU-21 los actualiza/inactiva. |
 | [RF-29 Gestionar vínculos y acceso](funcionales/RF-29-gestionar-vinculos-y-acceso.md) | Controlar qué persona encargada puede consultar cada estudiante. | RF-01. | CU-02 administra el vínculo; CU-01 consulta con autorización vigente. |
-| [RF-30 Gestionar seguimiento académico](funcionales/RF-30-gestionar-seguimiento-academico.md) | Registrar y consultar evaluaciones, calificaciones y su historial. | RF-02 a RF-09. | CU-01, CU-03, CU-04, CU-08 y CU-09. |
-| [RF-31 Gestionar comunicación y avisos](funcionales/RF-31-gestionar-comunicacion-y-avisos.md) | Comunicar publicaciones y registrar consultas, mensajes y reportes. | RF-10 a RF-16 y RF-23. | CU-03, CU-04, CU-05, CU-06, CU-08 y CU-12. |
-| [RF-32 Gestionar apelaciones y pendientes](funcionales/RF-32-gestionar-apelaciones-y-pendientes.md) | Tramitar apelaciones, plazos, resoluciones y supervisión institucional. | RF-17 a RF-22 y RF-24 a RF-25; RF-23 también se relaciona con RF-31. | CU-06, CU-07, CU-08, CU-10, CU-12 a CU-15. |
+| [RF-30 Gestionar seguimiento académico](funcionales/RF-30-gestionar-seguimiento-academico.md) | Registrar y consultar evaluaciones, calificaciones y su historial. | RF-02 a RF-09. | CU-01, CU-03, CU-04, CU-08 y CU-09. Flujos principales con evidencia HTTP local. |
+| [RF-31 Gestionar comunicación y avisos](funcionales/RF-31-gestionar-comunicacion-y-avisos.md) | Comunicar publicaciones y registrar consultas, mensajes y reportes. | RF-10 a RF-16 y RF-23. | CU-03, CU-04, CU-05, CU-06, CU-08 y CU-12. Avisos y mensajes internos. |
+| [RF-32 Gestionar apelaciones y pendientes](funcionales/RF-32-gestionar-apelaciones-y-pendientes.md) | Tramitar apelaciones, plazos, resoluciones y supervisión institucional. | RF-17 a RF-22 y RF-24 a RF-25; RF-23 también se relaciona con RF-31. | CU-06, CU-07, CU-08, CU-10, CU-12 a CU-15. Flujos principales con evidencia HTTP local. |
 
 ### Refinamientos funcionales detallados conservados (RF-01 a RF-25)
 
@@ -84,8 +84,8 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 ## Controles
 
 - Los siete RF generales son RF-26 a RF-32. RF-01 a RF-25 se conservan como refinamientos históricos; los enlaces y los identificadores de escenarios/issue no se renumeran.
-- RF-26 se especializa en CU-16 y CU-19; RF-27 en CU-17 a CU-19; RF-28 en CU-18, CU-20 y CU-21. Los CUs nuevos son borradores con actores/datos explícitamente provisionales.
-- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. Los issues abiertos #17–#24 cubren casos aún no implementados; CU-16 (#16) está cerrado tras fusionar el PR #15. Las propuestas requieren revisión del grupo; no se declaran aprobadas por el profesor.
+- RF-26 se especializa en CU-16 y CU-19; RF-27 en CU-17 a CU-19; RF-28 en CU-18, CU-20 y CU-21. CU-17 a CU-21 tienen código en la rama PC3, con modelo/actores provisionales que el grupo debe revisar.
+- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. Los issues de CU-03 a CU-15 y CU-17 a CU-21 permanecen abiertos mientras se revisa el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25); al integrarlo deben cerrarse explícitamente porque el PR se creó sin palabras clave de cierre. El PR #15 y el issue #16 corresponden a CU-16.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)
@@ -95,4 +95,4 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 | CU-01 | `TP-CU01-A05` | Rechazar una sesión inválida antes de revelar vínculos o publicaciones. |
 | CU-05 | `TP-CU05-A08` | Revalidar el vínculo al abrir, aunque el recordatorio se emitió con autorización. |
 
-Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte previo a CU-16 contenía 78 escenarios; CU-16 agrega 5 y CU-17 a CU-21 agregan 20, para 103 escenarios descritos. Los CUs nuevos son propuestas documentales; solo CU-16 tiene pruebas de código. Véanse los [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
+Estos escenarios completan RS-03 sin añadir nuevos RF ni cambiar las épicas. Son especificaciones pendientes de automatizar. El corte previo a CU-16 contenía 78 escenarios; CU-16 agrega 5 y CU-17 a CU-21 agregan 20, para 103 escenarios descritos. El flujo principal de los 17 casos nuevos tuvo un smoke HTTP local; los escenarios alternos no se ejecutaron como suite Cucumber. Véanse los [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).

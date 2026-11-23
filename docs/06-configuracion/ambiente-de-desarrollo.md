@@ -14,7 +14,7 @@ docker compose up -d --wait
 docker compose ps
 ```
 
-`.env` está excluido de Git. Solo contiene credenciales locales de demostración; no las uses fuera del equipo local. Liquibase crea el esquema y carga datos completamente ficticios: `002-academic-core` crea usuarios, estudiantes, vínculos, evaluaciones, calificaciones y trazas; `003-pc3-core-completion` agrega fechas de publicación, historial de correcciones, un segundo estudiante y una relación pendiente; `004-pc3-open-link-uniqueness` impide que un mismo par tenga a la vez una relación activa y otra pendiente. Liquibase aplica cada migración una vez; reiniciar el contenedor conserva el volumen.
+`.env` está excluido de Git. Solo contiene credenciales locales de demostración; no las uses fuera del equipo local. Liquibase crea el esquema y carga datos completamente ficticios. Los changesets `002`–`005` forman el núcleo y el registro de estudiantes; `006` añade grupos, asignaciones, matrículas y perfil docente; `007` añade publicaciones, calificaciones, mensajes, avisos, quejas, apelaciones, historial y configuración; `008` vincula cada recordatorio con su aviso original. Liquibase aplica cada migración una vez; reiniciar el contenedor conserva el volumen.
 
 | Variable | Valor de `.env.example` | Uso |
 |---|---|---|
@@ -23,7 +23,7 @@ docker compose ps
 | `DB_PORT` | `5432` | Puerto local publicado por Compose |
 | `SERVER_PORT` | `8080` | Puerto de la API |
 | `CORS_ALLOWED_ORIGIN` | `http://localhost:5173` | Origen permitido para Vite |
-| `DEMO_*_PASSWORD` | Contraseñas de demostración | Acceso local de cuatro usuarios ficticios |
+| `DEMO_*_PASSWORD` | Contraseñas de demostración | Acceso local de cinco usuarios ficticios: persona encargada, encargado sin vínculos, Dirección, docente y Comité |
 
 Si `5432` u `8080` están ocupados, cambia `DB_PORT` o `SERVER_PORT` en `.env`. Si se cambia el puerto de la API, cambia también `VITE_API_URL` en `frontend/.env`. Si cambia el puerto de Vite, actualiza `CORS_ALLOWED_ORIGIN` y reinicia la API. Spring importa las variables desde `../.env` al ejecutar Maven en `backend/`.
 
@@ -45,12 +45,12 @@ npm run build
 npm run dev
 ```
 
-Abre <http://localhost:5173>. Las cuentas y contraseñas de demostración están en el [guion PC3](../07-construccion/guion-demostracion-pc3.md). `encargada.demo` consulta a Sofía; `direccion.demo` administra vínculos. `sin-vinculos.demo` y `docente.demo` sirven para comprobar respuestas sin vínculos y permisos. Son identidades y datos ficticios.
+Abre <http://localhost:5173>. Las cuentas y contraseñas de demostración están en el [guion PC3](../07-construccion/guion-demostracion-pc3.md). El frontend ofrece espacios según rol: `encargada.demo` consulta a Sofía; `direccion.demo` administra fichas, grupos, perfiles y pendientes; `docente.demo` opera sobre grupos asignados; `comite.demo` registra resoluciones. `sin-vinculos.demo` sirve para comprobar que no se revela información sin relación activa. Son identidades y datos ficticios.
 
 ## Comprobación integrada
 
 - `http://localhost:8080/api/v1/health` entrega estado de la API. `http://localhost:8080/actuator/health` incluye el estado de los componentes configurados.
-- Desde PowerShell en la raíz: `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080`. El guion comprueba CU-01 y CU-02 con solicitudes reales; conserva las trazas y deja los vínculos creados para la prueba suspendidos o finalizados. Repetirlo agrega historial local; no borra ni reinicia la base.
+- Desde PowerShell en la raíz: `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080`. El guion comprueba CU-01 y CU-02 con solicitudes reales; conserva las trazas y deja los vínculos creados para la prueba suspendidos o finalizados. Repetirlo agrega historial local; no borra ni reinicia la base. Los flujos de los 17 CU nuevos se verificaron manualmente contra una base temporal; todavía no existe un script e2e repetible para ellos.
 - Desde `backend/`: `mvn test` ejecuta las pruebas Java y Checkstyle.
 - Desde `frontend/`: `npm run build` comprueba tipos y genera la compilación de producción.
 - Los archivos Gherkin en `docs/04-pruebas` son especificaciones. No hay un ejecutor Cucumber conectado; no se deben contar como pruebas ejecutadas.
