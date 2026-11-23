@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md
-# Requerimientos: RF-19, RS-03
+# Requerimientos generales: RF-32, RS-03
 Característica: CU-13 — Aportar información a una apelación
   Como participante autorizado del expediente
   Quiero agregar evidencia, criterio u observaciones

@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md
-# Requerimientos: RF-01, RS-03
+# Requerimientos generales: RF-29, RS-03
 Característica: CU-02 — Vincular encargado con estudiante
   Como Dirección
   Quiero registrar qué personas encargadas están autorizadas para cada estudiante

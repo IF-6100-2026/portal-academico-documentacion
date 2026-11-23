@@ -13,7 +13,7 @@ La rama contiene un núcleo local integrado, propuesto para PC3: **CU-01 y CU-02
 | CU-13 a CU-15 | Propuesta especificada | Desglose de RF-19/RF-20, fichas y escenarios Gherkin. | Validación del grupo/profesor, issue de seguimiento y toda la implementación. |
 | CU-16 Registrar estudiante | Especificado en avance local SDD | Ficha, criterios y escenarios Gherkin. | Issue, revisión humana, API, formulario, política de identidad/duplicados y verificaciones. |
 
-Hay 15 CU documentados (CU-01 a CU-10 y CU-12 a CU-16); CU-11 se retiró previamente. El conteo no significa que los 15 estén implementados. Véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
+Hay 15 CU documentados (CU-01 a CU-10 y CU-12 a CU-16); CU-11 se retiró previamente. El conteo no significa que los 15 estén implementados. El modelo documental agrupa las capacidades en RF-26 a RF-32 y conserva RF-01 a RF-25 como refinamientos detallados; véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
 
 ## Componentes integrados
 

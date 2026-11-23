@@ -4,15 +4,21 @@ Cadena completa del proyecto: **proceso actual (BPMN) → problema → RF → CU
 
 ## Requerimientos funcionales generales
 
-Estos RF fijan capacidades de sistema en un nivel más amplio. RF-01 a RF-25 conservan debajo su detalle histórico.
+Estos siete RF son el nivel general del modelo. Los RF-01 a RF-25 se conservan como refinamientos detallados de trazabilidad; sus operaciones y reglas se reflejan en los casos de uso y sus escenarios. No se cuentan como capacidades generales independientes.
 
-| RF general | Capacidad | CUs asociados/estado |
-|---|---|---|
-| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener ficha académica básica. | CU-16 especifica el alta; CU-02 depende de una ficha existente. |
-| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Sin CU específico implementado; requiere descomposición. |
-| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Sin CU específico implementado; requiere descomposición. |
+| RF general | Capacidad | Refinamientos detallados conservados | CUs asociados/estado |
+|---|---|---|---|
+| [RF-26 Gestionar estudiantes](funcionales/RF-26-gestion-de-estudiantes.md) | Mantener el registro académico básico del estudiante. | Nuevo alcance de registro. | CU-16 especifica el alta; no está implementado. |
+| [RF-27 Gestionar cursos y grupos](funcionales/RF-27-gestion-de-cursos.md) | Mantener oferta académica y grupos/periodos. | Nuevo alcance de gestión de cursos. | Sin CU; requiere descomposición. |
+| [RF-28 Gestionar profesores](funcionales/RF-28-gestion-de-profesores.md) | Mantener catálogo docente y asignaciones. | Nuevo alcance de gestión de docentes. | Sin CU; requiere descomposición. |
+| [RF-29 Gestionar vínculos y acceso](funcionales/RF-29-gestionar-vinculos-y-acceso.md) | Controlar qué persona encargada puede consultar cada estudiante. | RF-01. | CU-02 administra el vínculo; CU-01 consulta con autorización vigente. |
+| [RF-30 Gestionar seguimiento académico](funcionales/RF-30-gestionar-seguimiento-academico.md) | Registrar y consultar evaluaciones, calificaciones y su historial. | RF-02 a RF-09. | CU-01, CU-03, CU-04, CU-08 y CU-09. |
+| [RF-31 Gestionar comunicación y avisos](funcionales/RF-31-gestionar-comunicacion-y-avisos.md) | Comunicar publicaciones y registrar consultas, mensajes y reportes. | RF-10 a RF-16 y RF-23. | CU-03, CU-04, CU-05, CU-06, CU-08 y CU-12. |
+| [RF-32 Gestionar apelaciones y pendientes](funcionales/RF-32-gestionar-apelaciones-y-pendientes.md) | Tramitar apelaciones, plazos, resoluciones y supervisión institucional. | RF-17 a RF-22 y RF-24 a RF-25; RF-23 también se relaciona con RF-31. | CU-06, CU-07, CU-08, CU-10, CU-12 a CU-15. |
 
-### RF detallados existentes (RF-01 a RF-25)
+### Refinamientos funcionales detallados conservados (RF-01 a RF-25)
+
+Estos documentos mantienen las reglas específicas y sus identificadores históricos para no romper los enlaces con CUs, escenarios, issues y evidencia de PC1/PC2. Su agrupación bajo los siete RF generales se muestra arriba; para este modelo no se presentan como siete + veinticinco capacidades independientes.
 
 | RF | Nombre | Épica | Actor | Proceso actual | CU | Escenarios |
 |---|---|---|---|---|---|---|
@@ -52,27 +58,28 @@ Estos RF fijan capacidades de sistema en un nivel más amplio. RF-01 a RF-25 con
 
 ## Cobertura por caso de uso
 
-| CU | RF | RS | Prueba | Issue |
-|---|---|---|---|---|
-| [CU-01 — Consultar progreso académico](../03-casos-de-uso/CU-01-consultar-progreso-academico.md) | RF-02, RF-03 | RS-01, RS-02, RS-03 | [CU-01-consultar-progreso-academico.feature](../04-pruebas/CU-01-consultar-progreso-academico.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3) <!-- issue:CU-01 --> |
-| [CU-02 — Vincular encargado con estudiante](../03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md) | RF-01 | RS-03 | [CU-02-vincular-encargado-con-estudiante.feature](../04-pruebas/CU-02-vincular-encargado-con-estudiante.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4) <!-- issue:CU-02 --> |
-| [CU-03 — Publicar evaluación asignada](../03-casos-de-uso/CU-03-publicar-evaluacion-asignada.md) | RF-04, RF-05, RF-06, RF-10 | RS-02, RS-03 | [CU-03-publicar-evaluacion-asignada.feature](../04-pruebas/CU-03-publicar-evaluacion-asignada.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5) <!-- issue:CU-03 --> |
-| [CU-04 — Publicar calificación](../03-casos-de-uso/CU-04-publicar-calificacion.md) | RF-05, RF-07, RF-08, RF-11 | RS-02, RS-03 | [CU-04-publicar-calificacion.feature](../04-pruebas/CU-04-publicar-calificacion.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6) <!-- issue:CU-04 --> |
-| [CU-05 — Dar seguimiento a avisos no consultados](../03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md) | RF-12, RF-13, RF-23 | RS-01, RS-02, RS-03 | [CU-05-dar-seguimiento-a-avisos-no-consultados.feature](../04-pruebas/CU-05-dar-seguimiento-a-avisos-no-consultados.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7) <!-- issue:CU-05 --> |
-| [CU-06 — Comunicarse sobre un estudiante](../03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md) | RF-14, RF-15, RF-17 | RS-02, RS-03 | [CU-06-comunicarse-sobre-un-estudiante.feature](../04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8) <!-- issue:CU-06 --> |
-| [CU-07 — Presentar apelación de calificación](../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md) | RF-17, RF-18 | RS-03 | [CU-07-gestionar-apelacion-de-calificacion.feature](../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9) <!-- issue:CU-07 --> |
-| [CU-08 — Supervisar el seguimiento académico](../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md) | RF-21, RF-23, RF-24, RF-25 | RS-02, RS-03 | [CU-08-supervisar-seguimiento-academico.feature](../04-pruebas/CU-08-supervisar-seguimiento-academico.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10) <!-- issue:CU-08 --> |
-| [CU-09 — Corregir una calificación publicada](../03-casos-de-uso/CU-09-corregir-calificacion-publicada.md) | RF-05, RF-09, RF-11 | RS-03 | [CU-09-corregir-calificacion-publicada.feature](../04-pruebas/CU-09-corregir-calificacion-publicada.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/11) <!-- issue:CU-09 --> |
-| [CU-10 — Configurar plazos y recordatorios](../03-casos-de-uso/CU-10-configurar-plazos-y-recordatorios.md) | RF-22 | RS-03 | [CU-10-configurar-plazos-y-recordatorios.feature](../04-pruebas/CU-10-configurar-plazos-y-recordatorios.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12) <!-- issue:CU-10 --> |
-| [CU-12 — Presentar queja por información no recibida](../03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) | RF-15, RF-16, RF-25 | RS-01, RS-02, RS-03 | [CU-12-presentar-queja-por-informacion-no-recibida.feature](../04-pruebas/CU-12-presentar-queja-por-informacion-no-recibida.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/13) <!-- issue:CU-12 --> |
-| [CU-13 — Aportar información a una apelación](../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | RF-19, RF-21 | RS-03 | [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) | Issue pendiente <!-- issue:CU-13 --> |
-| [CU-14 — Registrar resolución de apelación](../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | RF-20, RF-21 | RS-03 | [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-14 --> |
-| [CU-15 — Consultar resolución de apelación](../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | RF-20 | RS-01, RS-02, RS-03 | [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-15 --> |
-| [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | Issue pendiente <!-- issue:CU-16 --> |
+| CU | RF generales | RF detallados de origen | RS | Prueba | Issue |
+|---|---|---|---|---|---|
+| [CU-01 — Consultar progreso académico](../03-casos-de-uso/CU-01-consultar-progreso-academico.md) | RF-29, RF-30 | RF-02, RF-03 | RS-01, RS-02, RS-03 | [CU-01-consultar-progreso-academico.feature](../04-pruebas/CU-01-consultar-progreso-academico.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3) <!-- issue:CU-01 --> |
+| [CU-02 — Vincular encargado con estudiante](../03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md) | RF-29 | RF-01 | RS-03 | [CU-02-vincular-encargado-con-estudiante.feature](../04-pruebas/CU-02-vincular-encargado-con-estudiante.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4) <!-- issue:CU-02 --> |
+| [CU-03 — Publicar evaluación asignada](../03-casos-de-uso/CU-03-publicar-evaluacion-asignada.md) | RF-30, RF-31 | RF-04, RF-05, RF-06, RF-10 | RS-02, RS-03 | [CU-03-publicar-evaluacion-asignada.feature](../04-pruebas/CU-03-publicar-evaluacion-asignada.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5) <!-- issue:CU-03 --> |
+| [CU-04 — Publicar calificación](../03-casos-de-uso/CU-04-publicar-calificacion.md) | RF-30, RF-31 | RF-05, RF-07, RF-08, RF-11 | RS-02, RS-03 | [CU-04-publicar-calificacion.feature](../04-pruebas/CU-04-publicar-calificacion.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6) <!-- issue:CU-04 --> |
+| [CU-05 — Dar seguimiento a avisos no consultados](../03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md) | RF-31, RF-32 | RF-12, RF-13, RF-23 | RS-01, RS-02, RS-03 | [CU-05-dar-seguimiento-a-avisos-no-consultados.feature](../04-pruebas/CU-05-dar-seguimiento-a-avisos-no-consultados.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7) <!-- issue:CU-05 --> |
+| [CU-06 — Comunicarse sobre un estudiante](../03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md) | RF-31, RF-32 | RF-14, RF-15, RF-17 | RS-02, RS-03 | [CU-06-comunicarse-sobre-un-estudiante.feature](../04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8) <!-- issue:CU-06 --> |
+| [CU-07 — Presentar apelación de calificación](../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md) | RF-32 | RF-17, RF-18 | RS-03 | [CU-07-gestionar-apelacion-de-calificacion.feature](../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9) <!-- issue:CU-07 --> |
+| [CU-08 — Supervisar el seguimiento académico](../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md) | RF-30, RF-31, RF-32 | RF-21, RF-23, RF-24, RF-25 | RS-02, RS-03 | [CU-08-supervisar-seguimiento-academico.feature](../04-pruebas/CU-08-supervisar-seguimiento-academico.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10) <!-- issue:CU-08 --> |
+| [CU-09 — Corregir una calificación publicada](../03-casos-de-uso/CU-09-corregir-calificacion-publicada.md) | RF-30, RF-31 | RF-05, RF-09, RF-11 | RS-03 | [CU-09-corregir-calificacion-publicada.feature](../04-pruebas/CU-09-corregir-calificacion-publicada.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/11) <!-- issue:CU-09 --> |
+| [CU-10 — Configurar plazos y recordatorios](../03-casos-de-uso/CU-10-configurar-plazos-y-recordatorios.md) | RF-32 | RF-22 | RS-03 | [CU-10-configurar-plazos-y-recordatorios.feature](../04-pruebas/CU-10-configurar-plazos-y-recordatorios.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12) <!-- issue:CU-10 --> |
+| [CU-12 — Presentar queja por información no recibida](../03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) | RF-31, RF-32 | RF-15, RF-16, RF-25 | RS-01, RS-02, RS-03 | [CU-12-presentar-queja-por-informacion-no-recibida.feature](../04-pruebas/CU-12-presentar-queja-por-informacion-no-recibida.feature) | [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/13) <!-- issue:CU-12 --> |
+| [CU-13 — Aportar información a una apelación](../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | RF-32 | RF-19, RF-21 | RS-03 | [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) | Issue pendiente <!-- issue:CU-13 --> |
+| [CU-14 — Registrar resolución de apelación](../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | RF-32 | RF-20, RF-21 | RS-03 | [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-14 --> |
+| [CU-15 — Consultar resolución de apelación](../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | RF-32 | RF-20 | RS-01, RS-02, RS-03 | [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) | Issue pendiente <!-- issue:CU-15 --> |
+| [CU-16 — Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md) | RF-26 | — | RS-03 | [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature) | Issue pendiente <!-- issue:CU-16 --> |
 
 ## Controles
 
-- RF-01 a RF-25 conservan su trazabilidad detallada. RF-26 a RF-28 agrupan capacidades; RF-27/28 requieren CUs antes de implementarse.
+- Los siete RF generales son RF-26 a RF-32. RF-01 a RF-25 se conservan como refinamientos históricos; los enlaces y los identificadores de escenarios/issue no se renumeran.
+- RF-27 y RF-28 aún no tienen CUs: primero deben descomponerse con actores, objetivos y datos validados. RF-26 se especializa en CU-16.
 - Hay 15 CUs y 15 archivos feature; CU-13 a CU-16 tienen issues pendientes. Estos casos requieren revisión del grupo; no se declaran aprobados por el profesor.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 

@@ -38,7 +38,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos:** [RF-05](../02-requerimientos/funcionales/RF-05-confirmar-congruencia-con-el-cuaderno.md), [RF-09](../02-requerimientos/funcionales/RF-09-corregir-calificacion-con-historial.md), [RF-11](../02-requerimientos/funcionales/RF-11-avisar-publicacion-de-calificacion.md)
+- **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
+- **Refinamientos detallados conservados:** RF-05, RF-09, RF-11
 - **Pruebas:** [CU-09-corregir-calificacion-publicada.feature](../04-pruebas/CU-09-corregir-calificacion-publicada.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/11) <!-- issue:CU-09 -->
 - **Equivale en el PC1 a:** UC-09 («Corregir publicación académica»)

@@ -29,6 +29,7 @@
 - **Métricas:** complejidad media (5 pasos y 3 flujos alternos).
 - **Prioridad:** alta (RF-20 tiene prioridad «Debe»).
 - **Estado:** nuevo desglose de RF-20 para atender la observación del PC2; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
-- **Requerimientos:** [RF-20](../02-requerimientos/funcionales/RF-20-registrar-resolucion-de-apelacion.md).
+- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Refinamientos detallados conservados:** RF-20, RF-21
 - **Pruebas:** [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature).
 - **Issue:** pendiente de crear en GitHub.

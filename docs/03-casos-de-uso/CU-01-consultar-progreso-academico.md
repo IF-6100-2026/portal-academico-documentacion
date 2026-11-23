@@ -39,7 +39,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** análisis revisado para el PC2; implementado y verificado en el núcleo propuesto de PC3 (véase [estado](../07-construccion/estado-de-implementacion.md) y [resultados](../08-resultados-de-pruebas/resultados-pruebas.md)).
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos:** [RF-02](../02-requerimientos/funcionales/RF-02-consultar-perfil-del-estudiante.md), [RF-03](../02-requerimientos/funcionales/RF-03-consultar-evaluaciones-y-calificaciones.md)
+- **Requerimientos generales:** [RF-29](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md), [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
+- **Refinamientos detallados conservados:** RF-02, RF-03
 - **Pruebas:** [CU-01-consultar-progreso-academico.feature](../04-pruebas/CU-01-consultar-progreso-academico.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3) <!-- issue:CU-01 -->
 - **Equivale en el PC1 a:** UC-01

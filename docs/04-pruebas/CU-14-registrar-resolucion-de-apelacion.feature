@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md
-# Requerimientos: RF-20, RS-03
+# Requerimientos generales: RF-32, RS-03
 Característica: CU-14 — Registrar resolución de apelación
   Como Comité de Evaluación
   Quiero registrar el resultado y fundamento de la resolución

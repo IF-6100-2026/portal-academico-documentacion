@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md
-# Requerimientos: RF-21, RF-23, RF-24, RF-25, RS-02, RS-03
+# Requerimientos generales: RF-30, RF-31, RF-32, RS-02, RS-03
 Característica: CU-08 — Supervisar el seguimiento académico
   Como Dirección
   Quiero ver en un solo lugar los avisos, quejas y apelaciones pendientes

@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-16-registrar-estudiante.md
-# Requerimientos: RF-26, RS-03
+# Requerimientos generales: RF-26, RS-03
 Característica: CU-16 — Registrar estudiante
   Como Dirección autorizada
   Quiero crear una ficha académica básica

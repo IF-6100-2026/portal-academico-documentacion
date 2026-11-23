@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md
-# Requerimientos: RF-14, RF-15, RF-17, RS-02, RS-03
+# Requerimientos generales: RF-31, RF-32, RS-02, RS-03
 Característica: CU-06 — Comunicarse sobre un estudiante
   Como persona encargada legal o docente
   Quiero intercambiar mensajes sobre un estudiante

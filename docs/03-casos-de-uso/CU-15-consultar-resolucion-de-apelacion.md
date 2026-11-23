@@ -28,6 +28,7 @@
 - **Métricas:** complejidad baja (5 pasos y 2 flujos alternos).
 - **Prioridad:** alta (RF-20 tiene prioridad «Debe»).
 - **Estado:** nuevo desglose de RF-20 para separar la acción de la persona encargada; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
-- **Requerimientos:** [RF-20](../02-requerimientos/funcionales/RF-20-registrar-resolucion-de-apelacion.md), [RS-02](../02-requerimientos/suplementarios/RS-02-trazabilidad-de-consultas.md).
+- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Refinamientos detallados conservados:** RF-20
 - **Pruebas:** [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature).
 - **Issue:** pendiente de crear en GitHub.

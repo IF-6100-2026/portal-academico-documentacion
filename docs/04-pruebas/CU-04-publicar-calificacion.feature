@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-04-publicar-calificacion.md
-# Requerimientos: RF-05, RF-07, RF-08, RF-11, RS-02, RS-03
+# Requerimientos generales: RF-30, RF-31, RS-02, RS-03
 Característica: CU-04 — Publicar calificación
   Como docente
   Quiero publicar las calificaciones del grupo después de devolver la evaluación

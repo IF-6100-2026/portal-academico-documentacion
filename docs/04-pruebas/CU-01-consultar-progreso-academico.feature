@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-01-consultar-progreso-academico.md
-# Requerimientos: RF-02, RF-03, RS-01, RS-02, RS-03
+# Requerimientos generales: RF-29, RF-30, RS-01, RS-02, RS-03
 Característica: CU-01 — Consultar progreso académico
   Como persona encargada legal
   Quiero consultar las evaluaciones y calificaciones publicadas de mis estudiantes

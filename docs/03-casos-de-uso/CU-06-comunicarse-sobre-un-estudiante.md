@@ -39,7 +39,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos:** [RF-14](../02-requerimientos/funcionales/RF-14-intercambiar-mensajes.md); para orientar hacia la queja o la apelación (A05 y A06): [RF-15](../02-requerimientos/funcionales/RF-15-presentar-queja-por-informacion-no-recibida.md), [RF-17](../02-requerimientos/funcionales/RF-17-presentar-apelacion.md)
+- **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Refinamientos detallados conservados:** RF-14, RF-15, RF-17
 - **Pruebas:** [CU-06-comunicarse-sobre-un-estudiante.feature](../04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8) <!-- issue:CU-06 -->
 - **Equivale en el PC1 a:** UC-06

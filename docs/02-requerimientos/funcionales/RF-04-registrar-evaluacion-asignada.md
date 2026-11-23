@@ -1,5 +1,7 @@
 # RF-04 — Registrar una evaluación asignada a un grupo
 
+> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-30](RF-30-gestionar-seguimiento-academico.md).
+
 | Campo | Detalle |
 |---|---|
 | Épica | 1. Registro y consulta de notas y evaluaciones |

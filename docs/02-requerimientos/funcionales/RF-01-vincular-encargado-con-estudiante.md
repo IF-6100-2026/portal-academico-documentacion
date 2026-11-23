@@ -1,5 +1,7 @@
 # RF-01 — Vincular a una persona encargada con un estudiante
 
+> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-29](RF-29-gestionar-vinculos-y-acceso.md).
+
 | Campo | Detalle |
 |---|---|
 | Épica | 1. Registro y consulta de notas y evaluaciones |

@@ -24,7 +24,17 @@
 
 - [Trazabilidad RF → CU → prueba → issue](02-requerimientos/trazabilidad-rf-cu.md)
 
-**Funcionales, por épica** (ver [épicas](01-inicio/problema-y-vision.md#épicas))
+**Requerimientos funcionales generales**
+
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 especifica el alta.
+- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): falta descomponer en CUs concretos.
+- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): falta descomponer en CUs concretos.
+- [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
+- [RF-30 Gestionar seguimiento académico](02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
+- [RF-31 Gestionar comunicación y avisos](02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
+- [RF-32 Gestionar apelaciones y pendientes](02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+
+**Refinamientos detallados conservados por épica** (RF-01 a RF-25; ver [épicas](01-inicio/problema-y-vision.md#épicas))
 
 | 1. Registro y consulta de notas y evaluaciones | 2. Comunicación entre la escuela y la persona encargada | 3. Seguimiento de apelaciones y pendientes |
 |---|---|---|

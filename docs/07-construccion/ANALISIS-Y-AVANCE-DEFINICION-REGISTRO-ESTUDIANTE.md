@@ -14,9 +14,9 @@ La retroalimentación docente aporta cuatro ajustes concretos al proyecto:
 3. Incorporar el caso de uso que falta: registrar estudiante, y distinguirlo de vincular una persona encargada con un estudiante ya registrado.
 4. Trabajar incrementalmente con un flujo de definición, planificación y revisión antes de implementar.
 
-En esta rama quedaron preparados el rótulo y la explicación C4, las capacidades generales de estudiantes/cursos/profesores, CU-16, cuatro escenarios Gherkin y un paquete documental SDD para ese caso. **El avance es principalmente especificación:** registrar estudiante todavía no tiene código, issue asociado ni verificación ejecutada.
+En esta rama quedaron preparados el rótulo y la explicación C4, siete requisitos generales (RF-26 a RF-32), el mapeo de los requisitos detallados anteriores, CU-16, cuatro escenarios Gherkin y un paquete documental SDD para ese caso. **El avance es principalmente especificación:** registrar estudiante todavía no tiene código, issue asociado ni verificación ejecutada.
 
-La corrección de jerarquía RF/CU sigue **parcial**. RF-26 a RF-28 expresan las tres capacidades generales mencionadas en clase, pero los RF-01 a RF-25 existentes aún conservan muchos detalles operativos. No se renumeraron ni se reescribieron a ciegas, para proteger la trazabilidad histórica; hace falta reorganizarlos bajo RF generales durante una revisión controlada.
+La jerarquía RF/CU quedó reorganizada localmente: RF-26 a RF-32 expresan capacidades amplias, RF-01 a RF-25 se identifican como refinamientos detallados preservados, y cada CU enlaza ahora los RF generales junto con los IDs detallados que lo originaron. Se conservaron 15 CU con metas o disparadores identificables; no se fusionaron metas distintas solo para bajar el conteo. Esta propuesta requiere revisión del grupo y no se presenta como aprobada por el profesor.
 
 ## 1. Qué material del curso encontramos
 
@@ -47,7 +47,7 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 | Observación compartida | Qué significa en el proyecto | Avance local | Estado real |
 |---|---|---|---|
 | Diagrama de contexto en C4 | Mostrar el Portal como sistema único y nombrar relaciones/datos externos; no dibujar componentes internos en el Nivel 1. | El SVG y su página ahora dicen C4 Nivel 1 y explican la caja negra. Se conserva la tabla de flujos F-01 a F-34. | Etiquetado y explicación ajustados; el equipo todavía debe revisar que el dibujo represente exactamente los datos acordados. |
-| RF más generales y CU más concretos | Un RF expresa una capacidad de negocio amplia; los CUs describen metas concretas del actor. | Se añadieron RF-26 Gestionar estudiantes, RF-27 Gestionar cursos y grupos, RF-28 Gestionar profesores. | Parcial. El catálogo RF-01 a RF-25 no fue consolidado bajo una jerarquía general. |
+| RF más generales y CU más concretos | Un RF expresa una capacidad de negocio amplia; los CUs describen metas concretas del actor. | Se definieron RF-26 a RF-32; RF-01 a RF-25 se mapearon como refinamientos y se actualizaron las relaciones de CUs/features. | Reorganizado en la rama local; falta revisión del grupo y actualización de issues en GitHub. |
 | Falta registrar estudiante | El estudiante debe existir antes de asociar vínculos y dar seguimiento. | CU-16, feature con cuatro escenarios y trazabilidad desde RF-26; alta separada de CU-02. | Especificado, no implementado, no probado y sin issue. Actor/campos provisionales. |
 | Empezar desde la idea, planear y entregar incrementos | Aclarar propósito, generar/revisar plan y construir una porción pequeña antes de ampliar el sistema. | Constitución, spec, plan y tasks SDD de CU-16; actualización de la guía de colaboración. | Preparación documental lista; no se implementó un incremento de CU-16. |
 
@@ -58,6 +58,10 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 - [RF-26 Gestionar el registro de estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): capacidad general; define que el registro y el vínculo familiar son distintos.
 - [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): capacidad general; faltan CUs que la descompongan.
 - [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): capacidad general; faltan CUs que la descompongan.
+- [RF-29 Gestionar vínculos y acceso](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md): agrupa el detalle RF-01.
+- [RF-30 Gestionar seguimiento académico](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md): agrupa RF-02 a RF-09.
+- [RF-31 Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md): agrupa RF-10 a RF-16 y RF-23.
+- [RF-32 Gestionar apelaciones y pendientes](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md): agrupa RF-17 a RF-22 y RF-24 a RF-25.
 - [CU-16 Registrar estudiante](../03-casos-de-uso/CU-16-registrar-estudiante.md): actor Dirección provisional, campos existentes y escenarios alternos.
 - [Feature de CU-16](../04-pruebas/CU-16-registrar-estudiante.feature): cuatro escenarios de especificación; no se reportan como ejecutados.
 - [Matriz de trazabilidad RF → CU → prueba → issue](../02-requerimientos/trazabilidad-rf-cu.md): enlaza el nuevo requisito/caso y registra que el issue sigue pendiente.
@@ -65,7 +69,7 @@ La idea central del material es pensar y revisar cada paso antes de pasar al sig
 ### Documentación y navegación
 
 - Se identificó explícitamente el diagrama de contexto como C4 Nivel 1 y se mantuvo el detalle de flujos que ya existía.
-- Se agregaron enlaces desde los índices principales hacia RF-26/27/28, CU-16 y sus artefactos SDD.
+- Se agregaron enlaces desde los índices principales hacia RF-26 a RF-32, CU-16 y sus artefactos SDD.
 - Se actualizaron el estado de implementación, los cambios PC2→PC3, la colaboración y el registro de uso de IA para distinguir propuesta, código y evidencia.
 - La guía SDD local enlaza el material público del curso y aclara que no se encontró un paquete instalable de skills.
 
@@ -98,7 +102,7 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 
 ### Próximo incremento académico/técnico
 
-1. Reorganizar RF-01 a RF-25 bajo capacidades generales acordadas, preservando identificadores anteriores como trazabilidad hasta confirmar el cambio con el grupo.
+1. Revisar con el equipo que RF-01 a RF-25 estén correctamente ubicados bajo RF-26 a RF-32; sus IDs se preservaron para no romper la historia.
 2. Descomponer RF-27 y RF-28 en casos de uso concretos solo cuando haya actor, objetivo y datos acordados.
 3. Abrir el issue de CU-16, revisar el plan y construir una porción vertical pequeña: endpoint protegido de alta → ficha persistida → formulario de Dirección → confirmación/error.
 4. Definir la clave institucional para duplicados, datos obligatorios, edición/inactivación y auditoría; añadir escenarios derivados de las decisiones.
@@ -106,4 +110,4 @@ Se dejó pendiente la política de duplicidad porque no encontramos un identific
 
 ## 7. Lectura franca para la rúbrica
 
-El avance mejora la legibilidad, incorpora el CU que el profesor señaló y muestra el proceso SDD. También atiende el rótulo C4. Sin embargo, **no cierra por sí solo la rúbrica completa**: sigue pendiente generalizar el catálogo antiguo, enlazar issues donde faltan, revisar el resultado con todo el equipo, implementar/probar CU-16 si entra en el alcance y publicar en la rama oficial. La documentación diferencia cada cosa para evitar dar una impresión de completitud que la evidencia no respalda.
+El avance mejora la legibilidad, organiza siete capacidades funcionales generales sobre los refinamientos conservados, incorpora el CU que el profesor señaló y muestra el proceso SDD. También atiende el rótulo C4. Sin embargo, **no cierra por sí solo la rúbrica completa**: faltan la revisión del equipo, enlazar issues donde faltan, implementar/probar CU-16 si entra en el alcance y publicar en la rama oficial. La documentación diferencia cada cosa para evitar dar una impresión de completitud que la evidencia no respalda.

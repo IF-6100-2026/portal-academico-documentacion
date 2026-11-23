@@ -36,7 +36,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos:** [RF-15](../02-requerimientos/funcionales/RF-15-presentar-queja-por-informacion-no-recibida.md), [RF-16](../02-requerimientos/funcionales/RF-16-atender-queja-por-informacion-no-recibida.md), [RF-25](../02-requerimientos/funcionales/RF-25-consultar-registro-de-consultas.md)
+- **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Refinamientos detallados conservados:** RF-15, RF-16, RF-25
 - **Pruebas:** [CU-12-presentar-queja-por-informacion-no-recibida.feature](../04-pruebas/CU-12-presentar-queja-por-informacion-no-recibida.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/13) <!-- issue:CU-12 -->
 - **Equivale en el PC1 a:** Nuevo. El número CU-11 no se reutiliza porque correspondía a la bitácora retirada (UC-11).
