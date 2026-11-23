@@ -87,7 +87,7 @@ Son los RF del PC2. Ya **no se cuentan como requerimientos funcionales**: cada u
 - Hay 8 RF (RF-26 a RF-33) y 20 CU. Cada CU depende de un solo RF; ningún RF queda sin casos de uso.
 - RF-01 a RF-25 son requisitos detallados de un solo RF general y no se cuentan como RF; los enlaces y los identificadores de escenarios e issues no se renumeran.
 - RF-26 se descompone en CU-16 y CU-19; RF-27 en CU-17 y CU-18; RF-28 en CU-20 y CU-21. CU-16 a CU-21 tienen código en la rama PC3, con modelo y actores provisionales que el grupo debe revisar.
-- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. El [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está fusionado y el tag `pc3` incluye su código. Los issues #3 y #4 de CU-01/CU-02 siguen abiertos en GitHub pese a que ambos casos tienen implementación y evidencia documentada; CU-16 (#16) se cerró con el PR #15.
+- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. Los PR [#26](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/26) y [#27](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/27) integran las observaciones del PC2, los flujos y la verificación final; el tag `pc3` contiene ambos. CU-01 (#3) y CU-02 (#4) tienen implementación y evidencia documentada, pero sus issues siguen abiertos con criterios de aceptación pendientes de completar; CU-16 (#16) se cerró con el PR #15. Las brechas institucionales están en `docs/07-construccion/brechas-de-requerimientos.md`.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)

@@ -1,11 +1,11 @@
 # Checklist PC3 de implementación y pruebas por caso de uso
 
-Actualizado el 23 de noviembre de 2026 para la integración PC3 de `pc3/core-consulta-vinculos`. El PR #25 se fusionó en el merge `e5701a6` y el tag `pc3` identifica la versión final de entrega. La integración contiene código para los 20 casos vigentes. La marca **verificado** se limita a la evidencia descrita; los `.feature` siguen siendo especificaciones y no se ejecutaron con Cucumber.
+Actualizado el 23 de noviembre de 2026 para la integración final PC3 de `pc3/core-consulta-vinculos`. Los PR #26 y #27 están fusionados y el tag `pc3` identifica la versión de entrega. La integración contiene código para los 20 casos vigentes. La marca **verificado** se limita a la evidencia descrita; los `.feature` siguen siendo especificaciones y no se ejecutaron en bloque como suite Cucumber.
 
 | CU | Implementado | Resultado y alcance de la verificación |
 |---|---:|---|
-| CU-01 Consultar progreso académico | [x] | 31 comprobaciones HTTP heredadas de CU-01/CU-02 con PostgreSQL 17 limpio; revisión visual manual. Véase [resultados](../08-resultados-de-pruebas/resultados-pruebas.md). |
-| CU-02 Vincular encargado con estudiante | [x] | Las mismas 31 comprobaciones HTTP cubren altas, permisos por rol/vínculo, solicitudes pendientes e historial. |
+| CU-01 Consultar progreso académico | [x] | 31 comprobaciones HTTP previas y 6 pruebas Testcontainers: flujo básico, sin vínculos, acceso no autorizado, periodo vacío, nota corregida y sesión inválida. Véase [resultados](../08-resultados-de-pruebas/resultados-pruebas.md). |
+| CU-02 Vincular encargado con estudiante | [x] | 31 comprobaciones HTTP documentadas cubren altas, permisos, solicitudes pendientes, duplicados y cambios de estado. Los criterios siguen abiertos en [issue #4](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4) para completar su revisión. |
 | CU-03 Publicar evaluación asignada | [x] | Smoke HTTP: evaluación publicada para estudiantes activos del grupo, avisos a vínculos activos e idempotencia de la publicación repetida. Alternos Gherkin no corridos como suite. |
 | CU-04 Publicar calificación | [x] | Smoke HTTP: publicación de calificación dentro de la escala provisional; el guardado se registra con el flujo docente y notifica al encargado vinculado. |
 | CU-05 Dar seguimiento a avisos no consultados | [x] | Smoke HTTP: acuse de lectura, dos ciclos de recordatorio con límite de 2, alerta al límite, tercera ejecución con 0/0; finalizar vínculo cerró 14 avisos pendientes y reabrir uno devolvió 404. Antigüedad simulada solo en la BD temporal. |
@@ -19,7 +19,7 @@ Actualizado el 23 de noviembre de 2026 para la integración PC3 de `pc3/core-con
 | CU-13 Aportar información a una apelación | [x] | Smoke HTTP: docente añadió un aporte al expediente y quedó asociado con actor y fecha. No se probaron todos los rechazos alternos. |
 | CU-14 Registrar resolución de apelación | [x] | Smoke HTTP: Comité registró resolución `UPHELD`; la calificación no se modificó automáticamente. |
 | CU-15 Consultar resolución de apelación | [x] | Smoke HTTP: persona encargada consultó la resolución, quedó acuse de lectura y se cerró el expediente. |
-| CU-16 Registrar estudiante | [x] | Tres pruebas unitarias del handler y verificación HTTP manual: 401 sin sesión, 201 Dirección, 403 Docente y 400 con grupo vacío. El issue [#16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16) se cerró con el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). |
+| CU-16 Registrar estudiante | [x] | Tres pruebas unitarias y cinco pruebas de integración Testcontainers: alta válida, grupo vacío rechazado indicando `groupName`, rol docente rechazado, alta separada del vínculo familiar y nombres repetidos permitidos. El issue [#16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16) se cerró con el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). |
 | CU-17 Registrar grupo académico | [x] | Smoke HTTP: Dirección creó un grupo con materia, nivel, periodo y código únicos. El modelo es una simplificación provisional. |
 | CU-18 Asignar docente a grupo | [x] | Smoke HTTP: Dirección asignó un perfil docente a un grupo y el rol docente pudo operar sobre su asignación. |
 | CU-19 Inscribir estudiante en grupo | [x] | Smoke HTTP: Dirección inscribió estudiantes activos; el grupo quedó como fuente de la publicación de CU-03. |
@@ -29,6 +29,6 @@ Actualizado el 23 de noviembre de 2026 para la integración PC3 de `pc3/core-con
 ## Resumen
 
 - Código funcional disponible en esta rama para **20 de 20 casos vigentes**; CU-11 se retiró previamente.
-- `mvn test`: 12 pruebas aprobadas, sin fallos, errores ni violaciones de Checkstyle. `npm run build`: correcto. El validador detecta 20 CUs, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
+- `mvn test`: 23 pruebas aprobadas, 0 fallos, 0 errores, 0 omitidas y 0 violaciones de Checkstyle. `npm run build`: correcto. El validador detecta 20 CUs, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
 - CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21 tuvieron al menos un flujo principal comprobado por HTTP en una base PostgreSQL 17 temporal e independiente. Los escenarios alternos no se ejecutaron en bloque con Cucumber; la evidencia completa y sus límites están en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
-- El [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está fusionado y el tag `pc3` apunta a su merge. Los issues #3 y #4 siguen abiertos como tareas del tablero aunque CU-01 y CU-02 tienen código y evidencia documentada. Las reglas provisionales no equivalen a políticas aprobadas por el profesor o el centro.
+- Los PR [#26](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/26) y [#27](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/27) están fusionados; `pc3` identifica la versión final integrada. CU-01 y CU-02 tienen código y evidencia documentada; sus issues #3 y #4 permanecen abiertos con la etiqueta `brecha` porque las listas de aceptación no se marcaron completas. Las decisiones institucionales pendientes están descritas en [brechas](brechas-de-requerimientos.md). Las reglas provisionales no equivalen a políticas aprobadas por el profesor o el centro.
