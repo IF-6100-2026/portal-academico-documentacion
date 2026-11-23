@@ -1,5 +1,6 @@
 package cr.ac.ucr.if6100.portal.persistence.entity;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.UUID;
 import jakarta.persistence.Column;
@@ -45,6 +46,9 @@ public class AssessmentEntity {
     @Column(nullable = false)
     private boolean published;
 
+    @Column(name = "published_at")
+    private Instant publishedAt;
+
     protected AssessmentEntity() { }
 
     public UUID getId() {
@@ -69,5 +73,9 @@ public class AssessmentEntity {
 
     public String getInstructions() {
         return instructions;
+    }
+
+    public Instant getPublishedAt() {
+        return publishedAt;
     }
 }

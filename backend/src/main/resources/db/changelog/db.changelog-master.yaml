@@ -119,3 +119,90 @@ databaseChangeLog:
                 ('66666666-6666-4666-8666-666666666666', '11111111-1111-4111-8111-111111111111', 'Ciencias', 'Observación de plantas (demo)', '2026-II', '2026-11-12', 'Registrar observaciones del cuaderno.', TRUE);
               INSERT INTO grade_record (id, assessment_id, numeric_value, observation, published_date) VALUES
                 ('77777777-7777-4777-8777-777777777777', '44444444-4444-4444-8444-444444444444', 85, 'Buen trabajo (dato de demostración).', '2026-11-15');
+  - changeSet:
+      id: 003-pc3-core-completion
+      author: equipo-montessori
+      comment: Publicaciones recientes, historial de calificaciones y vínculo demo para cubrir CU-01 y CU-02.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              ALTER TABLE assessment ADD COLUMN published_at TIMESTAMPTZ;
+              UPDATE assessment
+                SET published_at = (assigned_date::timestamp AT TIME ZONE 'America/Costa_Rica')
+                WHERE published = TRUE;
+              CREATE TABLE grade_revision (
+                id UUID PRIMARY KEY,
+                assessment_id UUID NOT NULL REFERENCES assessment(id),
+                numeric_value NUMERIC(6, 2) NOT NULL,
+                observation TEXT NOT NULL,
+                published_date DATE NOT NULL,
+                reason VARCHAR(500) NOT NULL,
+                corrected_by VARCHAR(80) NOT NULL REFERENCES portal_user(username),
+                corrected_at TIMESTAMPTZ NOT NULL
+              );
+              CREATE INDEX ix_grade_revision_assessment_time
+                ON grade_revision(assessment_id, corrected_at DESC);
+              CREATE UNIQUE INDEX uq_guardian_student_pending
+                ON guardian_student_link(guardian_username, student_id) WHERE status = 'PENDING';
+              INSERT INTO grade_revision
+                (id, assessment_id, numeric_value, observation, published_date, reason,
+                 corrected_by, corrected_at)
+              VALUES
+                ('ffffffff-ffff-4fff-8fff-ffffffffffff',
+                 '44444444-4444-4444-8444-444444444444', 70,
+                 'Versión inicial (dato de demostración).', '2026-11-10',
+                 'Se corrigió al cotejar la calificación con el instrumento aplicado (dato de demostración).',
+                 'docente.demo', '2026-11-15T17:00:00Z');
+              INSERT INTO student (id, full_name, grade_level, group_name, teacher_name, active)
+              VALUES ('44444444-4444-4aaa-8aaa-444444444444',
+                'Lucía Soto Campos (dato ficticio)', 'Sexto', '6-A',
+                'Docente de demostración', TRUE);
+              INSERT INTO guardian_student_link
+                (id, guardian_username, student_id, relationship_type, evidence_reference,
+                 status, created_by, created_at)
+              VALUES ('cccccccc-cccc-4ccc-8ccc-cccccccccccc', 'encargada.demo',
+                '44444444-4444-4aaa-8aaa-444444444444', 'Persona encargada autorizada',
+                'RESPALDO-DEMO-004 (dato ficticio)', 'ACTIVE', 'direccion.demo',
+                '2026-10-15T09:00:00Z');
+              INSERT INTO guardian_link_history
+                (id, link_id, previous_status, new_status, reason, actor_username, occurred_at)
+              VALUES ('dddddddd-dddd-4ddd-8ddd-dddddddddddd',
+                'cccccccc-cccc-4ccc-8ccc-cccccccccccc', NULL, 'ACTIVE',
+                'Alta de vínculo de demostración; respaldo ficticio.',
+                'direccion.demo', '2026-10-15T09:00:00Z');
+              INSERT INTO guardian_student_link
+                (id, guardian_username, student_id, relationship_type, evidence_reference,
+                 status, created_by, created_at, changed_by, changed_at, change_reason)
+              VALUES ('abababab-abab-4bab-8bab-abababababab', 'encargada.demo',
+                '22222222-2222-4222-8222-222222222222', 'Persona encargada autorizada',
+                'EXPEDIENTE-DEMO-PENDIENTE (dato ficticio)', 'PENDING', 'direccion.demo',
+                '2026-11-02T09:00:00Z', 'direccion.demo', '2026-11-02T09:00:00Z',
+                'Restricción institucional ficticia para la demostración.');
+              INSERT INTO guardian_link_history
+                (id, link_id, previous_status, new_status, reason, actor_username, occurred_at)
+              VALUES ('bcbcbcbc-bcbc-4cbc-8cbc-bcbcbcbcbcbc',
+                'abababab-abab-4bab-8bab-abababababab', NULL, 'PENDING',
+                'Restricción institucional ficticia para la demostración.',
+                'direccion.demo', '2026-11-02T09:00:00Z');
+              INSERT INTO assessment
+                (id, student_id, subject, title, period, assigned_date, instructions,
+                 published, published_at)
+              VALUES ('eeeeeeee-eeee-4eee-8eee-eeeeeeeeeeee',
+                '44444444-4444-4aaa-8aaa-444444444444', 'Español',
+                'Comprensión de lectura (demo)', '2026-II', '2026-11-18',
+                'Leer el texto asignado y responder las preguntas.', TRUE,
+                '2026-11-18T16:00:00Z');
+  - changeSet:
+      id: 004-pc3-open-link-uniqueness
+      author: equipo-montessori
+      comment: Impide que un vínculo activo y uno pendiente coexistan para el mismo par.
+      changes:
+        - sql:
+            splitStatements: true
+            sql: |
+              DROP INDEX uq_guardian_student_active;
+              DROP INDEX uq_guardian_student_pending;
+              CREATE UNIQUE INDEX uq_guardian_student_open
+                ON guardian_student_link(guardian_username, student_id)
+                WHERE status IN ('ACTIVE', 'PENDING');

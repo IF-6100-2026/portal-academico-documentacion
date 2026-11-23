@@ -45,4 +45,8 @@ public class ConsultationLogEntity {
         this.outcome = outcome;
         this.consultedAt = consultedAt;
     }
+
+    public Instant getConsultedAt() {
+        return consultedAt;
+    }
 }

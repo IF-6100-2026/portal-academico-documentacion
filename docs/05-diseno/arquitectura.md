@@ -30,7 +30,7 @@ La consulta no incluye el historial de correcciones descrito en el alterno A04 d
 
 ## CU-02 — Administrar vínculos
 
-`DirectorLinkController` permite consultar el catálogo, crear un vínculo y suspender o finalizar uno activo. `ManageGuardianLinkHandlerImpl` valida el rol Dirección, que ambas cuentas estén activas, respaldo no vacío y ausencia de duplicado activo. Cada cambio deja responsable, fecha, motivo e historial. Un índice único parcial protege la unicidad del vínculo activo.
+`DirectorLinkController` permite consultar el catálogo, crear un vínculo activo o pendiente, y suspender o finalizar uno activo. `ManageGuardianLinkHandlerImpl` valida el rol Dirección, que ambas cuentas estén activas, respaldo no vacío y ausencia de otra relación abierta para el mismo par. Un estado pendiente nunca autoriza consulta ni puede coexistir con un vínculo activo, incluso si dos altas llegan simultáneamente. Cada cambio deja responsable, fecha, motivo e historial; un índice único parcial protege esa regla en la base.
 
 ## Seguridad y entorno
 

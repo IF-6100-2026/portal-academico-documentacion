@@ -14,7 +14,7 @@ docker compose up -d --wait
 docker compose ps
 ```
 
-`.env` está excluido de Git. Solo contiene credenciales locales de demostración; no las uses fuera del equipo local. La migración Liquibase `002-academic-core` crea usuarios, estudiantes, vínculos, evaluaciones, calificaciones y trazas, y carga datos completamente ficticios. Liquibase aplica cada migración una vez; reiniciar el contenedor conserva el volumen.
+`.env` está excluido de Git. Solo contiene credenciales locales de demostración; no las uses fuera del equipo local. Liquibase crea el esquema y carga datos completamente ficticios: `002-academic-core` crea usuarios, estudiantes, vínculos, evaluaciones, calificaciones y trazas; `003-pc3-core-completion` agrega fechas de publicación, historial de correcciones, un segundo estudiante y una relación pendiente; `004-pc3-open-link-uniqueness` impide que un mismo par tenga a la vez una relación activa y otra pendiente. Liquibase aplica cada migración una vez; reiniciar el contenedor conserva el volumen.
 
 | Variable | Valor de `.env.example` | Uso |
 |---|---|---|
@@ -45,12 +45,12 @@ npm run build
 npm run dev
 ```
 
-Abre <http://localhost:5173>. Los perfiles y sus contraseñas locales se muestran en la pantalla de ingreso. `encargada.demo` consulta a Sofía; `direccion.demo` administra vínculos. `sin-vinculos.demo` y `docente.demo` sirven para comprobar respuestas sin vínculos y permisos. Son identidades y datos de demostración.
+Abre <http://localhost:5173>. Las cuentas y contraseñas de demostración están en el [guion PC3](../07-construccion/guion-demostracion-pc3.md). `encargada.demo` consulta a Sofía; `direccion.demo` administra vínculos. `sin-vinculos.demo` y `docente.demo` sirven para comprobar respuestas sin vínculos y permisos. Son identidades y datos ficticios.
 
 ## Comprobación integrada
 
 - `http://localhost:8080/api/v1/health` entrega estado de la API. `http://localhost:8080/actuator/health` incluye el estado de los componentes configurados.
-- Desde PowerShell en la raíz: `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080`. El guion comprueba CU-01 y CU-02 con solicitudes reales y deja el vínculo de prueba suspendido.
+- Desde PowerShell en la raíz: `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080`. El guion comprueba CU-01 y CU-02 con solicitudes reales; conserva las trazas y deja los vínculos creados para la prueba suspendidos o finalizados. Repetirlo agrega historial local; no borra ni reinicia la base.
 - Desde `backend/`: `mvn test` ejecuta las pruebas Java y Checkstyle.
 - Desde `frontend/`: `npm run build` comprueba tipos y genera la compilación de producción.
 - Los archivos Gherkin en `docs/04-pruebas` son especificaciones. No hay un ejecutor Cucumber conectado; no se deben contar como pruebas ejecutadas.

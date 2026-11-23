@@ -1,29 +1,33 @@
-# Resultados de verificaciones
+# Resultados de pruebas y verificaciones
 
-## Qué se verificó
+Ejecución local del **22 de noviembre de 2026**, sobre la rama de trabajo PC3, con Java 21, PostgreSQL 17, Node.js y datos de demostración ficticios.
+
+## Resultado por caso de uso
+
+| CU | Estado de implementación PC3 | Verificación ejecutada |
+|---|---|---|
+| CU-01 Consultar progreso académico | Implementado en el núcleo propuesto. | Smoke API integrado: lista activa, publicaciones recientes y avisos pendientes, filtro de borradores, calificación vigente/anterior, periodo vacío, cuenta sin vínculos, denegación horizontal, sesión ausente y retiro de acceso tras suspensión/finalización. |
+| CU-02 Vincular encargado con estudiante | Implementado en el núcleo propuesto. | Smoke API integrado: catálogo por rol, alta con respaldo, duplicado activo, persona/estudiante inválidos, estado pendiente sin acceso, bloqueo de alta activa paralela, suspensión/finalización y auditoría de autor/fecha/motivo. |
+| CU-03 a CU-10 | Especificados; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
+| CU-12 | Especificado; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
+| CU-13 a CU-15 | Propuestas especificadas; sin implementación funcional en esta entrega. | Gherkin revisado estructuralmente; escenarios no ejecutados. |
+
+## Comprobaciones ejecutadas
 
 | Comprobación | Resultado | Alcance |
 |---|---|---|
-| `mvn test` | 5 pruebas Java pasaron con JDK 21; Checkstyle reportó 0 violaciones. | Pruebas existentes de salud/configuración; no son pruebas unitarias completas de cada handler. |
-| `npm ci` | Completó sin vulnerabilidades reportadas por npm. | Instalación reproducible de dependencias bloqueadas. |
-| `npm run build` | Compilación y verificación TypeScript completadas. | No sustituye pruebas de interacción ni accesibilidad. |
-| `scripts/verificar-nucleo-pc3.ps1` | 22 escenarios HTTP pasaron en la API local integrada con PostgreSQL. | CU-01 y CU-02, perfiles y datos demo. No cubre todas las alternativas de sus fichas. |
-| Revisión manual de UI | Se inició sesión demo de persona encargada y Dirección; se observaron lista/progreso, borrador oculto, calificación publicada y administración/historial de vínculos. | Inspección manual del navegador local; no es prueba automatizada de interfaz. |
-| `scripts/validar_documentacion.py` | 14 CU, 14 archivos feature, 78 escenarios especificados y cero errores estructurales. | Comprueba estructura/enlaces; no ejecuta Gherkin ni valida contenido académico. |
+| `mvn test` con JDK 21 | **Correcto:** 5 pruebas, 0 fallos, 0 errores; Checkstyle reportó 0 violaciones. | Compila 30 clases de producción y ejecuta las pruebas actuales de configuración y salud. No es una suite unitaria de cada regla de negocio. |
+| `npm ci` | **Correcto:** instaló 69 paquetes; 0 vulnerabilidades reportadas por npm. | Dependencias reproducibles según `package-lock.json`. |
+| `npm run build` | **Correcto:** TypeScript y compilación de producción Vite. | Comprueba el contrato de tipos y genera los archivos estáticos; no prueba interacciones de navegador. |
+| `scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:18081` | **Correcto:** 31 comprobaciones HTTP por ejecución; se corrió tres veces en total, la última con la migración 004 aplicada. | API integrada para el alcance CU-01/CU-02. Se usó el puerto 18081 porque el 18080 local ya estaba ocupado. |
+| Revisión manual de la interfaz local | **Correcto:** acceso de persona encargada y Dirección, lista de estudiantes, historial de calificación, cambio de periodo con lista vacía y catálogo con vínculo pendiente. | Exploración manual en navegador; no equivale a una prueba automatizada de UI. |
+| `python scripts/validar_documentacion.py` | **Correcto:** 14 CU, 14 archivos `.feature`, 78 escenarios especificados y 0 errores estructurales. | Verifica formato y estructura documental; no ejecuta Gherkin ni valida su contenido académico. |
 
-El smoke script es repetible; crea dos vínculos demo, suspende uno y finaliza el otro para comprobar que se retira el acceso. No borra el volumen local, por lo que cada ejecución añade registros de prueba e historial.
+## Límites de esta evidencia
 
-## Casos cubiertos por el smoke API
-
-Salud pública; listado vinculado; consulta de periodo; exclusión de borrador; calificación publicada; cuenta sin vínculo; acceso horizontal denegado; periodo vacío; sesión ausente; catálogo de Dirección; rechazo de rol docente; respaldo requerido; estudiante inactivo; creación de vínculo; duplicado activo; disponibilidad del nuevo vínculo; suspensión con motivo; acceso revocado tras la suspensión; creación después de suspender; finalización con autor/fecha; retiro del listado; acceso denegado tras finalizar. El script reporta cada paso individualmente.
-
-## Pendiente de prueba o ejecución
-
-- CU-01 A04: mostrar versiones corregidas, porque el historial aún no está implementado.
-- CU-02 A04: flujo de restricción institucional/custodia, pendiente de política.
-- Pruebas unitarias de reglas de handler, transacción, errores y carrera de duplicados.
-- Todos los `.feature`: requieren Cucumber u otro ejecutor y datos/steps de integración.
-- Pruebas automatizadas de frontend, accesibilidad y varios tamaños de pantalla.
-- Los CU-03 a CU-10, CU-12 a CU-15 no tienen implementación que pueda ejecutarse.
-
-Estas verificaciones corresponden a la rama de preparación PC3 en el entorno local el 22 de noviembre de 2026. Los 78 escenarios Gherkin siguen siendo especificaciones, no ejecuciones.
+- Los 78 escenarios Gherkin son especificaciones; no hay ejecutor Cucumber conectado.
+- No se ejecutaron pruebas automatizadas de interfaz, accesibilidad, distintos navegadores ni rendimiento.
+- CU-03 a CU-10 y CU-12 a CU-15 no tienen implementación funcional ni pruebas de integración.
+- El backend no tiene una suite de pruebas unitarias de reglas de vínculo, historial, errores y concurrencia.
+- El smoke conserva auditoría y agrega registros ficticios de vínculos suspendidos/finalizados. Puede ejecutarse nuevamente; no limpia ni reinicia la base local.
+- CU-01 + CU-02 son la propuesta ejecutada por el equipo, no una selección docente que se haya podido confirmar.

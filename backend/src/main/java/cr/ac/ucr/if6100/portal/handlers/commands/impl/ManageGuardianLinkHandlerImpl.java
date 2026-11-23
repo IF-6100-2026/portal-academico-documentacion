@@ -53,11 +53,22 @@ public class ManageGuardianLinkHandlerImpl implements ManageGuardianLinkHandler 
         if (blank(command.evidenceReference())) {
             return new Result.InvalidField("evidenceReference");
         }
+        if (command.pending() && blank(command.reason())) {
+            return new Result.InvalidField("restrictionReason");
+        }
         var guardian = userRepository.findByUsernameAndRoleNameAndActiveTrue(
             command.guardianUsername().trim(), "GUARDIAN");
+        if (guardian.isEmpty()) {
+            return new Result.RelationshipUnavailable("guardianUsername");
+        }
         var student = studentRepository.findByIdAndActiveTrue(command.studentId());
-        if (guardian.isEmpty() || student.isEmpty()) {
-            return new Result.RelationshipUnavailable();
+        if (student.isEmpty()) {
+            return new Result.RelationshipUnavailable("studentId");
+        }
+        var pending = linkRepository.findByGuardianUsernameAndStudentIdAndStatus(
+            command.guardianUsername().trim(), command.studentId(), "PENDING");
+        if (pending.isPresent()) {
+            return new Result.PendingDuplicate(pending.get().getCreatedAt());
         }
         var existing = linkRepository.findByGuardianUsernameAndStudentIdAndStatus(
             command.guardianUsername().trim(), command.studentId(), "ACTIVE");
@@ -65,11 +76,17 @@ public class ManageGuardianLinkHandlerImpl implements ManageGuardianLinkHandler 
             return new Result.Duplicate(existing.get().getCreatedAt());
         }
         Instant now = Instant.now();
-        GuardianStudentLinkEntity link = linkRepository.save(new GuardianStudentLinkEntity(
+        String status = command.pending() ? "PENDING" : "ACTIVE";
+        String reason = command.pending() ? command.reason().trim()
+            : "Alta autorizada. Respaldo: " + command.evidenceReference().trim();
+        GuardianStudentLinkEntity link = new GuardianStudentLinkEntity(
             guardian.get(), student.get(), command.relationshipType().trim(),
-            command.evidenceReference().trim(), command.actorUsername(), now));
-        historyRepository.save(new LinkHistoryEntity(link, null, "ACTIVE",
-            "Alta autorizada. Respaldo: " + command.evidenceReference().trim(),
+            command.evidenceReference().trim(), command.actorUsername(), now);
+        if (command.pending()) {
+            link.changeStatus("PENDING", reason, command.actorUsername(), now);
+        }
+        link = linkRepository.save(link);
+        historyRepository.save(new LinkHistoryEntity(link, null, status, reason,
             command.actorUsername(), now));
         return new Result.Created(toView(link));
     }

@@ -8,4 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AssessmentRepository extends JpaRepository<AssessmentEntity, UUID> {
     List<AssessmentEntity> findByStudentIdAndPeriodAndPublishedTrueOrderByAssignedDateDesc(
         UUID studentId, String period);
+
+    List<AssessmentEntity> findByStudentIdAndPublishedTrueOrderByPublishedAtDesc(UUID studentId);
 }

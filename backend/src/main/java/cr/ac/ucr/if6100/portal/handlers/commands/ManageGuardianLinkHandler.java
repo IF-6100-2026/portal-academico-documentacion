@@ -7,8 +7,8 @@ public interface ManageGuardianLinkHandler {
     Result handle(Command command);
 
     record Command(String actorUsername, Action action, UUID linkId, String guardianUsername,
-        UUID studentId, String relationshipType, String evidenceReference, String targetStatus,
-        String reason) { }
+        UUID studentId, String relationshipType, String evidenceReference, boolean pending,
+        String targetStatus, String reason) { }
 
     enum Action { CREATE, CHANGE_STATUS }
 
@@ -16,8 +16,9 @@ public interface ManageGuardianLinkHandler {
         record Created(LinkView link) implements Result { }
         record Updated(LinkView link) implements Result { }
         record Duplicate(Instant activatedAt) implements Result { }
+        record PendingDuplicate(Instant requestedAt) implements Result { }
         record InvalidField(String field) implements Result { }
-        record RelationshipUnavailable() implements Result { }
+        record RelationshipUnavailable(String field) implements Result { }
         record LinkNotActive() implements Result { }
         record NotFound() implements Result { }
         record Forbidden() implements Result { }

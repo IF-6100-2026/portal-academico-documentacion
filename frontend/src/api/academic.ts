@@ -1,11 +1,22 @@
 export type Credentials = { username: string; password: string };
-export type StudentSummary = { id: string; fullName: string; gradeLevel: string; groupName: string };
+export type StudentSummary = {
+  id: string; fullName: string; gradeLevel: string; groupName: string;
+  latestPublications: Array<{ subject: string; title: string; publishedAt: string }>;
+  pendingNotices: number;
+};
+export type StudentProfile = {
+  id: string; fullName: string; gradeLevel: string; groupName: string; teacherName: string;
+};
 export type PublishedAssessment = {
   id: string; subject: string; title: string; assignedDate: string; instructions: string;
   grade: number | null; observation: string | null; gradePublishedDate: string | null;
+  previousVersions: Array<{
+    grade: number; observation: string; publishedDate: string; reason: string;
+    correctedBy: string; correctedAt: string;
+  }>;
 };
 export type Progress = {
-  student: StudentSummary & { teacherName: string };
+  student: StudentProfile;
   period: string; assessments: PublishedAssessment[]; consultedAt: string;
 };
 export type LinkView = {
@@ -16,7 +27,8 @@ export type LinkView = {
 };
 export type LinkCatalog = {
   guardians: Array<{ username: string; displayName: string }>;
-  students: StudentSummary[]; links: LinkView[];
+  students: Array<{ id: string; fullName: string; gradeLevel: string; groupName: string }>;
+  links: LinkView[];
 };
 
 export class ApiFailure extends Error {
@@ -62,7 +74,8 @@ export function getLinkCatalog(credentials: Credentials): Promise<LinkCatalog> {
 
 export function createLink(credentials: Credentials, input: {
   guardianUsername: string; studentId: string; relationshipType: string; evidenceReference: string;
-}): Promise<LinkView> {
+  pending: boolean; restrictionReason: string;
+}): Promise<LinkView | { activatedAt: string } | { requestedAt: string }> {
   return request('/api/v1/director/guardian-links', credentials, {
     method: 'POST', body: JSON.stringify(input),
   });

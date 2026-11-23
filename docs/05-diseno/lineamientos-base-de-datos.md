@@ -15,7 +15,7 @@ PostgreSQL 17 se ejecuta con Docker Compose. Liquibase es el único mecanismo qu
 | `consultation_log` | Listados, consultas académicas y resultado de autorización |
 | `security_access_log` | Intentos autenticados rechazados por rol |
 
-Los UUID identifican datos académicos; claves foráneas protegen las referencias. Un índice parcial impide más de un vínculo `ACTIVE` entre la misma persona encargada y estudiante. Los datos iniciales son ficticios y se cargan solo para facilitar la demostración local.
+Los UUID identifican datos académicos; claves foráneas protegen las referencias. Un índice parcial impide que exista más de un vínculo abierto (`ACTIVE` o `PENDING`) para el mismo par encargado/estudiante. Las publicaciones guardan `published_at`; `grade_revision` conserva versiones anteriores y el historial de cambio. Los datos iniciales son ficticios y se cargan solo para facilitar la demostración local.
 
 ## Decisiones y restricciones
 
