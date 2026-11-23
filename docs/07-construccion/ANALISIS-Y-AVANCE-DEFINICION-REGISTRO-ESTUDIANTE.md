@@ -1,6 +1,6 @@
 # Análisis de retroalimentación docente y avance independiente
 
-- **Estado:** CU-16 se integró mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). Los otros 17 casos se integraron mediante el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25), ya fusionado como merge `e5701a6`; el tag `pc3` identifica la versión final de entrega.
+- **Estado:** CU-16 se integró mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). Las observaciones del PC2 y los flujos se integraron con el [PR #26](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/26); las correcciones y la verificación final quedaron en el [PR #27](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/27). Ambos están fusionados y el tag `pc3` identifica la entrega final.
 - **Fuente:** enunciado/lineamientos PC3, comentarios del profesor compartidos por el equipo y material público de IF-6100-2026.
 - **Autoría:** este avance no atribuye cambios a un integrante que no los haya realizado.
 - **Límite académico:** no se encontró confirmación escrita del profesor para la selección del núcleo ni para las decisiones provisionales que se describen aquí.
@@ -38,7 +38,7 @@ La rama `codex/pc3-remaining-use-cases` implementa los 17 casos que faltaban: CU
 
 ## Estado de verificación
 
-- `mvn test` con JDK 21: 12 pruebas, 0 fallos/errores y 0 violaciones de Checkstyle.
+- `mvn test` con JDK 21 y Docker Desktop 29.4.2: 23 pruebas, 0 fallos, 0 errores, 0 omitidas y 0 violaciones de Checkstyle; incluye las 11 pruebas de integración de CU-01 y CU-16 con Testcontainers.
 - `npm run build`: TypeScript y Vite pasan.
 - `python scripts/validar_documentacion.py`: 20 CU, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
 - PostgreSQL 17 temporal: Liquibase aplicó 8 changesets; la API respondió saludable y se comprobó por HTTP el flujo principal de los 17 casos nuevos.
@@ -49,4 +49,4 @@ La rama `codex/pc3-remaining-use-cases` implementa los 17 casos que faltaban: CU
 
 Los plazos y estados de apelación, los perfiles y permisos docentes, la estructura curso/materia/grupo/periodo, la escala 0–100, el procedimiento de avisos y la política de vínculo familiar están codificados para una demo local. Se detallan en [brechas](brechas-de-requerimientos.md). Nada aquí equivale a una política institucional aprobada.
 
-La integración final quedó en `pc3/core-consulta-vinculos` y el tag `pc3` identifica la versión de entrega. El enlace del repositorio y del tag debe registrarse en Mediación Virtual. Los issues #3 y #4 todavía aparecen abiertos aunque CU-01 y CU-02 tienen código y verificaciones documentadas. El historial no se altera para inventar commits de los integrantes.
+La integración final quedó en `pc3/core-consulta-vinculos` y el tag `pc3` identifica la versión de entrega. Para completar la entrega PC3 en Mediación Virtual se usan los enlaces del repositorio y del tag `pc3`. CU-01 y CU-02 tienen código y verificaciones documentadas; las reglas institucionales aún pendientes están separadas en la matriz de brechas. El historial no se altera para inventar commits de los integrantes.

@@ -6,7 +6,7 @@
 
 **Notación:** cada relación es una flecha punteada con un verbo que dice qué hace la persona o qué entrega el Portal, y entre corchetes los flujos F-xx que la detallan en la tabla de abajo. Hay una flecha por sentido para cada persona, así que el diagrama muestra tanto lo que entra como lo que sale del Portal sin dibujar los 39 flujos por separado.
 
-**Fuentes:** `diagrama-de-contexto.svg` es la versión versionada en el repositorio, en notación C4. El modelo original se armó en [IcePanel](https://app.icepanel.io/landscapes/jSlrJUPuQEwgKYqN5RTa/versions/latest/diagrams/editor?diagram=oXddYb8mH3) sin usar su generación automática con IA; si se edita allí, hay que exportarlo de nuevo para que ambas versiones coincidan. Los flujos F-35 a F-39 corresponden a propuestas CU-17 a CU-21 y no implican que el equipo ya haya aprobado ese alcance.
+**Fuentes:** `diagrama-de-contexto.svg` es la versión versionada en el repositorio, en notación C4. El modelo original se armó en [IcePanel](https://app.icepanel.io/landscapes/jSlrJUPuQEwgKYqN5RTa/versions/latest/diagrams/editor?diagram=oXddYb8mH3) sin usar su generación automática con IA. Se sincronizó visualmente con el SVG el 23 de noviembre de 2026; futuras ediciones deben volver a revisar ambas versiones. Los flujos F-35 a F-39 corresponden a propuestas CU-17 a CU-21 y no implican que el equipo ya haya aprobado ese alcance.
 
 El PC2 contenía una colaboración BPMN con numerosos flujos. Se conserva en `historial/` como antecedente, no como diagrama de contexto vigente. La tabla siguiente mantiene la definición individual y trazable de cada flujo F-xx; el gráfico agrupa visualmente esos datos por entidad para que se pueda leer.
 
