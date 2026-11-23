@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1010" viewBox="0 0 1400 1010" role="img" aria-labelledby="title description">
+  <title id="title">C4 nivel 2: contenedores del Portal Académico</title>
+  <desc id="description">Diagrama C4 de nivel 2. Las cuatro personas usan la aplicación web (React 19, TypeScript y Vite) desde el navegador. La aplicación hace solicitudes JSON/HTTP con autenticación Basic a la API REST (Java 21 y Spring Boot 3.5), que lee y escribe en la base de datos PostgreSQL 17, cuyo esquema se versiona con Liquibase.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#707070"/>
+    </marker>
+    <style>
+      text{font-family:Arial,Helvetica,sans-serif}
+      .name{font-size:16px;font-weight:700;fill:#fff}
+      .cname{font-size:19px;font-weight:700;fill:#fff}
+      .type{font-size:12px;fill:#e3edf8}
+      .desc{font-size:13px;fill:#fff}
+      .rel{font-size:13px;fill:#444}
+      .tech{font-size:12px;fill:#777}
+      .line{stroke:#707070;stroke-width:1.6;stroke-dasharray:7 5;fill:none}
+      .bname{font-size:18px;font-weight:700;fill:#444}
+      .btype{font-size:12px;fill:#666}
+      .foot{font-size:18px;fill:#333}
+      .note{font-size:13px;fill:#666}
+    </style>
+  </defs>
+  <rect width="1400" height="1010" fill="#ffffff"/>
+
+  <!-- Personas -->
+  <g>
+    <circle cx="230" cy="62" r="30" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="110" y="88" width="240" height="110" rx="32" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="230" y="122" text-anchor="middle" class="name">Persona encargada legal</text>
+    <text x="230" y="140" text-anchor="middle" class="type">[Persona] A-01</text>
+    <text x="230" y="162" text-anchor="middle" class="desc">Consulta el progreso y</text>
+    <text x="230" y="178" text-anchor="middle" class="desc">presenta solicitudes.</text>
+  </g>
+  <g>
+    <circle cx="550" cy="62" r="30" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="430" y="88" width="240" height="110" rx="32" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="550" y="122" text-anchor="middle" class="name">Docente</text>
+    <text x="550" y="140" text-anchor="middle" class="type">[Persona] A-02</text>
+    <text x="550" y="162" text-anchor="middle" class="desc">Publica evaluaciones</text>
+    <text x="550" y="178" text-anchor="middle" class="desc">y calificaciones.</text>
+  </g>
+  <g>
+    <circle cx="870" cy="62" r="30" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="750" y="88" width="240" height="110" rx="32" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="870" y="122" text-anchor="middle" class="name">Comité de Evaluación</text>
+    <text x="870" y="140" text-anchor="middle" class="type">[Persona] A-03</text>
+    <text x="870" y="162" text-anchor="middle" class="desc">Resuelve apelaciones</text>
+    <text x="870" y="178" text-anchor="middle" class="desc">de calificación.</text>
+  </g>
+  <g>
+    <circle cx="1190" cy="62" r="30" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="1070" y="88" width="240" height="110" rx="32" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="1190" y="122" text-anchor="middle" class="name">Dirección</text>
+    <text x="1190" y="140" text-anchor="middle" class="type">[Persona] A-04</text>
+    <text x="1190" y="162" text-anchor="middle" class="desc">Administra vínculos,</text>
+    <text x="1190" y="178" text-anchor="middle" class="desc">catálogos y plazos.</text>
+  </g>
+
+  <!-- Límite del sistema -->
+  <rect x="200" y="270" width="1000" height="690" rx="10" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="10 6"/>
+  <text x="222" y="925" class="bname">Portal Académico</text>
+  <text x="222" y="945" class="btype">[Sistema de software]</text>
+
+  <!-- Personas a la aplicación web -->
+  <line x1="230" y1="198" x2="578" y2="327" class="line" marker-end="url(#arrow)"/>
+  <line x1="550" y1="198" x2="658" y2="327" class="line" marker-end="url(#arrow)"/>
+  <line x1="870" y1="198" x2="742" y2="327" class="line" marker-end="url(#arrow)"/>
+  <line x1="1190" y1="198" x2="822" y2="327" class="line" marker-end="url(#arrow)"/>
+  <text x="960" y="300" class="rel">Usan la aplicación desde</text>
+  <text x="960" y="317" class="rel">el navegador</text>
+  <text x="960" y="335" class="tech">[HTTPS]</text>
+
+  <!-- Aplicación web -->
+  <rect x="520" y="330" width="360" height="130" rx="8" fill="#438DD5" stroke="#3C7FC0" stroke-width="2"/>
+  <text x="700" y="368" text-anchor="middle" class="cname">Aplicación web</text>
+  <text x="700" y="388" text-anchor="middle" class="type">[Contenedor: React 19, TypeScript y Vite]</text>
+  <text x="700" y="414" text-anchor="middle" class="desc">Pantallas por rol para consultar,</text>
+  <text x="700" y="432" text-anchor="middle" class="desc">publicar, vincular y apelar.</text>
+
+  <line x1="700" y1="460" x2="700" y2="557" class="line" marker-end="url(#arrow)"/>
+  <text x="714" y="500" class="rel">Hace solicitudes a</text>
+  <text x="714" y="518" class="tech">[JSON/HTTP, autenticación Basic]</text>
+
+  <!-- API -->
+  <rect x="520" y="560" width="360" height="130" rx="8" fill="#438DD5" stroke="#3C7FC0" stroke-width="2"/>
+  <text x="700" y="598" text-anchor="middle" class="cname">API REST</text>
+  <text x="700" y="618" text-anchor="middle" class="type">[Contenedor: Java 21 y Spring Boot 3.5]</text>
+  <text x="700" y="644" text-anchor="middle" class="desc">Expone /api/v1, valida rol y vínculo</text>
+  <text x="700" y="662" text-anchor="middle" class="desc">y coordina los handlers CQRS.</text>
+
+  <line x1="700" y1="690" x2="700" y2="777" class="line" marker-end="url(#arrow)"/>
+  <text x="714" y="728" class="rel">Lee y escribe en</text>
+  <text x="714" y="746" class="tech">[JDBC / JPA]</text>
+
+  <!-- Base de datos -->
+  <path d="M520,800 L520,890 A180,20 0 0,0 880,890 L880,800 Z" fill="#438DD5" stroke="#3C7FC0" stroke-width="2"/>
+  <ellipse cx="700" cy="800" rx="180" ry="20" fill="#5A9BDB" stroke="#3C7FC0" stroke-width="2"/>
+  <text x="700" y="842" text-anchor="middle" class="cname">Base de datos</text>
+  <text x="700" y="861" text-anchor="middle" class="type">[Contenedor: PostgreSQL 17]</text>
+  <text x="700" y="882" text-anchor="middle" class="desc">Estudiantes, vínculos, notas y bitácoras;</text>
+  <text x="700" y="899" text-anchor="middle" class="desc">esquema versionado con Liquibase.</text>
+
+  <text x="40" y="988" class="foot">[Diagrama de contenedores] Portal Académico — C4 nivel 2</text>
+  <text x="560" y="988" class="note">El MVP no integra correo ni la plataforma digital actual de la escuela; los avisos son internos.</text>
+</svg>

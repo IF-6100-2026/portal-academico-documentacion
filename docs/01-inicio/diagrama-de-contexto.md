@@ -1,12 +1,12 @@
 # C4 — Diagrama de contexto del sistema (Nivel 1)
 
-**Fuente editable vigente:** [Abrir el diagrama en IcePanel](https://app.icepanel.io/landscapes/jSlrJUPuQEwgKYqN5RTa/versions/latest/diagrams/editor?diagram=oXddYb8mH3).
+![C4 nivel 1: contexto del sistema Portal Académico](diagrama-de-contexto.svg)
 
-El modelo se construyó en IcePanel con los actores y flujos de esta documentación. No se utilizó la función de generación automática con IA. Los nombres breves del lienzo facilitan la lectura; las descripciones de cada relación conservan los IDs F-xx y sus casos de uso.
+**Modelo:** C4, Nivel 1 — Contexto del sistema. El Portal aparece como un solo `[Sistema de software]` (caja negra) y a su alrededor están las cuatro `[Persona]` que intercambian información con él. No se muestran componentes internos; esos están en el [diagrama de contenedores (C4 nivel 2)](../05-diseno/arquitectura.md#c4-nivel-2--contenedores).
 
-**Modelo:** C4, Nivel 1 — Contexto del sistema. El Portal aparece como caja negra; se muestran entidades externas y relaciones principales, no componentes internos.
+**Notación:** cada relación es una flecha punteada con un verbo que dice qué hace la persona o qué entrega el Portal, y entre corchetes los flujos F-xx que la detallan en la tabla de abajo. Hay una flecha por sentido para cada persona, así que el diagrama muestra tanto lo que entra como lo que sale del Portal sin dibujar los 39 flujos por separado.
 
-El sistema se representa como **una sola caja negra** y se muestran únicamente las cuatro entidades externas y los datos que intercambian. Los módulos, pantallas, tablas, servicios y participantes internos quedan fuera de este diagrama. El archivo `diagrama-de-contexto.svg` queda como referencia offline; el modelo editable vigente es el de IcePanel. Los flujos F-35 a F-39 corresponden a propuestas CU-17 a CU-21 y no implican que el equipo ya haya aprobado ese alcance.
+**Fuentes:** `diagrama-de-contexto.svg` es la versión versionada en el repositorio, en notación C4. El modelo original se armó en [IcePanel](https://app.icepanel.io/landscapes/jSlrJUPuQEwgKYqN5RTa/versions/latest/diagrams/editor?diagram=oXddYb8mH3) sin usar su generación automática con IA; si se edita allí, hay que exportarlo de nuevo para que ambas versiones coincidan. Los flujos F-35 a F-39 corresponden a propuestas CU-17 a CU-21 y no implican que el equipo ya haya aprobado ese alcance.
 
 El PC2 contenía una colaboración BPMN con numerosos flujos. Se conserva en `historial/` como antecedente, no como diagrama de contexto vigente. La tabla siguiente mantiene la definición individual y trazable de cada flujo F-xx; el gráfico agrupa visualmente esos datos por entidad para que se pueda leer.
 
