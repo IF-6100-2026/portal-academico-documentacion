@@ -7,7 +7,7 @@
 | **Precondiciones** | Sesión válida y permiso para gestionar estudiantes. Se cuenta con nombre completo, nivel, grupo y docente. |
 | **Postcondiciones** | Ficha activa con UUID. No se crea relación con persona encargada. |
 | **Actores** | A-04 Dirección, provisionalmente por continuidad con CU-02 |
-| **Relaciones** | Especifica RF-26. CU-02 requiere que la ficha exista. El vínculo no se crea automáticamente. |
+| **Relaciones** | Especifica RF-26 (Gestionar estudiantes). CU-02 requiere que la ficha exista. El vínculo no se crea automáticamente. |
 
 ## Flujo básico
 1. Dirección selecciona Registrar estudiante.
@@ -27,7 +27,7 @@
 - Restricciones: RS-03; usar datos ficticios en demos.
 - Prioridad: alta para habilitar registro académico.
 - Estado: implementado en API y formulario, fusionado en PC3 mediante PR #15. Pasan tres pruebas unitarias del handler y se verificaron endpoint y migración contra PostgreSQL temporal. Actor y datos son supuestos explícitos; automatizar la integración sigue pendiente.
-- Requerimiento general: [RF-26](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md).
+- Requerimiento funcional: [RF-26 — Gestionar estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md).
 - Pruebas: [CU-16-registrar-estudiante.feature](../04-pruebas/CU-16-registrar-estudiante.feature).
 - Issue: [#16 — Registrar estudiante](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16), cerrado al fusionar el PR.
 - Pull request: [#15 — implementar registro de estudiantes y actualizar documentación](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15), fusionado.

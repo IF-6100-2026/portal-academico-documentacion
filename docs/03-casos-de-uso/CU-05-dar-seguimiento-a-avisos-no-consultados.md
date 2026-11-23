@@ -41,8 +41,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2; lectura, recordatorios limitados y alerta se comprobaron por HTTP en la rama PC3. La antigüedad se simuló en una BD temporal; no se ejecutó Cucumber.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-12, RF-13, RF-23
+- **Requerimiento funcional:** [RF-31 — Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
+- **Requisitos detallados que cumple:** RF-12, RF-13, RF-23
 - **Pruebas:** [CU-05-dar-seguimiento-a-avisos-no-consultados.feature](../04-pruebas/CU-05-dar-seguimiento-a-avisos-no-consultados.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7) <!-- issue:CU-05 -->
 - **Equivale en el PC1 a:** UC-05 («Gestionar avisos no consultados»); sin el actor Docente ni el proveedor externo

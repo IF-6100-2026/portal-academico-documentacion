@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md
-# Requerimientos generales: RF-26, RF-27, RS-03
+# Requerimiento funcional: RF-26 · Restricciones: RS-03
 Característica: CU-19 — Inscribir estudiante en grupo
   Como Dirección autorizada
   Quiero inscribir un estudiante registrado en un grupo activo

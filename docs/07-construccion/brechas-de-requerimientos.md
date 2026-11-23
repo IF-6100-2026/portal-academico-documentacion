@@ -22,4 +22,4 @@ Los casos vigentes ya tienen una implementación de demostración en la rama PC3
 
 CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21 están implementados y cada flujo principal tuvo una verificación HTTP en PostgreSQL temporal. La [matriz de casos](checklist-casos-de-uso.md) y los [resultados](../08-resultados-de-pruebas/resultados-pruebas.md) distinguen esa evidencia de los escenarios alternos Gherkin, que no se ejecutaron con Cucumber. Las limitaciones de cada caso también aparecen en [estado de implementación](estado-de-implementacion.md).
 
-CU-13, CU-14 y CU-15 desglosan RF-19/RF-20 para separar aporte, decisión y consulta. CU-17 a CU-21 refinan RF-27/RF-28. Son decisiones de diseño propuestas para cubrir los CU solicitados, todavía sujetas a revisión del grupo y del profesor.
+CU-13, CU-14 y CU-15 desglosan los requisitos detallados RF-19 y RF-20 de RF-32 para separar aporte, decisión y consulta. CU-17 y CU-18 descomponen RF-27, y CU-20 y CU-21 descomponen RF-28. Son decisiones de diseño propuestas para cubrir los CU solicitados, todavía sujetas a revisión del grupo y del profesor.

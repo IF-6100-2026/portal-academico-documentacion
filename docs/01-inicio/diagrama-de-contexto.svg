@@ -1,80 +1,113 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
-  <title id="title">C4 nivel 1: contexto del Portal Académico</title>
-  <desc id="description">Diagrama C4 de nivel 1: caja negra del Portal Académico y sus relaciones con cuatro entidades externas.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900" role="img" aria-labelledby="title description">
+  <title id="title">C4 nivel 1: contexto del sistema Portal Académico</title>
+  <desc id="description">Diagrama C4 de nivel 1. El Portal Académico aparece como un solo sistema de software (caja negra) y se relaciona con cuatro personas: persona encargada legal, docente, Comité de Evaluación y Dirección. Cada relación indica qué hace la persona o qué entrega el Portal y los flujos F-xx que la detallan.</desc>
   <defs>
-    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-      <path d="M0,0 L9,4.5 L0,9 Z" fill="#59796b"/>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#707070"/>
     </marker>
     <style>
-      text{font-family:Arial,sans-serif;fill:#203d36}.title{font-size:26px;font-weight:700}.actor{font-size:19px;font-weight:700}.small{font-size:13px;fill:#53685f}.flow{font-size:13px}.id{font-size:12px;font-weight:700;fill:#b96e45}.portal{font-size:23px;font-weight:700;fill:#fff}.subtitle{font-size:14px;fill:#dbe9df}
+      text{font-family:Arial,Helvetica,sans-serif}
+      .name{font-size:17px;font-weight:700;fill:#fff}
+      .type{font-size:12px;fill:#dfe9f5}
+      .desc{font-size:13px;fill:#fff}
+      .sys{font-size:22px;font-weight:700;fill:#fff}
+      .rel{font-size:13px;fill:#444}
+      .tech{font-size:12px;fill:#777}
+      .line{stroke:#707070;stroke-width:1.6;stroke-dasharray:7 5;fill:none}
+      .foot{font-size:18px;fill:#333}
+      .note{font-size:13px;fill:#666}
     </style>
   </defs>
-  <rect width="1200" height="760" fill="#f7f8f4"/>
-  <text x="600" y="46" text-anchor="middle" class="title">C4 · Nivel 1 · Contexto del Portal Académico</text>
-  <text x="600" y="72" text-anchor="middle" class="small">Flujos de información con entidades externas · alcance: primaria</text>
+  <rect width="1400" height="900" fill="#ffffff"/>
 
-  <!-- Entidades externas -->
+  <!-- Personas (notación C4) -->
   <g>
-    <rect x="35" y="126" width="270" height="116" rx="14" fill="#fff" stroke="#cfdcd2" stroke-width="2"/>
-    <circle cx="67" cy="162" r="15" fill="#e8f0e9"/>
-    <text x="93" y="162" class="actor">Persona encargada</text>
-    <text x="58" y="195" class="small">Entidad externa · actor A-01</text>
-    <text x="58" y="219" class="small">Envía solicitudes y recibe información académica.</text>
-
-    <rect x="895" y="126" width="270" height="116" rx="14" fill="#fff" stroke="#cfdcd2" stroke-width="2"/>
-    <circle cx="927" cy="162" r="15" fill="#e8f0e9"/>
-    <text x="953" y="162" class="actor">Docente</text>
-    <text x="918" y="195" class="small">Entidad externa · actor A-02</text>
-    <text x="918" y="219" class="small">Publica información y participa en la atención.</text>
-
-    <rect x="35" y="532" width="270" height="116" rx="14" fill="#fff" stroke="#cfdcd2" stroke-width="2"/>
-    <circle cx="67" cy="568" r="15" fill="#e8f0e9"/>
-    <text x="93" y="568" class="actor">Comité de Evaluación</text>
-    <text x="58" y="601" class="small">Entidad externa · actor A-03</text>
-    <text x="58" y="625" class="small">Recibe expedientes y registra resoluciones.</text>
-
-    <rect x="895" y="532" width="270" height="116" rx="14" fill="#fff" stroke="#cfdcd2" stroke-width="2"/>
-    <circle cx="927" cy="568" r="15" fill="#e8f0e9"/>
-    <text x="953" y="568" class="actor">Dirección</text>
-    <text x="918" y="601" class="small">Entidad externa · actor A-04</text>
-    <text x="918" y="625" class="small">Gestiona vínculos, cursos y docentes.</text>
+    <circle cx="170" cy="362" r="34" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="40" y="392" width="260" height="130" rx="36" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="170" y="428" text-anchor="middle" class="name">Persona encargada legal</text>
+    <text x="170" y="448" text-anchor="middle" class="type">[Persona] A-01</text>
+    <text x="170" y="474" text-anchor="middle" class="desc">Madre, padre o tutor legal que</text>
+    <text x="170" y="492" text-anchor="middle" class="desc">sigue el progreso del estudiante.</text>
+  </g>
+  <g>
+    <circle cx="1230" cy="362" r="34" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="1100" y="392" width="260" height="130" rx="36" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="1230" y="428" text-anchor="middle" class="name">Docente</text>
+    <text x="1230" y="448" text-anchor="middle" class="type">[Persona] A-02</text>
+    <text x="1230" y="474" text-anchor="middle" class="desc">Registra y publica evaluaciones</text>
+    <text x="1230" y="492" text-anchor="middle" class="desc">y calificaciones de su grupo.</text>
+  </g>
+  <g>
+    <circle cx="700" cy="62" r="34" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="570" y="92" width="260" height="130" rx="36" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="700" y="128" text-anchor="middle" class="name">Comité de Evaluación</text>
+    <text x="700" y="148" text-anchor="middle" class="type">[Persona] A-03</text>
+    <text x="700" y="174" text-anchor="middle" class="desc">Órgano que analiza y resuelve</text>
+    <text x="700" y="192" text-anchor="middle" class="desc">las apelaciones de calificación.</text>
+  </g>
+  <g>
+    <circle cx="700" cy="662" r="34" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <rect x="570" y="692" width="260" height="130" rx="36" fill="#08427B" stroke="#073B6F" stroke-width="2"/>
+    <text x="700" y="728" text-anchor="middle" class="name">Dirección</text>
+    <text x="700" y="748" text-anchor="middle" class="type">[Persona] A-04</text>
+    <text x="700" y="774" text-anchor="middle" class="desc">Administra vínculos, plazos y</text>
+    <text x="700" y="792" text-anchor="middle" class="desc">catálogos; supervisa avisos.</text>
   </g>
 
-  <!-- Caja negra del sistema -->
-  <rect x="424" y="285" width="352" height="190" rx="22" fill="#205c4f"/>
-  <rect x="445" y="307" width="310" height="146" rx="15" fill="none" stroke="#72a38c" stroke-width="1.5"/>
-  <text x="600" y="361" text-anchor="middle" class="portal">Portal Académico</text>
-  <text x="600" y="390" text-anchor="middle" class="subtitle">Sistema web institucional</text>
-  <text x="600" y="418" text-anchor="middle" class="subtitle">Centro Educativo María Montessori</text>
+  <!-- Sistema en alcance: caja negra -->
+  <rect x="540" y="360" width="320" height="150" rx="8" fill="#1168BD" stroke="#0B4884" stroke-width="2"/>
+  <text x="700" y="410" text-anchor="middle" class="sys">Portal Académico</text>
+  <text x="700" y="432" text-anchor="middle" class="type">[Sistema de software]</text>
+  <text x="700" y="460" text-anchor="middle" class="desc">Publica el progreso académico y da</text>
+  <text x="700" y="478" text-anchor="middle" class="desc">seguimiento a avisos y apelaciones.</text>
 
-  <!-- Conectores bidireccionales agrupados; IDs y nombres quedan detallados en la tabla de flujos. -->
-  <path d="M305 173 C350 173 370 245 432 315" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <path d="M432 430 C374 474 350 218 305 218" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <rect x="300" y="245" width="127" height="39" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="363" y="261" text-anchor="middle" class="id">F-01 a F-05</text><text x="363" y="276" text-anchor="middle" class="small">solicitudes</text>
-  <rect x="300" y="387" width="127" height="42" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="363" y="404" text-anchor="middle" class="id">F-06 a F-12</text><text x="363" y="420" text-anchor="middle" class="small">publicaciones y avisos</text>
+  <!-- Persona encargada -->
+  <line x1="300" y1="420" x2="538" y2="420" class="line" marker-end="url(#arrow)"/>
+  <text x="420" y="347" text-anchor="middle" class="rel">Consulta el progreso y envía</text>
+  <text x="420" y="364" text-anchor="middle" class="rel">mensajes, apelaciones,</text>
+  <text x="420" y="381" text-anchor="middle" class="rel">quejas y acuses</text>
+  <text x="420" y="404" text-anchor="middle" class="tech">[F-01 a F-05]</text>
+  <line x1="540" y1="480" x2="302" y2="480" class="line" marker-end="url(#arrow)"/>
+  <text x="420" y="502" text-anchor="middle" class="rel">Muestra publicaciones y envía</text>
+  <text x="420" y="519" text-anchor="middle" class="rel">avisos, respuestas y</text>
+  <text x="420" y="536" text-anchor="middle" class="rel">resoluciones</text>
+  <text x="420" y="555" text-anchor="middle" class="tech">[F-06 a F-12]</text>
 
-  <path d="M895 173 C850 173 830 245 768 315" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <path d="M768 430 C826 474 850 218 895 218" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <rect x="773" y="245" width="127" height="39" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="836" y="261" text-anchor="middle" class="id">F-13 a F-17</text><text x="836" y="276" text-anchor="middle" class="small">datos docentes</text>
-  <rect x="773" y="387" width="127" height="42" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="836" y="404" text-anchor="middle" class="id">F-18 a F-21</text><text x="836" y="420" text-anchor="middle" class="small">respuestas y solicitudes</text>
+  <!-- Docente -->
+  <line x1="1100" y1="420" x2="862" y2="420" class="line" marker-end="url(#arrow)"/>
+  <text x="980" y="347" text-anchor="middle" class="rel">Publica evaluaciones y notas,</text>
+  <text x="980" y="364" text-anchor="middle" class="rel">corrige, responde y aporta</text>
+  <text x="980" y="381" text-anchor="middle" class="rel">a apelaciones</text>
+  <text x="980" y="404" text-anchor="middle" class="tech">[F-13 a F-17]</text>
+  <line x1="860" y1="480" x2="1098" y2="480" class="line" marker-end="url(#arrow)"/>
+  <text x="980" y="502" text-anchor="middle" class="rel">Entrega mensajes, avisos de</text>
+  <text x="980" y="519" text-anchor="middle" class="rel">apelación, solicitudes y</text>
+  <text x="980" y="536" text-anchor="middle" class="rel">resúmenes de publicación</text>
+  <text x="980" y="555" text-anchor="middle" class="tech">[F-18 a F-21]</text>
 
-  <path d="M305 577 C354 577 372 516 432 455" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <path d="M432 448 C372 495 354 620 305 620" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <rect x="300" y="490" width="127" height="38" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="363" y="506" text-anchor="middle" class="id">F-22 a F-23</text><text x="363" y="521" text-anchor="middle" class="small">resolución / solicitud</text>
-  <rect x="300" y="650" width="127" height="38" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="363" y="666" text-anchor="middle" class="id">F-24</text><text x="363" y="681" text-anchor="middle" class="small">expediente</text>
+  <!-- Comité de Evaluación -->
+  <line x1="650" y1="222" x2="650" y2="358" class="line" marker-end="url(#arrow)"/>
+  <text x="638" y="268" text-anchor="end" class="rel">Registra resoluciones</text>
+  <text x="638" y="285" text-anchor="end" class="rel">y pide información</text>
+  <text x="638" y="304" text-anchor="end" class="tech">[F-22, F-23]</text>
+  <line x1="750" y1="360" x2="750" y2="224" class="line" marker-end="url(#arrow)"/>
+  <text x="762" y="268" class="rel">Entrega el expediente</text>
+  <text x="762" y="285" class="rel">de la apelación</text>
+  <text x="762" y="304" class="tech">[F-24]</text>
 
-  <path d="M895 577 C846 577 828 516 768 455" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <path d="M768 448 C828 495 846 620 895 620" fill="none" stroke="#59796b" stroke-width="2.3" marker-end="url(#arrow)"/>
-  <rect x="755" y="486" width="163" height="46" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="836" y="502" text-anchor="middle" class="id">F-25–F-29 · F-35–F-39</text><text x="836" y="520" text-anchor="middle" class="small">vínculos y catálogos</text>
-  <rect x="773" y="650" width="127" height="38" rx="8" fill="#fff" stroke="#d7e0d9"/>
-  <text x="836" y="666" text-anchor="middle" class="id">F-30 a F-34</text><text x="836" y="681" text-anchor="middle" class="small">alertas y estados</text>
+  <!-- Dirección -->
+  <line x1="650" y1="692" x2="650" y2="512" class="line" marker-end="url(#arrow)"/>
+  <text x="638" y="584" text-anchor="end" class="rel">Administra vínculos, plazos,</text>
+  <text x="638" y="601" text-anchor="end" class="rel">quejas y supervisión; registra</text>
+  <text x="638" y="618" text-anchor="end" class="rel">grupos, matrícula y docentes</text>
+  <text x="638" y="637" text-anchor="end" class="tech">[F-25 a F-29, F-35 a F-39]</text>
+  <line x1="750" y1="510" x2="750" y2="690" class="line" marker-end="url(#arrow)"/>
+  <text x="762" y="584" class="rel">Envía alertas, estado del</text>
+  <text x="762" y="601" class="rel">seguimiento y registro</text>
+  <text x="762" y="618" class="rel">de consultas</text>
+  <text x="762" y="637" class="tech">[F-30 a F-34]</text>
 
-  <text x="600" y="716" text-anchor="middle" class="small">F-xx identifica cada flujo detallado en la tabla; F-35 a F-39 reflejan propuestas pendientes de aprobación.</text>
+  <!-- Título al pie, como en la notación C4 -->
+  <text x="40" y="862" class="foot">[Diagrama de contexto del sistema] Portal Académico — C4 nivel 1</text>
+  <text x="40" y="884" class="note">Centro Educativo María Montessori. Los F-xx remiten a la tabla de flujos de diagrama-de-contexto.md; F-35 a F-39 corresponden a propuestas CU-17 a CU-21.</text>
 </svg>

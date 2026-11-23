@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-09-corregir-calificacion-publicada.md
-# Requerimientos generales: RF-30, RF-31, RS-03
+# Requerimiento funcional: RF-30 · Restricciones: RS-03
 Característica: CU-09 — Corregir una calificación publicada
   Como docente
   Quiero corregir una calificación publicada sin borrar la anterior

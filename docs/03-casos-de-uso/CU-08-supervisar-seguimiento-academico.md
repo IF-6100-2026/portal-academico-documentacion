@@ -35,8 +35,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2; resumen de pendientes implementado y comprobado por HTTP en la rama PC3. Los datos visibles deben validarse con el centro.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-21, RF-23, RF-24, RF-25
+- **Requerimiento funcional:** [RF-33 — Supervisar y configurar el seguimiento](../02-requerimientos/funcionales/RF-33-supervisar-y-configurar-seguimiento.md)
+- **Requisitos detallados que cumple:** RF-21, RF-23, RF-24, RF-25
 - **Pruebas:** [CU-08-supervisar-seguimiento-academico.feature](../04-pruebas/CU-08-supervisar-seguimiento-academico.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10) <!-- issue:CU-08 -->
 - **Equivale en el PC1 a:** UC-08 («Consultar reportes de seguimiento»); absorbe la consulta de bitácora de UC-11

@@ -24,17 +24,18 @@
 
 - [Trazabilidad RF → CU → prueba → issue](02-requerimientos/trazabilidad-rf-cu.md)
 
-**Requerimientos funcionales generales**
+**Requerimientos funcionales** (8 RF generales; cada caso de uso depende de uno solo)
 
-- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 registra fichas y CU-19 las inscribe; implementación provisional en la rama PC3.
-- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): CU-17 a CU-19 implementados con un modelo simplificado sujeto a revisión.
-- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): CU-18, CU-20 y CU-21 implementados; perfiles enlazados a usuarios existentes.
-- [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
-- [RF-30 Gestionar seguimiento académico](02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
-- [RF-31 Gestionar comunicación y avisos](02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
-- [RF-32 Gestionar apelaciones y pendientes](02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 y CU-19.
+- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): CU-17 y CU-18.
+- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): CU-20 y CU-21.
+- [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md): CU-02.
+- [RF-30 Gestionar seguimiento académico](02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md): CU-01, CU-03, CU-04 y CU-09.
+- [RF-31 Gestionar comunicación y avisos](02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md): CU-05, CU-06 y CU-12.
+- [RF-32 Gestionar apelaciones](02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md): CU-07, CU-13, CU-14 y CU-15.
+- [RF-33 Supervisar y configurar el seguimiento](02-requerimientos/funcionales/RF-33-supervisar-y-configurar-seguimiento.md): CU-08 y CU-10.
 
-**Refinamientos detallados conservados por épica** (RF-01 a RF-25; ver [épicas](01-inicio/problema-y-vision.md#épicas))
+**Requisitos detallados por épica** (RF-01 a RF-25: los RF del PC2, que ahora son reglas de un RF general y no se cuentan como RF; ver [épicas](01-inicio/problema-y-vision.md#épicas))
 
 | 1. Registro y consulta de notas y evaluaciones | 2. Comunicación entre la escuela y la persona encargada | 3. Seguimiento de apelaciones y pendientes |
 |---|---|---|

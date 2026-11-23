@@ -6,7 +6,7 @@ Siglas y prefijos que se usan en la documentación del Portal Académico. Cuando
 
 | Sigla | Significado | Formato y ejemplo | Dónde está |
 |---|---|---|---|
-| **RF** | Requerimiento funcional: algo que el sistema debe hacer para un actor | `RF-01` … `RF-25` | [02-requerimientos/funcionales/](02-requerimientos/funcionales/) |
+| **RF** | Requerimiento funcional: capacidad general que el sistema ofrece y que se descompone en casos de uso. RF-01 … RF-25 son requisitos detallados de un RF general | `RF-26` … `RF-33` (requisitos detallados: `RF-01` … `RF-25`) | [02-requerimientos/funcionales/](02-requerimientos/funcionales/) |
 | **RS** | Requerimiento suplementario: una cualidad del sistema (usabilidad, trazabilidad, seguridad) | `RS-01` … `RS-03` | [02-requerimientos/suplementarios/](02-requerimientos/suplementarios/) |
 | **CU** | Caso de uso: interacción completa entre un actor y el sistema para lograr un objetivo | `CU-01` … `CU-10`, `CU-12` … `CU-15` | [03-casos-de-uso/](03-casos-de-uso/) |
 | **CU-xx-Ayy** | Flujo alterno `yy` del caso de uso `xx`: lo que pasa cuando algo se desvía del flujo básico | `CU-07-A04` | Dentro de cada CU |

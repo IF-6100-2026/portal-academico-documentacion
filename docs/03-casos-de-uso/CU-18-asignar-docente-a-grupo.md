@@ -3,7 +3,7 @@
 | Campo | Detalle |
 |---|---|
 | **Descripción** | Dirección relaciona un perfil docente existente con un grupo activo para definir quién puede registrar actividad académica en ese grupo. |
-| **Requerimientos generales** | [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md), [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md) |
+| **Requerimiento funcional** | [RF-27 — Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md) |
 | **Actores** | Dirección (provisional; confirmar quién realiza asignaciones). |
 | **Precondiciones** | El grupo y el perfil docente existen y están activos. |
 | **Postcondiciones** | La asignación queda registrada con grupo, docente, responsable y fecha. |

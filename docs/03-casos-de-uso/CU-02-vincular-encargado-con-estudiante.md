@@ -38,8 +38,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** análisis revisado para el PC2; implementado y verificado en el núcleo propuesto de PC3 (véase [estado](../07-construccion/estado-de-implementacion.md) y [resultados](../08-resultados-de-pruebas/resultados-pruebas.md)). La resolución de una solicitud pendiente queda fuera del prototipo hasta validar la política institucional.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-29](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
-- **Refinamientos detallados conservados:** RF-01
+- **Requerimiento funcional:** [RF-29 — Gestionar vínculos y acceso](../02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
+- **Requisitos detallados que cumple:** RF-01
 - **Pruebas:** [CU-02-vincular-encargado-con-estudiante.feature](../04-pruebas/CU-02-vincular-encargado-con-estudiante.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4) <!-- issue:CU-02 -->
 - **Equivale en el PC1 a:** UC-02 (el actor principal era el Administrador institucional)

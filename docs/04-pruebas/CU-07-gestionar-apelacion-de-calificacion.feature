@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md
-# Requerimientos generales: RF-32, RS-03
+# Requerimiento funcional: RF-32 · Restricciones: RS-03
 Característica: CU-07 — Presentar apelación de calificación
   Como persona encargada legal
   Quiero presentar una apelación con su respaldo

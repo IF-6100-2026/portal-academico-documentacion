@@ -3,7 +3,7 @@
 | Campo | Detalle |
 |---|---|
 | **Descripción** | Dirección actualiza los datos visibles o la disponibilidad de un perfil docente, conservando el historial académico relacionado. |
-| **Requerimientos generales** | [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md) |
+| **Requerimiento funcional** | [RF-28 — Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md) |
 | **Actores** | Dirección (provisional; confirmar quién mantiene el catálogo). |
 | **Precondiciones** | Sesión válida y perfil docente existente. |
 | **Postcondiciones** | Los cambios quedan registrados; si el perfil se inactiva, no se elimina el historial ni sus publicaciones. |

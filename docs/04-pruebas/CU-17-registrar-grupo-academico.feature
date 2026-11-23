@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-17-registrar-grupo-academico.md
-# Requerimientos generales: RF-27, RS-03
+# Requerimiento funcional: RF-27 · Restricciones: RS-03
 Característica: CU-17 — Registrar grupo académico
   Como Dirección autorizada
   Quiero registrar un grupo para un periodo académico

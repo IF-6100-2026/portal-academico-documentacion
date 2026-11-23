@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md
-# Requerimientos generales: RF-31, RF-32, RS-01, RS-02, RS-03
+# Requerimiento funcional: RF-31 · Restricciones: RS-01, RS-02, RS-03
 Característica: CU-12 — Presentar queja por información no recibida
   Como persona encargada legal
   Quiero reportar a la Dirección que no recibí información académica

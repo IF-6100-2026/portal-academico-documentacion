@@ -2,9 +2,9 @@
 
 ## Resumen
 
-La rama `codex/pc3-remaining-use-cases` parte de la rama PC3 `pc3/core-consulta-vinculos` y añade los flujos de los 17 casos que estaban pendientes: CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21. Junto con CU-01, CU-02 y CU-16, hay código para los **20 casos vigentes**. CU-11 se retiró antes de PC3.
+El PR #25 está fusionado en `pc3/core-consulta-vinculos` mediante el merge `e5701a6`. La integración incluye los flujos de los 17 casos añadidos (CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21), junto con CU-01, CU-02 y CU-16: hay código para los **20 casos vigentes**. CU-11 se retiró antes de PC3. El tag `pc3` identifica la versión final de entrega.
 
-Esta rama está publicada mediante el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25), abierto contra `pc3/core-consulta-vinculos` y pendiente de revisión e integración. Los issues de los 17 casos siguen abiertos; el PR se creó sin palabras clave de cierre, por lo que deben cerrarse explícitamente al integrar. Los flujos principales de los 17 casos nuevos se probaron manualmente por HTTP contra una instancia temporal de PostgreSQL 17. Los escenarios Gherkin siguen sin ejecutarse como suite Cucumber. La implementación usa supuestos de demostración allí donde falta una decisión institucional; no se atribuye aprobación docente.
+El [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25) está fusionado. Los issues #3 y #4 de CU-01/CU-02 continúan abiertos en el tablero, aunque la matriz y el reporte registran implementación y verificaciones HTTP para ambos casos. Los flujos principales de los 17 casos añadidos se probaron manualmente por HTTP contra una instancia temporal de PostgreSQL 17. Los escenarios Gherkin siguen sin ejecutarse como suite Cucumber. La implementación usa supuestos de demostración allí donde falta una decisión institucional; no se atribuye aprobación docente.
 
 ## Matriz de implementación y trazabilidad
 
@@ -47,4 +47,4 @@ Esta rama está publicada mediante el [PR #25](https://github.com/IF-6100-2026/p
 - Los 103 escenarios `.feature` son especificaciones y no un reporte de ejecución Cucumber.
 - No se ejecutaron pruebas automatizadas de navegador, accesibilidad, rendimiento ni revisión con usuarios.
 - Las cuentas y datos son de demostración. No cargar datos académicos reales.
-- Falta revisar el PR #25 y las decisiones abiertas, confirmar commits de todos los integrantes y, tras integrar la rama, actualizar el tag final `pc3`, cerrar sus issues y entregar los enlaces en Mediación Virtual.
+- El PR #25 y el tag `pc3` ya contienen la implementación PC3. Siguen pendientes la revisión de las decisiones institucionales registradas como brechas y la entrega del enlace al repositorio/tag en Mediación Virtual. La cobertura de escenarios alternos está limitada según se detalla arriba; la marca de implementado no equivale a ejecutar todos los Gherkin.

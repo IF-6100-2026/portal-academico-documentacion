@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -16,8 +17,20 @@ import org.springframework.web.server.ResponseStatusException;
 public class GlobalExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler({MethodArgumentNotValidException.class, HttpMessageNotReadableException.class})
-    public ResponseEntity<ApiErrorResponse> invalidRequest(Exception exception) {
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<ApiErrorResponse> invalidFields(MethodArgumentNotValidException exception) {
+        String field = exception.getBindingResult().getFieldErrors().stream()
+            .map(FieldError::getField)
+            .findFirst()
+            .orElse(null);
+        ApiErrorResponse response = field == null
+            ? ApiErrorResponse.generic("INVALID_REQUEST", "Revise los datos enviados.")
+            : ApiErrorResponse.forField(field);
+        return ResponseEntity.badRequest().body(response);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ApiErrorResponse> unreadableRequest(HttpMessageNotReadableException exception) {
         return ResponseEntity.badRequest().body(ApiErrorResponse.generic(
             "INVALID_REQUEST", "Revise los datos enviados."));
     }

@@ -20,5 +20,10 @@ El Portal deberá permitir al personal autorizado mantener el registro básico d
 - El alta no da acceso a una persona encargada; se requiere [CU-02 y su respaldo](../../03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md).
 - No borrar físicamente fichas con historial.
 
+## Descomposición en casos de uso
+
+- [CU-16 Registrar estudiante](../../03-casos-de-uso/CU-16-registrar-estudiante.md): crear la ficha básica del estudiante.
+- [CU-19 Inscribir estudiante en grupo](../../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md): incorporar un estudiante ya registrado a un grupo académico existente (RF-27).
+
 ## Trazabilidad
-[CU-16](../../03-casos-de-uso/CU-16-registrar-estudiante.md) · [feature](../../04-pruebas/CU-16-registrar-estudiante.feature) · [spec SDD](../../../specs/001-registrar-estudiante/spec.md)
+RF-26 → [CU-16](../../03-casos-de-uso/CU-16-registrar-estudiante.md) ([feature](../../04-pruebas/CU-16-registrar-estudiante.feature), [spec SDD](../../../specs/001-registrar-estudiante/spec.md)) y [CU-19](../../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md) ([feature](../../04-pruebas/CU-19-inscribir-estudiante-en-grupo.feature)). Es un alcance nuevo del PC3, sin requisitos detallados heredados del PC2.

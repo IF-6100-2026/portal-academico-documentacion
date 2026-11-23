@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md
-# Requerimientos generales: RF-32, RS-02, RS-03
+# Requerimiento funcional: RF-32 · Restricciones: RS-02, RS-03
 Característica: CU-15 — Consultar resolución de apelación
   Como persona encargada que presentó una apelación
   Quiero consultar la decisión del Comité
