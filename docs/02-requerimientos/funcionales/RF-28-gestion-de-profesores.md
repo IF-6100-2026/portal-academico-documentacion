@@ -17,6 +17,7 @@ El Portal deberá permitir al personal autorizado mantener el catálogo de profe
 
 - [CU-20 Registrar docente](../../03-casos-de-uso/CU-20-registrar-docente.md): agregar al catálogo una identidad institucional ya provisionada.
 - [CU-21 Actualizar perfil docente](../../03-casos-de-uso/CU-21-actualizar-perfil-docente.md): mantener los datos o inactivar el perfil conservando el historial.
-- La asignación de docente a grupo se especializa como [CU-18](../../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md), asociada también con RF-27.
+
+La asignación de docente a grupo usa los perfiles de este RF, pero se especifica en [CU-18](../../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md) bajo [RF-27](RF-27-gestion-de-cursos.md), para que cada caso de uso dependa de un solo RF general.
 
 La separación evita un CU genérico «gestionar profesores». La implementación enlaza un perfil a una cuenta docente existente, registra cambios e inactiva perfiles sin borrar el historial. Identidad, campos, permisos, baja lógica y provisión de cuentas siguen sin aprobación institucional. No se crean credenciales ni se elimina físicamente a una persona con actividad académica asociada.

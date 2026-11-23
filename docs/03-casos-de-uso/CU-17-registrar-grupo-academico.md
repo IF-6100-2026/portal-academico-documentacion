@@ -3,7 +3,7 @@
 | Campo | Detalle |
 |---|---|
 | **Descripción** | Dirección registra un grupo académico para organizar la matrícula y las publicaciones del periodo. |
-| **Requerimientos generales** | [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md) |
+| **Requerimiento funcional** | [RF-27 — Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md) |
 | **Actores** | Dirección (provisional; confirmar quién tiene permiso). |
 | **Precondiciones** | Sesión válida y permiso para mantener la oferta académica. |
 | **Postcondiciones** | El grupo queda registrado y disponible para asignar docentes y estudiantes. |

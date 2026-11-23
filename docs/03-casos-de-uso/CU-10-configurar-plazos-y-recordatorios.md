@@ -33,8 +33,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2; configuración y uso de sus valores comprobados por HTTP en la rama PC3. Los valores configurados son de demostración.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-22
+- **Requerimiento funcional:** [RF-33 — Supervisar y configurar el seguimiento](../02-requerimientos/funcionales/RF-33-supervisar-y-configurar-seguimiento.md)
+- **Requisitos detallados que cumple:** RF-22
 - **Pruebas:** [CU-10-configurar-plazos-y-recordatorios.feature](../04-pruebas/CU-10-configurar-plazos-y-recordatorios.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12) <!-- issue:CU-10 -->
 - **Equivale en el PC1 a:** UC-10 («Administrar configuración y accesos»), reducido a plazos y recordatorios

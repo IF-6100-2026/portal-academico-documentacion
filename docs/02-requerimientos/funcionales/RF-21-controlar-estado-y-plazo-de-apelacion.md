@@ -1,6 +1,6 @@
 # RF-21 — Controlar el estado y el plazo de la apelación
 
-> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-32](RF-32-gestionar-apelaciones-y-pendientes.md).
+> **Clasificación:** requisito detallado de [RF-32 — Gestionar apelaciones](RF-32-gestionar-apelaciones-y-pendientes.md). No se cuenta como requerimiento funcional independiente; conserva su identificador para no romper enlaces, escenarios ni issues.
 
 | Campo | Detalle |
 |---|---|

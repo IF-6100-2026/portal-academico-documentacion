@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-21-actualizar-perfil-docente.md
-# Requerimientos generales: RF-28, RS-03
+# Requerimiento funcional: RF-28 · Restricciones: RS-03
 Característica: CU-21 — Actualizar perfil docente
   Como Dirección autorizada
   Quiero actualizar o inactivar un perfil docente

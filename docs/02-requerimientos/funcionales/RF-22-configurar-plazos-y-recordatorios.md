@@ -1,6 +1,6 @@
 # RF-22 — Configurar plazos y recordatorios
 
-> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-32](RF-32-gestionar-apelaciones-y-pendientes.md).
+> **Clasificación:** requisito detallado de [RF-33 — Supervisar y configurar el seguimiento](RF-33-supervisar-y-configurar-seguimiento.md). No se cuenta como requerimiento funcional independiente; conserva su identificador para no romper enlaces, escenarios ni issues.
 
 | Campo | Detalle |
 |---|---|

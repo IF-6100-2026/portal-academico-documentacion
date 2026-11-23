@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-03-publicar-evaluacion-asignada.md
-# Requerimientos generales: RF-30, RF-31, RS-02, RS-03
+# Requerimiento funcional: RF-30 · Restricciones: RS-02, RS-03
 Característica: CU-03 — Publicar evaluación asignada
   Como docente
   Quiero publicar una vez para el grupo la evaluación que anoté en el cuaderno

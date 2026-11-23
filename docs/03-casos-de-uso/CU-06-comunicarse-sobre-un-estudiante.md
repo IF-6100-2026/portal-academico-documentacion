@@ -39,8 +39,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2; mensaje y acuse se comprobaron por HTTP en la rama PC3. Los mensajes son internos y no incluyen adjuntos.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-14, RF-15, RF-17
+- **Requerimiento funcional:** [RF-31 — Gestionar comunicación y avisos](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
+- **Requisitos detallados que cumple:** RF-14, RF-15, RF-17
 - **Pruebas:** [CU-06-comunicarse-sobre-un-estudiante.feature](../04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8) <!-- issue:CU-06 -->
 - **Equivale en el PC1 a:** UC-06

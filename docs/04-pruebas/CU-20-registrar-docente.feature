@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-20-registrar-docente.md
-# Requerimientos generales: RF-28, RS-03
+# Requerimiento funcional: RF-28 · Restricciones: RS-03
 Característica: CU-20 — Registrar docente
   Como Dirección autorizada
   Quiero registrar un perfil docente existente en el centro

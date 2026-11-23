@@ -1,6 +1,6 @@
 # RF-11 — Avisar la publicación de una calificación o su corrección
 
-> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-31](RF-31-gestionar-comunicacion-y-avisos.md).
+> **Clasificación:** requisito detallado de [RF-30 — Gestionar seguimiento académico](RF-30-gestionar-seguimiento-academico.md). No se cuenta como requerimiento funcional independiente; conserva su identificador para no romper enlaces, escenarios ni issues.
 
 | Campo | Detalle |
 |---|---|

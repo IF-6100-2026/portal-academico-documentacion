@@ -1,6 +1,6 @@
 # language: es
 # Caso de uso: docs/03-casos-de-uso/CU-18-asignar-docente-a-grupo.md
-# Requerimientos generales: RF-27, RF-28, RS-03
+# Requerimiento funcional: RF-27 · Restricciones: RS-03
 Característica: CU-18 — Asignar docente a grupo
   Como Dirección autorizada
   Quiero asignar un perfil docente a un grupo activo

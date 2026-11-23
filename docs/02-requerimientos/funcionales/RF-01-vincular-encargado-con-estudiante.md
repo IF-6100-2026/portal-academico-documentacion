@@ -1,6 +1,6 @@
 # RF-01 — Vincular a una persona encargada con un estudiante
 
-> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-29](RF-29-gestionar-vinculos-y-acceso.md).
+> **Clasificación:** requisito detallado de [RF-29 — Gestionar vínculos y acceso](RF-29-gestionar-vinculos-y-acceso.md). No se cuenta como requerimiento funcional independiente; conserva su identificador para no romper enlaces, escenarios ni issues.
 
 | Campo | Detalle |
 |---|---|

@@ -5,9 +5,9 @@
 | Nivel | Requerimiento funcional general |
 | Necesidad | Controlar quién puede consultar información académica de cada estudiante. |
 | Requisito | El Portal deberá mantener los vínculos autorizados entre personas encargadas y estudiantes y limitar la consulta de datos al vínculo y rol vigentes. |
-| Refinamiento conservado | RF-01 Vincular a una persona encargada con un estudiante. |
-| Casos de uso | CU-02 vincula; CU-01 consulta información solo tras validar autorización. |
-| Estado | Generalización documental; las políticas institucionales de aprobación siguen pendientes. |
+| Casos de uso | [CU-02 Vincular encargado con estudiante](../../03-casos-de-uso/CU-02-vincular-encargado-con-estudiante.md) |
+| Requisito detallado | RF-01 Vincular a una persona encargada con un estudiante. |
+| Estado | Implementado en la rama PC3; las políticas institucionales de aprobación siguen pendientes. |
 
 ## Criterios generales
 
@@ -18,4 +18,4 @@
 
 ## Trazabilidad
 
-RF-01 → RF-29 → CU-02 / CU-01 → features existentes. RF-01 se conserva como detalle trazable, no como capacidad de nivel superior.
+RF-29 → CU-02 → feature. RF-01 es un requisito detallado de este RF, no un RF independiente. Los casos que muestran datos protegidos, como [CU-01](../../03-casos-de-uso/CU-01-consultar-progreso-academico.md) (RF-30), dependen del vínculo activo que crea este RF.

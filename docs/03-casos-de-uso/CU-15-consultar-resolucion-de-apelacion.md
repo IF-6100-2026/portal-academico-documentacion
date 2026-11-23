@@ -28,7 +28,7 @@
 - **Métricas:** complejidad baja (5 pasos y 2 flujos alternos).
 - **Prioridad:** alta (RF-20 tiene prioridad «Debe»).
 - **Estado:** nuevo desglose de RF-20 para separar la acción de la persona encargada; consulta, acuse y cierre implementados y comprobados por HTTP en la rama PC3. El desglose requiere revisión del grupo/docente.
-- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-20
+- **Requerimiento funcional:** [RF-32 — Gestionar apelaciones](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Requisitos detallados que cumple:** RF-20
 - **Pruebas:** [CU-15-consultar-resolucion-de-apelacion.feature](../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature).
 - **Issue:** [#19 — Consultar resolución de apelación](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/19).

@@ -31,8 +31,8 @@
 - **Métricas:** complejidad media (6 pasos y 4 flujos alternos).
 - **Prioridad:** alta (RF-17 y RF-18 tienen prioridad «Debe»).
 - **Estado:** separado del flujo de aportes, resolución y consulta para atender la observación del PC2; el flujo básico se implementó y comprobó por HTTP en la rama PC3. Plazos, estados y procedimiento siguen sujetos a revisión institucional.
-- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-17, RF-18
+- **Requerimiento funcional:** [RF-32 — Gestionar apelaciones](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Requisitos detallados que cumple:** RF-17, RF-18
 - **Pruebas:** [CU-07-gestionar-apelacion-de-calificacion.feature](../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature).
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9) <!-- issue:CU-07 -->
 - **Equivale en el PC1 a:** UC-07 («Gestionar discrepancia académica»), ahora delimitado a la presentación y asignación inicial.

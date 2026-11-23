@@ -30,7 +30,7 @@
 - **Métricas:** complejidad media (6 pasos y 3 flujos alternos).
 - **Prioridad:** alta (RF-19 tiene prioridad «Debe»).
 - **Estado:** nuevo desglose de RF-19 para atender la observación del PC2; aporte básico implementado y comprobado por HTTP en la rama PC3. El desglose requiere revisión del grupo/docente y los alternos Gherkin no se ejecutaron.
-- **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
-- **Refinamientos detallados conservados:** RF-19, RF-21
+- **Requerimiento funcional:** [RF-32 — Gestionar apelaciones](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
+- **Requisitos detallados que cumple:** RF-19, RF-21
 - **Pruebas:** [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature).
 - **Issue:** [#17 — Aportar información a una apelación](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/17).

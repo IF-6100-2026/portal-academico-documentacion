@@ -1,6 +1,6 @@
 # RF-06 — Publicar la evaluación asignada
 
-> **Clasificación del modelo actual:** refinamiento específico conservado para trazabilidad, bajo [RF-30](RF-30-gestionar-seguimiento-academico.md).
+> **Clasificación:** requisito detallado de [RF-30 — Gestionar seguimiento académico](RF-30-gestionar-seguimiento-academico.md). No se cuenta como requerimiento funcional independiente; conserva su identificador para no romper enlaces, escenarios ni issues.
 
 | Campo | Detalle |
 |---|---|

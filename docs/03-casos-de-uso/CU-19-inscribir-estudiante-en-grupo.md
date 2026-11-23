@@ -3,7 +3,7 @@
 | Campo | Detalle |
 |---|---|
 | **Descripción** | Dirección incorpora a un estudiante registrado a un grupo académico para que el seguimiento y las evaluaciones correspondan al periodo correcto. |
-| **Requerimientos generales** | [RF-26 Gestionar estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md), [RF-27 Gestionar cursos y grupos](../02-requerimientos/funcionales/RF-27-gestion-de-cursos.md) |
+| **Requerimiento funcional** | [RF-26 — Gestionar estudiantes](../02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md) |
 | **Actores** | Dirección (provisional; confirmar quién matricula). |
 | **Precondiciones** | El estudiante existe y el grupo está activo. |
 | **Postcondiciones** | La inscripción queda registrada para el grupo, con responsable y fecha. |

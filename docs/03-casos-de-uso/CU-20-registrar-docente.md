@@ -3,7 +3,7 @@
 | Campo | Detalle |
 |---|---|
 | **Descripción** | Dirección registra un perfil docente para que pueda ser asignado a grupos académicos. |
-| **Requerimientos generales** | [RF-28 Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md) |
+| **Requerimiento funcional** | [RF-28 — Gestionar profesores](../02-requerimientos/funcionales/RF-28-gestion-de-profesores.md) |
 | **Actores** | Dirección (provisional; confirmar quién mantiene el catálogo). |
 | **Precondiciones** | Sesión válida y permiso para mantener el catálogo docente. La cuenta institucional se provisiona por el mecanismo de identidad del centro. |
 | **Postcondiciones** | El perfil docente queda activo en el catálogo y disponible para asignaciones. |

@@ -41,8 +41,8 @@
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
 - **Estado:** revisado para el PC2; flujo básico implementado y comprobado por HTTP en la rama PC3. Alternos Gherkin no corridos como suite.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
-- **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)
-- **Refinamientos detallados conservados:** RF-04, RF-05, RF-06, RF-10
+- **Requerimiento funcional:** [RF-30 — Gestionar seguimiento académico](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
+- **Requisitos detallados que cumple:** RF-04, RF-05, RF-06, RF-10
 - **Pruebas:** [CU-03-publicar-evaluacion-asignada.feature](../04-pruebas/CU-03-publicar-evaluacion-asignada.feature)
 - **Issue:** [Issue](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5) <!-- issue:CU-03 -->
 - **Equivale en el PC1 a:** UC-03
