@@ -34,7 +34,7 @@
 - **Especificación de interfaz de usuario:** Pendiente; se diseñará antes de construir el caso en el PC3
 - **Métricas:** complejidad media (8 pasos y 4 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; queja, solicitud docente y atención mediante publicación se comprobaron por HTTP en la rama PC3.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-15, RF-16, RF-25

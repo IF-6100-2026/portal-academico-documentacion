@@ -1,36 +1,34 @@
 # Checklist PC3 de implementación y pruebas por caso de uso
 
-Actualizado el 23 de noviembre de 2026 sobre la rama `pc3/core-consulta-vinculos`, tras fusionar el PR #15. La casilla indica si hay código funcional integrado; la columna de evidencia distingue verificaciones ejecutadas de escenarios Gherkin documentados. Gherkin no se cuenta como prueba ejecutada.
+Actualizado el 23 de noviembre de 2026 en la rama `codex/pc3-remaining-use-cases`, basada en `pc3/core-consulta-vinculos`. Esta rama contiene código para los 20 casos vigentes. La marca **verificado** se limita a la evidencia descrita; los `.feature` siguen siendo especificaciones y no se ejecutaron con Cucumber.
 
 | CU | Implementado | Resultado y alcance de la verificación |
 |---|---:|---|
-| CU-01 Consultar progreso académico | [x] | 31 comprobaciones HTTP de CU-01/CU-02 aprobadas con PostgreSQL 17 limpio; revisión visual manual del flujo. Véase [resultados](../08-resultados-de-pruebas/resultados-pruebas.md). |
-| CU-02 Vincular encargado con estudiante | [x] | 31 comprobaciones HTTP compartidas con CU-01; altas, permisos por rol/vínculo, pendientes e historial. |
-| CU-03 Publicar evaluación asignada | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-04 Publicar calificación | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-05 Dar seguimiento a avisos no consultados | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-06 Comunicarse sobre un estudiante | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-07 Presentar apelación de una calificación | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-08 Supervisar el seguimiento académico | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-09 Corregir una calificación publicada | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-10 Configurar plazos y recordatorios | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-11 Bitácora de auditoría | N/A | Retirado antes de PC3; no forma parte de los 20 casos vigentes. |
-| CU-12 Presentar queja por información no recibida | [ ] | Sin implementación. Escenarios Gherkin documentados; no ejecutados con Cucumber. |
-| CU-13 Aportar información a una apelación | [ ] | Propuesta especificada, sin implementación; issue [#17](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/17). Gherkin no ejecutado; descomposición pendiente de revisión. |
-| CU-14 Registrar resolución de apelación | [ ] | Propuesta especificada, sin implementación; issue [#18](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/18). Gherkin no ejecutado; descomposición pendiente de revisión. |
-| CU-15 Consultar resolución de apelación | [ ] | Propuesta especificada, sin implementación; issue [#19](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/19). Gherkin no ejecutado; descomposición pendiente de revisión. |
-| CU-16 Registrar estudiante | [x] | Tres pruebas unitarias del handler, build React y verificación HTTP manual: 401 sin sesión, 201 Dirección, 403 Docente, 400 grupo vacío. Integración no automatizada; el [issue #16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16) quedó cerrado al fusionar el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). |
-| CU-17 Registrar grupo académico | [ ] | Borrador sin implementación; issue [#20](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/20). Actores y modelo académico requieren revisión. |
-| CU-18 Asignar docente a grupo | [ ] | Borrador sin implementación; issue [#21](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/21). Actores y modelo académico requieren revisión. |
-| CU-19 Inscribir estudiante en grupo | [ ] | Borrador sin implementación; issue [#22](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/22). Actores y modelo académico requieren revisión. |
-| CU-20 Registrar docente | [ ] | Borrador sin implementación; issue [#23](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/23). Identidad, aprovisionamiento y permisos requieren revisión. |
-| CU-21 Actualizar perfil docente | [ ] | Borrador sin implementación; issue [#24](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/24). Identidad, aprovisionamiento y permisos requieren revisión. |
+| CU-01 Consultar progreso académico | [x] | 31 comprobaciones HTTP heredadas de CU-01/CU-02 con PostgreSQL 17 limpio; revisión visual manual. Véase [resultados](../08-resultados-de-pruebas/resultados-pruebas.md). |
+| CU-02 Vincular encargado con estudiante | [x] | Las mismas 31 comprobaciones HTTP cubren altas, permisos por rol/vínculo, solicitudes pendientes e historial. |
+| CU-03 Publicar evaluación asignada | [x] | Smoke HTTP: evaluación publicada para estudiantes activos del grupo, avisos a vínculos activos e idempotencia de la publicación repetida. Alternos Gherkin no corridos como suite. |
+| CU-04 Publicar calificación | [x] | Smoke HTTP: publicación de calificación dentro de la escala provisional; el guardado se registra con el flujo docente y notifica al encargado vinculado. |
+| CU-05 Dar seguimiento a avisos no consultados | [x] | Smoke HTTP: acuse de lectura, dos ciclos de recordatorio con límite de 2, alerta al límite, tercera ejecución con 0/0; finalizar vínculo cerró 14 avisos pendientes y reabrir uno devolvió 404. Antigüedad simulada solo en la BD temporal. |
+| CU-06 Comunicarse sobre un estudiante | [x] | Smoke HTTP: mensaje docente→encargado, conversación visible y acuse con fecha. No se verificó correo externo. |
+| CU-07 Presentar apelación de una calificación | [x] | Smoke HTTP: apelación por persona encargada vinculada, fecha límite calculada desde configuración y envío duplicado idempotente. |
+| CU-08 Supervisar el seguimiento académico | [x] | Smoke HTTP: consulta de Dirección mostró asuntos pendientes y luego cero casos abiertos al cerrar los expedientes de prueba. |
+| CU-09 Corregir una calificación publicada | [x] | Smoke HTTP: corrección 85→90 con motivo, versión esperada 0→1 e historial consultable. |
+| CU-10 Configurar plazos y recordatorios | [x] | Smoke HTTP: Dirección configuró ventanas de apelación/resolución y frecuencia/límite de recordatorios; el servicio usó esos valores en el flujo probado. |
+| CU-11 Bitácora de auditoría | N/A | Retirado antes de PC3; no es uno de los casos vigentes. |
+| CU-12 Presentar queja por información no recibida | [x] | Smoke HTTP: queja creada por persona encargada, Dirección solicitó publicación y el docente atendió la solicitud con una publicación coincidente. |
+| CU-13 Aportar información a una apelación | [x] | Smoke HTTP: docente añadió un aporte al expediente y quedó asociado con actor y fecha. No se probaron todos los rechazos alternos. |
+| CU-14 Registrar resolución de apelación | [x] | Smoke HTTP: Comité registró resolución `UPHELD`; la calificación no se modificó automáticamente. |
+| CU-15 Consultar resolución de apelación | [x] | Smoke HTTP: persona encargada consultó la resolución, quedó acuse de lectura y se cerró el expediente. |
+| CU-16 Registrar estudiante | [x] | Tres pruebas unitarias del handler y verificación HTTP manual: 401 sin sesión, 201 Dirección, 403 Docente y 400 con grupo vacío. El issue [#16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16) se cerró con el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). |
+| CU-17 Registrar grupo académico | [x] | Smoke HTTP: Dirección creó un grupo con materia, nivel, periodo y código únicos. El modelo es una simplificación provisional. |
+| CU-18 Asignar docente a grupo | [x] | Smoke HTTP: Dirección asignó un perfil docente a un grupo y el rol docente pudo operar sobre su asignación. |
+| CU-19 Inscribir estudiante en grupo | [x] | Smoke HTTP: Dirección inscribió estudiantes activos; el grupo quedó como fuente de la publicación de CU-03. |
+| CU-20 Registrar docente | [x] | Smoke HTTP: Dirección vinculó un usuario docente existente a un perfil; el alta repetida fue idempotente. No crea credenciales. |
+| CU-21 Actualizar perfil docente | [x] | Smoke HTTP: Dirección actualizó e inactivó un perfil; se conservaron ambas entradas del historial. |
 
 ## Resumen
 
-- Código presente: **3 de 20 casos (15 %)**. Esto no significa que el resto esté terminado ni aprobado.
-- Casos no implementados: CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21. Las justificaciones y supuestos están en [brechas](brechas-de-requerimientos.md); los borradores requieren revisión del grupo.
-- Casos implementados: CU-01/CU-02 tienen smoke API; CU-16 tiene pruebas unitarias y verificación HTTP manual separada. No se deben presentar los escenarios Gherkin como pruebas ejecutadas.
-- Los issues #17–#24 mantienen visible el trabajo pendiente de los casos no implementados; CU-16 fue fusionado y su issue quedó cerrado.
-
-Ver el detalle de limitaciones y comandos reproducibles en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
+- Código funcional disponible en esta rama para **20 de 20 casos vigentes**; CU-11 se retiró previamente.
+- `mvn test`: 12 pruebas aprobadas, sin fallos, errores ni violaciones de Checkstyle. `npm run build`: correcto. El validador detecta 20 CUs, 20 `.feature`, 103 escenarios escritos y 0 errores estructurales.
+- CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21 tuvieron al menos un flujo principal comprobado por HTTP en una base PostgreSQL 17 temporal e independiente. Los escenarios alternos no se ejecutaron en bloque con Cucumber; la evidencia completa y sus límites están en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
+- La implementación de esta rama aún requiere revisión e integración en `pc3/core-consulta-vinculos`; sus issues siguen abiertos hasta que se integre. Las reglas provisionales no equivalen a políticas aprobadas por el profesor o el centro.

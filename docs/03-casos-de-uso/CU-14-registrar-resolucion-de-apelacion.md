@@ -28,7 +28,7 @@
 - **Restricciones:** [RS-03](../02-requerimientos/suplementarios/RS-03-seguridad-por-actor-y-vinculo.md). Los nombres de estado siguen siendo propuesta S-03 hasta su validación.
 - **Métricas:** complejidad media (5 pasos y 3 flujos alternos).
 - **Prioridad:** alta (RF-20 tiene prioridad «Debe»).
-- **Estado:** nuevo desglose de RF-20 para atender la observación del PC2; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
+- **Estado:** nuevo desglose de RF-20 para atender la observación del PC2; resolución principal implementada y comprobada por HTTP en la rama PC3. Estados y actores requieren revisión del grupo/docente.
 - **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-20, RF-21
 - **Pruebas:** [CU-14-registrar-resolucion-de-apelacion.feature](../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature).

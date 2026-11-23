@@ -5,7 +5,7 @@
 | Nivel | Requerimiento funcional general |
 | Épica | Registro y consulta de notas y evaluaciones |
 | Actor | Personal autorizado del centro, provisional |
-| Estado | Capacidad general con borrador de descomposición en CU-17 a CU-19; sin implementación y pendiente de revisión. |
+| Estado | Implementado provisionalmente en la rama PC3 mediante CU-17 a CU-19; modelo simplificado pendiente de revisión. |
 
 ## Necesidad
 El seguimiento por estudiante requiere organizar cursos, grupos y periodos para asignar las evaluaciones correctas.
@@ -19,4 +19,4 @@ El Portal deberá permitir al personal autorizado mantener cursos y grupos acad�
 - [CU-18 Asignar docente a grupo](../../03-casos-de-uso/CU-18-asignar-docente-a-grupo.md): establecer quién puede registrar actividad académica para el grupo.
 - [CU-19 Inscribir estudiante en grupo](../../03-casos-de-uso/CU-19-inscribir-estudiante-en-grupo.md): incorporar un estudiante ya registrado a un grupo.
 
-Estos CUs expresan metas distintas en vez de concentrarlas en un caso genérico de «gestionar cursos». Son propuestas locales para revisión; el modelo de curso/materia/grupo/periodo, la cardinalidad, las reglas de inscripción y los permisos siguen abiertos. No hay implementación asociada.
+Estos CUs expresan metas distintas en vez de concentrarlas en un caso genérico de «gestionar cursos». La implementación local cubre materia, nivel, grupo, periodo, asignación docente e inscripción activa. El modelo de curso/materia/grupo/periodo, la cardinalidad, las reglas de inscripción y los permisos siguen abiertos a revisión.

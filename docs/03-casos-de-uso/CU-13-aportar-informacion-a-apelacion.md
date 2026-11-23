@@ -29,7 +29,7 @@
 - **Restricciones:** [RS-03](../02-requerimientos/suplementarios/RS-03-seguridad-por-actor-y-vinculo.md). El estado «pendiente de información» es una propuesta S-03 y requiere validación institucional.
 - **Métricas:** complejidad media (6 pasos y 3 flujos alternos).
 - **Prioridad:** alta (RF-19 tiene prioridad «Debe»).
-- **Estado:** nuevo desglose de RF-19 para atender la observación del PC2; estructura propuesta pendiente de revisión del grupo/docente; no implementado.
+- **Estado:** nuevo desglose de RF-19 para atender la observación del PC2; aporte básico implementado y comprobado por HTTP en la rama PC3. El desglose requiere revisión del grupo/docente y los alternos Gherkin no se ejecutaron.
 - **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-19, RF-21
 - **Pruebas:** [CU-13-aportar-informacion-a-apelacion.feature](../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature).

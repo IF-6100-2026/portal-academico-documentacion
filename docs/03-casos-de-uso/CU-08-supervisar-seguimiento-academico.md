@@ -33,7 +33,7 @@
 - **Especificación de interfaz de usuario:** [Panel institucional de supervisión](prototipos/stitch-4/screen.png)
 - **Métricas:** complejidad baja (8 pasos y 3 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; resumen de pendientes implementado y comprobado por HTTP en la rama PC3. Los datos visibles deben validarse con el centro.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-30](../02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md), [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-21, RF-23, RF-24, RF-25

@@ -37,7 +37,7 @@
 - **Especificación de interfaz de usuario:** [Mensajería institucional](prototipos/stitch-5/screen.png)
 - **Métricas:** complejidad media (9 pasos y 6 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; mensaje y acuse se comprobaron por HTTP en la rama PC3. Los mensajes son internos y no incluyen adjuntos.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-31](../02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md), [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-14, RF-15, RF-17

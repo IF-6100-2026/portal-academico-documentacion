@@ -31,7 +31,7 @@
 - **Especificación de interfaz de usuario:** [Panel institucional de supervisión](prototipos/stitch-4/screen.png)
 - **Métricas:** complejidad baja (6 pasos y 3 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** revisado para el PC2; configuración y uso de sus valores comprobados por HTTP en la rama PC3. Los valores configurados son de demostración.
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos generales:** [RF-32](../02-requerimientos/funcionales/RF-32-gestionar-apelaciones-y-pendientes.md)
 - **Refinamientos detallados conservados:** RF-22

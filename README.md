@@ -2,9 +2,9 @@
 
 Proyecto de Análisis y Diseño de Sistemas (IF-6100) para el Centro Educativo María Montessori. El repositorio integra documentación, API Spring Boot, interfaz React y PostgreSQL.
 
-**Alcance funcional verificado:** núcleo integrado propuesto de CU-01 y CU-02, con datos ficticios. CU-01 incluye publicaciones recientes, avisos pendientes y versiones anteriores de una calificación corregida. CU-02 permite registrar, consultar, suspender y finalizar vínculos; una solicitud pendiente por restricción no concede acceso. CU-16 también pasó pruebas unitarias y una verificación HTTP manual contra una instancia PostgreSQL 16 temporal; esta última no está automatizada en CI. La selección CU-01 + CU-02 es una propuesta razonada del equipo: no se encontró una aprobación docente y no se atribuye una aprobación inexistente.
+**Alcance funcional de la rama PC3:** los 20 casos vigentes tienen código, incluidos los 17 flujos añadidos en `codex/pc3-remaining-use-cases`; CU-11 se retiró antes. CU-01/CU-02 son el núcleo previo y CU-16 se integró con PR #15. La rama nueva tuvo pruebas unitarias, compilación frontend, validación documental y smoke HTTP de los flujos principales contra PostgreSQL 17 temporal. Los escenarios Gherkin no se ejecutaron como suite; los supuestos institucionales y los límites se detallan en [estado de implementación](docs/07-construccion/estado-de-implementacion.md) y [brechas](docs/07-construccion/brechas-de-requerimientos.md).
 
-Los otros casos de uso están especificados, pero no tienen implementación funcional verificada. CU-16 se probó en una base temporal, aunque todavía no tiene issue de seguimiento ni verificación automatizada de integración. Las políticas institucionales, el alcance y las brechas abiertas se explican en [estado de implementación](docs/07-construccion/estado-de-implementacion.md), [brechas](docs/07-construccion/brechas-de-requerimientos.md) y [decisiones](docs/07-construccion/decisiones-de-diseno.md).
+La implementación de los nuevos flujos está en la rama de trabajo y requiere integrarse a `pc3/core-consulta-vinculos` antes de mover el tag final. Los perfiles, grupos, escala de calificación, plazos, notificaciones y procedimiento de apelación incluyen decisiones provisionales que el grupo debe revisar; no se atribuye aprobación docente.
 
 ## Integrantes registrados
 
@@ -53,7 +53,7 @@ Abre <http://localhost:5173>. La guía de [ambiente de desarrollo](docs/06-confi
 - [Registro de uso de IA](docs/09-uso-de-ia/uso-de-ia.md)
 - [Guion de demostración PC3](docs/07-construccion/guion-demostracion-pc3.md)
 
-Para repetir la verificación integrada del núcleo, iniciar base y API y ejecutar `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080` desde PowerShell. Usa identidades ficticias, deja un vínculo pendiente y crea vínculos de prueba que terminan suspendidos/finalizados; las trazas permanecen en la base local. La guía explica cómo demostrar el producto desde la interfaz.
+Para repetir la verificación integrada del núcleo, iniciar base y API y ejecutar `./scripts/verificar-nucleo-pc3.ps1 -BaseUrl http://localhost:8080` desde PowerShell. Usa identidades ficticias, deja un vínculo pendiente y crea vínculos de prueba que terminan suspendidos/finalizados; las trazas permanecen en la base local. La evidencia de los otros CU fue un smoke HTTP manual contra una instancia temporal; véase el [reporte](docs/08-resultados-de-pruebas/resultados-pruebas.md).
 
 ## Entrega PC3
 

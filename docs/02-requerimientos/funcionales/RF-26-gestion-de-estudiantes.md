@@ -5,7 +5,7 @@
 | Nivel | Requerimiento funcional general |
 | Épica | Registro y consulta de notas y evaluaciones |
 | Actor | Dirección, provisionalmente por continuidad con CU-02 |
-| Estado | Propuesta general; CU-16 tiene handler probado, frontend compilado y verificación HTTP en PostgreSQL temporal. |
+| Estado | Capacidad general implementada en la rama PC3: CU-16 registra fichas y CU-19 las inscribe en grupos. La identificación institucional y duplicados siguen pendientes. |
 
 ## Necesidad
 El seguimiento académico requiere una ficha del estudiante antes de asociar vínculos y publicaciones.

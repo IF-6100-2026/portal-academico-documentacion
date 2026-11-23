@@ -32,6 +32,8 @@ public class SecurityConfig {
                 .requestMatchers("/api/v1/health", "/actuator/health").permitAll()
                 .requestMatchers("/api/v1/guardian/**").hasRole("GUARDIAN")
                 .requestMatchers("/api/v1/director/**").hasRole("DIRECTOR")
+                .requestMatchers("/api/v1/teacher/**").hasRole("TEACHER")
+                .requestMatchers("/api/v1/committee/**").hasRole("COMMITTEE")
                 .anyRequest().authenticated())
             .exceptionHandling(exceptionHandling -> exceptionHandling
                 .authenticationEntryPoint((request, response, exception) -> {
@@ -67,7 +69,8 @@ public class SecurityConfig {
         @Value("${app.demo-users.guardian.password}") String guardianPassword,
         @Value("${app.demo-users.empty-guardian.password}") String emptyGuardianPassword,
         @Value("${app.demo-users.director.password}") String directorPassword,
-        @Value("${app.demo-users.teacher.password}") String teacherPassword) {
+        @Value("${app.demo-users.teacher.password}") String teacherPassword,
+        @Value("${app.demo-users.committee.password}") String committeePassword) {
         return username -> {
             var account = userRepository.findById(username)
                 .filter(user -> user.isActive())
@@ -77,6 +80,7 @@ public class SecurityConfig {
                 case "sin-vinculos.demo" -> emptyGuardianPassword;
                 case "direccion.demo" -> directorPassword;
                 case "docente.demo" -> teacherPassword;
+                case "comite.demo" -> committeePassword;
                 default -> throw new UsernameNotFoundException("Cuenta sin credencial de demostración");
             };
             return User.withUsername(account.getUsername())

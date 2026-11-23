@@ -7,9 +7,9 @@
 **Cadena de trazabilidad:** proceso actual (BPMN) → problema → requerimiento funcional → caso de uso → escenario de prueba → issue → código.
 
 - [Cambios del PC1 al PC2](cambios-pc1-pc2.md): observaciones atendidas y equivalencias de identificadores.
-- [Cambios del PC2 al PC3](cambios-pc2-pc3.md): respuesta a la evaluación y límites conocidos del núcleo construido.
+- [Cambios del PC2 al PC3](cambios-pc2-pc3.md): respuesta a la evaluación, avance de construcción y límites institucionales pendientes.
 - [Análisis de retroalimentación docente y avance independiente](07-construccion/ANALISIS-Y-AVANCE-DEFINICION-REGISTRO-ESTUDIANTE.md): decisiones, supuestos, cambios locales y pendientes.
-- [Estado de implementación](07-construccion/estado-de-implementacion.md), [checklist de implementación por CU](07-construccion/checklist-casos-de-uso.md), [brechas](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [guion de demostración PC3](07-construccion/guion-demostracion-pc3.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
+- [Estado de implementación](07-construccion/estado-de-implementacion.md), [checklist de implementación por CU](07-construccion/checklist-casos-de-uso.md), [brechas institucionales pendientes](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [guion de demostración PC3](07-construccion/guion-demostracion-pc3.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
 - [Glosario de siglas e identificadores](glosario.md): CU, RF, RS, E, P, AC, TP y los demás prefijos.
 
 ## 01 — Inicio
@@ -26,9 +26,9 @@
 
 **Requerimientos funcionales generales**
 
-- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 define e implementa el alta; handler, build y flujo HTTP en PostgreSQL temporal verificados.
-- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): borradores CU-17 a CU-19 listos para revisión.
-- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): borradores CU-20 y CU-21; CU-18 cubre asignación docente.
+- [RF-26 Gestionar estudiantes](02-requerimientos/funcionales/RF-26-gestion-de-estudiantes.md): CU-16 registra fichas y CU-19 las inscribe; implementación provisional en la rama PC3.
+- [RF-27 Gestionar cursos y grupos](02-requerimientos/funcionales/RF-27-gestion-de-cursos.md): CU-17 a CU-19 implementados con un modelo simplificado sujeto a revisión.
+- [RF-28 Gestionar profesores](02-requerimientos/funcionales/RF-28-gestion-de-profesores.md): CU-18, CU-20 y CU-21 implementados; perfiles enlazados a usuarios existentes.
 - [RF-29 Gestionar vínculos y acceso](02-requerimientos/funcionales/RF-29-gestionar-vinculos-y-acceso.md)
 - [RF-30 Gestionar seguimiento académico](02-requerimientos/funcionales/RF-30-gestionar-seguimiento-academico.md)
 - [RF-31 Gestionar comunicación y avisos](02-requerimientos/funcionales/RF-31-gestionar-comunicacion-y-avisos.md)

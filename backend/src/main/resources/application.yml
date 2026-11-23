@@ -32,3 +32,5 @@ app:
       password: ${DEMO_DIRECTOR_PASSWORD:demo-direccion-2026}
     teacher:
       password: ${DEMO_TEACHER_PASSWORD:demo-docente-2026}
+    committee:
+      password: ${DEMO_COMMITTEE_PASSWORD:demo-comite-2026}

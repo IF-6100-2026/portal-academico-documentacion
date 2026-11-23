@@ -1,36 +1,25 @@
 # Brechas de requerimientos y decisiones por confirmar
 
-El PC2 recibió la observación de que el grupo debe encontrar vacíos de información, pedir guía y generar casos de uso que separen responsabilidades. Este registro distingue lo dicho por Mediación de las decisiones que todavía deben resolver el grupo y la institución. No convierte una propuesta en política institucional.
+Los casos vigentes ya tienen una implementación de demostración en la rama PC3. Eso no convierte las reglas supuestas en políticas del centro ni sustituye la revisión del profesor, el equipo o los usuarios institucionales. Las brechas de esta tabla describen decisiones que siguen abiertas aunque exista código provisional.
 
-| ID | Pregunta o brecha | Impacto | Propuesta provisional | Responsable de validación |
+| ID | Pregunta o brecha | Impacto | Decisión provisional codificada | Validación pendiente |
 |---|---|---|---|---|
-| B-01 | ¿Qué casos de uso aprobó el profesor como núcleo del PC3? | El alcance mínimo y la evaluación pueden cambiar. | El equipo no pudo confirmar selección; para entregar un producto ejecutable implementó CU-01 + CU-02 por su dependencia funcional y controles de acceso. Se mantiene como propuesta, sin aprobación verificable. | Grupo y profesor |
-| B-02 | ¿Qué escala y regla de redondeo se usan para calificaciones? | Validación de datos, rango visible y correcciones. | No imponer mínimo/máximo ni convertir escalas hasta consultar. | Profesor / Centro |
-| B-03 | ¿Qué documento autoriza la relación y quién puede aprobarla? | Alta, suspensión y acceso a información de menores. | El prototipo guarda una referencia; no define validez legal ni custodia. | Dirección / Centro |
-| B-04 | ¿Cómo se gestionan restricciones de custodia y solicitudes pendientes? | CU-02 A04 y permisos por estudiante. | El prototipo registra una solicitud como `PENDING`, muestra el motivo y bloquea consultas/listados. No permite activar una solicitud pendiente ni define el proceso de revisión hasta confirmar la política. | Dirección / Centro |
-| B-05 | ¿Cómo se autentica cada actor y quién aprovisiona, revoca o recupera cuentas? | Seguridad para uso real; perfiles actuales son fijos. | Credenciales HTTP Basic ficticias solo para entorno local. | Centro / equipo |
-| B-06 | ¿Cómo se corrigen calificaciones y qué versiones deben ver las familias? | RF-09, CU-01 A04 y auditoría. | La demo conserva la versión previa, motivo, fecha y usuario que corrigió; se muestra a la persona encargada. Visibilidad y política institucional siguen sin validar; los datos son ficticios. | Profesor / docentes |
-| B-07 | ¿Cuáles son los estados, plazos, pausas y responsables de una apelación? | CU-07 y CU-13 a CU-15, RF-18 a RF-21. | Los estados “en revisión”, “pendiente de información”, “resuelta” y “cerrada” son propuestas en las fichas. No se codificaron. | Profesor / Centro |
-| B-08 | ¿Qué evidencias, anexos, acuses y notificaciones necesita cada paso? | Almacenamiento, correo y ciclo completo de apelación. | Fichas describen escenarios para discusión; el backend no envía avisos ni almacena adjuntos. | Profesor / Centro |
-| B-09 | ¿Qué datos puede ver la Dirección en supervisión y cuánto tiempo se conservan las trazas? | RF-24/RF-25, privacidad y auditoría. | El núcleo registra lectura y cambios de vínculo, pero no implementa consulta administrativa ni política de retención. | Centro / profesor |
-| B-10 | ¿Qué accesibilidad, navegadores y dispositivos se deben soportar? | Aceptación del frontend y prueba de usabilidad. | Mantener controles visibles, navegación por teclado y mensajes claros; falta validación con usuarios. | Profesor / usuarios |
-| B-11 | ¿Cómo se representan curso, materia, nivel, grupo, periodo, matrícula y asignación docente? | RF-27/RF-28 y CU-17 a CU-19; los datos académicos serían la base de publicaciones y permisos futuros. | CU-17 a CU-19 son propuestas documentales; no se codificó un modelo hasta acordar entidades, cardinalidades y vigencia. | Grupo y profesor |
+| B-01 | ¿Qué casos y alcance aprobó el profesor como núcleo de PC3? | El criterio académico de aceptación puede diferir de la implementación. | La rama completa los 20 CU vigentes por solicitud del usuario; CU-01/CU-02 siguen como núcleo propuesto. | Confirmar selección y alcance con el grupo/profesor. |
+| B-02 | ¿Qué escala, decimales y redondeo se usan para calificaciones? | CU-04, CU-07 y CU-09 dependen de la escala. | La demo usa provisionalmente 0–100 y conserva el valor recibido; no redondea. | Confirmar escala, precisión y redondeo antes de datos reales. |
+| B-03 | ¿Qué evidencia autoriza el vínculo familiar y quién valida una restricción? | Alta/suspensión puede afectar acceso a información de menores. | Dirección registra una referencia ficticia; los vínculos pendientes no dan acceso. | Validar documentos, custodia, responsabilidades y retención. |
+| B-04 | ¿Cómo se revisa, aprueba o rechaza una solicitud pendiente? | CU-02 no debe habilitar un vínculo sin respaldo suficiente. | Se registra la solicitud y se bloquea un alta activa paralela. Dirección puede suspender/finalizar vínculos, pero no aprobar un `PENDING` de forma directa. | Definir procedimiento y autorizaciones del centro. |
+| B-05 | ¿Cómo se autentican y aprovisionan los actores? | Cuentas fijas no bastan para operación institucional. | HTTP Basic y cinco usuarios demo; perfiles docentes enlazan un usuario `TEACHER` existente. | Integrar proveedor institucional, MFA/recuperación y ciclo de vida de cuentas. |
+| B-06 | ¿Cómo se corrige una nota y quién puede consultar el historial? | Cambio de calificación requiere explicación y control. | Cada corrección conserva nota previa, motivo, autor, fecha y versión; el flujo de demo impide sobrescritura silenciosa. | Confirmar política de revisión, firmas y visibilidad familiar. |
+| B-07 | ¿Cuáles son plazos, pausas, estados y responsables de apelación? | Determina vencimientos y garantías del expediente. | Dirección puede configurar ventanas de apelación/resolución; se registran aportes, solicitud de información, resolución y lectura. | Confirmar días hábiles/calendario, pausas, estados y participantes. |
+| B-08 | ¿Qué canales, evidencias, anexos y acuses se requieren? | Afecta notificación, archivos y trazabilidad. | Mensajes y avisos quedan dentro del Portal; no hay correo/SMS ni anexos. Los recordatorios se procesan con endpoint manual. | Definir canales oficiales, almacenamiento de archivos y reintentos. |
+| B-09 | ¿Qué puede supervisar Dirección y cuánto dura la bitácora? | Datos administrativos y auditoría tienen restricciones de privacidad. | El panel muestra contadores/estados de apelaciones, quejas y avisos vencidos; se guarda historial operativo. | Validar permisos, exportación, retención y acceso a datos personales. |
+| B-10 | ¿Qué navegadores, dispositivos y accesibilidad se requieren? | Interfaz usable para familias y personal. | Formularios y paneles usan HTML accesible básico y mensajes de estado. | Probar teclado, lector de pantalla, móvil y navegadores con usuarios. |
+| B-11 | ¿Cuál es el modelo oficial de curso, materia, nivel, grupo, periodo y matrícula? | Las publicaciones y permisos dependen de la estructura académica. | Se usa un grupo simplificado con materia, nivel, código y periodo; se registran asignaciones y matrículas activas. | Confirmar cardinalidades, cambios de grupo y vigencia histórica. |
+| B-12 | ¿Cuáles datos componen el perfil docente y cómo se desactiva? | CU-20/CU-21 dependen de la identidad oficial. | Se guarda un nombre visible e historial y se asocia con una cuenta ya existente; no se crean credenciales. | Confirmar campos, identificador institucional y proceso de bajas. |
+| B-13 | ¿Cuándo y quién debe ejecutar los recordatorios? | Un endpoint manual no genera avisos de forma automática. | Dirección puede procesar vencimientos; los límites e historial funcionan en el prototipo. | Definir frecuencia de job, zona horaria, monitoreo y contingencias. |
 
-La propuesta de CU-13, CU-14 y CU-15 separa el aporte de información, decisión del Comité y consulta de la persona encargada para no concentrar varios objetivos en CU-07. La descomposición se debe revisar antes de tomarla como definitiva.
+## Alcance de la implementación provisional
 
-## Casos de uso sin implementación funcional en PC3
+CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21 están implementados y cada flujo principal tuvo una verificación HTTP en PostgreSQL temporal. La [matriz de casos](checklist-casos-de-uso.md) y los [resultados](../08-resultados-de-pruebas/resultados-pruebas.md) distinguen esa evidencia de los escenarios alternos Gherkin, que no se ejecutaron con Cucumber. Las limitaciones de cada caso también aparecen en [estado de implementación](estado-de-implementacion.md).
 
-Esta tabla relaciona los casos que no aparecen implementados en [el checklist](checklist-casos-de-uso.md) con las brechas que explican sus principales decisiones pendientes. No reemplaza la revisión de cada ficha ni convierte sus propuestas en reglas aprobadas.
-
-| Casos de uso | Brechas relacionadas | Decisión pendiente antes de ampliar el producto |
-|---|---|---|
-| CU-03 y CU-04 — Publicaciones y calificaciones | B-02, B-05, B-08 | Confirmar escala, acceso por rol y mecanismo de avisos. |
-| CU-05 y CU-06 — Avisos y comunicación | B-05, B-08 | Confirmar autenticación, canales, acuses, destinatarios y conservación. |
-| CU-07, CU-12 y CU-13 a CU-15 — Apelaciones, quejas y resolución | B-03, B-07, B-08, B-09 | Validar estados, plazos, evidencias, actores, visibilidad y retención. CU-13 a CU-15 son desgloses propuestos. |
-| CU-08 — Supervisión | B-09 | Definir datos y trazas que Dirección puede consultar. |
-| CU-09 — Corrección de calificaciones | B-02, B-06 | Confirmar escala, política de corrección e historial visible. |
-| CU-10 — Plazos y recordatorios | B-07, B-08 | Confirmar plazos, pausas, responsables y canales de notificación. |
-| CU-17 a CU-19 — Cursos, grupos e inscripciones | B-05, B-11 | Revisar modelo académico, permisos e identidad de quien asigna/incluye estudiantes. |
-| CU-20 y CU-21 — Catálogo y perfil docente | B-05, B-11 | Confirmar identidad docente, aprovisionamiento de cuentas, campos y permisos. |
-
-CU-16 está implementado y fusionado mediante el PR #15; el issue #16 está cerrado. La automatización de su integración y la revisión de sus supuestos institucionales siguen pendientes; no se usa como justificación para declarar cerradas las demás brechas.
+CU-13, CU-14 y CU-15 desglosan RF-19/RF-20 para separar aporte, decisión y consulta. CU-17 a CU-21 refinan RF-27/RF-28. Son decisiones de diseño propuestas para cubrir los CU solicitados, todavía sujetas a revisión del grupo y del profesor.

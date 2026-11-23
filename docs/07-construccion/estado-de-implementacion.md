@@ -2,37 +2,49 @@
 
 ## Resumen
 
-La rama PC3 `pc3/core-consulta-vinculos` integra CU-01, CU-02 y CU-16; el PR [#15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15) fue fusionado el 23/11/2026 y cerró el [issue #16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16). CU-01 y CU-02 son el núcleo propuesto y verificado en su alcance documentado; no hay confirmación de aprobación docente. CU-16 tiene endpoint/formulario, tres pruebas unitarias, build frontend y verificación HTTP manual contra PostgreSQL limpio. Los otros 17 CU son especificaciones o borradores, no módulos funcionales. Las propuestas CU-17 a CU-21 siguen pendientes de revisión del grupo y no tienen implementación. La prueba HTTP de CU-16 no está automatizada en CI.
+La rama `codex/pc3-remaining-use-cases` parte de la rama PC3 `pc3/core-consulta-vinculos` y añade los flujos de los 17 casos que estaban pendientes: CU-03 a CU-10, CU-12 a CU-15 y CU-17 a CU-21. Junto con CU-01, CU-02 y CU-16, hay código para los **20 casos vigentes**. CU-11 se retiró antes de PC3.
 
-**Avance por casos de uso:** 3 de 20 tienen implementación en esta rama (**15 %**): CU-01, CU-02 y CU-16. CU-01 y CU-02 son el núcleo propuesto; ambos pasan 31 comprobaciones HTTP repetibles. CU-16 pasa pruebas unitarias, compilación y una verificación HTTP manual contra una base limpia. Este porcentaje cuenta casos con código, no equivale al porcentaje de la rúbrica ni certifica aprobación docente. Los otros 17 no están implementados.
+Esta rama está probada localmente, pero al escribir este informe aún no está publicada ni integrada en la rama PC3; sus issues siguen abiertos hasta revisar e integrar el cambio. Los flujos principales de los 17 casos nuevos se probaron manualmente por HTTP contra una instancia temporal de PostgreSQL 17. Los escenarios Gherkin siguen sin ejecutarse como suite Cucumber. La implementación usa supuestos de demostración allí donde falta una decisión institucional; no se atribuye aprobación docente.
 
-| CU | Estado | Código disponible | Issue | Faltantes principales |
-|---|---|---|---|---|
-| CU-01 Consultar progreso académico | Implementado en el núcleo propuesto | Lista de vínculos activos; publicaciones y avisos sin consulta; perfil y publicaciones por periodo; filtro de borradores; registro de consultas; historial de calificación corregida. | [#3](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3), abierto; falta PR y cierre. | Los avisos se muestran en la lista, sin correo ni calendario; historial es de demostración. Autenticación y revisión institucional pendientes. |
-| CU-02 Vincular encargado con estudiante | Implementado en el núcleo propuesto | Catálogo de Dirección; alta con referencia de respaldo; bloqueo de duplicados y de alta activa ante solicitud pendiente; estado pendiente sin acceso; suspensión/finalización con historial. | [#4](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4), abierto; falta PR y cierre. | No existe flujo para aprobar solicitudes pendientes ni política institucional validada; solo Dirección crea/retira vínculos en el prototipo. |
-| CU-03 a CU-10 | Especificados | Fichas y escenarios Gherkin. | [#5](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5), [#6](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6), [#7](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7), [#8](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8), [#9](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9), [#10](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10), [#11](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/11), [#12](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12) (abiertos). | Publicación docente, avisos, mensajes, seguimiento, apelación, corrección y plazos. |
-| CU-12 | Especificado | Ficha y escenarios Gherkin. | [#13](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/13), abierto. | Registro y atención de quejas. |
-| CU-13 a CU-15 | Propuestas especificadas | Desglose de RF-19/RF-20, fichas y escenarios Gherkin. | [#17](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/17), [#18](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/18), [#19](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/19), abiertos con etiqueta `brecha`. | Revisión del grupo/profesor y toda la implementación. |
-| CU-16 Registrar estudiante | Implementado y fusionado en la rama PC3 | Ficha, handler con 3 pruebas unitarias, endpoint, migración y formulario React; verificación HTTP manual. | [Issue #16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16), cerrado mediante el [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). | Automatizar integración en CI y confirmar política institucional de identidad/duplicados antes de producción. |
-| CU-17 a CU-19 Cursos y grupos | Borradores; no implementados | Fichas y cuatro escenarios por caso. | [#20](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/20), [#21](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/21), [#22](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/22), abiertos con etiqueta `brecha`. | Revisar modelo curso/materia/grupo/periodo, cardinalidad, matrículas y permisos. |
-| CU-20 a CU-21 Docentes | Borradores; no implementados | Fichas y cuatro escenarios por caso. | [#23](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/23), [#24](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/24), abiertos con etiqueta `brecha`. | Confirmar identidad, provisión de cuentas, campos y permisos. |
+## Matriz de implementación y trazabilidad
 
-Hay 20 CU documentados (CU-01 a CU-10 y CU-12 a CU-21); CU-11 se retiró previamente. El conteo no significa que estén implementados o aprobados. El modelo documental agrupa las capacidades en RF-26 a RF-32 y conserva RF-01 a RF-25 como refinamientos detallados; véase [trazabilidad](../02-requerimientos/trazabilidad-rf-cu.md).
-
-## Trazabilidad de issues
-
-Todos los 20 casos vigentes tienen issue enlazado al documento, con las etiquetas `caso-de-uso` y `brecha` cuando siguen abiertos, y responsable asignado a `cbastiancq-lab`. CU-16 está cerrado tras el merge del PR #15; los issues #17–#24 registran los casos aún no implementados. La trazabilidad de issues no significa que esos casos estén implementados.
+| CU | Estado en esta rama | Código principal | Issue / brecha y límite |
+|---|---|---|---|
+| CU-01 Consultar progreso académico | Implementado en la base PC3 | `GuardianAcademicController`, consulta de progreso y UI React. | [#3](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/3). 31 comprobaciones HTTP en la rama base; avisos son internos, no correo/calendario. |
+| CU-02 Vincular encargado con estudiante | Implementado en la base PC3 | `DirectorLinkController`, handler de vínculos, catálogo, bitácora e UI. | [#4](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/4). 31 comprobaciones HTTP en la rama base; el proceso institucional de aprobación de pendientes sigue abierto. |
+| CU-03 Publicar evaluación asignada | Implementado | `TeacherAcademicWorkflowController`, `AcademicPublicationWorkflow`; el docente publica al grupo y se generan avisos. | [#5](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/5); escala de avisos y reglas escolares son provisionales. |
+| CU-04 Publicar calificación | Implementado | `AcademicPublicationWorkflow`; publicación por estudiante y conservación de borrador para corrección. | [#6](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/6); rango 0–100 provisional, requiere confirmación. |
+| CU-05 Dar seguimiento a avisos no consultados | Implementado | `AcademicPublicationWorkflow`; lecturas, recordatorios limitados y alertas internas. | [#7](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/7); proceso invocable por Dirección, sin scheduler/correo configurado. |
+| CU-06 Comunicarse sobre un estudiante | Implementado | `StudentCommunicationWorkflow` y controlador de conversaciones. | [#8](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/8); mensajes internos, sin adjuntos ni correo. |
+| CU-07 Presentar apelación de una calificación | Implementado | `AppealWorkflow`, endpoint de persona encargada y cálculo de fecha límite configurada. | [#9](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/9); identidad, plazos y ciclo son propuestas locales. |
+| CU-08 Supervisar el seguimiento académico | Implementado | `AcademicPublicationWorkflow` y panel de Dirección. | [#10](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/10); conjunto de datos visible requiere validación institucional. |
+| CU-09 Corregir una calificación publicada | Implementado | `AcademicPublicationWorkflow`; historial de versiones, motivo y control optimista de concurrencia. | [#11](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/11); política académica de corrección sigue pendiente. |
+| CU-10 Configurar plazos y recordatorios | Implementado | `DirectorWorkflowController`; valores actuales e historial de cambios. | [#12](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/12); rangos configurables no equivalen a política aprobada. |
+| CU-11 Bitácora de auditoría | Retirado | No aplica. | Excluido del listado vigente antes de PC3. |
+| CU-12 Presentar queja por información no recibida | Implementado | `StudentCommunicationWorkflow`, controladores de persona encargada, docente y Dirección. | [#13](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/13); la coincidencia se resuelve con materia, periodo y publicación. |
+| CU-13 Aportar información a una apelación | Implementado | `AppealWorkflow`; aportes y solicitudes de información en el expediente. | [#17](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/17); descomposición propuesta, falta validación del grupo. |
+| CU-14 Registrar resolución de apelación | Implementado | `AppealWorkflow`; acción del rol Comité, resolución separada de la nota. | [#18](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/18); composición y reglas del Comité provisionales. |
+| CU-15 Consultar resolución de apelación | Implementado | `AppealWorkflow`, endpoint familiar y acuse/cierre. | [#19](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/19); descomposición propuesta, falta validación del grupo. |
+| CU-16 Registrar estudiante | Implementado e integrado en la base PC3 | Handler, endpoint protegido, migración y formulario React. | [#16](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/16), cerrado mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). No hay prueba de integración automatizada. |
+| CU-17 Registrar grupo académico | Implementado | `DirectorAcademicCatalogController` y `ManageAcademicCatalogHandlerImpl`. | [#20](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/20); modelo simplificado de materia/nivel/grupo/periodo. |
+| CU-18 Asignar docente a grupo | Implementado | Catálogo académico y relación de asignación docente. | [#21](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/21); se permite una asignación activa por grupo bajo reglas provisionales. |
+| CU-19 Inscribir estudiante en grupo | Implementado | Catálogo académico y matrícula activa por estudiante/grupo. | [#22](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/22); vigencia y cambios de grupo requieren validación. |
+| CU-20 Registrar docente | Implementado | Catálogo de perfiles enlazado a una cuenta docente que ya existe. | [#23](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/23); no crea credenciales ni integra identidad institucional. |
+| CU-21 Actualizar perfil docente | Implementado | Historial de perfil, actualización e inactivación sin borrar el historial. | [#24](https://github.com/IF-6100-2026/portal-academico-documentacion/issues/24); campos y autorización institucional pendientes. |
 
 ## Componentes integrados
 
-- `backend/`: API Java 21/Spring Boot, handlers, seguridad, persistencia JPA, migración Liquibase y datos ficticios.
-- `frontend/`: interfaz React/TypeScript para CU-01, CU-02 y el alta local de CU-16.
-- `docker-compose.yml`: servicio PostgreSQL local con volumen persistente.
-- `scripts/verificar-nucleo-pc3.ps1`: comprobaciones API reales del alcance CU-01/CU-02.
+- `backend/`: Java 21/Spring Boot, controladores delgados, flujos/handlers, seguridad por rol, persistencia JDBC/JPA y Liquibase.
+- `frontend/`: React/TypeScript con vistas para encargado, Dirección, docente y Comité.
+- `docker-compose.yml`: PostgreSQL local y persistencia para desarrollo.
+- `docs/07-construccion/checklist-casos-de-uso.md`: resultado verificable por caso.
+- `docs/08-resultados-de-pruebas/resultados-pruebas.md`: comandos, smoke HTTP y limitaciones.
 
 ## Cobertura y límites
 
-- Las versiones de Java, frontend y base de datos arrancan con la guía de [ambiente de desarrollo](../06-configuracion/ambiente-de-desarrollo.md).
-- La matriz de escenarios especificados frente a verificaciones ejecutadas está en [resultados de pruebas](../08-resultados-de-pruebas/resultados-pruebas.md).
-- Los datos son ficticios; no se deben cargar datos escolares reales.
-- La aceptación docente del núcleo y la revisión final de los integrantes son decisiones académicas que este repositorio no puede certificar.
+- En la rama se ejecutaron `mvn test` (12 pruebas, 0 fallos/errores, Checkstyle limpio), `npm run build` y `python scripts/validar_documentacion.py` (20 CUs, 20 archivos `.feature`, 103 escenarios escritos, 0 errores estructurales).
+- Se probó por HTTP al menos un flujo principal para cada CU de los 17 añadidos, contra una instancia desechable local de PostgreSQL 17. No es una prueba automatizada repetible aún.
+- Los 103 escenarios `.feature` son especificaciones y no un reporte de ejecución Cucumber.
+- No se ejecutaron pruebas automatizadas de navegador, accesibilidad, rendimiento ni revisión con usuarios.
+- Las cuentas y datos son de demostración. No cargar datos académicos reales.
+- Falta revisión del equipo/profesor sobre decisiones abiertas, confirmar commits de todos los integrantes y, tras integrar la rama, actualizar el tag final `pc3` y entregar los enlaces en Mediación Virtual.

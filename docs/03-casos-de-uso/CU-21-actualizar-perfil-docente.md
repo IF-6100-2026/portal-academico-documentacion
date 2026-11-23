@@ -7,7 +7,7 @@
 | **Actores** | Dirección (provisional; confirmar quién mantiene el catálogo). |
 | **Precondiciones** | Sesión válida y perfil docente existente. |
 | **Postcondiciones** | Los cambios quedan registrados; si el perfil se inactiva, no se elimina el historial ni sus publicaciones. |
-| **Estado** | Borrador de descomposición; sin implementación. No se elimina físicamente la cuenta ni su contenido académico. |
+| **Estado** | Actualización e inactivación implementadas y comprobadas por HTTP en la rama PC3; conserva el historial y no elimina físicamente la cuenta ni su contenido académico. |
 
 ## Flujo básico
 

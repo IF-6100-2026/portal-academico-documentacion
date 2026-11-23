@@ -7,7 +7,7 @@
 | Requisito | El Portal deberá permitir gestionar evaluaciones y calificaciones, publicarlas a las personas autorizadas, consultar el progreso y conservar correcciones e historial. |
 | Refinamientos conservados | RF-02 a RF-09. |
 | Casos de uso | CU-01, CU-03, CU-04, CU-08 y CU-09. |
-| Estado | Generalización documental; la mayor parte del alcance continúa especificada, no implementada. |
+| Estado | Implementado provisionalmente en la rama PC3; escala y política de corrección requieren confirmación. |
 
 ## Criterios generales
 

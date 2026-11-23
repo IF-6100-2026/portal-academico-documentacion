@@ -7,7 +7,7 @@
 | **Actores** | Dirección (provisional; confirmar quién mantiene el catálogo). |
 | **Precondiciones** | Sesión válida y permiso para mantener el catálogo docente. La cuenta institucional se provisiona por el mecanismo de identidad del centro. |
 | **Postcondiciones** | El perfil docente queda activo en el catálogo y disponible para asignaciones. |
-| **Estado** | Borrador de descomposición; sin implementación. Se propone reutilizar el usuario institucional existente y no crear credenciales desde este caso. |
+| **Estado** | Implementado provisionalmente y comprobado por HTTP en la rama PC3; reutiliza un usuario docente existente y no crea credenciales. |
 
 ## Flujo básico
 

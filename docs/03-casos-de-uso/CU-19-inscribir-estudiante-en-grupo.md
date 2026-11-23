@@ -7,7 +7,7 @@
 | **Actores** | Dirección (provisional; confirmar quién matricula). |
 | **Precondiciones** | El estudiante existe y el grupo está activo. |
 | **Postcondiciones** | La inscripción queda registrada para el grupo, con responsable y fecha. |
-| **Estado** | Borrador de descomposición; sin implementación. La relación estudiante/grupo y su vigencia requieren revisión. |
+| **Estado** | Implementado provisionalmente y comprobado por HTTP en la rama PC3. La relación estudiante/grupo y su vigencia requieren revisión. |
 
 ## Flujo básico
 

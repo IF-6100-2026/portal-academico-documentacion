@@ -7,7 +7,7 @@
 | **Actores** | Dirección (provisional; confirmar quién realiza asignaciones). |
 | **Precondiciones** | El grupo y el perfil docente existen y están activos. |
 | **Postcondiciones** | La asignación queda registrada con grupo, docente, responsable y fecha. |
-| **Estado** | Borrador de descomposición; sin implementación. No se define aún si un grupo admite varios docentes ni los periodos de vigencia. |
+| **Estado** | Implementado provisionalmente y comprobado por HTTP en la rama PC3. No se define aún si un grupo admite varios docentes ni los periodos de vigencia. |
 
 ## Flujo básico
 
