@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="1010" viewBox="0 0 1500 1010" role="img" aria-labelledby="title desc">
+  <title id="title">Casos de uso del Portal Académico</title>
+  <desc id="desc">Catorce casos de uso agrupados por las tres épicas, con actores principales. CU-13, CU-14 y CU-15 están propuestos y pendientes de validación.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f5f7fb}.title{font:700 32px Arial,sans-serif;fill:#15223b}.sub{font:16px Arial,sans-serif;fill:#506079}
+      .panel{fill:#fff;stroke:#d6dfec;stroke-width:2}.head{font:700 19px Arial,sans-serif;fill:#17315e}.muted{font:13px Arial,sans-serif;fill:#66758d}
+      .card{fill:#f9fbff;stroke:#c6d5ea;stroke-width:1.5}.proposal{fill:#fff8e8;stroke:#ddad4c;stroke-width:1.5}
+      .id{font:700 13px Arial,sans-serif;fill:#24549c}.name{font:600 15px Arial,sans-serif;fill:#172a47}.actor{font:12px Arial,sans-serif;fill:#63728a}
+      .legend{font:13px Arial,sans-serif;fill:#56647b}
+    </style>
+  </defs>
+  <rect class="bg" width="1500" height="1010"/>
+  <text class="title" x="40" y="55">Casos de uso del Portal Académico</text>
+  <text class="sub" x="40" y="83">Mapa de alcance por épica y actor principal · 14 casos documentados · CU-11 fue retirado</text>
+
+  <rect class="panel" x="35" y="112" width="455" height="820" rx="16"/>
+  <text class="head" x="58" y="151">1 · Registro y consulta</text>
+  <text class="muted" x="58" y="174">Notas y evaluaciones</text>
+  <g transform="translate(55 195)">
+    <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-01</text><text class="name" x="16" y="50">Consultar progreso académico</text><text class="actor" x="16" y="78">Actor: persona encargada</text>
+  </g>
+  <g transform="translate(55 322)">
+    <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-02</text><text class="name" x="16" y="50">Vincular encargado y estudiante</text><text class="actor" x="16" y="78">Actor: Dirección</text>
+  </g>
+  <g transform="translate(55 449)">
+    <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-03</text><text class="name" x="16" y="50">Publicar evaluación asignada</text><text class="actor" x="16" y="78">Actor: docente</text>
+  </g>
+  <g transform="translate(55 576)">
+    <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-04</text><text class="name" x="16" y="50">Publicar calificación</text><text class="actor" x="16" y="78">Actor: docente</text>
+  </g>
+  <g transform="translate(55 703)">
+    <rect class="card" width="415" height="112" rx="12"/><text class="id" x="16" y="25">CU-09</text><text class="name" x="16" y="50">Corregir calificación publicada</text><text class="actor" x="16" y="78">Actor: docente</text>
+  </g>
+
+  <rect class="panel" x="522" y="112" width="455" height="820" rx="16"/>
+  <text class="head" x="545" y="151">2 · Comunicación</text>
+  <text class="muted" x="545" y="174">Avisos, mensajes y quejas</text>
+  <g transform="translate(542 195)">
+    <rect class="card" width="415" height="132" rx="12"/><text class="id" x="16" y="27">CU-05</text><text class="name" x="16" y="53">Dar seguimiento a avisos</text><text class="name" x="16" y="73">no consultados</text><text class="actor" x="16" y="105">Actores: persona encargada y Dirección</text>
+  </g>
+  <g transform="translate(542 342)">
+    <rect class="card" width="415" height="132" rx="12"/><text class="id" x="16" y="27">CU-06</text><text class="name" x="16" y="53">Comunicarse sobre un estudiante</text><text class="actor" x="16" y="92">Actores: persona encargada y docente</text>
+  </g>
+  <g transform="translate(542 489)">
+    <rect class="card" width="415" height="132" rx="12"/><text class="id" x="16" y="27">CU-12</text><text class="name" x="16" y="53">Presentar queja por información</text><text class="name" x="16" y="73">no recibida</text><text class="actor" x="16" y="105">Actores: persona encargada y Dirección</text>
+  </g>
+
+  <rect class="panel" x="1009" y="112" width="455" height="820" rx="16"/>
+  <text class="head" x="1032" y="151">3 · Seguimiento</text>
+  <text class="muted" x="1032" y="174">Apelaciones y tareas pendientes</text>
+  <g transform="translate(1029 195)">
+    <rect class="proposal" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-07 · ALCANCE PROPUESTO</text><text class="name" x="16" y="51">Presentar apelación de calificación</text><text class="actor" x="16" y="78">Actor: persona encargada · asignación inicial</text>
+  </g>
+  <g transform="translate(1029 312)">
+    <rect class="card" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-08</text><text class="name" x="16" y="51">Supervisar seguimiento académico</text><text class="actor" x="16" y="78">Actor: Dirección</text>
+  </g>
+  <g transform="translate(1029 429)">
+    <rect class="card" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-10</text><text class="name" x="16" y="51">Configurar plazos y recordatorios</text><text class="actor" x="16" y="78">Actor: Dirección</text>
+  </g>
+  <g transform="translate(1029 546)">
+    <rect class="proposal" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-13 · PROPUESTA</text><text class="name" x="16" y="51">Aportar información a apelación</text><text class="actor" x="16" y="78">Actores: docente, Dirección y Comité</text>
+  </g>
+  <g transform="translate(1029 663)">
+    <rect class="proposal" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-14 · PROPUESTA</text><text class="name" x="16" y="51">Registrar resolución de apelación</text><text class="actor" x="16" y="78">Actor: Comité de Evaluación</text>
+  </g>
+  <g transform="translate(1029 780)">
+    <rect class="proposal" width="415" height="105" rx="12"/><text class="id" x="16" y="25">CU-15 · PROPUESTA</text><text class="name" x="16" y="51">Consultar resolución de apelación</text><text class="actor" x="16" y="78">Actor: persona encargada</text>
+  </g>
+  <rect x="40" y="958" width="18" height="18" rx="4" fill="#f9fbff" stroke="#c6d5ea"/><text class="legend" x="67" y="972">Caso documentado</text>
+  <rect x="225" y="958" width="18" height="18" rx="4" fill="#fff8e8" stroke="#ddad4c"/><text class="legend" x="252" y="972">Alcance propuesto; requiere revisión/aprobación</text>
+  <text class="legend" x="890" y="972">Mapa de alto nivel; los flujos están en cada ficha CU.</text>
+</svg>

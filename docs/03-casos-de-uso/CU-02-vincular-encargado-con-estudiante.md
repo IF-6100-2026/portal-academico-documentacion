@@ -36,7 +36,7 @@
 - **Especificación de interfaz de usuario:** Sin prototipo en esta fase
 - **Métricas:** complejidad media (8 pasos y 6 flujos alternos).
 - **Prioridad:** alta (todos sus RF tienen prioridad «Debe»).
-- **Estado:** revisado para el PC2.
+- **Estado:** análisis revisado para el PC2; implementación parcial en la rama PC3 (véase [estado](../07-construccion/estado-de-implementacion.md)).
 - **Autor:** Josué Delgado Corrales (revisión del PC2). Versión del PC1: Josué Delgado Corrales, Sebastián Cordero Quesada y Alejandro Porras Orozco.
 - **Requerimientos:** [RF-01](../02-requerimientos/funcionales/RF-01-vincular-encargado-con-estudiante.md)
 - **Pruebas:** [CU-02-vincular-encargado-con-estudiante.feature](../04-pruebas/CU-02-vincular-encargado-con-estudiante.feature)

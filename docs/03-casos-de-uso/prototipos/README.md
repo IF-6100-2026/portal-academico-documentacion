@@ -10,4 +10,4 @@ Prototipos elaborados en Google Stitch durante el PC1. Son referencias visuales,
 | Panel institucional de supervisión | CU-05, CU-08, CU-10 | [stitch-4/screen.png](stitch-4/screen.png) |
 | Mensajería institucional | CU-06 | [stitch-5/screen.png](stitch-5/screen.png) |
 
-**Pendientes:** CU-02 (vinculación) y CU-12 (queja) no tienen prototipo; se diseñarán antes de construirlos en el PC3. En el PC1, la pantalla de perfil se asociaba también a la vinculación (UC-02), pero no la representa, así que esa asociación se retiró.
+Estos prototipos se elaboraron en PC1/PC2 y sirven como referencia visual, no como especificación completa de la interfaz PC3. CU-01 se implementó parcialmente; CU-02 también tiene una pantalla funcional en el producto integrado, aunque no cuenta con un prototipo Stitch separado. CU-07 fue delimitado después del PC2, por lo que su prototipo anterior muestra un alcance más amplio que la ficha vigente. CU-12 y los casos de apelación todavía no están implementados.

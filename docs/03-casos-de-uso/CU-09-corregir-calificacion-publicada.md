@@ -7,7 +7,7 @@
 | **Precondiciones** | 1. La calificación está publicada.<br>2. La docente tiene asignación sobre el grupo, la materia y el periodo. |
 | **Postcondiciones** | Existe una nueva versión vigente ligada a la anterior, con motivo, autor y fecha, y cada persona encargada con vínculo activo recibe un aviso.<br>**Garantía mínima** (si no termina con éxito): La versión anterior nunca se elimina ni se sobrescribe; nada se publica sin motivo y sin confirmación con el cuaderno. |
 | **Actores** | A-02 Docente (principal) |
-| **Relaciones del caso de uso** | Asociado con los actores A-02 Docente. **«extend» [CU-07](CU-07-gestionar-apelacion-de-calificacion.md)**: extiende a CU-07 en el punto *Resolución con cambio de calificación*. En ese caso, el motivo es la resolución del Comité y la versión nueva queda referenciada en la apelación. También puede iniciarse sola, por decisión de la docente. |
+| **Relaciones del caso de uso** | Asociado con el actor A-02 Docente. Si el Comité ordena una corrección, la docente inicia CU-09 después de registrar la resolución en [CU-14](CU-14-registrar-resolucion-de-apelacion.md) y agrega su referencia. También puede iniciarse por decisión de la docente. Es un caso independiente, no una extensión automática de la apelación. |
 
 ## Flujo básico
 

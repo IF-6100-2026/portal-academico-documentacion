@@ -29,6 +29,7 @@ El Portal deberá permitir al Comité registrar la resolución con resultado, fu
 
 ## Casos de uso y escenarios
 
-- [CU-07 — Gestionar apelación de una calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-FB`, `TP-CU07-A06`, `TP-CU07-A08` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
+- [CU-14 — Registrar resolución de apelación](../../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md): `TP-CU14-FB`, `TP-CU14-A01` a `TP-CU14-A03` en [CU-14-registrar-resolucion-de-apelacion.feature](../../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature)
+- [CU-15 — Consultar resolución de apelación](../../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md): `TP-CU15-FB`, `TP-CU15-A01`, `TP-CU15-A02` en [CU-15-consultar-resolucion-de-apelacion.feature](../../04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature)
 
 La seguridad por actor y vínculo de este requisito se rige por [RS-03](../suplementarios/RS-03-seguridad-por-actor-y-vinculo.md).

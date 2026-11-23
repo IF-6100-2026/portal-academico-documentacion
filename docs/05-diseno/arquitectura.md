@@ -1,40 +1,41 @@
-# Arquitectura propuesta
+# Arquitectura implementada y propuesta
 
-## Estilo y justificación
-Monolito modular cliente-servidor con capas cerradas: React → API Spring Boot → servicios de aplicación → persistencia → PostgreSQL. Dos integrantes pueden desarrollar y desplegar una sola API; no se justifican microservicios. Cada módulo expone servicios públicos y mantiene sus repositorios internos. RS-01 exige una consulta sencilla; RS-02 exige registro de consultas y RS-03 obliga a verificar sesión, rol y vínculo en el servidor.
+## Vista
 
-## Vista de componentes
+El repositorio contiene un monolito modular: React/TypeScript consume una API Spring Boot; handlers CQRS coordinan las operaciones; repositorios JPA acceden a PostgreSQL. La autorización de rol se aplica en Spring Security y la de vínculo se verifica en el handler en cada consulta.
 
-![Vista de componentes](arquitectura.png)
-
-[Fuente SVG editable](arquitectura.svg).
 ```mermaid
-flowchart TD
- UI["Frontend React"] --> API["Controladores y DTO"]
- API --> APP["Servicios de aplicación"]
- APP --> DOM["Reglas de dominio"]
- APP --> REP["Repositorios JPA"]
- REP --> DB["PostgreSQL"]
+flowchart LR
+    UI[React 19 / TypeScript] -->|JSON por HTTP| API[Controladores REST]
+    API --> SEC[Spring Security: sesión demo y rol]
+    SEC --> H[Handlers de comandos y consultas]
+    H --> R[Repositorios JPA]
+    R --> DB[(PostgreSQL 17)]
+    H --> AUD[Registro de consulta o cambio de vínculo]
+    AUD --> R
 ```
-La fuente editable está arriba. La vista establece dependencias permitidas: un controlador no consulta repositorios y un componente visual no accede a la base de datos.
 
-## Realización diseñada de CU-01: consultar progreso académico
-Esta es una propuesta para PC3, no código implementado. Se basa en [CU-01](../03-casos-de-uso/CU-01-consultar-progreso-academico.md), RF-02/RF-03 y RS-01/02/03.
+El flujo desplegado está respaldado por CU-01 y CU-02. No hay microservicios: el alcance del curso no lo requiere y dos desarrolladores pueden ejecutar la solución localmente.
 
-| Paso | Capa y elemento propuesto | Responsabilidad |
-|---|---|---|
-| 1 | Presentación: ProgresoPage y SelectorEstudiante | Seleccionar estudiante y periodo; mostrar carga, ausencia de publicaciones o error. |
-| 2 | Hook useProgreso y api/progreso.ts | Solicitar GET /api/v1/estudiantes/{id}/progreso?periodo=...; cancelar solicitudes obsoletas. |
-| 3 | Seguridad y ProgresoController (boundary) | Resolver identidad de la sesión, validar parámetros y entregar ProgresoResponse; nunca aceptar un encargadoId del cliente como identidad. |
-| 4 | ConsultarProgresoService (control) | En una transacción, verificar cuenta activa, rol y vínculo vigente; obtener solo publicaciones y registrar la consulta autorizada. |
-| 5 | VinculoRepository y PublicacionRepository | Consultas acotadas por encargado autenticado, estudiante, periodo y estado publicado. |
-| 6 | Persistencia (entity) | VinculoEncargadoEstudiante, Estudiante, Evaluacion, Calificacion y RegistroConsulta. |
-| 7 | Tablas propuestas | vinculo_encargado_estudiante, estudiante, evaluacion, calificacion, registro_consulta. Aún no creadas por la migración inicial. |
-| 8 | Respuesta y presentación | DTO con perfil autorizado, publicaciones y versión vigente; CalificacionCard indica corrección e historial accesible. |
+## CU-01 — Consultar progreso académico
 
-La transacción no es de solo lectura porque RS-02 registra la consulta. La autorización se repite por solicitud; no se conserva un permiso indefinidamente en el frontend. La revocación confirmada debe impedir la siguiente consulta. Antes de construir se definirá una estrategia de concurrencia para revocaciones simultáneas (bloqueo o control de versión del vínculo).
+1. `GuardianAcademicController` obtiene el nombre del usuario autenticado; no acepta un identificador de persona encargada del navegador.
+2. `GetAcademicProgressQueryImpl` verifica que la cuenta activa tenga rol `GUARDIAN`.
+3. Al listar, recupera vínculos `ACTIVE`. Al consultar un estudiante, valida otra vez el vínculo activo para ese estudiante.
+4. Recupera solo evaluaciones publicadas del periodo y adjunta la calificación existente.
+5. Registra consultas autorizadas, listas y denegadas en `consultation_log`. La respuesta denegada no confirma si el estudiante existe.
+6. React presenta el perfil, las publicaciones y los estados vacíos/error.
 
-Flujos negativos: sesión inválida → 401 sin datos; vínculo ausente/revocado → respuesta de acceso denegado sin revelar existencia de estudiantes ajenos; periodo vacío → 200 con lista vacía; corrección → versión vigente y acceso autorizado al historial. El error visible corresponde a los escenarios A01–A05 del CU.
+La consulta no incluye el historial de correcciones descrito en el alterno A04 de CU-01; no se afirma que RF-09 esté construido.
 
-## Estado implementado
-El código incluido implementa exclusivamente configuración, migración inicial y GET /api/v1/health. El diseño de CU-01 no implica su construcción. Autenticación, autorización académica y escenarios ejecutables pertenecen a la construcción posterior.
+## CU-02 — Administrar vínculos
+
+`DirectorLinkController` permite consultar el catálogo, crear un vínculo y suspender o finalizar uno activo. `ManageGuardianLinkHandlerImpl` valida el rol Dirección, que ambas cuentas estén activas, respaldo no vacío y ausencia de duplicado activo. Cada cambio deja responsable, fecha, motivo e historial. Un índice único parcial protege la unicidad del vínculo activo.
+
+## Seguridad y entorno
+
+La autenticación HTTP Basic y las cuatro credenciales configuradas son exclusivamente para demostración local. Se desactiva CSRF porque la API está planteada para cliente no basado en cookies; el despliegue real requiere TLS, administración de cuentas y sesiones institucionales antes de manejar datos reales. No se crean cuentas nuevas desde la UI.
+
+## Límites de esta construcción
+
+No están implementados el flujo de publicación por docentes, mensajería, avisos, quejas, expedientes de apelación, vencimientos, notificaciones externas ni supervisión de Dirección fuera de los vínculos. Comité de Evaluación tampoco está habilitado como rol de la API. Véase [estado](../07-construccion/estado-de-implementacion.md) y [brechas](../07-construccion/brechas-de-requerimientos.md).

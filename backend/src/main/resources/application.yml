@@ -2,7 +2,7 @@ server:
   port: ${SERVER_PORT:8080}
 spring:
   config:
-    import: "optional:file:.env[.properties]"
+    import: "optional:file:../.env[.properties]"
   application:
     name: portal-academico-api
   datasource:
@@ -23,3 +23,12 @@ management:
 app:
   cors:
     allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+  demo-users:
+    guardian:
+      password: ${DEMO_GUARDIAN_PASSWORD:demo-familiar-2026}
+    empty-guardian:
+      password: ${DEMO_EMPTY_GUARDIAN_PASSWORD:demo-sin-vinculos-2026}
+    director:
+      password: ${DEMO_DIRECTOR_PASSWORD:demo-direccion-2026}
+    teacher:
+      password: ${DEMO_TEACHER_PASSWORD:demo-docente-2026}

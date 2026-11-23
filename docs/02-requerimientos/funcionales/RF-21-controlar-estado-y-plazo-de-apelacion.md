@@ -29,7 +29,9 @@ El Portal deberá conservar el historial de estados de cada apelación y marcarl
 
 ## Casos de uso y escenarios
 
-- [CU-07 — Gestionar apelación de una calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-A07` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
+- [CU-07 — Presentar apelación de calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-FB` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
+- [CU-13 — Aportar información a apelación](../../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md): `TP-CU13-A03` en [CU-13-aportar-informacion-a-apelacion.feature](../../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature)
+- [CU-14 — Registrar resolución de apelación](../../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md): `TP-CU14-FB` en [CU-14-registrar-resolucion-de-apelacion.feature](../../04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature)
 - [CU-08 — Supervisar el seguimiento académico](../../03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md): `TP-CU08-FB` en [CU-08-supervisar-seguimiento-academico.feature](../../04-pruebas/CU-08-supervisar-seguimiento-academico.feature)
 
 La seguridad por actor y vínculo de este requisito se rige por [RS-03](../suplementarios/RS-03-seguridad-por-actor-y-vinculo.md).

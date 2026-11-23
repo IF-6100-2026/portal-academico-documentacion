@@ -30,6 +30,4 @@ El Portal deberá permitir a la docente corregir una calificación publicada med
 ## Casos de uso y escenarios
 
 - [CU-09 — Corregir una calificación publicada](../../03-casos-de-uso/CU-09-corregir-calificacion-publicada.md): `TP-CU09-FB`, `TP-CU09-A02`, `TP-CU09-A03` en [CU-09-corregir-calificacion-publicada.feature](../../04-pruebas/CU-09-corregir-calificacion-publicada.feature)
-- [CU-07 — Gestionar apelación de una calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-A06` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
-
 La seguridad por actor y vínculo de este requisito se rige por [RS-03](../suplementarios/RS-03-seguridad-por-actor-y-vinculo.md).

@@ -29,6 +29,6 @@ El Portal deberá permitir a la docente adjuntar la prueba y su criterio de cali
 
 ## Casos de uso y escenarios
 
-- [CU-07 — Gestionar apelación de una calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-FB`, `TP-CU07-A05` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
+- [CU-13 — Aportar información a una apelación](../../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md): `TP-CU13-FB`, `TP-CU13-A01`, `TP-CU13-A02`, `TP-CU13-A03` en [CU-13-aportar-informacion-a-apelacion.feature](../../04-pruebas/CU-13-aportar-informacion-a-apelacion.feature)
 
 La seguridad por actor y vínculo de este requisito se rige por [RS-03](../suplementarios/RS-03-seguridad-por-actor-y-vinculo.md).

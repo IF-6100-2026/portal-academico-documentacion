@@ -8,10 +8,10 @@ Siglas y prefijos que se usan en la documentación del Portal Académico. Cuando
 |---|---|---|---|
 | **RF** | Requerimiento funcional: algo que el sistema debe hacer para un actor | `RF-01` … `RF-25` | [02-requerimientos/funcionales/](02-requerimientos/funcionales/) |
 | **RS** | Requerimiento suplementario: una cualidad del sistema (usabilidad, trazabilidad, seguridad) | `RS-01` … `RS-03` | [02-requerimientos/suplementarios/](02-requerimientos/suplementarios/) |
-| **CU** | Caso de uso: interacción completa entre un actor y el sistema para lograr un objetivo | `CU-01` … `CU-10`, `CU-12` | [03-casos-de-uso/](03-casos-de-uso/) |
-| **CU-xx-Ayy** | Flujo alterno `yy` del caso de uso `xx`: lo que pasa cuando algo se desvía del flujo básico | `CU-07-A05` | Dentro de cada CU |
+| **CU** | Caso de uso: interacción completa entre un actor y el sistema para lograr un objetivo | `CU-01` … `CU-10`, `CU-12` … `CU-15` | [03-casos-de-uso/](03-casos-de-uso/) |
+| **CU-xx-Ayy** | Flujo alterno `yy` del caso de uso `xx`: lo que pasa cuando algo se desvía del flujo básico | `CU-07-A04` | Dentro de cada CU |
 | **A-xx** | Actor | `A-01` Persona encargada legal … `A-05` Tiempo | [actores.md](03-casos-de-uso/actores.md) |
-| **TP** | Escenario de prueba de aceptación, escrito en un archivo `.feature` | `TP-CU07-A05` | [04-pruebas/](04-pruebas/) |
+| **TP** | Escenario de prueba de aceptación, escrito en un archivo `.feature` | `TP-CU07-A04` | [04-pruebas/](04-pruebas/) |
 | **FB** | Flujo básico: el camino normal y exitoso de un caso de uso | `TP-CU01-FB` | Dentro de cada CU y `.feature` |
 | **Ayy** | Flujo alterno número `yy` | `TP-CU01-A02` | Dentro de cada CU y `.feature` |
 
@@ -62,10 +62,10 @@ Son personas y registros ficticios que se usan solo en los escenarios.
 | Sigla | Significado |
 |---|---|
 | **PC1, PC2, PC3** | Puntos de control (entregables) 1, 2 y 3 del proyecto del curso |
-| **IF-6100** | Código del curso Análisis y Diseño de Software (UCR, Sede del Atlántico) |
+| **IF-6100** | Código del curso Análisis y Diseño de Sistemas (UCR, Sede del Atlántico) |
 | **RUP** | *Rational Unified Process*, Proceso Unificado: el PC2 corresponde a su fase de Elaboración |
-| **UML** | *Unified Modeling Language*: notación del diagrama de casos de uso |
-| **«include» / «extend»** | Relaciones UML entre casos de uso: «include» es un comportamiento obligatorio incluido en otro caso; «extend» es un comportamiento opcional que se agrega en un punto de extensión. Aquí solo existe CU-09 «extend» CU-07. |
+| **UML** | *Unified Modeling Language*: lenguaje estándar de modelado. El mapa actual agrupa casos por épica y actor; las fichas contienen los flujos detallados. |
+| **«include» / «extend»** | Relaciones UML entre casos de uso: «include» es un comportamiento obligatorio incluido en otro caso; «extend» es un comportamiento opcional que se agrega en un punto de extensión. Las fichas vigentes no declaran relaciones «include» ni «extend»; indican continuaciones entre casos independientes. |
 | **FURPS+** | Clasificación de requerimientos de calidad: funcionalidad, usabilidad, confiabilidad (*reliability*), rendimiento (*performance*) y soporte, más restricciones |
 | **ISO/IEC 25010** | Norma internacional de características de calidad del software |
 

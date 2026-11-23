@@ -51,5 +51,8 @@ En **todos** los CU hay un paso del flujo básico en que el Portal valida actor,
 | [CU-09](../../03-casos-de-uso/CU-09-corregir-calificacion-publicada.md) | 2 | A01 |
 | [CU-10](../../03-casos-de-uso/CU-10-configurar-plazos-y-recordatorios.md) | 2 | A01 |
 | [CU-12](../../03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) | 2 | A01 |
+| [CU-13](../../03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | 2 | A01 |
+| [CU-14](../../03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | 2 | A01 |
+| [CU-15](../../03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | 2 | A01 |
 
 Las cuentas y los grupos se cargan antes de operar el Portal. Su administración no es un caso de uso del MVP; se trata en los lineamientos de base de datos y de backend.

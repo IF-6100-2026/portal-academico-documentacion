@@ -4,17 +4,22 @@ import cr.ac.ucr.if6100.portal.config.WebConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.options;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.header;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(HealthController.class)
+@AutoConfigureMockMvc(addFilters = false)
 @Import(WebConfig.class)
 @TestPropertySource(properties = "app.cors.allowed-origin=http://localhost:5173")
 class HealthControllerTest {
-    @Autowired MockMvc mvc;
+    @Autowired private MockMvc mvc;
 
     @Test void exposesTheFrontendContract() throws Exception {
         mvc.perform(get("/api/v1/health"))

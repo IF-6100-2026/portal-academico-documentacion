@@ -1,18 +1,20 @@
 # Documentación — Portal Académico
 
-Índice de la documentación del Portal Académico del Centro Educativo María Montessori (IF-6100, PC2). Las secciones siguen el orden de las fases del proyecto.
+Índice de la documentación del Portal Académico del Centro Educativo María Montessori (IF-6100, PC3). Las secciones siguen el orden de las fases del proyecto.
 
 [Flujo de colaboración](06-configuracion/flujo-colaboracion.md)
 
 **Cadena de trazabilidad:** proceso actual (BPMN) → problema → requerimiento funcional → caso de uso → escenario de prueba → issue → código.
 
 - [Cambios del PC1 al PC2](cambios-pc1-pc2.md): observaciones atendidas y equivalencias de identificadores.
+- [Cambios del PC2 al PC3](cambios-pc2-pc3.md): respuesta a la evaluación y límites conocidos del núcleo construido.
+- [Estado de implementación](07-construccion/estado-de-implementacion.md), [brechas](07-construccion/brechas-de-requerimientos.md), [decisiones](07-construccion/decisiones-de-diseno.md), [resultados de pruebas](08-resultados-de-pruebas/resultados-pruebas.md) y [uso de IA](09-uso-de-ia/uso-de-ia.md).
 - [Glosario de siglas e identificadores](glosario.md): CU, RF, RS, E, P, AC, TP y los demás prefijos.
 
 ## 01 — Inicio
 
 - [Problema y visión](01-inicio/problema-y-vision.md): evidencia, problemas, épicas, alcance y supuestos.
-- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): fuente `.bpmn`, imagen y tabla de flujos.
+- [Diagrama de contexto](01-inicio/diagrama-de-contexto.md): modelo de caja negra en SVG y catálogo F-01 a F-34.
 - [Proceso actual (BPMN) y trazabilidad hacia los RF](01-inicio/bpmn/trazabilidad-bpmn-rf.md)
   - [seguimiento-academico-actual.bpmn](01-inicio/bpmn/seguimiento-academico-actual.bpmn) · [PNG](01-inicio/bpmn/seguimiento-academico-actual.png)
   - [resolver-apelacion-actual.bpmn](01-inicio/bpmn/resolver-apelacion-actual.bpmn) · [PNG](01-inicio/bpmn/resolver-apelacion-actual.png)
@@ -44,7 +46,7 @@
 ## 03 — Casos de uso
 
 - [Actores](03-casos-de-uso/actores.md)
-- [Diagrama de casos de uso (fuente)](03-casos-de-uso/diagrama-casos-de-uso.bpmn) · [imagen](03-casos-de-uso/diagrama-casos-de-uso.png)
+- [Diagrama de casos de uso](03-casos-de-uso/diagrama-casos-de-uso.svg) (fuente SVG editable).
 - [Prototipos](03-casos-de-uso/prototipos/README.md)
 
 | CU | Prueba |
@@ -55,11 +57,14 @@
 | [CU-04 Publicar calificación](03-casos-de-uso/CU-04-publicar-calificacion.md) | [.feature](04-pruebas/CU-04-publicar-calificacion.feature) |
 | [CU-05 Dar seguimiento a avisos no consultados](03-casos-de-uso/CU-05-dar-seguimiento-a-avisos-no-consultados.md) | [.feature](04-pruebas/CU-05-dar-seguimiento-a-avisos-no-consultados.feature) |
 | [CU-06 Comunicarse sobre un estudiante](03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md) | [.feature](04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature) |
-| [CU-07 Gestionar apelación de una calificación](03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md) | [.feature](04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature) |
+| [CU-07 Presentar apelación de una calificación](03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md) | [.feature](04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature) |
 | [CU-08 Supervisar el seguimiento académico](03-casos-de-uso/CU-08-supervisar-seguimiento-academico.md) | [.feature](04-pruebas/CU-08-supervisar-seguimiento-academico.feature) |
 | [CU-09 Corregir una calificación publicada](03-casos-de-uso/CU-09-corregir-calificacion-publicada.md) | [.feature](04-pruebas/CU-09-corregir-calificacion-publicada.feature) |
 | [CU-10 Configurar plazos y recordatorios](03-casos-de-uso/CU-10-configurar-plazos-y-recordatorios.md) | [.feature](04-pruebas/CU-10-configurar-plazos-y-recordatorios.feature) |
 | [CU-12 Presentar queja por información no recibida](03-casos-de-uso/CU-12-presentar-queja-por-informacion-no-recibida.md) | [.feature](04-pruebas/CU-12-presentar-queja-por-informacion-no-recibida.feature) |
+| [CU-13 Aportar información a una apelación](03-casos-de-uso/CU-13-aportar-informacion-a-apelacion.md) | [.feature](04-pruebas/CU-13-aportar-informacion-a-apelacion.feature) |
+| [CU-14 Registrar resolución de apelación](03-casos-de-uso/CU-14-registrar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-14-registrar-resolucion-de-apelacion.feature) |
+| [CU-15 Consultar resolución de apelación](03-casos-de-uso/CU-15-consultar-resolucion-de-apelacion.md) | [.feature](04-pruebas/CU-15-consultar-resolucion-de-apelacion.feature) |
 
 CU-11 no existe: correspondía a la bitácora de auditoría del PC1, que se retiró (ver [cambios](cambios-pc1-pc2.md#casos-de-uso)).
 

@@ -29,7 +29,7 @@ El Portal deberá permitir a la persona encargada apelar una calificación publi
 
 ## Casos de uso y escenarios
 
-- [CU-07 — Gestionar apelación de una calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-FB`, `TP-CU07-A02`, `TP-CU07-A03`, `TP-CU07-A04` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
+- [CU-07 — Presentar apelación de calificación](../../03-casos-de-uso/CU-07-gestionar-apelacion-de-calificacion.md): `TP-CU07-FB`, `TP-CU07-A01` a `TP-CU07-A04` en [CU-07-gestionar-apelacion-de-calificacion.feature](../../04-pruebas/CU-07-gestionar-apelacion-de-calificacion.feature)
 - [CU-06 — Comunicarse sobre un estudiante](../../03-casos-de-uso/CU-06-comunicarse-sobre-un-estudiante.md): `TP-CU06-A05` en [CU-06-comunicarse-sobre-un-estudiante.feature](../../04-pruebas/CU-06-comunicarse-sobre-un-estudiante.feature)
 
 La seguridad por actor y vínculo de este requisito se rige por [RS-03](../suplementarios/RS-03-seguridad-por-actor-y-vinculo.md).
