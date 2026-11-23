@@ -85,7 +85,7 @@ Estos documentos mantienen las reglas específicas y sus identificadores histór
 
 - Los siete RF generales son RF-26 a RF-32. RF-01 a RF-25 se conservan como refinamientos históricos; los enlaces y los identificadores de escenarios/issue no se renumeran.
 - RF-26 se especializa en CU-16 y CU-19; RF-27 en CU-17 a CU-19; RF-28 en CU-18, CU-20 y CU-21. CU-17 a CU-21 tienen código en la rama PC3, con modelo/actores provisionales que el grupo debe revisar.
-- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. Los issues de CU-03 a CU-15 y CU-17 a CU-21 permanecen abiertos mientras se revisa e integra la rama `codex/pc3-remaining-use-cases`; el PR #15 y el issue #16 corresponden a CU-16.
+- Hay 20 CUs y 20 archivos feature; cada CU tiene un issue enlazado. Los issues de CU-03 a CU-15 y CU-17 a CU-21 permanecen abiertos mientras se revisa el [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25); al integrarlo deben cerrarse explícitamente porque el PR se creó sin palabras clave de cierre. El PR #15 y el issue #16 corresponden a CU-16.
 - Los escenarios de cada CU que prueban accesos no autorizados se trazan a RS-03.
 
 ## Cobertura transversal de acceso (RS-03)

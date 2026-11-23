@@ -1,6 +1,6 @@
 # Análisis de retroalimentación docente y avance independiente
 
-- **Estado:** CU-16 se integró mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). La rama `codex/pc3-remaining-use-cases` agrega los otros 17 casos pendientes y requiere revisión e integración.
+- **Estado:** CU-16 se integró mediante [PR #15](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/15). La rama publicada `codex/pc3-remaining-use-cases` agrega los otros 17 casos mediante [PR #25](https://github.com/IF-6100-2026/portal-academico-documentacion/pull/25), abierto y pendiente de revisión e integración.
 - **Fuente:** enunciado/lineamientos PC3, comentarios del profesor compartidos por el equipo y material público de IF-6100-2026.
 - **Autoría:** este avance no atribuye cambios a un integrante que no los haya realizado.
 - **Límite académico:** no se encontró confirmación escrita del profesor para la selección del núcleo ni para las decisiones provisionales que se describen aquí.
@@ -49,4 +49,4 @@ La rama `codex/pc3-remaining-use-cases` implementa los 17 casos que faltaban: CU
 
 Los plazos y estados de apelación, los perfiles y permisos docentes, la estructura curso/materia/grupo/periodo, la escala 0–100, el procedimiento de avisos y la política de vínculo familiar están codificados para una demo local. Se detallan en [brechas](brechas-de-requerimientos.md). Nada aquí equivale a una política institucional aprobada.
 
-La rama final debe integrarse en `pc3/core-consulta-vinculos`, actualizarse el tag `pc3` al commit de entrega y entregarse mediante sus enlaces de GitHub en Mediación Virtual. El historial no se altera para inventar commits de los integrantes.
+La rama final debe integrarse en `pc3/core-consulta-vinculos`, cerrarse los issues asociados, actualizarse el tag `pc3` al commit de entrega y entregarse mediante sus enlaces de GitHub en Mediación Virtual. El historial no se altera para inventar commits de los integrantes.
